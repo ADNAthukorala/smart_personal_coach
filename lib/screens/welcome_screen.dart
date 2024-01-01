@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/login_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -45,7 +46,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 ElevatedButton(
                   style: kWelcomeButtonStyle,
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                  },
                   child: const Text(
                     'Get Started',
                     style: kWelcomeButtonTextStyle,
