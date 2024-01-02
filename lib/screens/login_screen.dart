@@ -18,7 +18,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/login_screen_image.jpg'),
-                  fit: BoxFit.cover,
+                  fit: BoxFit.fill,
                 ),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(50.0),
@@ -29,7 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
           Flexible(
             child: Container(
               padding: const EdgeInsets.all(16.0),
-              child: const Column(
+              child: Column(
                 children: [
                   Text(
                     'Sign In',
@@ -56,8 +56,58 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   TextField(
                     decoration: InputDecoration(
-                      hintText: 'Email'
+                      prefixIcon: Icon(
+                        Icons.email_outlined,
+                        color: Color(0xFF7E7474),
+                      ),
+                      hintText: 'Email',
+                      hintStyle: TextStyle(
+                        color: Color(0xFF7E7474),
+                        fontFamily: "Inter",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        borderSide: BorderSide.none,
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFFD9D9D9),
+                      contentPadding: EdgeInsets.only(
+                          left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
                     ),
+                  ),
+                  SizedBox(height: 15.0),
+                  TextField(
+                    decoration: InputDecoration(
+                      prefixIcon: Icon(
+                        Icons.lock_outline,
+                        color: Color(0xFF7E7474),
+                      ),
+                      hintText: 'Password',
+                      hintStyle: TextStyle(
+                        color: Color(0xFF7E7474),
+                        fontFamily: "Inter",
+                        fontSize: 15,
+                        fontWeight: FontWeight.w700,
+                      ),
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(10),
+                        ),
+                        borderSide: BorderSide.none,
+                      ),
+                      filled: true,
+                      fillColor: Color(0xFFD9D9D9),
+                      contentPadding: EdgeInsets.only(
+                          left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
+                    ),
+                  ),
+                  SizedBox(height: 9.0),
+                  Container(
+                    child: Text('Hi'),
                   ),
                 ],
               ),
