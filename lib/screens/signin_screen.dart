@@ -19,19 +19,9 @@ class _LoginScreenState extends State<LoginScreen> {
       body: Column(
         children: [
           //Top image of sign in page
-          Flexible(
+          const Flexible(
             flex: 2,
-            child: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('images/login_screen_image.jpg'),
-                  fit: BoxFit.cover,
-                ),
-                borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(50.0),
-                ),
-              ),
-            ),
+            child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
           ),
           //Bottom components of sign in page
           Flexible(
@@ -48,28 +38,31 @@ class _LoginScreenState extends State<LoginScreen> {
                     children: [
                       Text(
                         'Sign In',
-                        style: kSignInTextStyle,
+                        style: kLargeTextStyle,
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         'Please enter email and password for login',
-                        style: kSignInMessageTextStyle,
+                        style: kSmallTextStyle,
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
                   //Adding space between the top text column and the email text field
                   const SizedBox(height: 8.0),
-                  const ModifiedTextFormField(
+                  //Adding text field to get user email
+                  const SignInSignUpTextFormField(
                     hintText: 'Email',
                     prefixIcon: Icons.mail_outline,
                   ),
                   //Adding space between the email text field and the password text field
                   const SizedBox(height: 2.0),
-                  const ModifiedTextFormField(
+                  //Adding text field to get user password
+                  const SignInSignUpTextFormField(
                     hintText: 'Password',
                     prefixIcon: Icons.lock_outline,
                   ),
+                  //Adding a check box
                   CheckboxListTile(
                     title: const Text(
                       'Remember Me',
@@ -86,85 +79,73 @@ class _LoginScreenState extends State<LoginScreen> {
                     checkColor: kWhiteThemeColor,
                     contentPadding: const EdgeInsets.all(0),
                   ),
+                  //Sign in button
                   SignInSignUpButton(
                     onPressed: () {},
                     buttonText: 'Sign In',
                   ),
+                  //Forget password button
                   Container(
                     alignment: Alignment.centerLeft,
                     child: TextButton(
                       onPressed: () {},
-                      child: Text(
+                      style: const ButtonStyle(
+                        overlayColor:
+                            MaterialStatePropertyAll(kWhiteThemeColor),
+                      ),
+                      child: const Text(
                         'Forget Password',
-                        style: const TextStyle(
-                          fontFamily: "Inter",
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xff7e7474),
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        overlayColor: MaterialStatePropertyAll(Colors.white),
+                        style: kSmallTextStyle,
                       ),
                     ),
                   ),
-                  Container(
-                    child: Column(
-                      children: [
-                        Text(
-                          "Or continue with",
-                          style: const TextStyle(
-                            fontFamily: "Inter",
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xff7e7474),
+                  Column(
+                    children: [
+                      const Text(
+                        "Or continue with",
+                        style: kSmallTextStyle,
+                        textAlign: TextAlign.center,
+                      ),
+                      //Icon buttons row
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          //Google icon button
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.facebook_rounded),
+                            iconSize: 30.0,
                           ),
-                          textAlign: TextAlign.center,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.facebook_rounded),
-                              iconSize: 30.0,
-                            ),
-                            IconButton(
-                              onPressed: () {},
-                              icon: Icon(Icons.facebook_rounded),
-                              iconSize: 30.0,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          //Facebook icon button
+                          IconButton(
+                            onPressed: () {},
+                            icon: const Icon(Icons.facebook_rounded),
+                            iconSize: 30.0,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
+                  //Bottom text and button of bottom area
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         "Don’t have account?",
-                        style: const TextStyle(
-                          fontFamily: "Inter",
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: Color(0xFF7E7474),
-                        ),
+                        style: kSmallTextStyle,
                       ),
+                      //Sign Up button
                       TextButton(
                         onPressed: () {},
-                        style: ButtonStyle(
+                        style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                          overlayColor: MaterialStatePropertyAll(Colors.white),
+                          overlayColor:
+                              MaterialStatePropertyAll(kWhiteThemeColor),
                         ),
                         child: Text(
                           'Sign Up',
-                          style: const TextStyle(
-                            fontFamily: "Inter",
-                            fontSize: 14,
-                            fontWeight: FontWeight.w700,
-                            color: Color(0xFF2596BE),
-                          ),
+                          style:
+                              kSmallTextStyle.copyWith(color: kBlueThemeColor),
                         ),
                       ),
                     ],

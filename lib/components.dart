@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 //Text field for getting user inputs
-class ModifiedTextFormField extends StatelessWidget {
-  const ModifiedTextFormField({super.key, required this.hintText, required this.prefixIcon});
+class SignInSignUpTextFormField extends StatelessWidget {
+  const SignInSignUpTextFormField(
+      {super.key, required this.hintText, required this.prefixIcon});
 
   final String? hintText;
   final IconData? prefixIcon;
@@ -11,36 +12,20 @@ class ModifiedTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: InputDecoration(
-        hintText: hintText,
-        prefixIcon: Icon(
-          prefixIcon,
-          color: kGreyThemeColor,
-        ),
-        hintStyle: const TextStyle(
-          color: kGreyThemeColor,
-          fontFamily: kThemeFontFamily,
-          fontSize: 15,
-          fontWeight: FontWeight.w700,
-        ),
-        border: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
-            Radius.circular(10),
-          ),
-          borderSide: BorderSide.none,
-        ),
-        filled: true,
-        fillColor: kGreyThemeColor02,
-        contentPadding: const EdgeInsets.only(
-            left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
-      ),
+      decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+          hintText: hintText,
+          prefixIcon: Icon(
+            prefixIcon,
+            color: kGreyThemeColor,
+          )),
     );
   }
 }
 
 //Login and SignUp button
 class SignInSignUpButton extends StatelessWidget {
-  const SignInSignUpButton({super.key, required this.buttonText, required this.onPressed});
+  const SignInSignUpButton(
+      {super.key, required this.buttonText, required this.onPressed});
 
   final String buttonText;
   final void Function()? onPressed;
@@ -53,6 +38,28 @@ class SignInSignUpButton extends StatelessWidget {
       child: Text(
         buttonText,
         style: kSignInSignUpButtonTextStyle,
+      ),
+    );
+  }
+}
+
+//Screen's top image
+class TopImage extends StatelessWidget {
+  const TopImage({super.key, required this.imageUrl});
+
+  final String imageUrl;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage(imageUrl),
+          fit: BoxFit.cover,
+        ),
+        borderRadius: const BorderRadius.only(
+          bottomRight: Radius.circular(50.0),
+        ),
       ),
     );
   }

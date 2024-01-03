@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-//Theme colors
+//Theme colors and font family
 const kBlueThemeColor = Color(0xFF2596BE);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF7E7474);
@@ -8,9 +8,9 @@ const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 const kThemeFontFamily = "Inter";
 
-//Global constants
-const kTextFieldInputDecoration = InputDecoration(
-  hintText: 'Hint Text',
+
+//Input decorations for signin signup text form fields
+const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   hintStyle: TextStyle(
     color: kGreyThemeColor,
     fontFamily: kThemeFontFamily,
@@ -25,10 +25,11 @@ const kTextFieldInputDecoration = InputDecoration(
   ),
   filled: true,
   fillColor: kGreyThemeColor02,
-  contentPadding: EdgeInsets.only(
-      left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
+  contentPadding:
+      EdgeInsets.only(left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
 );
 
+//Text styles for small grey color texts
 const kSmallTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 14,
@@ -36,12 +37,26 @@ const kSmallTextStyle = TextStyle(
   color: kGreyThemeColor,
 );
 
+//Text styles for large black color texts (Topics)
+const kLargeTextStyle = TextStyle(
+  fontFamily: kThemeFontFamily,
+  fontSize: 28,
+  fontWeight: FontWeight.w700,
+  color: kBlackThemeColor,
+);
+
+//Text styles for welcome screen's large text
+const kWelcomeTextStyle = TextStyle(
+  fontFamily: kThemeFontFamily,
+  fontSize: 28,
+  fontWeight: FontWeight.w700,
+  color: kBlackThemeColor,
+);
+
 //Button styles for login and signup buttons
 const kSignInSignUpButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(
-      Size(double.maxFinite, 50.0)),
-  backgroundColor:
-  MaterialStatePropertyAll(kBlueThemeColor),
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(8)),
   )),
@@ -55,32 +70,7 @@ const kSignInSignUpButtonTextStyle = TextStyle(
   color: kWhiteThemeColor,
 );
 
-
-//Welcome screen
-const kImageContainerDecoration = BoxDecoration(
-  image: DecorationImage(
-    image: AssetImage('images/welcome_screen_image.jpg'),
-    fit: BoxFit.fill,
-  ),
-  borderRadius: BorderRadius.only(
-    bottomRight: Radius.circular(50.0),
-  ),
-);
-
-const kWelcomeTextStyle = TextStyle(
-  fontFamily: "Inter",
-  fontSize: 28,
-  fontWeight: FontWeight.w700,
-  color: kBlackThemeColor,
-);
-
-const kWelcomeMessageTextStyle = TextStyle(
-  fontFamily: "Inter",
-  fontSize: 14,
-  fontWeight: FontWeight.w700,
-  color: kGreyThemeColor,
-);
-
+//Welcome screen button style
 const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(200, 70)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
@@ -93,24 +83,11 @@ const kWelcomeButtonStyle = ButtonStyle(
   )),
 );
 
+//Welcome screen button's text style
 const kWelcomeButtonTextStyle = TextStyle(
-  fontFamily: "Inter",
+  fontFamily: kThemeFontFamily,
   fontSize: 20,
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
 
-//Login screen
-const kSignInTextStyle = TextStyle(
-  fontFamily: "Inter",
-  fontSize: 28,
-  fontWeight: FontWeight.w700,
-  color: Color(0xff000000),
-);
-
-const kSignInMessageTextStyle = TextStyle(
-  fontFamily: "Inter",
-  fontSize: 14,
-  fontWeight: FontWeight.w700,
-  color: Color(0xff7e7474),
-);
