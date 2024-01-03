@@ -3,19 +3,37 @@ import 'package:smart_personal_coach/constants.dart';
 
 //Text field for getting user inputs
 class ModifiedTextFormField extends StatelessWidget {
-  const ModifiedTextFormField({
-    super.key,
-  });
+  const ModifiedTextFormField({super.key, required this.hintText, required this.prefixIcon});
+
+  final String? hintText;
+  final IconData? prefixIcon;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      decoration: kTextFieldInputDecoration.copyWith(
-          hintText: 'Email',
-          prefixIcon: const Icon(
-            Icons.email_outlined,
-            color: kGreyThemeColor,
-          )),
+      decoration: InputDecoration(
+        hintText: hintText,
+        prefixIcon: Icon(
+          prefixIcon,
+          color: kGreyThemeColor,
+        ),
+        hintStyle: const TextStyle(
+          color: kGreyThemeColor,
+          fontFamily: kThemeFontFamily,
+          fontSize: 15,
+          fontWeight: FontWeight.w700,
+        ),
+        border: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(
+            Radius.circular(10),
+          ),
+          borderSide: BorderSide.none,
+        ),
+        filled: true,
+        fillColor: kGreyThemeColor02,
+        contentPadding: const EdgeInsets.only(
+            left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
+      ),
     );
   }
 }

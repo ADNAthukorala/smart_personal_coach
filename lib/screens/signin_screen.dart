@@ -18,13 +18,14 @@ class _LoginScreenState extends State<LoginScreen> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
+          //Top image of sign in page
           Flexible(
             flex: 2,
             child: Container(
               decoration: const BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('images/login_screen_image.jpg'),
-                  fit: BoxFit.fill,
+                  fit: BoxFit.cover,
                 ),
                 borderRadius: BorderRadius.only(
                   bottomRight: Radius.circular(50.0),
@@ -32,33 +33,42 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
           ),
+          //Bottom components of sign in page
           Flexible(
             flex: 3,
             child: Container(
-              padding: const EdgeInsets.all(16.0),
+              //Adding padding to the bottom area
+              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              //Adding all the components at the bottom to a column
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text(
-                    'Sign In',
-                    style: kSignInTextStyle,
-                    textAlign: TextAlign.center,
+                  //Top texts of bottom area
+                  const Column(
+                    children: [
+                      Text(
+                        'Sign In',
+                        style: kSignInTextStyle,
+                        textAlign: TextAlign.center,
+                      ),
+                      Text(
+                        'Please enter email and password for login',
+                        style: kSignInMessageTextStyle,
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
-                  const Text(
-                    'Please enter email and password for login',
-                    style: kSignInMessageTextStyle,
-                    textAlign: TextAlign.center,
+                  //Adding space between the top text column and the email text field
+                  const SizedBox(height: 8.0),
+                  const ModifiedTextFormField(
+                    hintText: 'Email',
+                    prefixIcon: Icons.mail_outline,
                   ),
-                  const SizedBox(height: 22.0),
-                  ModifiedTextFormField(),
-                  const SizedBox(height: 15.0),
-                  TextFormField(
-                    decoration: kTextFieldInputDecoration.copyWith(
-                        hintText: 'Password',
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: kGreyThemeColor,
-                        )),
+                  //Adding space between the email text field and the password text field
+                  const SizedBox(height: 2.0),
+                  const ModifiedTextFormField(
+                    hintText: 'Password',
+                    prefixIcon: Icons.lock_outline,
                   ),
                   CheckboxListTile(
                     title: const Text(
@@ -76,11 +86,8 @@ class _LoginScreenState extends State<LoginScreen> {
                     checkColor: kWhiteThemeColor,
                     contentPadding: const EdgeInsets.all(0),
                   ),
-                  const SizedBox(height: 8.0),
                   SignInSignUpButton(
-                    onPressed: () {
-
-                    },
+                    onPressed: () {},
                     buttonText: 'Sign In',
                   ),
                   Container(
@@ -171,4 +178,3 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
-
