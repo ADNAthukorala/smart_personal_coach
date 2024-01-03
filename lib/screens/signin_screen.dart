@@ -113,14 +113,16 @@ class _LoginScreenState extends State<LoginScreen> {
                           //Google icon button
                           IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.facebook_rounded),
-                            iconSize: 30.0,
+                            icon: Image.asset(
+                              'images/google_icon.png',
+                            ),
                           ),
                           //Facebook icon button
                           IconButton(
                             onPressed: () {},
-                            icon: const Icon(Icons.facebook_rounded),
-                            iconSize: 30.0,
+                            icon: Image.asset(
+                              'images/facebook_icon.png',
+                            ),
                           ),
                         ],
                       ),
