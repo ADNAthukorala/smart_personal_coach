@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/login_screen.dart';
+import 'package:smart_personal_coach/screens/signin_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
