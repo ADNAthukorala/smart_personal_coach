@@ -50,16 +50,9 @@ class _LoginScreenState extends State<LoginScreen> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(height: 22.0),
-                  TextField(
-                    decoration: kTextFieldInputDecoration.copyWith(
-                        hintText: 'Email',
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: kGreyThemeColor,
-                        )),
-                  ),
+                  ModifiedTextFormField(),
                   const SizedBox(height: 15.0),
-                  TextField(
+                  TextFormField(
                     decoration: kTextFieldInputDecoration.copyWith(
                         hintText: 'Password',
                         prefixIcon: const Icon(
@@ -178,3 +171,4 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 }
+
