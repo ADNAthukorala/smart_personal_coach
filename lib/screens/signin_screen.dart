@@ -90,15 +90,15 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: TextButton(
                       onPressed: () {},
                       style: const ButtonStyle(
-                        overlayColor:
-                            MaterialStatePropertyAll(kWhiteThemeColor),
-                      ),
+                          padding: MaterialStatePropertyAll(
+                              EdgeInsets.fromLTRB(10.0, 0, 10.0, 0))),
                       child: const Text(
                         'Forget Password',
                         style: kSmallTextStyle,
                       ),
                     ),
                   ),
+                  //Social media icon buttons with text
                   Column(
                     children: [
                       const Text(
@@ -141,8 +141,6 @@ class _LoginScreenState extends State<LoginScreen> {
                         onPressed: () {},
                         style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                          overlayColor:
-                              MaterialStatePropertyAll(kWhiteThemeColor),
                         ),
                         child: Text(
                           'Sign Up',
