@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/components.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
 
 class WelcomeScreen extends StatefulWidget {
@@ -15,11 +16,9 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
     return Scaffold(
       body: Column(
         children: [
-          Flexible(
+          const Flexible(
             flex: 5,
-            child: Container(
-              decoration: kImageContainerDecoration,
-            ),
+            child: TopImage(imageUrl: 'images/welcome_screen_image.jpg'),
           ),
           Flexible(
             flex: 3,
@@ -41,7 +40,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 const Text(
                   "Welcome to Smart Personal Coach! Join us on your journey to wellness. "
                   "Set goals, sweat it out, and conquer each day. Let's achieve greatness together!",
-                  style: kWelcomeMessageTextStyle,
+                  style: kSmallTextStyle,
                   textAlign: TextAlign.center,
                 ),
                 ElevatedButton(
