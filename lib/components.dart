@@ -1,46 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-//Text field for getting user inputs
-class SignInSignUpTextFormField extends StatelessWidget {
-  const SignInSignUpTextFormField(
-      {super.key, required this.hintText, required this.prefixIcon});
-
-  final String? hintText;
-  final IconData? prefixIcon;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextFormField(
-      decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
-        hintText: hintText,
-        prefixIcon: Icon(
-          prefixIcon,
-          color: kGreyThemeColor,
-        ),
-        suffixIcon: (hintText == 'Password' || hintText == 'Confirm Password')
-            ? IconButton(
-                onPressed: () {
-
-                },
-                icon: const Icon(Icons.remove_red_eye_outlined),
-              )
-            : null,
-      ),
-      obscureText: (hintText == 'Password' || hintText == 'Confirm Password')
-          ? true
-          : false,
-      enableSuggestions:
-          (hintText == 'Password' || hintText == 'Confirm Password')
-              ? false
-              : true,
-      autocorrect: (hintText == 'Password' || hintText == 'Confirm Password')
-          ? false
-          : true,
-    );
-  }
-}
-
 //Login and SignUp button
 class SignInSignUpButton extends StatelessWidget {
   const SignInSignUpButton(

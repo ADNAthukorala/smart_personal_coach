@@ -12,6 +12,8 @@ class SignInScreen extends StatefulWidget {
 
 class _SignInScreenState extends State<SignInScreen> {
   bool? isChecked = false;
+  //To check whether visibility button is clicked or not.
+  bool isVisibilityButtonClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,17 +53,43 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   //Adding space between the top texts column and the email text field
                   const SizedBox(height: 8.0),
-                  //Adding a text field to get user email
-                  const SignInSignUpTextFormField(
-                    hintText: 'Email',
-                    prefixIcon: Icons.mail_outline,
+                  //Adding a text field to get the email
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Email',
+                      prefixIcon: const Icon(
+                        Icons.email_outlined,
+                        color: kGreyThemeColor,
+                      ),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   //Adding space between the email text field and the password text field
                   const SizedBox(height: 2.0),
-                  //Adding text field to get user password
-                  const SignInSignUpTextFormField(
-                    hintText: 'Password',
-                    prefixIcon: Icons.lock_outline,
+                  //Adding a text field to get the password
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Password',
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: kGreyThemeColor,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            if (isVisibilityButtonClicked == false) {
+                              isVisibilityButtonClicked = true;
+                            } else {
+                              isVisibilityButtonClicked = false;
+                            }
+                          });
+                        },
+                        icon: isVisibilityButtonClicked ? const Icon(Icons.visibility_off_outlined) : const Icon(Icons.visibility_outlined),
+                      ),
+                    ),
+                    obscureText: isVisibilityButtonClicked ? false : true,
+                    enableSuggestions: false,
+                    autofocus: false,
                   ),
                   //Adding a check box for remember user details
                   CheckboxListTile(
