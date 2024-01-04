@@ -125,8 +125,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: TextButton(
                       onPressed: () {},
                       style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(
-                              EdgeInsets.fromLTRB(10.0, 0, 10.0, 0))),
+                        padding: MaterialStatePropertyAll(
+                            EdgeInsets.fromLTRB(10.0, 0, 10.0, 0)),
+                        overlayColor:
+                            MaterialStatePropertyAll(kGreyThemeColor02),
+                      ),
                       child: const Text(
                         'Forget Password',
                         style: kSmallTextStyle,
@@ -134,34 +137,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   //Social media icon buttons with text
-                  Column(
-                    children: [
-                      const Text(
-                        "Or continue with",
-                        style: kSmallTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                      //Icon buttons row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //Google icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/google_icon.png',
-                            ),
-                          ),
-                          //Facebook icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/facebook_icon.png',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  SocialMediaButtonsContainer(
+                    onPressedFacebook: () {},
+                    onPressedGoogle: () {},
                   ),
                   //Bottom text and button of bottom area
                   Row(
@@ -183,6 +161,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                          overlayColor:
+                              MaterialStatePropertyAll(kGreyThemeColor02),
                         ),
                         child: Text(
                           'Sign Up',

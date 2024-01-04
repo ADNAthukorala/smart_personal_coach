@@ -89,3 +89,4 @@ const kWelcomeButtonTextStyle = TextStyle(
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
+

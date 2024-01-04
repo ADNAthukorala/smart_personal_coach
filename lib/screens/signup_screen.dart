@@ -160,41 +160,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     buttonText: 'Sign Up',
                   ),
                   //Social media icon buttons with text
-                  Column(
-                    children: [
-                      const Text(
-                        "Or continue with",
-                        style: kSmallTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                      //Icon buttons row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //Google icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/google_icon.png',
-                            ),
-                          ),
-                          //Facebook icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/facebook_icon.png',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  SocialMediaButtonsContainer(
+                    onPressedFacebook: () {},
+                    onPressedGoogle: () {},
                   ),
                   //Bottom text and button of bottom area
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Have an account?",
+                        "Already have an account?",
                         style: kSmallTextStyle,
                       ),
                       //Sign In text button
@@ -204,6 +179,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         },
                         style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                          overlayColor:
+                              MaterialStatePropertyAll(kGreyThemeColor02),
                         ),
                         child: Text(
                           'Sign In',
