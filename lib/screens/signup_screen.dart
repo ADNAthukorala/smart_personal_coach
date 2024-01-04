@@ -13,7 +13,7 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   bool? isChecked = false;
   //To check whether visibility button is clicked or not.
-  bool isVisibilityButtonClicked = false;
+  bool isVisibilityButtonClicke = false;
 
   @override
   Widget build(BuildContext context) {
