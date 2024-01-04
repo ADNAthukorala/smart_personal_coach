@@ -8,7 +8,6 @@ const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 const kThemeFontFamily = "Inter";
 
-
 //Input decorations for signin signup text form fields
 const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   hintStyle: TextStyle(
@@ -90,4 +89,3 @@ const kWelcomeButtonTextStyle = TextStyle(
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
-

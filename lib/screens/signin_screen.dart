@@ -88,7 +88,9 @@ class _SignInScreenState extends State<SignInScreen> {
                             visibilityButtonClick();
                           });
                         },
-                        icon: isVisibilityButtonClicked ? const Icon(Icons.visibility_off_outlined) : const Icon(Icons.visibility_outlined),
+                        icon: isVisibilityButtonClicked
+                            ? const Icon(Icons.visibility_off_outlined)
+                            : const Icon(Icons.visibility_outlined),
                       ),
                     ),
                     obscureText: isVisibilityButtonClicked ? false : true,
