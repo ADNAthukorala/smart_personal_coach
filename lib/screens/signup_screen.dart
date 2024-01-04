@@ -12,6 +12,8 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool? isChecked = false;
+  //To check whether visibility button is clicked or not.
+  bool isVisibilityButtonClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,29 +53,86 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   //Adding space between the top texts column and the full name text field
                   const SizedBox(height: 8.0),
                   //Adding a text field to get the full name
-                  const SignInSignUpTextFormField(
-                    hintText: 'Full Name',
-                    prefixIcon: Icons.person_outlined,
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Full Name',
+                      prefixIcon: const Icon(
+                        Icons.person_outlined,
+                        color: kGreyThemeColor,
+                      ),
+                    ),
                   ),
                   //Adding a text field to get the email
-                  const SignInSignUpTextFormField(
-                    hintText: 'Email',
-                    prefixIcon: Icons.person_outlined,
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Email',
+                      prefixIcon: const Icon(
+                        Icons.email_outlined,
+                        color: kGreyThemeColor,
+                      ),
+                    ),
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   //Adding a text field to get the phone number
-                  const SignInSignUpTextFormField(
-                    hintText: 'Phone Number',
-                    prefixIcon: Icons.person_outlined,
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Phone Number',
+                      prefixIcon: const Icon(
+                        Icons.phone_outlined,
+                        color: kGreyThemeColor,
+                      ),
+                    ),
+                    keyboardType: TextInputType.number,
                   ),
                   //Adding a text field to get the password
-                  const SignInSignUpTextFormField(
-                    hintText: 'Password',
-                    prefixIcon: Icons.person_outlined,
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Password',
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: kGreyThemeColor,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            if (isVisibilityButtonClicked == false) {
+                              isVisibilityButtonClicked = true;
+                            } else {
+                              isVisibilityButtonClicked = false;
+                            }
+                          });
+                        },
+                        icon: isVisibilityButtonClicked ? const Icon(Icons.visibility_off_outlined) : const Icon(Icons.visibility_outlined),
+                      ),
+                    ),
+                    obscureText: isVisibilityButtonClicked ? false : true,
+                    enableSuggestions: false,
+                    autofocus: false,
                   ),
                   //Adding a text field to get the confirm password
-                  const SignInSignUpTextFormField(
-                    hintText: 'Confirm Password',
-                    prefixIcon: Icons.person_outlined,
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Confirm Password',
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: kGreyThemeColor,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            if (isVisibilityButtonClicked == false) {
+                              isVisibilityButtonClicked = true;
+                            } else {
+                              isVisibilityButtonClicked = false;
+                            }
+                          });
+                        },
+                        icon: isVisibilityButtonClicked ? const Icon(Icons.visibility_off_outlined) : const Icon(Icons.visibility_outlined),
+                      ),
+                    ),
+                    obscureText: isVisibilityButtonClicked ? false : true,
+                    enableSuggestions: false,
+                    autofocus: false,
                   ),
                   //Adding a check box for terms and conditions
                   CheckboxListTile(
@@ -151,7 +210,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Text(
                           'Sign In',
                           style:
-                          kSmallTextStyle.copyWith(color: kBlueThemeColor),
+                              kSmallTextStyle.copyWith(color: kBlueThemeColor),
                         ),
                       ),
                     ],
