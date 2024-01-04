@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components.dart';
+import 'package:smart_personal_coach/screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -116,7 +117,14 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   //Sign in button
                   SignInSignUpButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GenderSelectionScreen(),
+                        ),
+                      );
+                    },
                     buttonText: 'Sign In',
                   ),
                   //Forget password button
@@ -125,8 +133,11 @@ class _SignInScreenState extends State<SignInScreen> {
                     child: TextButton(
                       onPressed: () {},
                       style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(
-                              EdgeInsets.fromLTRB(10.0, 0, 10.0, 0))),
+                        padding: MaterialStatePropertyAll(
+                            EdgeInsets.fromLTRB(10.0, 0, 10.0, 0)),
+                        overlayColor:
+                            MaterialStatePropertyAll(kGreyThemeColor02),
+                      ),
                       child: const Text(
                         'Forget Password',
                         style: kSmallTextStyle,
@@ -134,34 +145,9 @@ class _SignInScreenState extends State<SignInScreen> {
                     ),
                   ),
                   //Social media icon buttons with text
-                  Column(
-                    children: [
-                      const Text(
-                        "Or continue with",
-                        style: kSmallTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                      //Icon buttons row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //Google icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/google_icon.png',
-                            ),
-                          ),
-                          //Facebook icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/facebook_icon.png',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  SocialMediaButtonsContainer(
+                    onPressedFacebook: () {},
+                    onPressedGoogle: () {},
                   ),
                   //Bottom text and button of bottom area
                   Row(
@@ -183,6 +169,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         },
                         style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                          overlayColor:
+                              MaterialStatePropertyAll(kGreyThemeColor02),
                         ),
                         child: Text(
                           'Sign Up',

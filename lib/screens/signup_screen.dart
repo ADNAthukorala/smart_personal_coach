@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components.dart';
-import 'package:smart_personal_coach/screens/signin_screen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -161,55 +160,27 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     buttonText: 'Sign Up',
                   ),
                   //Social media icon buttons with text
-                  Column(
-                    children: [
-                      const Text(
-                        "Or continue with",
-                        style: kSmallTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                      //Icon buttons row
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          //Google icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/google_icon.png',
-                            ),
-                          ),
-                          //Facebook icon button
-                          IconButton(
-                            onPressed: () {},
-                            icon: Image.asset(
-                              'images/facebook_icon.png',
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                  SocialMediaButtonsContainer(
+                    onPressedFacebook: () {},
+                    onPressedGoogle: () {},
                   ),
                   //Bottom text and button of bottom area
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Have an account?",
+                        "Already have an account?",
                         style: kSmallTextStyle,
                       ),
                       //Sign In text button
                       TextButton(
                         onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const SignInScreen(),
-                            ),
-                          );
+                          Navigator.pop(context);
                         },
                         style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
+                          overlayColor:
+                              MaterialStatePropertyAll(kGreyThemeColor02),
                         ),
                         child: Text(
                           'Sign In',

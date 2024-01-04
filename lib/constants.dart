@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //Theme colors and font family
 const kBlueThemeColor = Color(0xFF2596BE);
+const kPinkThemeColor = Color(0xFFEC22CC);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF7E7474);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
@@ -14,7 +15,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
     color: kGreyThemeColor,
     fontFamily: kThemeFontFamily,
     fontSize: 15,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w500,
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
@@ -32,7 +33,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
 const kSmallTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 14,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
   color: kGreyThemeColor,
 );
 
@@ -40,7 +41,7 @@ const kSmallTextStyle = TextStyle(
 const kLargeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w900,
   color: kBlackThemeColor,
 );
 
@@ -48,7 +49,7 @@ const kLargeTextStyle = TextStyle(
 const kWelcomeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w900,
   color: kBlackThemeColor,
 );
 
@@ -65,13 +66,13 @@ const kSignInSignUpButtonStyle = ButtonStyle(
 const kSignInSignUpButtonTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 15,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
   color: kWhiteThemeColor,
 );
 
 //Welcome screen button style
 const kWelcomeButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(200, 70)),
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
@@ -88,4 +89,16 @@ const kWelcomeButtonTextStyle = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
+);
+
+//Rounded corner button style
+const kRoundedCornerButtonStyle = ButtonStyle(
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(16),
+        topRight: Radius.circular(8),
+        bottomRight: Radius.circular(16),
+        bottomLeft: Radius.circular(8)),
+  )),
 );
