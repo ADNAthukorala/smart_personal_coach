@@ -10,6 +10,9 @@ class GenderSelectionScreen extends StatefulWidget {
 }
 
 class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
+  //Variable to store the user's gender
+  String selectedGender = 'Not selected yet';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,32 +47,50 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                     children: [
                       //Male button
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            //If the male button is clicked, selected gender = Male
+                            selectedGender = 'Male';
+                          });
+                        },
                         style: kRoundedCornerButtonStyle.copyWith(
                           fixedSize:
                               const MaterialStatePropertyAll(Size(150.0, 70.0)),
-                          backgroundColor:
-                              const MaterialStatePropertyAll(kWhiteThemeColor),
+                          backgroundColor: MaterialStatePropertyAll(
+                              selectedGender == 'Male'
+                                  ? kBlueThemeColor
+                                  : kWhiteThemeColor),
                         ),
                         child: Text(
                           'Male',
-                          style:
-                              kLargeTextStyle.copyWith(color: kBlackThemeColor),
+                          style: kLargeTextStyle.copyWith(
+                              color: selectedGender == 'Male'
+                                  ? kWhiteThemeColor
+                                  : kBlackThemeColor),
                         ),
                       ),
                       //Female button
                       ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          setState(() {
+                            //If the male button is clicked, selected gender = Female
+                            selectedGender = 'Female';
+                          });
+                        },
                         style: kRoundedCornerButtonStyle.copyWith(
                           fixedSize:
                               const MaterialStatePropertyAll(Size(150.0, 70.0)),
-                          backgroundColor:
-                              const MaterialStatePropertyAll(kWhiteThemeColor),
+                          backgroundColor: MaterialStatePropertyAll(
+                              selectedGender == 'Female'
+                                  ? kPinkThemeColor
+                                  : kWhiteThemeColor),
                         ),
                         child: Text(
                           'Female',
-                          style:
-                              kLargeTextStyle.copyWith(color: kBlackThemeColor),
+                          style: kLargeTextStyle.copyWith(
+                              color: selectedGender == 'Female'
+                                  ? kWhiteThemeColor
+                                  : kBlackThemeColor),
                         ),
                       ),
                     ],
