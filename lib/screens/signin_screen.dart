@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components.dart';
+import 'package:smart_personal_coach/screens/signup_screen.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class SignInScreen extends StatefulWidget {
+  const SignInScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<SignInScreen> createState() => _SignInScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _SignInScreenState extends State<SignInScreen> {
   bool? isChecked = false;
 
   @override
@@ -136,9 +137,16 @@ class _LoginScreenState extends State<LoginScreen> {
                         "Don’t have account?",
                         style: kSmallTextStyle,
                       ),
-                      //Sign Up button
+                      //Sign Up text button
                       TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SignUpScreen(),
+                            ),
+                          );
+                        },
                         style: const ButtonStyle(
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
                         ),
