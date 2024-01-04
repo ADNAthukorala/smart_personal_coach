@@ -71,7 +71,7 @@ const kSignInSignUpButtonTextStyle = TextStyle(
 
 //Welcome screen button style
 const kWelcomeButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(200, 70)),
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(

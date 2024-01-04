@@ -22,43 +22,46 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
           Flexible(
             flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                const Column(
-                  children: [
-                    Text(
-                      'Welcome',
-                      style: kWelcomeTextStyle,
-                    ),
-                    Text(
-                      'Smart Personal Coach',
-                      style: kWelcomeTextStyle,
-                    ),
-                  ],
-                ),
-                const Text(
-                  "Welcome to Smart Personal Coach! Join us on your journey to wellness. "
-                  "Set goals, sweat it out, and conquer each day. Let's achieve greatness together!",
-                  style: kSmallTextStyle,
-                  textAlign: TextAlign.center,
-                ),
-                ElevatedButton(
-                  style: kWelcomeButtonStyle,
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignInScreen(),
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Column(
+                    children: [
+                      Text(
+                        'Welcome',
+                        style: kWelcomeTextStyle,
                       ),
-                    );
-                  },
-                  child: const Text(
-                    'Get Started',
-                    style: kWelcomeButtonTextStyle,
+                      Text(
+                        'Smart Personal Coach',
+                        style: kWelcomeTextStyle,
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                  const Text(
+                    "Welcome to Smart Personal Coach! Join us on your journey to wellness. "
+                    "Set goals, sweat it out, and conquer each day. Let's achieve greatness together!",
+                    style: kSmallTextStyle,
+                    textAlign: TextAlign.center,
+                  ),
+                  ElevatedButton(
+                    style: kWelcomeButtonStyle,
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const SignInScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Get Started',
+                      style: kWelcomeButtonTextStyle,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
