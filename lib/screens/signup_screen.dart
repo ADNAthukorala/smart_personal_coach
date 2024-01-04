@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components.dart';
-import 'package:smart_personal_coach/screens/signup_screen.dart';
+import 'package:smart_personal_coach/screens/signin_screen.dart';
 
-class SignInScreen extends StatefulWidget {
-  const SignInScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SignInScreen> createState() => _SignInScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SignInScreenState extends State<SignInScreen> {
+class _SignUpScreenState extends State<SignUpScreen> {
   bool? isChecked = false;
 
   @override
@@ -19,18 +19,17 @@ class _SignInScreenState extends State<SignInScreen> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          //Top image of sign in screen
+          //Top image of sign up screen
           const Flexible(
-            flex: 2,
-            child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
+            flex: 1,
+            child: TopImage(imageUrl: 'images/signup_screen_image.jpg'),
           ),
-          //Bottom components of sign in screen
+          //Bottom components of sign up screen
           Flexible(
             flex: 3,
             //Adding padding to the bottom area
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
-              //Adding all the components at the bottom to a column
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -38,35 +37,48 @@ class _SignInScreenState extends State<SignInScreen> {
                   const Column(
                     children: [
                       Text(
-                        'Sign In',
+                        'Sign Up',
                         style: kLargeTextStyle,
                         textAlign: TextAlign.center,
                       ),
                       Text(
-                        'Please enter email and password for login',
+                        'Create your account here',
                         style: kSmallTextStyle,
                         textAlign: TextAlign.center,
                       ),
                     ],
                   ),
-                  //Adding space between the top texts column and the email text field
+                  //Adding space between the top texts column and the full name text field
                   const SizedBox(height: 8.0),
-                  //Adding a text field to get user email
+                  //Adding a text field to get the full name
+                  const SignInSignUpTextFormField(
+                    hintText: 'Full Name',
+                    prefixIcon: Icons.person_outlined,
+                  ),
+                  //Adding a text field to get the email
                   const SignInSignUpTextFormField(
                     hintText: 'Email',
-                    prefixIcon: Icons.mail_outline,
+                    prefixIcon: Icons.person_outlined,
                   ),
-                  //Adding space between the email text field and the password text field
-                  const SizedBox(height: 2.0),
-                  //Adding text field to get user password
+                  //Adding a text field to get the phone number
+                  const SignInSignUpTextFormField(
+                    hintText: 'Phone Number',
+                    prefixIcon: Icons.person_outlined,
+                  ),
+                  //Adding a text field to get the password
                   const SignInSignUpTextFormField(
                     hintText: 'Password',
-                    prefixIcon: Icons.lock_outline,
+                    prefixIcon: Icons.person_outlined,
                   ),
-                  //Adding a check box for remember user details
+                  //Adding a text field to get the confirm password
+                  const SignInSignUpTextFormField(
+                    hintText: 'Confirm Password',
+                    prefixIcon: Icons.person_outlined,
+                  ),
+                  //Adding a check box for terms and conditions
                   CheckboxListTile(
                     title: const Text(
-                      'Remember Me',
+                      'I agree Terms & Conditions',
                       style: kSmallTextStyle,
                     ),
                     value: isChecked,
@@ -80,24 +92,10 @@ class _SignInScreenState extends State<SignInScreen> {
                     checkColor: kWhiteThemeColor,
                     contentPadding: const EdgeInsets.all(0),
                   ),
-                  //Sign in button
+                  //Sign up button
                   SignInSignUpButton(
                     onPressed: () {},
-                    buttonText: 'Sign In',
-                  ),
-                  //Forget password button
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: TextButton(
-                      onPressed: () {},
-                      style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(
-                              EdgeInsets.fromLTRB(10.0, 0, 10.0, 0))),
-                      child: const Text(
-                        'Forget Password',
-                        style: kSmallTextStyle,
-                      ),
-                    ),
+                    buttonText: 'Sign Up',
                   ),
                   //Social media icon buttons with text
                   Column(
@@ -134,16 +132,16 @@ class _SignInScreenState extends State<SignInScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Don’t have an account?",
+                        "Have an account?",
                         style: kSmallTextStyle,
                       ),
-                      //Sign Up text button
+                      //Sign In text button
                       TextButton(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignUpScreen(),
+                              builder: (context) => const SignInScreen(),
                             ),
                           );
                         },
@@ -151,9 +149,9 @@ class _SignInScreenState extends State<SignInScreen> {
                           padding: MaterialStatePropertyAll(EdgeInsets.zero),
                         ),
                         child: Text(
-                          'Sign Up',
+                          'Sign In',
                           style:
-                              kSmallTextStyle.copyWith(color: kBlueThemeColor),
+                          kSmallTextStyle.copyWith(color: kBlueThemeColor),
                         ),
                       ),
                     ],
