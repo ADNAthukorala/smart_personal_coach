@@ -19,12 +19,12 @@ class _SignInScreenState extends State<SignInScreen> {
       resizeToAvoidBottomInset: false,
       body: Column(
         children: [
-          //Top image of sign in page
+          //Top image of sign in screen
           const Flexible(
             flex: 2,
             child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
           ),
-          //Bottom components of sign in page
+          //Bottom components of sign in screen
           Flexible(
             flex: 3,
             child: Container(
