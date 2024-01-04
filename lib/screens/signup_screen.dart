@@ -14,6 +14,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   bool? isChecked = false;
   //To check whether visibility button is clicked or not.
   bool isVisibilityButtonClicked = false;
+  //Visibility button click function
+  void visibilityButtonClick() {
+    if (isVisibilityButtonClicked == false) {
+      isVisibilityButtonClicked = true;
+    } else {
+      isVisibilityButtonClicked = false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -95,14 +103,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
-                            if (isVisibilityButtonClicked == false) {
-                              isVisibilityButtonClicked = true;
-                            } else {
-                              isVisibilityButtonClicked = false;
-                            }
+                            visibilityButtonClick();
                           });
                         },
-                        icon: isVisibilityButtonClicked ? const Icon(Icons.visibility_off_outlined) : const Icon(Icons.visibility_outlined),
+                        icon: isVisibilityButtonClicked
+                            ? const Icon(Icons.visibility_off_outlined)
+                            : const Icon(Icons.visibility_outlined),
                       ),
                     ),
                     obscureText: isVisibilityButtonClicked ? false : true,
@@ -120,14 +126,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       suffixIcon: IconButton(
                         onPressed: () {
                           setState(() {
-                            if (isVisibilityButtonClicked == false) {
-                              isVisibilityButtonClicked = true;
-                            } else {
-                              isVisibilityButtonClicked = false;
-                            }
+                            visibilityButtonClick();
                           });
                         },
-                        icon: isVisibilityButtonClicked ? const Icon(Icons.visibility_off_outlined) : const Icon(Icons.visibility_outlined),
+                        icon: isVisibilityButtonClicked
+                            ? const Icon(Icons.visibility_off_outlined)
+                            : const Icon(Icons.visibility_outlined),
                       ),
                     ),
                     obscureText: isVisibilityButtonClicked ? false : true,
