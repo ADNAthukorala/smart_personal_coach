@@ -27,14 +27,14 @@ class _SignInScreenState extends State<SignInScreen> {
           //Bottom components of sign in screen
           Flexible(
             flex: 3,
-            child: Container(
-              //Adding padding to the bottom area
+            //Adding padding to the bottom area
+            child: Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
               //Adding all the components at the bottom to a column
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Top texts of bottom area
+                  //Top texts column of bottom area
                   const Column(
                     children: [
                       Text(
@@ -49,9 +49,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                     ],
                   ),
-                  //Adding space between the top text column and the email text field
+                  //Adding space between the top texts column and the email text field
                   const SizedBox(height: 8.0),
-                  //Adding text field to get user email
+                  //Adding a text field to get user email
                   const SignInSignUpTextFormField(
                     hintText: 'Email',
                     prefixIcon: Icons.mail_outline,
@@ -63,7 +63,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     hintText: 'Password',
                     prefixIcon: Icons.lock_outline,
                   ),
-                  //Adding a check box
+                  //Adding a check box for remember user details
                   CheckboxListTile(
                     title: const Text(
                       'Remember Me',
@@ -134,7 +134,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Text(
-                        "Don’t have account?",
+                        "Don’t have an account?",
                         style: kSmallTextStyle,
                       ),
                       //Sign Up text button
