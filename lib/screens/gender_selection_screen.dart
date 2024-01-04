@@ -15,27 +15,34 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     return Scaffold(
       body: Column(
         children: [
+          //Top image of gender selection screen
           const Flexible(
             flex: 1,
-            child: TopImage(
-              imageUrl: 'images/gender_selection_screen_image.jpg',
-            ),
+            child:
+                TopImage(imageUrl: 'images/gender_selection_screen_image.jpg'),
           ),
+          //Bottom components of gender selection screen
           Flexible(
             flex: 2,
+            //Adding padding to the bottom area
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              //Adding all the components at the bottom to a column
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
+                  //Topic
                   const Text(
                     "What's your gender?",
                     style: kLargeTextStyle,
                   ),
+                  //Add some space between topic and male, female buttons row
                   const SizedBox(height: 8.0),
+                  //Male, female buttons holding row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
+                      //Male button
                       ElevatedButton(
                         onPressed: () {},
                         style: kRoundedCornerButtonStyle.copyWith(
@@ -50,6 +57,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                               kLargeTextStyle.copyWith(color: kBlackThemeColor),
                         ),
                       ),
+                      //Female button
                       ElevatedButton(
                         onPressed: () {},
                         style: kRoundedCornerButtonStyle.copyWith(
@@ -67,11 +75,12 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                     ],
                   ),
                   const Spacer(),
+                  //Go forward button
                   ElevatedButton(
                     onPressed: () {},
                     style: kRoundedCornerButtonStyle.copyWith(
                       fixedSize:
-                          const MaterialStatePropertyAll(Size(104.0, 46.0)),
+                          const MaterialStatePropertyAll(Size(120.0, 50.0)),
                     ),
                     child: const Text(
                       'Go',
