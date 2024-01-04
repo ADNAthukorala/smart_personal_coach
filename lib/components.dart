@@ -4,11 +4,10 @@ import 'package:smart_personal_coach/constants.dart';
 //Text field for getting user inputs
 class SignInSignUpTextFormField extends StatelessWidget {
   const SignInSignUpTextFormField(
-      {super.key, required this.hintText, required this.prefixIcon, this.onPressedEye});
+      {super.key, required this.hintText, required this.prefixIcon});
 
   final String? hintText;
   final IconData? prefixIcon;
-  final void Function()? onPressedEye;
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,9 @@ class SignInSignUpTextFormField extends StatelessWidget {
         ),
         suffixIcon: (hintText == 'Password' || hintText == 'Confirm Password')
             ? IconButton(
-                onPressed: onPressedEye,
+                onPressed: () {
+
+                },
                 icon: const Icon(Icons.remove_red_eye_outlined),
               )
             : null,
