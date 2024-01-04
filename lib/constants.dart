@@ -15,7 +15,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
     color: kGreyThemeColor,
     fontFamily: kThemeFontFamily,
     fontSize: 15,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w500,
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
@@ -33,7 +33,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
 const kSmallTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 14,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
   color: kGreyThemeColor,
 );
 
@@ -41,7 +41,7 @@ const kSmallTextStyle = TextStyle(
 const kLargeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w900,
   color: kBlackThemeColor,
 );
 
@@ -49,7 +49,7 @@ const kLargeTextStyle = TextStyle(
 const kWelcomeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w900,
   color: kBlackThemeColor,
 );
 
@@ -66,7 +66,7 @@ const kSignInSignUpButtonStyle = ButtonStyle(
 const kSignInSignUpButtonTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 15,
-  fontWeight: FontWeight.w700,
+  fontWeight: FontWeight.w500,
   color: kWhiteThemeColor,
 );
 
@@ -91,3 +91,14 @@ const kWelcomeButtonTextStyle = TextStyle(
   color: kWhiteThemeColor,
 );
 
+//Rounded corner button style
+const kRoundedCornerButtonStyle = ButtonStyle(
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(16),
+        topRight: Radius.circular(8),
+        bottomRight: Radius.circular(16),
+        bottomLeft: Radius.circular(8)),
+  )),
+);

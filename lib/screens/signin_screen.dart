@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components.dart';
+import 'package:smart_personal_coach/screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
 
 class SignInScreen extends StatefulWidget {
@@ -116,7 +117,14 @@ class _SignInScreenState extends State<SignInScreen> {
                   ),
                   //Sign in button
                   SignInSignUpButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const GenderSelectionScreen(),
+                        ),
+                      );
+                    },
                     buttonText: 'Sign In',
                   ),
                   //Forget password button
