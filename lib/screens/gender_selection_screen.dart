@@ -99,18 +99,24 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   const Spacer(),
                   //Go forward button
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AgeHeightWeightScreen(),
-                        ),
-                      );
-                    },
+                    onPressed: selectedGender == 'Not selected yet'
+                        ? null
+                        : () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const AgeHeightWeightScreen(),
+                              ),
+                            );
+                          },
                     style: kRoundedCornerButtonStyle.copyWith(
-                      fixedSize:
-                          const MaterialStatePropertyAll(Size(120.0, 50.0)),
-                    ),
+                        fixedSize:
+                            const MaterialStatePropertyAll(Size(120.0, 50.0)),
+                        backgroundColor: MaterialStatePropertyAll(
+                            selectedGender == 'Not selected yet'
+                                ? kGreyThemeColor02
+                                : kBlueThemeColor)),
                     child: const Text(
                       'Go',
                       style: TextStyle(

@@ -55,6 +55,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 });
               },
             ),
+            const SizedBox(height: 12.0),
             //Getting the user's height
             ReusableCardWithSlider(
               text1: 'Height',
@@ -69,6 +70,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 });
               },
             ),
+            const SizedBox(height: 12.0),
             //Getting the user's weight
             ReusableCardWithSlider(
               text1: 'Weight',
