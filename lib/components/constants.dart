@@ -102,3 +102,13 @@ const kRoundedCornerButtonStyle = ButtonStyle(
         bottomLeft: Radius.circular(8)),
   )),
 );
+
+//Slider style
+const kSliderStyle = SliderThemeData(
+  activeTrackColor: kWhiteThemeColor,
+  inactiveTrackColor: kBlackThemeColor,
+  thumbColor: kWhiteThemeColor,
+  overlayColor: Color(0x1FFFFFFF),
+  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
+  overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+);
