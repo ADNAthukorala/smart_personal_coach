@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/components.dart';
+import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/signin_signup_button.dart';
+import 'package:smart_personal_coach/components/top_image.dart';
+import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
 import 'package:smart_personal_coach/screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
 
