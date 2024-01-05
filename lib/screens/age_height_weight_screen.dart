@@ -13,14 +13,12 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
   //Declare variables to store user age, height and weight and assign default values for them.
   int age = 18;
   int height = 120;
-  int weight = 60;
+  double weight = 60;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ADNA'),
-        backgroundColor: kBlueThemeColor,
       ),
       body: Padding(
         //Adding padding to screen
@@ -42,7 +40,8 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 ),
               ],
             ),
-            //User's data getting card
+            const Spacer(),
+            //Getting the user's age
             ReusableCardWithSlider(
               text1: 'Age',
               text2: age.toString(),
@@ -56,10 +55,62 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 });
               },
             ),
+            //Getting the user's height
+            ReusableCardWithSlider(
+              text1: 'Height',
+              text2: height.toString(),
+              text3: 'cm',
+              value: height.toDouble(),
+              min: 60.0,
+              max: 280.0,
+              onChanged: (double newHeight) {
+                setState(() {
+                  height = newHeight.round();
+                });
+              },
+            ),
+            //Getting the user's weight
+            ReusableCardWithSlider(
+              text1: 'Weight',
+              text2: weight.toStringAsFixed(1),
+              text3: 'kg',
+              value: weight,
+              min: 10.0,
+              max: 300.0,
+              onChanged: (double newWeight) {
+                setState(() {
+                  weight = newWeight;
+                });
+              },
+            ),
+            const Spacer(),
+            //Go forward button
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AgeHeightWeightScreen(),
+                  ),
+                );
+              },
+              style: kRoundedCornerButtonStyle.copyWith(
+                fixedSize:
+                const MaterialStatePropertyAll(Size(120.0, 50.0)),
+              ),
+              child: const Text(
+                'Go',
+                style: TextStyle(
+                  fontFamily: kThemeFontFamily,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w900,
+                  color: kWhiteThemeColor,
+                ),
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
