@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components.dart';
+import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 
 class GenderSelectionScreen extends StatefulWidget {
   const GenderSelectionScreen({super.key});
@@ -98,7 +99,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   const Spacer(),
                   //Go forward button
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const AgeHeightWeightScreen(),
+                        ),
+                      );
+                    },
                     style: kRoundedCornerButtonStyle.copyWith(
                       fixedSize:
                           const MaterialStatePropertyAll(Size(120.0, 50.0)),
