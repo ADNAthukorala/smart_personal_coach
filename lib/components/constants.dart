@@ -29,7 +29,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
       EdgeInsets.only(left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
 );
 
-//Text styles for small grey color texts
+//Text styles for small grey color texts (Descriptions)
 const kSmallTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 14,
