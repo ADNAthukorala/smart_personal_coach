@@ -3,6 +3,9 @@ import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 
+//Create a enum for gender
+enum Gender { male, female, notSelected }
+
 class GenderSelectionScreen extends StatefulWidget {
   const GenderSelectionScreen({super.key});
 
@@ -12,7 +15,7 @@ class GenderSelectionScreen extends StatefulWidget {
 
 class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
   //Variable to store the user's gender
-  String selectedGender = 'Not selected yet';
+  Gender selectedGender = Gender.notSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -51,21 +54,21 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         onPressed: () {
                           setState(() {
                             //If the male button is clicked, selected gender = Male
-                            selectedGender = 'Male';
+                            selectedGender = Gender.male;
                           });
                         },
                         style: kRoundedCornerButtonStyle.copyWith(
                           fixedSize:
                               const MaterialStatePropertyAll(Size(150.0, 70.0)),
                           backgroundColor: MaterialStatePropertyAll(
-                              selectedGender == 'Male'
+                              selectedGender == Gender.male
                                   ? kBlueThemeColor
                                   : kWhiteThemeColor),
                         ),
                         child: Text(
                           'Male',
                           style: kLargeTextStyle.copyWith(
-                              color: selectedGender == 'Male'
+                              color: selectedGender == Gender.male
                                   ? kWhiteThemeColor
                                   : kBlackThemeColor),
                         ),
@@ -75,21 +78,21 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         onPressed: () {
                           setState(() {
                             //If the male button is clicked, selected gender = Female
-                            selectedGender = 'Female';
+                            selectedGender = Gender.female;
                           });
                         },
                         style: kRoundedCornerButtonStyle.copyWith(
                           fixedSize:
                               const MaterialStatePropertyAll(Size(150.0, 70.0)),
                           backgroundColor: MaterialStatePropertyAll(
-                              selectedGender == 'Female'
+                              selectedGender == Gender.female
                                   ? kPinkThemeColor
                                   : kWhiteThemeColor),
                         ),
                         child: Text(
                           'Female',
                           style: kLargeTextStyle.copyWith(
-                              color: selectedGender == 'Female'
+                              color: selectedGender == Gender.female
                                   ? kWhiteThemeColor
                                   : kBlackThemeColor),
                         ),
@@ -97,28 +100,27 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                     ],
                   ),
                   const Spacer(),
-                  //Go forward button
+                  //Next button
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AgeHeightWeightScreen(),
-                        ),
-                      );
-                    },
-                    style: kRoundedCornerButtonStyle.copyWith(
-                      fixedSize:
-                          const MaterialStatePropertyAll(Size(120.0, 50.0)),
-                    ),
+                    onPressed: selectedGender == Gender.notSelected
+                        ? null
+                        : () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const AgeHeightWeightScreen(),
+                              ),
+                            );
+                          },
+                    style: kNextButtonStyle.copyWith(
+                        backgroundColor: MaterialStatePropertyAll(
+                            selectedGender == Gender.notSelected
+                                ? kGreyThemeColor02
+                                : kBlueThemeColor)),
                     child: const Text(
-                      'Go',
-                      style: TextStyle(
-                        fontFamily: kThemeFontFamily,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w900,
-                        color: kWhiteThemeColor,
-                      ),
+                      'Next',
+                      style: kNextButtonTextStyle,
                     ),
                   ),
                 ],
