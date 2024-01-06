@@ -85,7 +85,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               },
             ),
             const Spacer(),
-            //Go forward button
+            //Next button
             ElevatedButton(
               onPressed: () {
                 // Navigator.push(
