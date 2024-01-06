@@ -97,7 +97,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               },
               style: kNextButtonStyle,
               child: const Text(
-                'Go',
+                'Next',
                 style: kNextButtonTextStyle,
               ),
             ),
