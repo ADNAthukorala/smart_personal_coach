@@ -100,7 +100,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                     ],
                   ),
                   const Spacer(),
-                  //Go forward button
+                  //Next button
                   ElevatedButton(
                     onPressed: selectedGender == Gender.notSelected
                         ? null
@@ -113,21 +113,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                               ),
                             );
                           },
-                    style: kRoundedCornerButtonStyle.copyWith(
-                        fixedSize:
-                            const MaterialStatePropertyAll(Size(200.0, 60.0)),
+                    style: kNextButtonStyle.copyWith(
                         backgroundColor: MaterialStatePropertyAll(
                             selectedGender == Gender.notSelected
                                 ? kGreyThemeColor02
                                 : kBlueThemeColor)),
                     child: const Text(
                       'Next',
-                      style: TextStyle(
-                        fontFamily: kThemeFontFamily,
-                        fontSize: 24,
-                        fontWeight: FontWeight.w900,
-                        color: kWhiteThemeColor,
-                      ),
+                      style: kNextButtonTextStyle,
                     ),
                   ),
                 ],

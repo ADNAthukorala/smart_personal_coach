@@ -18,8 +18,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-      ),
+      appBar: AppBar(),
       body: Padding(
         //Adding padding to screen
         padding: const EdgeInsets.all(16.0),
@@ -89,25 +88,17 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             //Go forward button
             ElevatedButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const AgeHeightWeightScreen(),
-                  ),
-                );
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const AgeHeightWeightScreen(),
+                //   ),
+                // );
               },
-              style: kRoundedCornerButtonStyle.copyWith(
-                fixedSize:
-                const MaterialStatePropertyAll(Size(120.0, 50.0)),
-              ),
+              style: kNextButtonStyle,
               child: const Text(
                 'Go',
-                style: TextStyle(
-                  fontFamily: kThemeFontFamily,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w900,
-                  color: kWhiteThemeColor,
-                ),
+                style: kNextButtonTextStyle,
               ),
             ),
           ],
