@@ -179,7 +179,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
               ),
             ),
             // Add spacer between the body area selection and the next button
-            const Spacer(),
+            const Spacer(flex: 2),
             // Next button
             ElevatedButton(
               // If the bodyAreas array is empty, this button should be disabled

@@ -36,7 +36,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
               padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
               //Adding all the components at the bottom to a column
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   //Topic
                   const Text(
@@ -44,7 +43,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                     style: kLargeTextStyle,
                   ),
                   //Add some space between topic and male, female buttons row
-                  const SizedBox(height: 8.0),
+                  const Spacer(),
                   //Male, female buttons holding row
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -99,7 +98,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                       ),
                     ],
                   ),
-                  const Spacer(),
+                  const Spacer(flex: 8),
                   //Next button
                   ElevatedButton(
                     onPressed: selectedGender == Gender.notSelected
