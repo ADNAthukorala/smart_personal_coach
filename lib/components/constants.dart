@@ -31,7 +31,7 @@ const kWelcomeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
   fontWeight: FontWeight.w900,
-  color: kBlackThemeColor,
+  color: kBlueThemeColor,
 );
 
 /// Text styles for login and signup buttons

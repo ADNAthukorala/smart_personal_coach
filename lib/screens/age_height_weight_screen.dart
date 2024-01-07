@@ -25,7 +25,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            //Top texts column of bottom area
+            //Topic
             const Column(
               children: [
                 Text(

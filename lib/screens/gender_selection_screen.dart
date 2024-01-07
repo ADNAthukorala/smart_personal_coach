@@ -70,7 +70,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                           style: kLargeTextStyle.copyWith(
                               color: selectedGender == Gender.male
                                   ? kWhiteThemeColor
-                                  : kBlackThemeColor),
+                                  : kBlueThemeColor),
                         ),
                       ),
                       //Female button
@@ -94,7 +94,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                           style: kLargeTextStyle.copyWith(
                               color: selectedGender == Gender.female
                                   ? kWhiteThemeColor
-                                  : kBlackThemeColor),
+                                  : kPinkThemeColor),
                         ),
                       ),
                     ],
