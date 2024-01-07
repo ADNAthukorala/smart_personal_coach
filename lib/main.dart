@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/screens/welcome_screen.dart';
 
 void main() {
@@ -10,8 +11,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: WelcomeScreen(),
+    return MaterialApp(
+      theme: ThemeData(
+        scaffoldBackgroundColor: kWhiteThemeColor,
+      ),
+      home: const WelcomeScreen(),
     );
   }
 }
