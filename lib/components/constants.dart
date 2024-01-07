@@ -65,6 +65,13 @@ const kSelectBodyAreaButtonTextStyle = TextStyle(
   color: kBlueThemeColor,
 );
 
+/// Text styles for select volume button
+const kSelectVolumeButtonTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.w900,
+  color: kBlueThemeColor,
+);
+
 
 
 /// STYLES FOR BUTTONS
@@ -118,6 +125,19 @@ const kNextButtonStyle = ButtonStyle(
 /// Button styles for select body area button
 const kSelectBodyAreaButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 40.0)),
+  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(16),
+        topRight: Radius.circular(8),
+        bottomRight: Radius.circular(16),
+        bottomLeft: Radius.circular(8)),
+  )),
+);
+
+/// Button styles for select volume button
+const kSelectVolumeButtonStyle = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 100.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(

@@ -9,7 +9,7 @@ class CheckingVolumeScreen01 extends StatefulWidget {
 }
 
 class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
-  String pushUpsVolume = '0-5';
+  String pushUpsVolume = ' ';
 
   @override
   Widget build(BuildContext context) {
@@ -28,12 +28,7 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
             ),
             Column(
               children: [
-                SelectVolumeButton(
-                  onPressed: () {
-
-                  },
-                  buttonLabel: '0 - 5  Push-ups',
-                ),
+                SelectVolumeButton(pushUpsVolume: pushUpsVolume),
               ],
             ),
           ],
@@ -46,36 +41,29 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
 class SelectVolumeButton extends StatelessWidget {
   const SelectVolumeButton({
     super.key,
-    required this.buttonLabel,
-    required this.onPressed,
+    required this.pushUpsVolume,
   });
 
-  final String buttonLabel;
-  final void Function()? onPressed;
+  final String pushUpsVolume;
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: onPressed,
-      style: const ButtonStyle(
-        fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 100.0)),
-        backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
-        shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(8),
-              bottomRight: Radius.circular(16),
-              bottomLeft: Radius.circular(8)),
-        )),
+      onPressed: () {},
+      style: kSelectVolumeButtonStyle.copyWith(
+        backgroundColor: pushUpsVolume == '0-5'
+            ? const MaterialStatePropertyAll(kBlueThemeColor)
+            : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
-        buttonLabel,
-        style: const TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.w900,
-          color: kBlueThemeColor,
+        '0 - 5  Push-ups',
+        style: kSelectVolumeButtonTextStyle.copyWith(
+          color: pushUpsVolume == '0-5'
+              ? kWhiteThemeColor
+              : kBlueThemeColor,
         ),
       ),
     );
   }
 }
+
