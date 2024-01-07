@@ -9,8 +9,8 @@ const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 const kThemeFontFamily = "Inter";
 
-///STYLES FOR TEXTS
-///Text styles for small grey color texts (Descriptions)
+/// STYLES FOR TEXTS
+/// Text styles for small grey color texts (Descriptions)
 const kSmallTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 14,
@@ -18,7 +18,7 @@ const kSmallTextStyle = TextStyle(
   color: kGreyThemeColor,
 );
 
-///Text styles for large black color texts (Topics)
+/// Text styles for large black color texts (Topics)
 const kLargeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
@@ -26,7 +26,7 @@ const kLargeTextStyle = TextStyle(
   color: kBlackThemeColor,
 );
 
-///Text styles for welcome screen's large text
+/// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
@@ -34,7 +34,7 @@ const kWelcomeTextStyle = TextStyle(
   color: kBlackThemeColor,
 );
 
-///Text styles for login and signup buttons
+/// Text styles for login and signup buttons
 const kSignInSignUpButtonTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 15,
@@ -42,7 +42,7 @@ const kSignInSignUpButtonTextStyle = TextStyle(
   color: kWhiteThemeColor,
 );
 
-///Welcome screen button's text style
+/// Text styles for welcome screen button
 const kWelcomeButtonTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 20,
@@ -50,7 +50,7 @@ const kWelcomeButtonTextStyle = TextStyle(
   color: kWhiteThemeColor,
 );
 
-///Text style for next button
+/// Text style for next button
 const kNextButtonTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 24,
@@ -58,20 +58,29 @@ const kNextButtonTextStyle = TextStyle(
   color: kWhiteThemeColor,
 );
 
-///STYLES FOR BUTTONS
-///Rounded corner button style
+/// Text styles for select body area button
+const kSelectBodyAreaButtonTextStyle = TextStyle(
+  fontSize: 18,
+  fontWeight: FontWeight.w900,
+  color: kBlueThemeColor,
+);
+
+
+
+/// STYLES FOR BUTTONS
+/// Button styles for rounded corner buttons
 const kRoundedCornerButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(8),
+        topLeft: Radius.circular(16),
         topRight: Radius.circular(8),
-        bottomRight: Radius.circular(8),
+        bottomRight: Radius.circular(16),
         bottomLeft: Radius.circular(8)),
   )),
 );
 
-///Button styles for login and signup buttons
+/// Button styles for login and signup buttons
 const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
@@ -80,7 +89,7 @@ const kSignInSignUpButtonStyle = ButtonStyle(
   )),
 );
 
-///Welcome screen button style
+/// Button style for welcome screen button
 const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
@@ -93,7 +102,7 @@ const kWelcomeButtonStyle = ButtonStyle(
   )),
 );
 
-///Next button button style
+/// Button styles for next button
 const kNextButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(200.0, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
@@ -106,6 +115,18 @@ const kNextButtonStyle = ButtonStyle(
   )),
 );
 
+/// Button styles for select body area button
+const kSelectBodyAreaButtonStyle = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 40.0)),
+  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(16),
+        topRight: Radius.circular(8),
+        bottomRight: Radius.circular(16),
+        bottomLeft: Radius.circular(8)),
+  )),
+);
 
 
 ///STYLES FOR SLIDERS
