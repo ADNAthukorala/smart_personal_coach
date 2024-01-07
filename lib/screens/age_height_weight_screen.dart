@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
-import 'package:smart_personal_coach/screens/full_body_screen.dart';
+import 'package:smart_personal_coach/screens/body_areas_selection_screen.dart';
 
 class AgeHeightWeightScreen extends StatefulWidget {
   const AgeHeightWeightScreen({super.key});
