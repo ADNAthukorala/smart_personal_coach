@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 
-enum BodyArea { arms, back, chest, abs, legs }
+enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
 class FullBodyScreen extends StatefulWidget {
   const FullBodyScreen({super.key});
@@ -49,6 +49,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                         // Select the full body button
                         SelectBodyAreaButton(
                           array: bodyAreas,
+                          selectedBodyArea: BodyArea.fullBody,
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array length >= 5
@@ -64,7 +65,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                                 bodyAreas.add(BodyArea.abs);
                                 bodyAreas.add(BodyArea.legs);
                               }
-                              // print(bodyAreas);
+                              print(bodyAreas);
                             });
                           },
                           buttonLabel: 'Full Body',
@@ -81,7 +82,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                                 // If it false, add arms to the array when this button is clicked
                                 bodyAreas.add(BodyArea.arms);
                               }
-                              // print(bodyAreas);
+                              print(bodyAreas);
                             });
                           },
                           array: bodyAreas,
@@ -100,7 +101,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                                 // If it false, add arms to the array when this button is clicked
                                 bodyAreas.add(BodyArea.back);
                               }
-                              // print(bodyAreas);
+                              print(bodyAreas);
                             });
                           },
                           array: bodyAreas,
@@ -119,7 +120,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                                 // If it false, add arms to the array when this button is clicked
                                 bodyAreas.add(BodyArea.chest);
                               }
-                              // print(bodyAreas);
+                              print(bodyAreas);
                             });
                           },
                           array: bodyAreas,
@@ -138,7 +139,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                                 // If it false, add arms to the array when this button is clicked
                                 bodyAreas.add(BodyArea.abs);
                               }
-                              // print(bodyAreas);
+                              print(bodyAreas);
                             });
                           },
                           array: bodyAreas,
@@ -157,7 +158,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                                 // If it false, add legs to the array when this button is clicked
                                 bodyAreas.add(BodyArea.legs);
                               }
-                              // print(bodyAreas);
+                              print(bodyAreas);
                             });
                           },
                           array: bodyAreas,
@@ -178,16 +179,23 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             ),
             // Add spacer between the body area selection and the next button
             const Spacer(),
+            // Next button
             ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const FullBodyScreen(),
-                  ),
-                );
-              },
-              style: kNextButtonStyle,
+              // If the bodyAreas array is empty, this button should be disabled
+              onPressed: bodyAreas.isEmpty
+                  ? null
+                  : () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const FullBodyScreen(),
+                        ),
+                      );
+                    },
+              style: kNextButtonStyle.copyWith(
+                // If the bodyAreas array is empty, the background color of this button should be gray
+                  backgroundColor: MaterialStatePropertyAll(
+                      bodyAreas.isEmpty ? kGreyThemeColor02 : kBlueThemeColor)),
               child: const Text(
                 'Next',
                 style: kNextButtonTextStyle,
@@ -205,13 +213,13 @@ class SelectBodyAreaButton extends StatelessWidget {
   const SelectBodyAreaButton({
     super.key,
     required this.array,
-    this.selectedBodyArea,
+    required this.selectedBodyArea,
     required this.onPressed,
     required this.buttonLabel,
   });
 
   final List<BodyArea> array;
-  final BodyArea? selectedBodyArea;
+  final BodyArea selectedBodyArea;
   final String buttonLabel;
   final void Function()? onPressed;
 
