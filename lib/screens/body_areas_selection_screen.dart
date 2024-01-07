@@ -238,7 +238,7 @@ class SelectBodyAreaButton extends StatelessWidget {
         style: kSelectBodyAreaButtonTextStyle.copyWith(
           color: array.contains(selectedBodyArea) || array.length == 5
               ? kWhiteThemeColor
-              : kBlackThemeColor,
+              : kBlueThemeColor,
         ),
       ),
     );
