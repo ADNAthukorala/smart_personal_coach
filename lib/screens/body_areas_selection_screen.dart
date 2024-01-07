@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/screens/checking_volume_screen_01.dart';
 
 enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
@@ -188,7 +189,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const FullBodyScreen(),
+                          builder: (context) => const CheckingVolumeScreen01(),
                         ),
                       );
                     },
