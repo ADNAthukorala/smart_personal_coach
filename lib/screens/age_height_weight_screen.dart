@@ -85,7 +85,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 });
               },
             ),
-            const Spacer(),
+            const Spacer(flex: 4),
             //Next button
             ElevatedButton(
               onPressed: () {
