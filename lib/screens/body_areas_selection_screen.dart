@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/checking_pushups_capacity.dart';
 
 enum BodyArea { arms, back, chest, abs, legs, fullBody }
@@ -26,13 +27,12 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
         // The main column
         child: Column(
           children: [
-            // Topic
-            const Text(
-              'Please choose your focus area',
-              style: kLargeBlackTitleTextStyle,
-              textAlign: TextAlign.center,
+            // Title and description
+            const TitleAndDescriptionHolder(
+              title: 'Please select your focus area',
+              description: '',
             ),
-            // Add a Spacer between the topic and the body area selection
+            // Add a Spacer between the title and the body area selection
             const Spacer(),
             // Body area selection
             SizedBox(

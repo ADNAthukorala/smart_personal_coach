@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/checking_pullups_capacity.dart';
 
 class CheckingPushUpsCapacity extends StatefulWidget {
@@ -25,13 +26,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
         padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
-            // Topic
-            const Text(
-              'How many push-ups can you do at once?',
-              style: kLargeBlackTitleTextStyle,
-              textAlign: TextAlign.center,
+            // Title and description
+            const TitleAndDescriptionHolder(
+              title: 'How many push-ups can you do at once?',
+              description: '',
             ),
             const Spacer(),
+            // Capacity button holder
             Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
