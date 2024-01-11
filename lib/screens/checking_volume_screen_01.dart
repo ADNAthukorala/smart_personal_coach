@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/screens/checking_volume_screen_02.dart';
 
 class CheckingVolumeScreen01 extends StatefulWidget {
@@ -68,37 +69,17 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
             //Next button
             NextButton(
               onPressed: () {
-
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const CheckingVolumeScreen02(),
+                  ),
+                );
               },
               style: kNextButtonStyle,
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class NextButton extends StatelessWidget {
-  const NextButton({
-    super.key,
-    required this.onPressed,
-    required this.style,
-  });
-
-  final void Function()? onPressed;
-  final ButtonStyle style;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: () {
-
-      },
-      style: style,
-      child: const Text(
-        'Next',
-        style: kNextButtonTextStyle,
       ),
     );
   }
