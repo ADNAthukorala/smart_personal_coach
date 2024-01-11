@@ -8,6 +8,8 @@ const kGreyThemeColor = Color(0xFF7E7474);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 const kThemeFontFamily = "Inter";
+const kRadius16 = 16.0;
+const kRadius8 = 8.0;
 
 /// STYLES FOR TEXTS
 /// Text styles for small grey color texts (Descriptions)
@@ -75,16 +77,17 @@ const kSelectVolumeButtonTextStyle = TextStyle(
 
 
 /// STYLES FOR BUTTONS
-/// Button styles for rounded corner buttons
-const kRoundedCornerButtonStyle = ButtonStyle(
+/// Button styles for gender selection buttons
+const kGenderSelectionButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(8),
-        bottomRight: Radius.circular(16),
-        bottomLeft: Radius.circular(8)),
+        topLeft: Radius.circular(kRadius16),
+        topRight: Radius.circular(kRadius16),
+        bottomRight: Radius.circular(kRadius16),
+        bottomLeft: Radius.circular(kRadius16)),
   )),
+  fixedSize: MaterialStatePropertyAll(Size(150.0, 70.0)),
 );
 
 /// Button styles for login and signup buttons
@@ -92,7 +95,7 @@ const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
@@ -102,10 +105,10 @@ const kWelcomeButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(16),
-        bottomRight: Radius.circular(16),
-        bottomLeft: Radius.circular(16)),
+        topLeft: Radius.circular(kRadius16),
+        topRight: Radius.circular(kRadius16),
+        bottomRight: Radius.circular(kRadius16),
+        bottomLeft: Radius.circular(kRadius16)),
   )),
 );
 
@@ -115,10 +118,10 @@ const kNextButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(16),
-        bottomRight: Radius.circular(16),
-        bottomLeft: Radius.circular(16)),
+        topLeft: Radius.circular(kRadius16),
+        topRight: Radius.circular(kRadius16),
+        bottomRight: Radius.circular(kRadius16),
+        bottomLeft: Radius.circular(kRadius16)),
   )),
 );
 
@@ -128,10 +131,10 @@ const kSelectBodyAreaButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(8),
-        bottomRight: Radius.circular(16),
-        bottomLeft: Radius.circular(8)),
+        topLeft: Radius.circular(kRadius16),
+        topRight: Radius.circular(kRadius16),
+        bottomRight: Radius.circular(kRadius16),
+        bottomLeft: Radius.circular(kRadius16)),
   )),
 );
 
@@ -141,10 +144,10 @@ const kSelectVolumeButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(16),
-        topRight: Radius.circular(16),
-        bottomRight: Radius.circular(16),
-        bottomLeft: Radius.circular(16)),
+        topLeft: Radius.circular(kRadius16),
+        topRight: Radius.circular(kRadius16),
+        bottomRight: Radius.circular(kRadius16),
+        bottomLeft: Radius.circular(kRadius16)),
   )),
 );
 
@@ -171,7 +174,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(10),
+      Radius.circular(kRadius16),
     ),
     borderSide: BorderSide.none,
   ),

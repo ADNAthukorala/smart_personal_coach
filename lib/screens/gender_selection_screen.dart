@@ -56,9 +56,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             selectedGender = Gender.male;
                           });
                         },
-                        style: kRoundedCornerButtonStyle.copyWith(
-                          fixedSize:
-                              const MaterialStatePropertyAll(Size(150.0, 70.0)),
+                        style: kGenderSelectionButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll(
                               selectedGender == Gender.male
                                   ? kBlueThemeColor
@@ -80,9 +78,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             selectedGender = Gender.female;
                           });
                         },
-                        style: kRoundedCornerButtonStyle.copyWith(
-                          fixedSize:
-                              const MaterialStatePropertyAll(Size(150.0, 70.0)),
+                        style: kGenderSelectionButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll(
                               selectedGender == Gender.female
                                   ? kPinkThemeColor
