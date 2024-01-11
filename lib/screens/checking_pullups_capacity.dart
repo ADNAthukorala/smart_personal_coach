@@ -25,9 +25,9 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             width: 100.0,
             child: Row(
               children: [
-                Icon(Icons.circle, size: 25.0),
-                Icon(Icons.circle, size: 25.0),
-                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
                 Icon(
                   Icons.circle,
                   size: 25.0,

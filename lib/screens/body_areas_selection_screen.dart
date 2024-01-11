@@ -26,14 +26,14 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             width: 100.0,
             child: Row(
               children: [
-                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
                 Icon(
                   Icons.circle,
                   size: 25.0,
                   color: kBlueThemeColor,
                 ),
-                Icon(Icons.circle, size: 25.0),
-                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
               ],
             ),
           )),
