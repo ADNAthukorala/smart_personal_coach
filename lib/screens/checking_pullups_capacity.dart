@@ -26,7 +26,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             // Topic
             const Text(
               'How many pull-ups can you do at once?',
-              style: kLargeBlackTopicTextStyle,
+              style: kLargeBlackTitleTextStyle,
               textAlign: TextAlign.center,
             ),
             const Spacer(),
@@ -76,12 +76,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             // Next button
             NextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CheckingPullUpsCapacity(),
-                  ),
-                );
+
               },
               style: kNextButtonStyle,
             ),

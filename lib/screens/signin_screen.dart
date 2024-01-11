@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
 import 'package:smart_personal_coach/screens/gender_selection_screen.dart';
@@ -42,25 +43,16 @@ class _SignInScreenState extends State<SignInScreen> {
             flex: 3,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
+              padding: const EdgeInsets.fromLTRB(
+                  kPadding16, kPadding8, kPadding16, kPadding16),
               //Adding all the components at the bottom to a column
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Top texts column of bottom area
-                  const Column(
-                    children: [
-                      Text(
-                        'Sign In',
-                        style: kLargeBlackTopicTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        'Please enter email and password for login',
-                        style: kSmallGreyColorMessageTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                  // Title and description
+                  const TitleAndDescriptionHolder(
+                    title: 'Sign In',
+                    description: 'Please enter email and password for login',
                   ),
                   //Adding space between the top texts column and the email text field
                   const SizedBox(height: 8.0),
@@ -104,7 +96,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   CheckboxListTile(
                     title: const Text(
                       'Remember Me',
-                      style: kSmallGreyColorMessageTextStyle,
+                      style: kSmallGreyColorDescriptionTextStyle,
                     ),
                     value: isChecked,
                     onChanged: (value) {
@@ -142,7 +134,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       child: const Text(
                         'Forget Password',
-                        style: kSmallGreyColorMessageTextStyle,
+                        style: kSmallGreyColorDescriptionTextStyle,
                       ),
                     ),
                   ),
@@ -157,7 +149,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       const Text(
                         "Don’t have an account?",
-                        style: kSmallGreyColorMessageTextStyle,
+                        style: kSmallGreyColorDescriptionTextStyle,
                       ),
                       //Sign Up text button
                       TextButton(
@@ -176,8 +168,8 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                         child: Text(
                           'Sign Up',
-                          style:
-                              kSmallGreyColorMessageTextStyle.copyWith(color: kBlueThemeColor),
+                          style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                              color: kBlueThemeColor),
                         ),
                       ),
                     ],
@@ -191,3 +183,4 @@ class _SignInScreenState extends State<SignInScreen> {
     );
   }
 }
+

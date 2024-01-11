@@ -42,7 +42,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const Text(
                     "Welcome to Smart Personal Coach! Join us on your journey to wellness. "
                     "Set goals, sweat it out, and conquer each day. Let's achieve greatness together!",
-                    style: kSmallGreyColorMessageTextStyle,
+                    style: kSmallGreyColorDescriptionTextStyle,
                     textAlign: TextAlign.center,
                   ),
                   ElevatedButton(
