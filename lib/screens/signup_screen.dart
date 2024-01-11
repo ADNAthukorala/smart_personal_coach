@@ -43,7 +43,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
             flex: 3,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
+              padding: const EdgeInsets.fromLTRB(
+                  kPadding16, kPadding8, kPadding16, kPadding16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -179,8 +180,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: Text(
                           'Sign In',
-                          style:
-                              kSmallGreyColorDescriptionTextStyle.copyWith(color: kBlueThemeColor),
+                          style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                              color: kBlueThemeColor),
                         ),
                       ),
                     ],
