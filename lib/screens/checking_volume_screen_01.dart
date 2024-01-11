@@ -66,23 +66,39 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
             ),
             const Spacer(flex: 4),
             //Next button
-            ElevatedButton(
+            NextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CheckingVolumeScreen02(),
-                  ),
-                );
+
               },
               style: kNextButtonStyle,
-              child: const Text(
-                'Next',
-                style: kNextButtonTextStyle,
-              ),
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class NextButton extends StatelessWidget {
+  const NextButton({
+    super.key,
+    required this.onPressed,
+    required this.style,
+  });
+
+  final void Function()? onPressed;
+  final ButtonStyle style;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+
+      },
+      style: style,
+      child: const Text(
+        'Next',
+        style: kNextButtonTextStyle,
       ),
     );
   }
