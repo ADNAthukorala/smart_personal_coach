@@ -8,7 +8,8 @@ class CheckingPullUpsCapacity extends StatefulWidget {
   const CheckingPullUpsCapacity({super.key});
 
   @override
-  State<CheckingPullUpsCapacity> createState() => _CheckingPullUpsCapacityState();
+  State<CheckingPullUpsCapacity> createState() =>
+      _CheckingPullUpsCapacityState();
 }
 
 class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
@@ -18,7 +19,23 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          centerTitle: true,
+          title: const SizedBox(
+            width: 100.0,
+            child: Row(
+              children: [
+                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0),
+                Icon(
+                  Icons.circle,
+                  size: 25.0,
+                  color: kBlueThemeColor,
+                ),
+              ],
+            ),
+          )),
       body: Padding(
         // Add padding around the main column
         padding: const EdgeInsets.all(kPadding16),
@@ -43,7 +60,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.beginner,
-                  buttonLabel: '0 - 5  Push-ups',
+                  buttonLabel: '0 - 5  Pull-ups',
                 ),
                 // Add space between 1st and 2nd button
                 const SizedBox(height: 20.0),
@@ -56,7 +73,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.intermediate,
-                  buttonLabel: '6 - 10  Push-ups',
+                  buttonLabel: '6 - 10  Pull-ups',
                 ),
                 // Add space between 2nd and 3rd button
                 const SizedBox(height: 20.0),
@@ -69,16 +86,14 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.advanced,
-                  buttonLabel: 'More than 10  Push-ups',
+                  buttonLabel: 'More than 10  Pull-ups',
                 ),
               ],
             ),
             const Spacer(flex: 4),
             // Next button
             NextButton(
-              onPressed: () {
-
-              },
+              onPressed: () {},
               style: kNextButtonStyle,
             ),
           ],
@@ -87,4 +102,3 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
     );
   }
 }
-

@@ -20,7 +20,23 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          centerTitle: true,
+          title: const SizedBox(
+            width: 100.0,
+            child: Row(
+              children: [
+                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0),
+                Icon(
+                  Icons.circle,
+                  size: 25.0,
+                  color: kBlueThemeColor,
+                ),
+                Icon(Icons.circle, size: 25.0),
+              ],
+            ),
+          )),
       body: Padding(
         // Add padding around the main column
         padding: const EdgeInsets.all(kPadding16),
