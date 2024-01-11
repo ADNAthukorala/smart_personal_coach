@@ -8,7 +8,8 @@ class CheckingPullUpsCapacity extends StatefulWidget {
   const CheckingPullUpsCapacity({super.key});
 
   @override
-  State<CheckingPullUpsCapacity> createState() => _CheckingPullUpsCapacityState();
+  State<CheckingPullUpsCapacity> createState() =>
+      _CheckingPullUpsCapacityState();
 }
 
 class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
@@ -18,7 +19,23 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          centerTitle: true,
+          title: const SizedBox(
+            width: 100.0,
+            child: Row(
+              children: [
+                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0),
+                Icon(
+                  Icons.circle,
+                  size: 25.0,
+                  color: kBlueThemeColor,
+                ),
+              ],
+            ),
+          )),
       body: Padding(
         // Add padding around the main column
         padding: const EdgeInsets.all(kPadding16),
@@ -76,9 +93,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             const Spacer(flex: 4),
             // Next button
             NextButton(
-              onPressed: () {
-
-              },
+              onPressed: () {},
               style: kNextButtonStyle,
             ),
           ],
@@ -87,4 +102,3 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
     );
   }
 }
-

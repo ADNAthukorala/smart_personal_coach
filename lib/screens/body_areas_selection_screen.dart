@@ -20,7 +20,23 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+          centerTitle: true,
+          title: const SizedBox(
+            width: 100.0,
+            child: Row(
+              children: [
+                Icon(Icons.circle, size: 25.0),
+                Icon(
+                  Icons.circle,
+                  size: 25.0,
+                  color: kBlueThemeColor,
+                ),
+                Icon(Icons.circle, size: 25.0),
+                Icon(Icons.circle, size: 25.0),
+              ],
+            ),
+          )),
       // Add padding around the main column
       body: Padding(
         padding: const EdgeInsets.all(kPadding16),
@@ -195,7 +211,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                       );
                     },
               style: kNextButtonStyle.copyWith(
-                // If the bodyAreas array is empty, the background color of this button should be gray
+                  // If the bodyAreas array is empty, the background color of this button should be gray
                   backgroundColor: MaterialStatePropertyAll(
                       bodyAreas.isEmpty ? kGreyThemeColor02 : kBlueThemeColor)),
             ),
