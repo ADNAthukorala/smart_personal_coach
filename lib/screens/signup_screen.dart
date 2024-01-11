@@ -52,7 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     title: 'Sign Up',
                     description: 'Create your account here',
                   ),
-                  //Adding space between the top texts column and the full name text field
+                  // Adding space between the title and the full name text field
                   const SizedBox(height: 8.0),
                   //Adding a text field to get the full name
                   TextFormField(
