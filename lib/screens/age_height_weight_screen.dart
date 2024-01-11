@@ -31,12 +31,12 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               children: [
                 Text(
                   'Let us known you better',
-                  style: kLargeBlackTopicTextStyle,
+                  style: kLargeBlackTitleTextStyle,
                   textAlign: TextAlign.center,
                 ),
                 Text(
                   'Let us know you better to help boost your workout results',
-                  style: kSmallGreyColorMessageTextStyle,
+                  style: kSmallGreyColorDescriptionTextStyle,
                   textAlign: TextAlign.center,
                 ),
               ],

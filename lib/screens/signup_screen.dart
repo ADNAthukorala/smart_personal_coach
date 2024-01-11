@@ -51,12 +51,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       Text(
                         'Sign Up',
-                        style: kLargeBlackTopicTextStyle,
+                        style: kLargeBlackTitleTextStyle,
                         textAlign: TextAlign.center,
                       ),
                       Text(
                         'Create your account here',
-                        style: kSmallGreyColorMessageTextStyle,
+                        style: kSmallGreyColorDescriptionTextStyle,
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -145,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   CheckboxListTile(
                     title: const Text(
                       'I agree Terms & Conditions',
-                      style: kSmallGreyColorMessageTextStyle,
+                      style: kSmallGreyColorDescriptionTextStyle,
                     ),
                     value: isChecked,
                     onChanged: (value) {
@@ -174,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       const Text(
                         "Already have an account?",
-                        style: kSmallGreyColorMessageTextStyle,
+                        style: kSmallGreyColorDescriptionTextStyle,
                       ),
                       //Sign In text button
                       TextButton(
@@ -189,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Text(
                           'Sign In',
                           style:
-                              kSmallGreyColorMessageTextStyle.copyWith(color: kBlueThemeColor),
+                              kSmallGreyColorDescriptionTextStyle.copyWith(color: kBlueThemeColor),
                         ),
                       ),
                     ],

@@ -7,7 +7,6 @@ const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF7E7474);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
-const kThemeFontFamily = "Inter";
 const kRadius16 = 16.0;
 const kRadius8 = 8.0;
 const kPadding16 = 16.0;
@@ -15,16 +14,14 @@ const kPadding8 = 8.0;
 
 /// STYLES FOR TEXTS
 /// Text styles for small grey color texts (Descriptions)
-const kSmallGreyColorMessageTextStyle = TextStyle(
-  fontFamily: kThemeFontFamily,
+const kSmallGreyColorDescriptionTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
   color: kGreyThemeColor,
 );
 
-/// Text styles for large black color texts (Topics)
-const kLargeBlackTopicTextStyle = TextStyle(
-  fontFamily: kThemeFontFamily,
+/// Text styles for large black color texts (Titles)
+const kLargeBlackTitleTextStyle = TextStyle(
   fontSize: 28,
   fontWeight: FontWeight.w900,
   color: kBlackThemeColor,
@@ -32,7 +29,6 @@ const kLargeBlackTopicTextStyle = TextStyle(
 
 /// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
-  fontFamily: kThemeFontFamily,
   fontSize: 28,
   fontWeight: FontWeight.w900,
   color: kBlueThemeColor,
@@ -40,7 +36,6 @@ const kWelcomeTextStyle = TextStyle(
 
 /// Text styles for login and signup buttons
 const kSignInSignUpButtonTextStyle = TextStyle(
-  fontFamily: kThemeFontFamily,
   fontSize: 15,
   fontWeight: FontWeight.w500,
   color: kWhiteThemeColor,
@@ -48,7 +43,6 @@ const kSignInSignUpButtonTextStyle = TextStyle(
 
 /// Text styles for welcome screen button
 const kWelcomeButtonTextStyle = TextStyle(
-  fontFamily: kThemeFontFamily,
   fontSize: 20,
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
@@ -56,7 +50,6 @@ const kWelcomeButtonTextStyle = TextStyle(
 
 /// Text style for next button
 const kNextButtonTextStyle = TextStyle(
-  fontFamily: kThemeFontFamily,
   fontSize: 24,
   fontWeight: FontWeight.w900,
   color: kWhiteThemeColor,
@@ -170,7 +163,6 @@ const kSliderStyle = SliderThemeData(
 const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   hintStyle: TextStyle(
     color: kGreyThemeColor,
-    fontFamily: kThemeFontFamily,
     fontSize: 15,
     fontWeight: FontWeight.w500,
   ),

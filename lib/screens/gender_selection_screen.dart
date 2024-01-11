@@ -41,7 +41,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   //Topic
                   const Text(
                     "What's your gender?",
-                    style: kLargeBlackTopicTextStyle,
+                    style: kLargeBlackTitleTextStyle,
                   ),
                   //Add some space between topic and male, female buttons row
                   const Spacer(),
@@ -65,7 +65,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         ),
                         child: Text(
                           'Male',
-                          style: kLargeBlackTopicTextStyle.copyWith(
+                          style: kLargeBlackTitleTextStyle.copyWith(
                               color: selectedGender == Gender.male
                                   ? kWhiteThemeColor
                                   : kBlueThemeColor),
@@ -87,7 +87,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         ),
                         child: Text(
                           'Female',
-                          style: kLargeBlackTopicTextStyle.copyWith(
+                          style: kLargeBlackTitleTextStyle.copyWith(
                               color: selectedGender == Gender.female
                                   ? kWhiteThemeColor
                                   : kPinkThemeColor),
