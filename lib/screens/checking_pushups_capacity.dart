@@ -4,15 +4,15 @@ import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/screens/checking_volume_screen_02.dart';
 
-class CheckingCapacityScreen01 extends StatefulWidget {
-  const CheckingCapacityScreen01({super.key});
+class CheckingPushUpsCapacity extends StatefulWidget {
+  const CheckingPushUpsCapacity({super.key});
 
   @override
-  State<CheckingCapacityScreen01> createState() =>
-      _CheckingCapacityScreen01State();
+  State<CheckingPushUpsCapacity> createState() =>
+      _CheckingPushUpsCapacityState();
 }
 
-class _CheckingCapacityScreen01State extends State<CheckingCapacityScreen01> {
+class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
   Capacity pushUpsCapacity = Capacity.beginner;
 
   @override
