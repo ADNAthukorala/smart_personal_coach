@@ -29,7 +29,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             // Topic
             const Text(
               'Please choose your focus area',
-              style: kLargeTextStyle,
+              style: kLargeBlackTopicTextStyle,
               textAlign: TextAlign.center,
             ),
             // Add a Spacer between the topic and the body area selection

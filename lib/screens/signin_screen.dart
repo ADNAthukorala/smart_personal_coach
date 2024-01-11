@@ -52,7 +52,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       Text(
                         'Sign In',
-                        style: kLargeTextStyle,
+                        style: kLargeBlackTopicTextStyle,
                         textAlign: TextAlign.center,
                       ),
                       Text(
