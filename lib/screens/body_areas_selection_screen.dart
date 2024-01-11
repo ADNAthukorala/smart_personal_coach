@@ -23,17 +23,17 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
       appBar: AppBar(
           centerTitle: true,
           title: const SizedBox(
-            width: 100.0,
+            width: kAppBarSizedBoxWidth,
             child: Row(
               children: [
-                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
                 Icon(
                   Icons.circle,
-                  size: 25.0,
+                  size: kAppBarActiveRoundedIconSize,
                   color: kBlueThemeColor,
                 ),
-                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
-                Icon(Icons.circle, size: 25.0, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02, ),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
               ],
             ),
           )),
