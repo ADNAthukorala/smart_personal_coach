@@ -35,7 +35,8 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             flex: 2,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
+              padding: const EdgeInsets.fromLTRB(
+                  kPadding16, kPadding8, kPadding16, kPadding16),
               //Adding all the components at the bottom to a column
               child: Column(
                 children: [
