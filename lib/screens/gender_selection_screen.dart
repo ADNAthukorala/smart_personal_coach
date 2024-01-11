@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 
@@ -96,7 +97,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   ),
                   const Spacer(flex: 8),
                   //Next button
-                  ElevatedButton(
+                  NextButton(
                     onPressed: selectedGender == Gender.notSelected
                         ? null
                         : () {
@@ -113,10 +114,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             selectedGender == Gender.notSelected
                                 ? kGreyThemeColor02
                                 : kBlueThemeColor)),
-                    child: const Text(
-                      'Next',
-                      style: kNextButtonTextStyle,
-                    ),
                   ),
                 ],
               ),
