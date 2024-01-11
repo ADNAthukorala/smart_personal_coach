@@ -54,7 +54,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     title: 'Sign In',
                     description: 'Please enter email and password for login',
                   ),
-                  //Adding space between the top texts column and the email text field
+                  // Adding space between the title and the email text field
                   const SizedBox(height: 8.0),
                   //Adding a text field to get the email
                   TextFormField(
