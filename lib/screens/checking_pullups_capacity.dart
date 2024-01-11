@@ -76,12 +76,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             // Next button
             NextButton(
               onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CheckingPullUpsCapacity(),
-                  ),
-                );
+
               },
               style: kNextButtonStyle,
             ),
