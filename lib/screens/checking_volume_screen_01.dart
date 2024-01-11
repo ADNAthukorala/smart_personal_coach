@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
+import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/screens/checking_volume_screen_02.dart';
 
 class CheckingVolumeScreen01 extends StatefulWidget {
@@ -11,7 +12,7 @@ class CheckingVolumeScreen01 extends StatefulWidget {
 }
 
 class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
-  String pushUpsVolume = '0-5';
+  Capacity pushUpsCapacity = Capacity.beginner;
 
   @override
   Widget build(BuildContext context) {
@@ -31,36 +32,39 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
             const Spacer(),
             Column(
               children: [
-                SelectVolumeButton(
+                SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pushUpsVolume = '0-5';
+                      pushUpsCapacity = Capacity.beginner;
                     });
+                    print(pushUpsCapacity);
                   },
-                  volume: pushUpsVolume,
-                  selectedVolume: '0-5',
+                  actualCapacity: pushUpsCapacity,
+                  buttonCapacity: Capacity.beginner,
                   buttonLabel: '0 - 5  Push-ups',
                 ),
                 const SizedBox(height: 16.0),
-                SelectVolumeButton(
+                SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pushUpsVolume = '6-10';
+                      pushUpsCapacity = Capacity.intermediate;
                     });
+                    print(pushUpsCapacity);
                   },
-                  volume: pushUpsVolume,
-                  selectedVolume: '6-10',
+                  actualCapacity: pushUpsCapacity,
+                  buttonCapacity: Capacity.intermediate,
                   buttonLabel: '6 - 10  Push-ups',
                 ),
                 const SizedBox(height: 16.0),
-                SelectVolumeButton(
+                SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pushUpsVolume = 'more than 10';
+                      pushUpsCapacity = Capacity.advanced;
                     });
+                    print(pushUpsCapacity);
                   },
-                  volume: pushUpsVolume,
-                  selectedVolume: 'more than 10',
+                  actualCapacity: pushUpsCapacity,
+                  buttonCapacity: Capacity.advanced,
                   buttonLabel: 'More than 10  Push-ups',
                 ),
               ],
@@ -85,35 +89,3 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
   }
 }
 
-class SelectVolumeButton extends StatelessWidget {
-  const SelectVolumeButton({
-    super.key,
-    required this.volume,
-    required this.selectedVolume,
-    required this.buttonLabel,
-    required this.onPressed,
-  });
-
-  final String volume;
-  final String selectedVolume;
-  final String buttonLabel;
-  final void Function()? onPressed;
-
-  @override
-  Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: kSelectVolumeButtonStyle.copyWith(
-        backgroundColor: volume == selectedVolume
-            ? const MaterialStatePropertyAll(kBlueThemeColor)
-            : const MaterialStatePropertyAll(kWhiteThemeColor),
-      ),
-      child: Text(
-        buttonLabel,
-        style: kSelectVolumeButtonTextStyle.copyWith(
-          color: volume == selectedVolume ? kWhiteThemeColor : kBlueThemeColor,
-        ),
-      ),
-    );
-  }
-}
