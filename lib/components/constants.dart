@@ -15,7 +15,7 @@ const kPadding8 = 8.0;
 
 /// STYLES FOR TEXTS
 /// Text styles for small grey color texts (Descriptions)
-const kSmallTextStyle = TextStyle(
+const kSmallGreyColorMessageTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 14,
   fontWeight: FontWeight.w500,

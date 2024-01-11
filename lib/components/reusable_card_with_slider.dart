@@ -50,7 +50,7 @@ class ReusableCardWithSlider extends StatelessWidget {
                       Text(
                         text3,
                         style:
-                            kSmallTextStyle.copyWith(color: kWhiteThemeColor),
+                            kSmallGreyColorMessageTextStyle.copyWith(color: kWhiteThemeColor),
                       ),
                     ],
                   ),

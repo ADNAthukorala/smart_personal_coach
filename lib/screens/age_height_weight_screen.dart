@@ -36,7 +36,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 ),
                 Text(
                   'Let us know you better to help boost your workout results',
-                  style: kSmallTextStyle,
+                  style: kSmallGreyColorMessageTextStyle,
                   textAlign: TextAlign.center,
                 ),
               ],
