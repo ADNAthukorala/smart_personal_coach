@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/body_areas_selection_screen.dart';
 
 class AgeHeightWeightScreen extends StatefulWidget {
@@ -26,20 +27,11 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
         padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
-            //Topic
-            const Column(
-              children: [
-                Text(
-                  'Let us known you better',
-                  style: kLargeBlackTitleTextStyle,
-                  textAlign: TextAlign.center,
-                ),
-                Text(
+            // Title and description
+            const TitleAndDescriptionHolder(
+              title: 'Let us known you better',
+              description:
                   'Let us know you better to help boost your workout results',
-                  style: kSmallGreyColorDescriptionTextStyle,
-                  textAlign: TextAlign.center,
-                ),
-              ],
             ),
             const Spacer(),
             //Getting the user's age
