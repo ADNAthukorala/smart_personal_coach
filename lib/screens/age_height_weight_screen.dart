@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
 import 'package:smart_personal_coach/screens/body_areas_selection_screen.dart';
 
@@ -86,8 +87,8 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               },
             ),
             const Spacer(flex: 4),
-            //Next button
-            ElevatedButton(
+            // Next button
+            NextButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -97,10 +98,6 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 );
               },
               style: kNextButtonStyle,
-              child: const Text(
-                'Next',
-                style: kNextButtonTextStyle,
-              ),
             ),
           ],
         ),
