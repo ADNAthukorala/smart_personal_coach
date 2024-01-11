@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 
@@ -34,16 +35,17 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             flex: 2,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
+              padding: const EdgeInsets.fromLTRB(
+                  kPadding16, kPadding8, kPadding16, kPadding16),
               //Adding all the components at the bottom to a column
               child: Column(
                 children: [
-                  //Topic
-                  const Text(
-                    "What's your gender?",
-                    style: kLargeBlackTitleTextStyle,
+                  // Title and description
+                  const TitleAndDescriptionHolder(
+                    title: "What's your gender?",
+                    description: '',
                   ),
-                  //Add some space between topic and male, female buttons row
+                  // Add some space between title and male, female buttons row
                   const Spacer(),
                   //Male, female buttons holding row
                   Row(

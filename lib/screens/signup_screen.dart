@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
 
@@ -42,26 +43,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
             flex: 3,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
+              padding: const EdgeInsets.fromLTRB(
+                  kPadding16, kPadding8, kPadding16, kPadding16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  //Top texts column of bottom area
-                  const Column(
-                    children: [
-                      Text(
-                        'Sign Up',
-                        style: kLargeBlackTitleTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                      Text(
-                        'Create your account here',
-                        style: kSmallGreyColorDescriptionTextStyle,
-                        textAlign: TextAlign.center,
-                      ),
-                    ],
+                  // Title and description
+                  const TitleAndDescriptionHolder(
+                    title: 'Sign Up',
+                    description: 'Create your account here',
                   ),
-                  //Adding space between the top texts column and the full name text field
+                  // Adding space between the title and the full name text field
                   const SizedBox(height: 8.0),
                   //Adding a text field to get the full name
                   TextFormField(
@@ -188,8 +180,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                         child: Text(
                           'Sign In',
-                          style:
-                              kSmallGreyColorDescriptionTextStyle.copyWith(color: kBlueThemeColor),
+                          style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                              color: kBlueThemeColor),
                         ),
                       ),
                     ],
