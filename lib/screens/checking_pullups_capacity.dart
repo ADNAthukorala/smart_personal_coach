@@ -2,19 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
-import 'package:smart_personal_coach/screens/checking_pullups_capacity.dart';
 
-class CheckingPushUpsCapacity extends StatefulWidget {
-  const CheckingPushUpsCapacity({super.key});
+class CheckingPullUpsCapacity extends StatefulWidget {
+  const CheckingPullUpsCapacity({super.key});
 
   @override
-  State<CheckingPushUpsCapacity> createState() =>
-      _CheckingPushUpsCapacityState();
+  State<CheckingPullUpsCapacity> createState() => _CheckingPullUpsCapacityState();
 }
 
-class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
-  // Declare a Capacity variable to store user's push ups capacity
-  Capacity pushUpsCapacity = Capacity.beginner;
+class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
+  // Declare a Capacity variable to store user's pull ups capacity
+  Capacity pullUpsCapacity = Capacity.beginner;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
           children: [
             // Topic
             const Text(
-              'How many push-ups can you do at once?',
+              'How many pull-ups can you do at once?',
               style: kLargeTextStyle,
               textAlign: TextAlign.center,
             ),
@@ -38,11 +36,11 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pushUpsCapacity = Capacity.beginner;
+                      pullUpsCapacity = Capacity.beginner;
                     });
-                    print(pushUpsCapacity);
+                    print(pullUpsCapacity);
                   },
-                  actualCapacity: pushUpsCapacity,
+                  actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.beginner,
                   buttonLabel: '0 - 5  Push-ups',
                 ),
@@ -51,11 +49,11 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pushUpsCapacity = Capacity.intermediate;
+                      pullUpsCapacity = Capacity.intermediate;
                     });
-                    print(pushUpsCapacity);
+                    print(pullUpsCapacity);
                   },
-                  actualCapacity: pushUpsCapacity,
+                  actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.intermediate,
                   buttonLabel: '6 - 10  Push-ups',
                 ),
@@ -64,11 +62,11 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pushUpsCapacity = Capacity.advanced;
+                      pullUpsCapacity = Capacity.advanced;
                     });
-                    print(pushUpsCapacity);
+                    print(pullUpsCapacity);
                   },
-                  actualCapacity: pushUpsCapacity,
+                  actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.advanced,
                   buttonLabel: 'More than 10  Push-ups',
                 ),
@@ -93,3 +91,4 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
     );
   }
 }
+
