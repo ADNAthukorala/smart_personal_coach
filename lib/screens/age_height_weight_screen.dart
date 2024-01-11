@@ -31,7 +31,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               children: [
                 Text(
                   'Let us known you better',
-                  style: kLargeTextStyle,
+                  style: kLargeBlackTopicTextStyle,
                   textAlign: TextAlign.center,
                 ),
                 Text(

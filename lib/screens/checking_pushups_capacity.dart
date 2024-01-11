@@ -28,7 +28,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             // Topic
             const Text(
               'How many push-ups can you do at once?',
-              style: kLargeTextStyle,
+              style: kLargeBlackTopicTextStyle,
               textAlign: TextAlign.center,
             ),
             const Spacer(),

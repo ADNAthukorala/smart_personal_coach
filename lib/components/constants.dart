@@ -23,7 +23,7 @@ const kSmallGreyColorMessageTextStyle = TextStyle(
 );
 
 /// Text styles for large black color texts (Topics)
-const kLargeTextStyle = TextStyle(
+const kLargeBlackTopicTextStyle = TextStyle(
   fontFamily: kThemeFontFamily,
   fontSize: 28,
   fontWeight: FontWeight.w900,

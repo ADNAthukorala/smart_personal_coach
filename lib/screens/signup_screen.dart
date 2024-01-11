@@ -51,7 +51,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       Text(
                         'Sign Up',
-                        style: kLargeTextStyle,
+                        style: kLargeBlackTopicTextStyle,
                         textAlign: TextAlign.center,
                       ),
                       Text(

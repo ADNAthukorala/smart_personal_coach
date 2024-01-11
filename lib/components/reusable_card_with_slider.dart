@@ -35,7 +35,7 @@ class ReusableCardWithSlider extends StatelessWidget {
                 children: [
                   Text(
                     text1,
-                    style: kLargeTextStyle.copyWith(color: kWhiteThemeColor),
+                    style: kLargeBlackTopicTextStyle.copyWith(color: kWhiteThemeColor),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -45,7 +45,7 @@ class ReusableCardWithSlider extends StatelessWidget {
                       Text(
                         text2,
                         style:
-                            kLargeTextStyle.copyWith(color: kWhiteThemeColor),
+                            kLargeBlackTopicTextStyle.copyWith(color: kWhiteThemeColor),
                       ),
                       Text(
                         text3,
