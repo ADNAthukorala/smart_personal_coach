@@ -22,7 +22,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
       appBar: AppBar(),
       // Add padding around the main column
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(kPadding16),
         // The main column
         child: Column(
           children: [

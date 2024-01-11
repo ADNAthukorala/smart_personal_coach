@@ -12,7 +12,7 @@ class AgeHeightWeightScreen extends StatefulWidget {
 }
 
 class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
-  //Declare variables to store user age, height and weight and assign default values for them.
+  // Declare variables to store user age, height and weight and assign default values for them.
   int age = 18;
   int height = 120;
   double weight = 60;
@@ -23,7 +23,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
       appBar: AppBar(),
       body: Padding(
         //Adding padding to screen
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
             //Topic

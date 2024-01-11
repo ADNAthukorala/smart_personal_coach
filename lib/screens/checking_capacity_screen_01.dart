@@ -21,7 +21,7 @@ class _CheckingCapacityScreen01State extends State<CheckingCapacityScreen01> {
       appBar: AppBar(),
       body: Padding(
         // Add padding around the main column
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
             // Topic
