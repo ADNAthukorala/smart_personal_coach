@@ -17,7 +17,7 @@ class SocialMediaButtonsContainer extends StatelessWidget {
       children: [
         const Text(
           "Or continue with",
-          style: kSmallTextStyle,
+          style: kSmallGreyColorMessageTextStyle,
           textAlign: TextAlign.center,
         ),
         //Icon buttons row

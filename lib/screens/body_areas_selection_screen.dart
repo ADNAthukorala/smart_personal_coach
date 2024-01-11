@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
-import 'package:smart_personal_coach/screens/checking_volume_screen_01.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
+import 'package:smart_personal_coach/screens/checking_pushups_capacity.dart';
 
 enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
@@ -21,7 +22,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
       appBar: AppBar(),
       // Add padding around the main column
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(kPadding16),
         // The main column
         child: Column(
           children: [
@@ -181,7 +182,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             // Add spacer between the body area selection and the next button
             const Spacer(flex: 2),
             // Next button
-            ElevatedButton(
+            NextButton(
               // If the bodyAreas array is empty, this button should be disabled
               onPressed: bodyAreas.isEmpty
                   ? null
@@ -189,7 +190,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CheckingVolumeScreen01(),
+                          builder: (context) => const CheckingPushUpsCapacity(),
                         ),
                       );
                     },
@@ -197,10 +198,6 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                 // If the bodyAreas array is empty, the background color of this button should be gray
                   backgroundColor: MaterialStatePropertyAll(
                       bodyAreas.isEmpty ? kGreyThemeColor02 : kBlueThemeColor)),
-              child: const Text(
-                'Next',
-                style: kNextButtonTextStyle,
-              ),
             ),
           ],
         ),

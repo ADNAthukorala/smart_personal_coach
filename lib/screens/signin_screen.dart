@@ -42,7 +42,7 @@ class _SignInScreenState extends State<SignInScreen> {
             flex: 3,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
               //Adding all the components at the bottom to a column
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +57,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       Text(
                         'Please enter email and password for login',
-                        style: kSmallTextStyle,
+                        style: kSmallGreyColorMessageTextStyle,
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -104,7 +104,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   CheckboxListTile(
                     title: const Text(
                       'Remember Me',
-                      style: kSmallTextStyle,
+                      style: kSmallGreyColorMessageTextStyle,
                     ),
                     value: isChecked,
                     onChanged: (value) {
@@ -142,7 +142,7 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
                       child: const Text(
                         'Forget Password',
-                        style: kSmallTextStyle,
+                        style: kSmallGreyColorMessageTextStyle,
                       ),
                     ),
                   ),
@@ -157,7 +157,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     children: [
                       const Text(
                         "Don’t have an account?",
-                        style: kSmallTextStyle,
+                        style: kSmallGreyColorMessageTextStyle,
                       ),
                       //Sign Up text button
                       TextButton(
@@ -177,7 +177,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Text(
                           'Sign Up',
                           style:
-                              kSmallTextStyle.copyWith(color: kBlueThemeColor),
+                              kSmallGreyColorMessageTextStyle.copyWith(color: kBlueThemeColor),
                         ),
                       ),
                     ],

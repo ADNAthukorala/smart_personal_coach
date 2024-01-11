@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 
-//Create a enum for gender
+/// Create a enum for gender
 enum Gender { male, female, notSelected }
 
 class GenderSelectionScreen extends StatefulWidget {
@@ -33,7 +34,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             flex: 2,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
               //Adding all the components at the bottom to a column
               child: Column(
                 children: [
@@ -56,9 +57,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             selectedGender = Gender.male;
                           });
                         },
-                        style: kRoundedCornerButtonStyle.copyWith(
-                          fixedSize:
-                              const MaterialStatePropertyAll(Size(150.0, 70.0)),
+                        style: kGenderSelectionButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll(
                               selectedGender == Gender.male
                                   ? kBlueThemeColor
@@ -80,9 +79,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             selectedGender = Gender.female;
                           });
                         },
-                        style: kRoundedCornerButtonStyle.copyWith(
-                          fixedSize:
-                              const MaterialStatePropertyAll(Size(150.0, 70.0)),
+                        style: kGenderSelectionButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll(
                               selectedGender == Gender.female
                                   ? kPinkThemeColor
@@ -100,7 +97,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   ),
                   const Spacer(flex: 8),
                   //Next button
-                  ElevatedButton(
+                  NextButton(
                     onPressed: selectedGender == Gender.notSelected
                         ? null
                         : () {
@@ -117,10 +114,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             selectedGender == Gender.notSelected
                                 ? kGreyThemeColor02
                                 : kBlueThemeColor)),
-                    child: const Text(
-                      'Next',
-                      style: kNextButtonTextStyle,
-                    ),
                   ),
                 ],
               ),

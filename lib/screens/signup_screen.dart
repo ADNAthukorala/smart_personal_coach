@@ -13,9 +13,11 @@ class SignUpScreen extends StatefulWidget {
 
 class _SignUpScreenState extends State<SignUpScreen> {
   bool? isChecked = false;
-  //To check whether visibility button is clicked or not.
+
+  // To check whether visibility button is clicked or not.
   bool isVisibilityButtonClicked = false;
-  //Visibility button click function
+
+  // Visibility button click function
   void visibilityButtonClick() {
     if (isVisibilityButtonClicked == false) {
       isVisibilityButtonClicked = true;
@@ -40,7 +42,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             flex: 3,
             //Adding padding to the bottom area
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -54,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       Text(
                         'Create your account here',
-                        style: kSmallTextStyle,
+                        style: kSmallGreyColorMessageTextStyle,
                         textAlign: TextAlign.center,
                       ),
                     ],
@@ -143,7 +145,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   CheckboxListTile(
                     title: const Text(
                       'I agree Terms & Conditions',
-                      style: kSmallTextStyle,
+                      style: kSmallGreyColorMessageTextStyle,
                     ),
                     value: isChecked,
                     onChanged: (value) {
@@ -172,7 +174,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: [
                       const Text(
                         "Already have an account?",
-                        style: kSmallTextStyle,
+                        style: kSmallGreyColorMessageTextStyle,
                       ),
                       //Sign In text button
                       TextButton(
@@ -187,7 +189,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         child: Text(
                           'Sign In',
                           style:
-                              kSmallTextStyle.copyWith(color: kBlueThemeColor),
+                              kSmallGreyColorMessageTextStyle.copyWith(color: kBlueThemeColor),
                         ),
                       ),
                     ],

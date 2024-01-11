@@ -23,7 +23,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           Flexible(
             flex: 3,
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(16.0, 8.0, 16.0, 16.0),
+              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -42,7 +42,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   const Text(
                     "Welcome to Smart Personal Coach! Join us on your journey to wellness. "
                     "Set goals, sweat it out, and conquer each day. Let's achieve greatness together!",
-                    style: kSmallTextStyle,
+                    style: kSmallGreyColorMessageTextStyle,
                     textAlign: TextAlign.center,
                   ),
                   ElevatedButton(

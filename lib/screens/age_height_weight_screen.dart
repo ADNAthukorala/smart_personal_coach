@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
 import 'package:smart_personal_coach/screens/body_areas_selection_screen.dart';
 
@@ -11,7 +12,7 @@ class AgeHeightWeightScreen extends StatefulWidget {
 }
 
 class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
-  //Declare variables to store user age, height and weight and assign default values for them.
+  // Declare variables to store user age, height and weight and assign default values for them.
   int age = 18;
   int height = 120;
   double weight = 60;
@@ -22,7 +23,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
       appBar: AppBar(),
       body: Padding(
         //Adding padding to screen
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
             //Topic
@@ -35,7 +36,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 ),
                 Text(
                   'Let us know you better to help boost your workout results',
-                  style: kSmallTextStyle,
+                  style: kSmallGreyColorMessageTextStyle,
                   textAlign: TextAlign.center,
                 ),
               ],
@@ -86,8 +87,8 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               },
             ),
             const Spacer(flex: 4),
-            //Next button
-            ElevatedButton(
+            // Next button
+            NextButton(
               onPressed: () {
                 Navigator.push(
                   context,
@@ -97,10 +98,6 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 );
               },
               style: kNextButtonStyle,
-              child: const Text(
-                'Next',
-                style: kNextButtonTextStyle,
-              ),
             ),
           ],
         ),
