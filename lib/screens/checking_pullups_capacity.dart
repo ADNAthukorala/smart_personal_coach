@@ -43,7 +43,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.beginner,
-                  buttonLabel: '0 - 5  Push-ups',
+                  buttonLabel: '0 - 5  Pull-ups',
                 ),
                 // Add space between 1st and 2nd button
                 const SizedBox(height: 20.0),
@@ -56,7 +56,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.intermediate,
-                  buttonLabel: '6 - 10  Push-ups',
+                  buttonLabel: '6 - 10  Pull-ups',
                 ),
                 // Add space between 2nd and 3rd button
                 const SizedBox(height: 20.0),
@@ -69,7 +69,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.advanced,
-                  buttonLabel: 'More than 10  Push-ups',
+                  buttonLabel: 'More than 10  Pull-ups',
                 ),
               ],
             ),
