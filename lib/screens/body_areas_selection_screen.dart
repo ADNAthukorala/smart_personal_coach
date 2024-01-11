@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/screens/checking_volume_screen_01.dart';
 
 enum BodyArea { arms, back, chest, abs, legs, fullBody }
@@ -181,7 +182,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             // Add spacer between the body area selection and the next button
             const Spacer(flex: 2),
             // Next button
-            ElevatedButton(
+            NextButton(
               // If the bodyAreas array is empty, this button should be disabled
               onPressed: bodyAreas.isEmpty
                   ? null
@@ -197,10 +198,6 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                 // If the bodyAreas array is empty, the background color of this button should be gray
                   backgroundColor: MaterialStatePropertyAll(
                       bodyAreas.isEmpty ? kGreyThemeColor02 : kBlueThemeColor)),
-              child: const Text(
-                'Next',
-                style: kNextButtonTextStyle,
-              ),
             ),
           ],
         ),
