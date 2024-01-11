@@ -4,14 +4,15 @@ import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/screens/checking_volume_screen_02.dart';
 
-class CheckingVolumeScreen01 extends StatefulWidget {
-  const CheckingVolumeScreen01({super.key});
+class CheckingCapacityScreen01 extends StatefulWidget {
+  const CheckingCapacityScreen01({super.key});
 
   @override
-  State<CheckingVolumeScreen01> createState() => _CheckingVolumeScreen01State();
+  State<CheckingCapacityScreen01> createState() =>
+      _CheckingCapacityScreen01State();
 }
 
-class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
+class _CheckingCapacityScreen01State extends State<CheckingCapacityScreen01> {
   Capacity pushUpsCapacity = Capacity.beginner;
 
   @override
@@ -31,6 +32,7 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
             ),
             const Spacer(),
             Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SelectCapacityButton(
                   onPressed: () {
@@ -43,7 +45,8 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
                   buttonCapacity: Capacity.beginner,
                   buttonLabel: '0 - 5  Push-ups',
                 ),
-                const SizedBox(height: 16.0),
+                // Add space between 1st and 2nd button
+                const SizedBox(height: 20.0),
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
@@ -55,7 +58,8 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
                   buttonCapacity: Capacity.intermediate,
                   buttonLabel: '6 - 10  Push-ups',
                 ),
-                const SizedBox(height: 16.0),
+                // Add space between 2nd and 3rd button
+                const SizedBox(height: 20.0),
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
@@ -88,4 +92,3 @@ class _CheckingVolumeScreen01State extends State<CheckingVolumeScreen01> {
     );
   }
 }
-
