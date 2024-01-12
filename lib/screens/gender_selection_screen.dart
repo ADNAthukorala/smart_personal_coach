@@ -22,6 +22,24 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+          centerTitle: true,
+          title: const SizedBox(
+            width: kAppBarSizedBoxWidth,
+            child: Row(
+              children: [
+                Icon(
+                  Icons.circle,
+                  size: kAppBarActiveRoundedIconSize,
+                  color: kBlueThemeColor,
+                ),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+              ],
+            ),
+          )),
       body: Column(
         children: [
           //Top image of gender selection screen

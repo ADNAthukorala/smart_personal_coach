@@ -28,6 +28,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                 Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
                 Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
                 Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
                 Icon(
                   Icons.circle,
                   size: kAppBarActiveRoundedIconSize,

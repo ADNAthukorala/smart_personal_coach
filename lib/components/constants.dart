@@ -13,7 +13,7 @@ const kPadding16 = 16.0;
 const kPadding8 = 8.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
-const kAppBarSizedBoxWidth = 60.0;
+const kAppBarSizedBoxWidth = 75.0;
 
 /// STYLES FOR TEXTS
 /// Text styles for small grey color texts (Descriptions)
