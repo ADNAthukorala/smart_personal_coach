@@ -44,7 +44,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
           children: [
             // Title and description
             const TitleAndDescriptionHolder(
-              title: 'How many push-ups can you do at once?',
+              title: 'How many push-ups can you do at one time?',
               description: '',
             ),
             const Spacer(),
@@ -61,7 +61,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   },
                   actualCapacity: pushUpsCapacity,
                   buttonCapacity: Capacity.beginner,
-                  buttonLabel: '0 - 5  Push-ups',
+                  buttonTitle: 'Beginner',
+                  buttonDescription: '0 - 5  Push-ups',
                 ),
                 // Add space between 1st and 2nd button
                 const SizedBox(height: 20.0),
@@ -74,7 +75,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   },
                   actualCapacity: pushUpsCapacity,
                   buttonCapacity: Capacity.intermediate,
-                  buttonLabel: '6 - 10  Push-ups',
+                  buttonTitle: 'Intermediate',
+                  buttonDescription: '6 - 10  Push-ups',
                 ),
                 // Add space between 2nd and 3rd button
                 const SizedBox(height: 20.0),
@@ -87,7 +89,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   },
                   actualCapacity: pushUpsCapacity,
                   buttonCapacity: Capacity.advanced,
-                  buttonLabel: 'More than 10  Push-ups',
+                  buttonTitle: 'Advanced',
+                  buttonDescription: 'More than 10  Push-ups',
                 ),
               ],
             ),

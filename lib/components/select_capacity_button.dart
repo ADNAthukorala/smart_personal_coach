@@ -10,31 +10,47 @@ class SelectCapacityButton extends StatelessWidget {
     super.key,
     required this.actualCapacity,
     required this.buttonCapacity,
-    required this.buttonLabel,
+    required this.buttonTitle,
+    required this.buttonDescription,
     required this.onPressed,
   });
 
   final Capacity actualCapacity; // Declare a variable to store the actual capacity
   final Capacity buttonCapacity; // Declare a variable to store the button capacity
-  final String buttonLabel; // Declare variable to hold the button label
+  final String buttonTitle; // Declare variable to hold the button label
+  final String buttonDescription;
   final void Function()? onPressed; // Function to trigger when button is clicked
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: kSelectVolumeButtonStyle.copyWith(
+      style: kSelectCapacityButtonStyle.copyWith(
         // If the actual capacity is equal to button capacity, the button color should be blue, otherwise white
         backgroundColor: actualCapacity == buttonCapacity
             ? const MaterialStatePropertyAll(kBlueThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
-      child: Text(
-        buttonLabel,
-        style: kSelectVolumeButtonTextStyle.copyWith(
-          // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
-          color: actualCapacity == buttonCapacity ? kWhiteThemeColor : kBlueThemeColor,
-        ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            buttonTitle,
+            style: kSelectCapacityButtonTextStyle.copyWith(
+              // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
+              color: actualCapacity == buttonCapacity ? kWhiteThemeColor : kBlueThemeColor,
+            ),
+          ),
+          Text(
+            buttonDescription,
+            style: kSelectCapacityButtonTextStyle.copyWith(
+              // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
+              color: actualCapacity == buttonCapacity ? kGreyThemeColor02 : kGreyThemeColor,
+              fontSize: 14.0,
+            ),
+          ),
+        ],
       ),
     );
   }
