@@ -43,7 +43,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
           children: [
             // Title and description
             const TitleAndDescriptionHolder(
-              title: 'How many pull-ups can you do at once?',
+              title: 'How many pull-ups can you do at one time?',
               description: '',
             ),
             const Spacer(),
@@ -60,7 +60,8 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.beginner,
-                  buttonLabel: '0 - 5  Pull-ups',
+                  buttonTitle: 'Beginner',
+                  buttonDescription: '0 - 5  Pull-ups',
                 ),
                 // Add space between 1st and 2nd button
                 const SizedBox(height: 20.0),
@@ -73,7 +74,8 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.intermediate,
-                  buttonLabel: '6 - 10  Pull-ups',
+                  buttonTitle: 'Intermediate',
+                  buttonDescription: '6 - 10  Pull-ups',
                 ),
                 // Add space between 2nd and 3rd button
                 const SizedBox(height: 20.0),
@@ -86,7 +88,8 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   },
                   actualCapacity: pullUpsCapacity,
                   buttonCapacity: Capacity.advanced,
-                  buttonLabel: 'More than 10  Pull-ups',
+                  buttonTitle: 'Advanced',
+                  buttonDescription: 'More than 10  Pull-ups',
                 ),
               ],
             ),

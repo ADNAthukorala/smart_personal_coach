@@ -66,7 +66,7 @@ const kSelectBodyAreaButtonTextStyle = TextStyle(
 );
 
 /// Text styles for select volume button
-const kSelectVolumeButtonTextStyle = TextStyle(
+const kSelectCapacityButtonTextStyle = TextStyle(
   fontSize: 25,
   fontWeight: FontWeight.w900,
   color: kBlueThemeColor,
@@ -137,8 +137,9 @@ const kSelectBodyAreaButtonStyle = ButtonStyle(
 );
 
 /// Button styles for select volume button
-const kSelectVolumeButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 100.0)),
+const kSelectCapacityButtonStyle = ButtonStyle(
+  alignment: Alignment.centerLeft,
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.only(
