@@ -69,85 +69,180 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
           )),
 
       /// Body of the screen
-      body: Padding(
-        /// Add padding around the body
-        padding: const EdgeInsets.all(kPadding16),
-        child: Column(
-          children: [
-            /// The title and the description of the screen
-            const TitleAndDescriptionHolder(
-              title: 'What are your main goals?',
-              description: 'Why do you use this application?',
-            ),
-            const Spacer(),
-            Column(
-              /// Buttons holder
-              children: [
-                /// Lose weight button
-                SelectMainGoalButton(
-                  onPressed: () {
-                    setState(() {
-                      // If the button is clicked, the user's main goal should be to lose weight.
-                      userMainGoal = MainGoal.loseWeight;
-                    });
-                    print(userMainGoal);
-                  },
-                  userMainGoal: userMainGoal,
-                  selectedMainGoal: MainGoal.loseWeight,
-                  buttonLabel: 'Lose Weight',
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          final maxh = constraints.maxHeight;
+          if (maxh < 600) {
+            return SingleChildScrollView(
+              child: Padding(
+                /// Add padding around the body
+                padding: const EdgeInsets.all(kPadding16),
+                child: Column(
+                  children: [
+                    /// The title and the description of the screen
+                    const TitleAndDescriptionHolder(
+                      title: 'What are your main goals?',
+                      description: 'Why do you use this application?',
+                    ),
+
+                    /// Add space between the title and the buttons holder
+                    const SizedBox(height: 20.0),
+                    Column(
+                      /// Buttons holder
+                      children: [
+                        /// Lose weight button
+                        SelectMainGoalButton(
+                          onPressed: () {
+                            setState(() {
+                              // If the button is clicked, the user's main goal should be to lose weight.
+                              userMainGoal = MainGoal.loseWeight;
+                            });
+                            print(userMainGoal);
+                          },
+                          userMainGoal: userMainGoal,
+                          selectedMainGoal: MainGoal.loseWeight,
+                          buttonLabel: 'Lose Weight',
+                        ),
+
+                        /// Add space between lose weight and build muscles buttons
+                        const SizedBox(height: 20.0),
+
+                        /// Build muscles button
+                        SelectMainGoalButton(
+                          onPressed: () {
+                            setState(() {
+                              // If the button is clicked, the user's main goal should be to build muscles.
+                              userMainGoal = MainGoal.buildMuscles;
+                            });
+                            print(userMainGoal);
+                          },
+                          userMainGoal: userMainGoal,
+                          selectedMainGoal: MainGoal.buildMuscles,
+                          buttonLabel: 'Build Muscles',
+                        ),
+
+                        /// Add space between build muscles and keep fit buttons
+                        const SizedBox(height: 20.0),
+
+                        /// Keep fit button
+                        SelectMainGoalButton(
+                          onPressed: () {
+                            setState(() {
+                              // If the button is clicked, the user's main goal should be to keep fit.
+                              userMainGoal = MainGoal.keepFit;
+                            });
+                            print(userMainGoal);
+                          },
+                          userMainGoal: userMainGoal,
+                          selectedMainGoal: MainGoal.keepFit,
+                          buttonLabel: 'Keep Fit',
+                        ),
+                      ],
+                    ),
+
+                    /// Add space between the next button and the buttons holder
+                    const SizedBox(height: 20.0),
+
+                    /// Button to go to the next screen
+                    NextButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                const CheckingPushUpsCapacity(),
+                          ),
+                        );
+                      },
+                      style: kNextButtonStyle,
+                    ),
+                  ],
                 ),
-
-                /// Add space between lose weight and build muscles buttons
-                const SizedBox(height: 20.0),
-
-                /// Build muscles button
-                SelectMainGoalButton(
-                  onPressed: () {
-                    setState(() {
-                      // If the button is clicked, the user's main goal should be to build muscles.
-                      userMainGoal = MainGoal.buildMuscles;
-                    });
-                    print(userMainGoal);
-                  },
-                  userMainGoal: userMainGoal,
-                  selectedMainGoal: MainGoal.buildMuscles,
-                  buttonLabel: 'Build Muscles',
-                ),
-
-                /// Add space between build muscles and keep fit buttons
-                const SizedBox(height: 20.0),
-
-                /// Keep fit button
-                SelectMainGoalButton(
-                  onPressed: () {
-                    setState(() {
-                      // If the button is clicked, the user's main goal should be to keep fit.
-                      userMainGoal = MainGoal.keepFit;
-                    });
-                    print(userMainGoal);
-                  },
-                  userMainGoal: userMainGoal,
-                  selectedMainGoal: MainGoal.keepFit,
-                  buttonLabel: 'Keep Fit',
-                ),
-              ],
-            ),
-            const Spacer(flex: 4),
-
-            /// Button to go to the next screen
-            NextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const CheckingPushUpsCapacity(),
+              ),
+            );
+          } else {
+            return Padding(
+              /// Add padding around the body
+              padding: const EdgeInsets.all(kPadding16),
+              child: Column(
+                children: [
+                  /// The title and the description of the screen
+                  const TitleAndDescriptionHolder(
+                    title: 'What are your main goals?',
+                    description: 'Why do you use this application?',
                   ),
-                );
-              },
-              style: kNextButtonStyle,
-            ),
-          ],
-        ),
+                  const Spacer(),
+                  Column(
+                    /// Buttons holder
+                    children: [
+                      /// Lose weight button
+                      SelectMainGoalButton(
+                        onPressed: () {
+                          setState(() {
+                            // If the button is clicked, the user's main goal should be to lose weight.
+                            userMainGoal = MainGoal.loseWeight;
+                          });
+                          print(userMainGoal);
+                        },
+                        userMainGoal: userMainGoal,
+                        selectedMainGoal: MainGoal.loseWeight,
+                        buttonLabel: 'Lose Weight',
+                      ),
+
+                      /// Add space between lose weight and build muscles buttons
+                      const SizedBox(height: 20.0),
+
+                      /// Build muscles button
+                      SelectMainGoalButton(
+                        onPressed: () {
+                          setState(() {
+                            // If the button is clicked, the user's main goal should be to build muscles.
+                            userMainGoal = MainGoal.buildMuscles;
+                          });
+                          print(userMainGoal);
+                        },
+                        userMainGoal: userMainGoal,
+                        selectedMainGoal: MainGoal.buildMuscles,
+                        buttonLabel: 'Build Muscles',
+                      ),
+
+                      /// Add space between build muscles and keep fit buttons
+                      const SizedBox(height: 20.0),
+
+                      /// Keep fit button
+                      SelectMainGoalButton(
+                        onPressed: () {
+                          setState(() {
+                            // If the button is clicked, the user's main goal should be to keep fit.
+                            userMainGoal = MainGoal.keepFit;
+                          });
+                          print(userMainGoal);
+                        },
+                        userMainGoal: userMainGoal,
+                        selectedMainGoal: MainGoal.keepFit,
+                        buttonLabel: 'Keep Fit',
+                      ),
+                    ],
+                  ),
+                  const Spacer(flex: 4),
+
+                  /// Button to go to the next screen
+                  NextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CheckingPushUpsCapacity(),
+                        ),
+                      );
+                    },
+                    style: kNextButtonStyle,
+                  ),
+                ],
+              ),
+            );
+          }
+        },
       ),
     );
   }
