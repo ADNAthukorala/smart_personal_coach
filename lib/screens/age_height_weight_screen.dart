@@ -27,15 +27,36 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             width: kAppBarSizedBoxWidth,
             child: Row(
               children: [
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
                 Icon(
                   Icons.circle,
                   size: kAppBarActiveRoundedIconSize,
                   color: kBlueThemeColor,
                 ),
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
               ],
             ),
           )),

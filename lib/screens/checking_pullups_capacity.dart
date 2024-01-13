@@ -3,6 +3,7 @@ import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/weekly_goal_screen.dart';
 
 class CheckingPullUpsCapacity extends StatefulWidget {
   const CheckingPullUpsCapacity({super.key});
@@ -25,14 +26,35 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             width: kAppBarSizedBoxWidth,
             child: Row(
               children: [
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
-                Icon(Icons.circle, size: kAppBarRoundedIconSize, color: kGreyThemeColor02,),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
                 Icon(
                   Icons.circle,
                   size: kAppBarActiveRoundedIconSize,
                   color: kBlueThemeColor,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
                 ),
               ],
             ),
@@ -97,7 +119,14 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
             const Spacer(flex: 4),
             // Next button
             NextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const WeeklyGoalScreen(),
+                  ),
+                );
+              },
               style: kNextButtonStyle,
             ),
           ],
