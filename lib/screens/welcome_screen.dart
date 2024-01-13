@@ -17,7 +17,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
       body: Column(
         children: [
           const Flexible(
-            flex: 5,
+            flex: 7,
             child: TopImage(imageUrl: 'images/welcome_screen_image.jpg'),
           ),
           Flexible(
@@ -25,7 +25,6 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
             child: Padding(
               padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   const Column(
                     children: [
@@ -40,11 +39,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     ],
                   ),
                   const Text(
-                    "Welcome to Smart Personal Coach! Join us on your journey to wellness. "
-                    "Set goals, sweat it out, and conquer each day. Let's achieve greatness together!",
+                    'Welcome to Smart Personal Coach! Join us on your journey to wellness.',
                     style: kSmallGreyColorDescriptionTextStyle,
                     textAlign: TextAlign.center,
                   ),
+                  const Spacer(),
                   ElevatedButton(
                     style: kWelcomeButtonStyle,
                     onPressed: () {
