@@ -10,16 +10,19 @@ class SelectCapacityButton extends StatelessWidget {
     super.key,
     required this.actualCapacity,
     required this.buttonCapacity,
-    required this.buttonTitle,
-    required this.buttonDescription,
+    required this.title,
+    required this.description,
     required this.onPressed,
   });
 
-  final Capacity actualCapacity; // Declare a variable to store the actual capacity
-  final Capacity buttonCapacity; // Declare a variable to store the button capacity
-  final String buttonTitle; // Declare variable to hold the button label
-  final String buttonDescription;
-  final void Function()? onPressed; // Function to trigger when button is clicked
+  final Capacity
+      actualCapacity; // Declare a variable to store the actual capacity
+  final Capacity
+      buttonCapacity; // Declare a variable to store the button capacity
+  final String title; // Declare variable to hold the button label
+  final String description;
+  final void Function()?
+      onPressed; // Function to trigger when button is clicked
 
   @override
   Widget build(BuildContext context) {
@@ -36,17 +39,21 @@ class SelectCapacityButton extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            buttonTitle,
+            title,
             style: kSelectCapacityButtonTextStyle.copyWith(
               // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
-              color: actualCapacity == buttonCapacity ? kWhiteThemeColor : kBlueThemeColor,
+              color: actualCapacity == buttonCapacity
+                  ? kWhiteThemeColor
+                  : kBlueThemeColor,
             ),
           ),
           Text(
-            buttonDescription,
+            description,
             style: kSelectCapacityButtonTextStyle.copyWith(
               // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
-              color: actualCapacity == buttonCapacity ? kGreyThemeColor02 : kGreyThemeColor,
+              color: actualCapacity == buttonCapacity
+                  ? kGreyThemeColor02
+                  : kGreyThemeColor,
               fontSize: 14.0,
             ),
           ),
