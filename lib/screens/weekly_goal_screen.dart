@@ -73,6 +73,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
             const Spacer(),
             Column(
               children: [
+                /// 1 day a week button
                 DayButton(
                   onPressed: () {
                     setState(() {
@@ -85,7 +86,9 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   title: '1 Day',
                   description: 'Dedicate 1 day a week',
                 ),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 10.0),
+
+                /// 2 days a week button
                 DayButton(
                   onPressed: () {
                     setState(() {
@@ -99,6 +102,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   description: 'Dedicate 2 days a week',
                 ),
                 const SizedBox(height: 10.0),
+
+                /// 3 days a week button
                 DayButton(
                   onPressed: () {
                     setState(() {
@@ -112,6 +117,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   description: 'Dedicate 3 days a week',
                 ),
                 const SizedBox(height: 10.0),
+
+                /// 4 days a week button
                 DayButton(
                   onPressed: () {
                     setState(() {
@@ -125,6 +132,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   description: 'Dedicate 4 days a week',
                 ),
                 const SizedBox(height: 10.0),
+
+                /// 5 days a week button
                 DayButton(
                   onPressed: () {
                     setState(() {
@@ -138,6 +147,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   description: 'Dedicate 5 days a week',
                 ),
                 const SizedBox(height: 10.0),
+
+                /// 6 days a week button
                 DayButton(
                   onPressed: () {
                     setState(() {
@@ -152,6 +163,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 ),
                 const SizedBox(height: 10.0),
                 DayButton(
+                  /// 7 days a week button
                   onPressed: () {
                     setState(() {
                       userSelectedDays = 7;
@@ -166,6 +178,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               ],
             ),
             const Spacer(),
+
             /// Button to go to the next screen
             NextButton(
               onPressed: () {},
