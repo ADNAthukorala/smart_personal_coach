@@ -16,8 +16,8 @@ class GenderSelectionScreen extends StatefulWidget {
 }
 
 class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
-  //Variable to store the user's gender
-  Gender selectedGender = Gender.notSelected;
+  /// Variable to store the user's gender
+  Gender userGender = Gender.notSelected;
 
   @override
   Widget build(BuildContext context) {
@@ -95,19 +95,19 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         onPressed: () {
                           setState(() {
                             //If the male button is clicked, selected gender = Male
-                            selectedGender = Gender.male;
+                            userGender = Gender.male;
                           });
                         },
                         style: kGenderSelectionButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll(
-                              selectedGender == Gender.male
+                              userGender == Gender.male
                                   ? kBlueThemeColor
                                   : kWhiteThemeColor),
                         ),
                         child: Text(
                           'Male',
                           style: kLargeBlackTitleTextStyle.copyWith(
-                              color: selectedGender == Gender.male
+                              color: userGender == Gender.male
                                   ? kWhiteThemeColor
                                   : kBlueThemeColor),
                         ),
@@ -117,19 +117,19 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         onPressed: () {
                           setState(() {
                             //If the male button is clicked, selected gender = Female
-                            selectedGender = Gender.female;
+                            userGender = Gender.female;
                           });
                         },
                         style: kGenderSelectionButtonStyle.copyWith(
                           backgroundColor: MaterialStatePropertyAll(
-                              selectedGender == Gender.female
+                              userGender == Gender.female
                                   ? kPinkThemeColor
                                   : kWhiteThemeColor),
                         ),
                         child: Text(
                           'Female',
                           style: kLargeBlackTitleTextStyle.copyWith(
-                              color: selectedGender == Gender.female
+                              color: userGender == Gender.female
                                   ? kWhiteThemeColor
                                   : kPinkThemeColor),
                         ),
@@ -139,7 +139,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   const Spacer(flex: 8),
                   //Next button
                   NextButton(
-                    onPressed: selectedGender == Gender.notSelected
+                    onPressed: userGender == Gender.notSelected
                         ? null
                         : () {
                             Navigator.push(
@@ -152,7 +152,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                           },
                     style: kNextButtonStyle.copyWith(
                         backgroundColor: MaterialStatePropertyAll(
-                            selectedGender == Gender.notSelected
+                            userGender == Gender.notSelected
                                 ? kGreyThemeColor02
                                 : kBlueThemeColor)),
                   ),

@@ -14,7 +14,7 @@ class WeeklyGoalScreen extends StatefulWidget {
 class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
   /// Declare an int variable to store how many days the user can dedicate to the workout plan
   /// and assign its value to 1
-  int daysDedicatedToWorkoutPlan = 1;
+  int userSelectedDays = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +62,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
       /// Body of the screen
       body: Padding(
-        padding: EdgeInsets.all(kPadding16),
+        padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
             const TitleAndDescriptionHolder(
@@ -76,11 +76,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 1;
+                      userSelectedDays = 1;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 1,
                   title: '1 Day',
                   description: 'Dedicate 1 day a week',
@@ -89,11 +89,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 2;
+                      userSelectedDays = 2;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 2,
                   title: '2 Days',
                   description: 'Dedicate 2 days a week',
@@ -102,11 +102,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 3;
+                      userSelectedDays = 3;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 3,
                   title: '3 Days',
                   description: 'Dedicate 3 days a week',
@@ -115,11 +115,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 4;
+                      userSelectedDays = 4;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 4,
                   title: '4 Days',
                   description: 'Dedicate 4 days a week',
@@ -128,11 +128,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 5;
+                      userSelectedDays = 5;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 5,
                   title: '5 Days',
                   description: 'Dedicate 5 days a week',
@@ -141,11 +141,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 6;
+                      userSelectedDays = 6;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 6,
                   title: '6 Days',
                   description: 'Dedicate 6 days a week',
@@ -154,11 +154,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 DayButton(
                   onPressed: () {
                     setState(() {
-                      daysDedicatedToWorkoutPlan = 7;
+                      userSelectedDays = 7;
                     });
-                    print(daysDedicatedToWorkoutPlan);
+                    print(userSelectedDays);
                   },
-                  daysDedicatedToWorkoutPlan: daysDedicatedToWorkoutPlan,
+                  userSelectedDays: userSelectedDays,
                   selectedDays: 7,
                   title: '7 Days',
                   description: 'Dedicate 7 days a week',
@@ -166,6 +166,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               ],
             ),
             const Spacer(),
+            /// Button to go to the next screen
             NextButton(
               onPressed: () {},
               style: kNextButtonStyle,
@@ -177,17 +178,18 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
   }
 }
 
+/// Button to select how many days the user can dedicate to the workout plan
 class DayButton extends StatelessWidget {
   const DayButton({
     super.key,
-    required this.daysDedicatedToWorkoutPlan,
+    required this.userSelectedDays,
     required this.selectedDays,
     required this.onPressed,
     required this.title,
     required this.description,
   });
 
-  final int daysDedicatedToWorkoutPlan;
+  final int userSelectedDays;
   final int selectedDays;
   final String title;
   final String description;
@@ -198,7 +200,7 @@ class DayButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: kDayButtonStyle.copyWith(
-        backgroundColor: daysDedicatedToWorkoutPlan == selectedDays
+        backgroundColor: userSelectedDays == selectedDays
             ? const MaterialStatePropertyAll(kBlueThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
@@ -209,7 +211,7 @@ class DayButton extends StatelessWidget {
           Text(
             title,
             style: kDayButtonTextStyle.copyWith(
-              color: daysDedicatedToWorkoutPlan == selectedDays
+              color: userSelectedDays == selectedDays
                   ? kWhiteThemeColor
                   : kBlueThemeColor,
             ),
@@ -217,7 +219,7 @@ class DayButton extends StatelessWidget {
           Text(
             description,
             style: kDayButtonTextStyle.copyWith(
-              color: daysDedicatedToWorkoutPlan == selectedDays
+              color: userSelectedDays == selectedDays
                   ? kGreyThemeColor02
                   : kGreyThemeColor,
               fontSize: 14.0,

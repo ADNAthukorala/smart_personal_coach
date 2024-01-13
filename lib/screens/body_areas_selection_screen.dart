@@ -14,8 +14,8 @@ class FullBodyScreen extends StatefulWidget {
 }
 
 class _FullBodyScreenState extends State<FullBodyScreen> {
-  // Declare a list to store selected body areas.
-  List<BodyArea> bodyAreas = [];
+  /// Declare a list to store user selected body areas.
+  List<BodyArea> userSelectedBodyAreas = [];
 
   @override
   Widget build(BuildContext context) {
@@ -88,24 +88,24 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                       children: [
                         // Select the full body button
                         SelectBodyAreaButton(
-                          array: bodyAreas,
+                          array: userSelectedBodyAreas,
                           selectedBodyArea: BodyArea.fullBody,
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array length >= 5
-                              if (bodyAreas.length >= 5) {
+                              if (userSelectedBodyAreas.length >= 5) {
                                 // If it is true, the bodyAreas array should be empty when this button is clicked
-                                bodyAreas.clear();
+                                userSelectedBodyAreas.clear();
                               } else {
                                 // If it false, these body areas should be added to the array
-                                bodyAreas.clear();
-                                bodyAreas.add(BodyArea.arms);
-                                bodyAreas.add(BodyArea.back);
-                                bodyAreas.add(BodyArea.chest);
-                                bodyAreas.add(BodyArea.abs);
-                                bodyAreas.add(BodyArea.legs);
+                                userSelectedBodyAreas.clear();
+                                userSelectedBodyAreas.add(BodyArea.arms);
+                                userSelectedBodyAreas.add(BodyArea.back);
+                                userSelectedBodyAreas.add(BodyArea.chest);
+                                userSelectedBodyAreas.add(BodyArea.abs);
+                                userSelectedBodyAreas.add(BodyArea.legs);
                               }
-                              print(bodyAreas);
+                              print(userSelectedBodyAreas);
                             });
                           },
                           buttonLabel: 'Full Body',
@@ -115,17 +115,18 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array contains arms
-                              if (bodyAreas.contains(BodyArea.arms)) {
+                              if (userSelectedBodyAreas
+                                  .contains(BodyArea.arms)) {
                                 // If it is true, remove arms from the array when this button is clicked
-                                bodyAreas.remove(BodyArea.arms);
+                                userSelectedBodyAreas.remove(BodyArea.arms);
                               } else {
                                 // If it false, add arms to the array when this button is clicked
-                                bodyAreas.add(BodyArea.arms);
+                                userSelectedBodyAreas.add(BodyArea.arms);
                               }
-                              print(bodyAreas);
+                              print(userSelectedBodyAreas);
                             });
                           },
-                          array: bodyAreas,
+                          array: userSelectedBodyAreas,
                           buttonLabel: 'Arms',
                           selectedBodyArea: BodyArea.arms,
                         ),
@@ -134,17 +135,18 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array contains back
-                              if (bodyAreas.contains(BodyArea.back)) {
+                              if (userSelectedBodyAreas
+                                  .contains(BodyArea.back)) {
                                 // If it is true, remove back from the array when this button is clicked
-                                bodyAreas.remove(BodyArea.back);
+                                userSelectedBodyAreas.remove(BodyArea.back);
                               } else {
                                 // If it false, add arms to the array when this button is clicked
-                                bodyAreas.add(BodyArea.back);
+                                userSelectedBodyAreas.add(BodyArea.back);
                               }
-                              print(bodyAreas);
+                              print(userSelectedBodyAreas);
                             });
                           },
-                          array: bodyAreas,
+                          array: userSelectedBodyAreas,
                           buttonLabel: 'Back',
                           selectedBodyArea: BodyArea.back,
                         ),
@@ -153,17 +155,18 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array contains chest
-                              if (bodyAreas.contains(BodyArea.chest)) {
+                              if (userSelectedBodyAreas
+                                  .contains(BodyArea.chest)) {
                                 // If it is true, remove chest from the array when this button is clicked
-                                bodyAreas.remove(BodyArea.chest);
+                                userSelectedBodyAreas.remove(BodyArea.chest);
                               } else {
                                 // If it false, add arms to the array when this button is clicked
-                                bodyAreas.add(BodyArea.chest);
+                                userSelectedBodyAreas.add(BodyArea.chest);
                               }
-                              print(bodyAreas);
+                              print(userSelectedBodyAreas);
                             });
                           },
-                          array: bodyAreas,
+                          array: userSelectedBodyAreas,
                           buttonLabel: 'Chest',
                           selectedBodyArea: BodyArea.chest,
                         ),
@@ -172,17 +175,18 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array contains abs
-                              if (bodyAreas.contains(BodyArea.abs)) {
+                              if (userSelectedBodyAreas
+                                  .contains(BodyArea.abs)) {
                                 // If it is true, remove abs from the array when this button is clicked
-                                bodyAreas.remove(BodyArea.abs);
+                                userSelectedBodyAreas.remove(BodyArea.abs);
                               } else {
                                 // If it false, add arms to the array when this button is clicked
-                                bodyAreas.add(BodyArea.abs);
+                                userSelectedBodyAreas.add(BodyArea.abs);
                               }
-                              print(bodyAreas);
+                              print(userSelectedBodyAreas);
                             });
                           },
-                          array: bodyAreas,
+                          array: userSelectedBodyAreas,
                           buttonLabel: 'Abs',
                           selectedBodyArea: BodyArea.abs,
                         ),
@@ -191,17 +195,18 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                           onPressed: () {
                             setState(() {
                               // Check whether bodyAreas array contains legs
-                              if (bodyAreas.contains(BodyArea.legs)) {
+                              if (userSelectedBodyAreas
+                                  .contains(BodyArea.legs)) {
                                 // If it is true, remove legs from array when this button is clicked
-                                bodyAreas.remove(BodyArea.legs);
+                                userSelectedBodyAreas.remove(BodyArea.legs);
                               } else {
                                 // If it false, add legs to the array when this button is clicked
-                                bodyAreas.add(BodyArea.legs);
+                                userSelectedBodyAreas.add(BodyArea.legs);
                               }
-                              print(bodyAreas);
+                              print(userSelectedBodyAreas);
                             });
                           },
-                          array: bodyAreas,
+                          array: userSelectedBodyAreas,
                           buttonLabel: 'Legs',
                           selectedBodyArea: BodyArea.legs,
                         ),
@@ -222,7 +227,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             // Next button
             NextButton(
               // If the bodyAreas array is empty, this button should be disabled
-              onPressed: bodyAreas.isEmpty
+              onPressed: userSelectedBodyAreas.isEmpty
                   ? null
                   : () {
                       Navigator.push(
@@ -235,7 +240,9 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
               style: kNextButtonStyle.copyWith(
                   // If the bodyAreas array is empty, the background color of this button should be gray
                   backgroundColor: MaterialStatePropertyAll(
-                      bodyAreas.isEmpty ? kGreyThemeColor02 : kBlueThemeColor)),
+                      userSelectedBodyAreas.isEmpty
+                          ? kGreyThemeColor02
+                          : kBlueThemeColor)),
             ),
           ],
         ),

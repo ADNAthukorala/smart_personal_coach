@@ -15,7 +15,7 @@ class CheckingPullUpsCapacity extends StatefulWidget {
 
 class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   // Declare a Capacity variable to store user's pull ups capacity
-  Capacity pullUpsCapacity = Capacity.beginner;
+  Capacity userPullUpsCapacity = Capacity.beginner;
 
   @override
   Widget build(BuildContext context) {
@@ -77,12 +77,12 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pullUpsCapacity = Capacity.beginner;
+                      userPullUpsCapacity = Capacity.beginner;
                     });
-                    print(pullUpsCapacity);
+                    print(userPullUpsCapacity);
                   },
-                  actualCapacity: pullUpsCapacity,
-                  buttonCapacity: Capacity.beginner,
+                  actualCapacity: userPullUpsCapacity,
+                  selectedCapacity: Capacity.beginner,
                   title: 'Beginner',
                   description: '0 - 5  Pull-ups',
                 ),
@@ -91,12 +91,12 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pullUpsCapacity = Capacity.intermediate;
+                      userPullUpsCapacity = Capacity.intermediate;
                     });
-                    print(pullUpsCapacity);
+                    print(userPullUpsCapacity);
                   },
-                  actualCapacity: pullUpsCapacity,
-                  buttonCapacity: Capacity.intermediate,
+                  actualCapacity: userPullUpsCapacity,
+                  selectedCapacity: Capacity.intermediate,
                   title: 'Intermediate',
                   description: '6 - 10  Pull-ups',
                 ),
@@ -105,12 +105,12 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                 SelectCapacityButton(
                   onPressed: () {
                     setState(() {
-                      pullUpsCapacity = Capacity.advanced;
+                      userPullUpsCapacity = Capacity.advanced;
                     });
-                    print(pullUpsCapacity);
+                    print(userPullUpsCapacity);
                   },
-                  actualCapacity: pullUpsCapacity,
-                  buttonCapacity: Capacity.advanced,
+                  actualCapacity: userPullUpsCapacity,
+                  selectedCapacity: Capacity.advanced,
                   title: 'Advanced',
                   description: 'More than 10  Pull-ups',
                 ),

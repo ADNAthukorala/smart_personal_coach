@@ -14,9 +14,9 @@ class AgeHeightWeightScreen extends StatefulWidget {
 
 class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
   // Declare variables to store user age, height and weight and assign default values for them.
-  int age = 18;
-  int height = 120;
-  double weight = 60;
+  int userAge = 18;
+  int userHeight = 120;
+  double userWeight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -75,14 +75,14 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             //Getting the user's age
             ReusableCardWithSlider(
               text1: 'Age',
-              text2: age.toString(),
+              text2: userAge.toString(),
               text3: 'years',
-              value: age.toDouble(),
+              value: userAge.toDouble(),
               min: 2.0,
               max: 200.0,
               onChanged: (double newAge) {
                 setState(() {
-                  age = newAge.round();
+                  userAge = newAge.round();
                 });
               },
             ),
@@ -90,14 +90,14 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             //Getting the user's height
             ReusableCardWithSlider(
               text1: 'Height',
-              text2: height.toString(),
+              text2: userHeight.toString(),
               text3: 'cm',
-              value: height.toDouble(),
+              value: userHeight.toDouble(),
               min: 60.0,
               max: 280.0,
               onChanged: (double newHeight) {
                 setState(() {
-                  height = newHeight.round();
+                  userHeight = newHeight.round();
                 });
               },
             ),
@@ -105,14 +105,14 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             //Getting the user's weight
             ReusableCardWithSlider(
               text1: 'Weight',
-              text2: weight.toStringAsFixed(1),
+              text2: userWeight.toStringAsFixed(1),
               text3: 'kg',
-              value: weight,
+              value: userWeight,
               min: 10.0,
               max: 300.0,
               onChanged: (double newWeight) {
                 setState(() {
-                  weight = newWeight;
+                  userWeight = newWeight;
                 });
               },
             ),
