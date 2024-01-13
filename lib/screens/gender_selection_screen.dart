@@ -58,6 +58,11 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   size: kAppBarRoundedIconSize,
                   color: kGreyThemeColor02,
                 ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
               ],
             ),
           )),
