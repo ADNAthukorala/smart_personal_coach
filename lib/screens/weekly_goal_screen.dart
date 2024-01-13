@@ -68,7 +68,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
             const TitleAndDescriptionHolder(
               title: 'Set your weekly goal',
               description:
-                  'How many days per week the user can dedicate to one workout plan',
+                  'How many days per week can you dedicate to one workout plan?',
             ),
             const Spacer(),
             Column(
