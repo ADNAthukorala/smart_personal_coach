@@ -14,7 +14,7 @@ const kPadding16 = 16.0;
 const kPadding8 = 8.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
-const kAppBarSizedBoxWidth = 75.0;
+const kAppBarSizedBoxWidth = 90.0;
 
 /// STYLES FOR TEXTS
 /// Text styles for small grey color texts (Descriptions)
@@ -66,9 +66,16 @@ const kSelectBodyAreaButtonTextStyle = TextStyle(
   color: kBlueThemeColor,
 );
 
-/// Text styles for select volume button
+/// Text styles for select capacity button
 const kSelectCapacityButtonTextStyle = TextStyle(
   fontSize: 25,
+  fontWeight: FontWeight.w900,
+  color: kBlueThemeColor,
+);
+
+/// Text styles for day button
+const kDayButtonTextStyle = TextStyle(
+  fontSize: 20,
   fontWeight: FontWeight.w900,
   color: kBlueThemeColor,
 );
@@ -121,7 +128,7 @@ const kSelectBodyAreaButtonStyle = ButtonStyle(
   )),
 );
 
-/// Button styles for select volume button
+/// Button styles for select capacity button
 const kSelectCapacityButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
@@ -132,6 +139,17 @@ const kSelectCapacityButtonStyle = ButtonStyle(
         topRight: Radius.circular(kRadius16),
         bottomRight: Radius.circular(kRadius16),
         bottomLeft: Radius.circular(kRadius16)),
+  )),
+);
+
+/// Button styles for day button
+const kDayButtonStyle = ButtonStyle(
+  alignment: Alignment.centerLeft,
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 70.0)),
+  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius:
+    BorderRadius.all(Radius.circular(kRadius30)),
   )),
 );
 
