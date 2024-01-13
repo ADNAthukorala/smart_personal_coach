@@ -23,6 +23,7 @@ class ReusableCardWithSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
       color: kBlueThemeColor,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),

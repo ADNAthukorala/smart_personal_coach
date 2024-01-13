@@ -7,8 +7,9 @@ const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF7E7474);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
-const kRadius16 = 16.0;
 const kRadius8 = 8.0;
+const kRadius16 = 16.0;
+const kRadius30 = 30.0;
 const kPadding16 = 16.0;
 const kPadding8 = 8.0;
 const kAppBarRoundedIconSize = 15.0;
@@ -32,9 +33,9 @@ const kLargeBlackTitleTextStyle = TextStyle(
 
 /// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
-  fontSize: 28,
+  fontSize: 32,
   fontWeight: FontWeight.w900,
-  color: kBlueThemeColor,
+  color: kBlackThemeColor,
 );
 
 /// Text styles for login and signup buttons
@@ -79,13 +80,9 @@ const kSelectCapacityButtonTextStyle = TextStyle(
 const kGenderSelectionButtonStyle = ButtonStyle(
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(kRadius16),
-        topRight: Radius.circular(kRadius16),
-        bottomRight: Radius.circular(kRadius16),
-        bottomLeft: Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
   )),
-  fixedSize: MaterialStatePropertyAll(Size(150.0, 70.0)),
+  fixedSize: MaterialStatePropertyAll(Size(160.0, 75.0)),
 );
 
 /// Button styles for login and signup buttons
@@ -93,7 +90,7 @@ const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
   )),
 );
 
@@ -102,24 +99,16 @@ const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(kRadius16),
-        topRight: Radius.circular(kRadius16),
-        bottomRight: Radius.circular(kRadius16),
-        bottomLeft: Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
   )),
 );
 
 /// Button styles for next button
 const kNextButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(200.0, 60.0)),
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(kRadius16),
-        topRight: Radius.circular(kRadius16),
-        bottomRight: Radius.circular(kRadius16),
-        bottomLeft: Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
   )),
 );
 
@@ -128,11 +117,7 @@ const kSelectBodyAreaButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 40.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(kRadius16),
-        topRight: Radius.circular(kRadius16),
-        bottomRight: Radius.circular(kRadius16),
-        bottomLeft: Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
   )),
 );
 
@@ -172,7 +157,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius16),
+      Radius.circular(kRadius30),
     ),
     borderSide: BorderSide.none,
   ),

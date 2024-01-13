@@ -18,7 +18,7 @@ class NextButton extends StatelessWidget {
       onPressed: onPressed,
       style: style,
       child: const Text(
-        'Next',
+        'NEXT',
         style: kNextButtonTextStyle,
       ),
     );
