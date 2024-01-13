@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/checking_pushups_capacity.dart';
+import 'package:smart_personal_coach/screens/main_goal_screen.dart';
 
 enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
@@ -40,6 +40,11 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                   Icons.circle,
                   size: kAppBarActiveRoundedIconSize,
                   color: kBlueThemeColor,
+                ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
                 ),
                 Icon(
                   Icons.circle,
@@ -224,7 +229,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             ),
             // Add spacer between the body area selection and the next button
             const Spacer(flex: 2),
-            // Next button
+            /// Button to go to the next screen
             NextButton(
               // If the bodyAreas array is empty, this button should be disabled
               onPressed: userSelectedBodyAreas.isEmpty
@@ -233,7 +238,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const CheckingPushUpsCapacity(),
+                          builder: (context) => const MainGoalScreen(),
                         ),
                       );
                     },

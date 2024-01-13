@@ -57,6 +57,11 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                   size: kAppBarRoundedIconSize,
                   color: kGreyThemeColor02,
                 ),
+                Icon(
+                  Icons.circle,
+                  size: kAppBarRoundedIconSize,
+                  color: kGreyThemeColor02,
+                ),
               ],
             ),
           )),
