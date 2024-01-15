@@ -71,8 +71,8 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
       /// Body of the screen
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final maxh = constraints.maxHeight;
-          if (maxh > 600) {
+          final maxHeight = constraints.maxHeight;
+          if (maxHeight > 600) {
             /// For normal size screens
             return buildForNormalScreens(context);
           } else {
