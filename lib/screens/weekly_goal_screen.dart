@@ -167,8 +167,9 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   description: 'Dedicate 6 days a week',
                 ),
                 const SizedBox(height: 10.0),
+
+                /// 7 days a week button
                 DayButton(
-                  /// 7 days a week button
                   onPressed: () {
                     setState(() {
                       userSelectedDays = 7;
