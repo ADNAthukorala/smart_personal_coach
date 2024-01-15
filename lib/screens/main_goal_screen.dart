@@ -73,22 +73,23 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
         builder: (context, constraints) {
           final maxh = constraints.maxHeight;
           if (maxh < 600) {
-            return SingleChildScrollView(
-              child: Padding(
-                /// Add padding around the body
-                padding: const EdgeInsets.all(kPadding16),
-                child: Column(
-                  children: [
-                    /// The title and the description of the screen
-                    const TitleAndDescriptionHolder(
-                      title: 'What are your main goals?',
-                      description: 'Why do you use this application?',
-                    ),
+            return Padding(
+              /// Add padding around the body
+              padding: const EdgeInsets.all(kPadding16),
+              child: Column(
+                children: [
+                  /// The title and the description of the screen
+                  const TitleAndDescriptionHolder(
+                    title: 'What are your main goals?',
+                    description: 'Why do you use this application?',
+                  ),
 
-                    /// Add space between the title and the buttons holder
-                    const SizedBox(height: 20.0),
-                    Column(
-                      /// Buttons holder
+                  /// Add space between the title and the buttons holder
+                  const SizedBox(height: 10.0),
+
+                  /// Buttons holder
+                  Expanded(
+                    child: ListView(
                       children: [
                         /// Lose weight button
                         SelectMainGoalButton(
@@ -139,25 +140,24 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                         ),
                       ],
                     ),
+                  ),
 
-                    /// Add space between the next button and the buttons holder
-                    const SizedBox(height: 20.0),
+                  /// Add space between the next button and the buttons holder
+                  const SizedBox(height: 10.0),
 
-                    /// Button to go to the next screen
-                    NextButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) =>
-                                const CheckingPushUpsCapacity(),
-                          ),
-                        );
-                      },
-                      style: kNextButtonStyle,
-                    ),
-                  ],
-                ),
+                  /// Button to go to the next screen
+                  NextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CheckingPushUpsCapacity(),
+                        ),
+                      );
+                    },
+                    style: kNextButtonStyle,
+                  ),
+                ],
               ),
             );
           } else {
