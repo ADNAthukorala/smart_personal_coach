@@ -126,12 +126,7 @@ class _SignInScreenState extends State<SignInScreen> {
                     alignment: Alignment.centerLeft,
                     child: TextButton(
                       onPressed: () {},
-                      style: const ButtonStyle(
-                        padding: MaterialStatePropertyAll(
-                            EdgeInsets.fromLTRB(10.0, 0, 10.0, 0)),
-                        overlayColor:
-                            MaterialStatePropertyAll(kGreyThemeColor02),
-                      ),
+                      style: kSignInSignUpForgetPasswordTextButtonStyle,
                       child: const Text(
                         'Forget Password',
                         style: kSmallGreyColorDescriptionTextStyle,
@@ -161,11 +156,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             ),
                           );
                         },
-                        style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                          overlayColor:
-                              MaterialStatePropertyAll(kGreyThemeColor02),
-                        ),
+                        style: kSignInSignUpForgetPasswordTextButtonStyle,
                         child: Text(
                           'Sign Up',
                           style: kSmallGreyColorDescriptionTextStyle.copyWith(

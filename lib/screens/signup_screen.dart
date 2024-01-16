@@ -13,28 +13,32 @@ class SignUpScreen extends StatefulWidget {
 }
 
 class _SignUpScreenState extends State<SignUpScreen> {
-  bool? isChecked = false;
+  /// To check whether check box is checked or not.
+  bool? _isChecked = false;
 
-  // To check whether visibility button is clicked or not.
-  bool isVisibilityButtonClicked = false;
+  /// To check whether visibility button is clicked or not.
+  bool _isVisibilityButtonClicked = false;
 
-  // Visibility button click function
+  /// Visibility button click function
   void visibilityButtonClick() {
-    if (isVisibilityButtonClicked == false) {
-      isVisibilityButtonClicked = true;
+    if (_isVisibilityButtonClicked == false) {
+      _isVisibilityButtonClicked = true;
     } else {
-      isVisibilityButtonClicked = false;
+      _isVisibilityButtonClicked = false;
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
+
       /// Body of the screen
       body: Column(
         children: [
           /// Top image container
           const Expanded(
+            flex: 1,
             child: TopImage(imageUrl: 'images/signup_screen_image.jpg'),
           ),
 
@@ -48,6 +52,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
           /// Bottom components holder
           Expanded(
+            flex: 2,
             child: Padding(
               padding: const EdgeInsets.only(
                 top: kPadding8,
@@ -55,109 +60,90 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 right: kPadding16,
                 bottom: kPadding16,
               ),
-              child: ListView(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   /// Get the user's full name
-                  Padding(
-                    padding: const EdgeInsets.only(top: kPadding8),
-                    child: TextFormField(
-                      decoration:
-                          kSignInSignUpTextFormFieldDecorations.copyWith(
-                        hintText: 'Full Name',
-                        prefixIcon: const Icon(
-                          Icons.person_outlined,
-                          color: kGreyThemeColor,
-                        ),
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Full Name',
+                      prefixIcon: const Icon(
+                        Icons.person_outlined,
+                        color: kGreyThemeColor,
                       ),
                     ),
                   ),
 
                   /// Get the user's email
-                  Padding(
-                    padding: const EdgeInsets.only(top: kPadding8),
-                    child: TextFormField(
-                      decoration:
-                          kSignInSignUpTextFormFieldDecorations.copyWith(
-                        hintText: 'Email',
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: kGreyThemeColor,
-                        ),
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Email',
+                      prefixIcon: const Icon(
+                        Icons.email_outlined,
+                        color: kGreyThemeColor,
                       ),
-                      keyboardType: TextInputType.emailAddress,
                     ),
+                    keyboardType: TextInputType.emailAddress,
                   ),
 
                   /// Get the user's phone number
-                  Padding(
-                    padding: const EdgeInsets.only(top: kPadding8),
-                    child: TextFormField(
-                      decoration:
-                          kSignInSignUpTextFormFieldDecorations.copyWith(
-                        hintText: 'Phone Number',
-                        prefixIcon: const Icon(
-                          Icons.phone_outlined,
-                          color: kGreyThemeColor,
-                        ),
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Phone Number',
+                      prefixIcon: const Icon(
+                        Icons.phone_outlined,
+                        color: kGreyThemeColor,
                       ),
-                      keyboardType: TextInputType.number,
                     ),
+                    keyboardType: TextInputType.number,
                   ),
 
                   /// Get the user's password
-                  Padding(
-                    padding: const EdgeInsets.only(top: kPadding8),
-                    child: TextFormField(
-                      decoration:
-                          kSignInSignUpTextFormFieldDecorations.copyWith(
-                        hintText: 'Password',
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: kGreyThemeColor,
-                        ),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              visibilityButtonClick();
-                            });
-                          },
-                          icon: isVisibilityButtonClicked
-                              ? const Icon(Icons.visibility_off_outlined)
-                              : const Icon(Icons.visibility_outlined),
-                        ),
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Password',
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: kGreyThemeColor,
                       ),
-                      obscureText: isVisibilityButtonClicked ? false : true,
-                      enableSuggestions: false,
-                      autofocus: false,
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            visibilityButtonClick();
+                          });
+                        },
+                        icon: _isVisibilityButtonClicked
+                            ? const Icon(Icons.visibility_off_outlined)
+                            : const Icon(Icons.visibility_outlined),
+                      ),
                     ),
+                    obscureText: _isVisibilityButtonClicked ? false : true,
+                    enableSuggestions: false,
+                    autofocus: false,
                   ),
 
                   /// Confirm the password
-                  Padding(
-                    padding: const EdgeInsets.only(top: kPadding8),
-                    child: TextFormField(
-                      decoration:
-                          kSignInSignUpTextFormFieldDecorations.copyWith(
-                        hintText: 'Confirm Password',
-                        prefixIcon: const Icon(
-                          Icons.lock_outline,
-                          color: kGreyThemeColor,
-                        ),
-                        suffixIcon: IconButton(
-                          onPressed: () {
-                            setState(() {
-                              visibilityButtonClick();
-                            });
-                          },
-                          icon: isVisibilityButtonClicked
-                              ? const Icon(Icons.visibility_off_outlined)
-                              : const Icon(Icons.visibility_outlined),
-                        ),
+                  TextFormField(
+                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
+                      hintText: 'Confirm Password',
+                      prefixIcon: const Icon(
+                        Icons.lock_outline,
+                        color: kGreyThemeColor,
                       ),
-                      obscureText: isVisibilityButtonClicked ? false : true,
-                      enableSuggestions: false,
-                      autofocus: false,
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          setState(() {
+                            visibilityButtonClick();
+                          });
+                        },
+                        icon: _isVisibilityButtonClicked
+                            ? const Icon(Icons.visibility_off_outlined)
+                            : const Icon(Icons.visibility_outlined),
+                      ),
                     ),
+                    obscureText: _isVisibilityButtonClicked ? false : true,
+                    enableSuggestions: false,
+                    autofocus: false,
                   ),
 
                   /// Check whether agree with the terms and conditions
@@ -166,10 +152,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       'I agree Terms & Conditions',
                       style: kSmallGreyColorDescriptionTextStyle,
                     ),
-                    value: isChecked,
+                    value: _isChecked,
                     onChanged: (value) {
                       setState(() {
-                        isChecked = value;
+                        _isChecked = value;
                       });
                     },
                     controlAffinity: ListTileControlAffinity.leading,
@@ -204,11 +190,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         onPressed: () {
                           Navigator.pop(context);
                         },
-                        style: const ButtonStyle(
-                          padding: MaterialStatePropertyAll(EdgeInsets.zero),
-                          overlayColor:
-                              MaterialStatePropertyAll(kGreyThemeColor02),
-                        ),
+                        style: kSignInSignUpForgetPasswordTextButtonStyle,
                         child: Text(
                           'Sign In',
                           style: kSmallGreyColorDescriptionTextStyle.copyWith(
