@@ -33,6 +33,7 @@ const kLargeBlackTitleTextStyle = TextStyle(
 
 /// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
+  height: 1.15,
   fontSize: 32,
   fontWeight: FontWeight.w900,
   color: kBlackThemeColor,
