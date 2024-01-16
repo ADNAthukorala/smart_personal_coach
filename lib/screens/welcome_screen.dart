@@ -14,52 +14,76 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      /// Body of the screen
       body: Column(
         children: [
-          const Flexible(
-            flex: 7,
+          /// Top image container
+          const Expanded(
             child: TopImage(imageUrl: 'images/welcome_screen_image.jpg'),
           ),
-          Flexible(
-            flex: 3,
+
+          /// The Title and the description holder
+          const SizedBox(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(kPadding16, kPadding8, kPadding16, kPadding16),
+              // Add padding around the title and description holder
+              padding: EdgeInsets.only(
+                top: kPadding8,
+                left: kPadding8,
+                right: kPadding8,
+                bottom: kPadding8,
+              ),
               child: Column(
                 children: [
-                  const Column(
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
+                      /// Welcome text
                       Text(
                         'Welcome',
                         style: kWelcomeTextStyle,
                       ),
+
+                      /// Name of the application
                       Text(
                         'Smart Personal Coach',
                         style: kWelcomeTextStyle,
                       ),
+
+                      /// Description
+                      Text(
+                        'Welcome to Smart Personal Coach! Join us on your journey to wellness.',
+                        style: kSmallGreyColorDescriptionTextStyle,
+                        textAlign: TextAlign.center,
+                      ),
                     ],
                   ),
-                  const Text(
-                    'Welcome to Smart Personal Coach! Join us on your journey to wellness.',
-                    style: kSmallGreyColorDescriptionTextStyle,
-                    textAlign: TextAlign.center,
-                  ),
-                  const Spacer(),
-                  ElevatedButton(
-                    style: kWelcomeButtonStyle,
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const SignInScreen(),
-                        ),
-                      );
-                    },
-                    child: const Text(
-                      'Get Started',
-                      style: kWelcomeButtonTextStyle,
-                    ),
-                  ),
                 ],
+              ),
+            ),
+          ),
+
+          /// Button to get started the application
+          Padding(
+            // Add padding around the button
+            padding: const EdgeInsets.only(
+                top: kPadding8,
+                bottom: kPadding8,
+                left: kPadding8,
+                right: kPadding8),
+            child: ElevatedButton(
+              style: kWelcomeButtonStyle,
+              onPressed: () {
+                // If the button is clicked, go to the Sign in screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SignInScreen(),
+                  ),
+                );
+              },
+              child: const Text(
+                'Get Started',
+                style: kWelcomeButtonTextStyle,
               ),
             ),
           ),
