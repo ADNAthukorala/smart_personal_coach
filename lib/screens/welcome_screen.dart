@@ -63,27 +63,29 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
 
           /// Button to get started the application
-          Padding(
-            // Add padding around the button
-            padding: const EdgeInsets.only(
-                top: kPadding8,
-                bottom: kPadding8,
-                left: kPadding8,
-                right: kPadding8),
-            child: ElevatedButton(
-              style: kWelcomeButtonStyle,
-              onPressed: () {
-                // If the button is clicked, go to the Sign in screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignInScreen(),
-                  ),
-                );
-              },
-              child: const Text(
-                'Get Started',
-                style: kWelcomeButtonTextStyle,
+          SizedBox(
+            child: Padding(
+              // Add padding around the button
+              padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                  left: kPadding8,
+                  right: kPadding8),
+              child: ElevatedButton(
+                style: kWelcomeButtonStyle,
+                onPressed: () {
+                  // If the button is clicked, go to the Sign in screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignInScreen(),
+                    ),
+                  );
+                },
+                child: const Text(
+                  'Get Started',
+                  style: kWelcomeButtonTextStyle,
+                ),
               ),
             ),
           ),
