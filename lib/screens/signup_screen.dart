@@ -30,110 +30,137 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
+      /// Body of the screen
       body: Column(
         children: [
-          //Top image of sign up screen
-          const Flexible(
-            flex: 1,
+          /// Top image container
+          const Expanded(
             child: TopImage(imageUrl: 'images/signup_screen_image.jpg'),
           ),
-          //Bottom components of sign up screen
-          Flexible(
-            flex: 3,
-            //Adding padding to the bottom area
+
+          /// The Title and the description holder
+          const SizedBox(
+            child: TitleAndDescriptionHolder(
+              title: 'Sign Up',
+              description: 'Create your account here',
+            ),
+          ),
+
+          /// Bottom components holder
+          Expanded(
             child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                  kPadding16, kPadding8, kPadding16, kPadding16),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              padding: const EdgeInsets.only(
+                top: kPadding8,
+                left: kPadding16,
+                right: kPadding16,
+                bottom: kPadding16,
+              ),
+              child: ListView(
                 children: [
-                  // Title and description
-                  const TitleAndDescriptionHolder(
-                    title: 'Sign Up',
-                    description: 'Create your account here',
-                  ),
-                  // Adding space between the title and the full name text field
-                  const SizedBox(height: 8.0),
-                  //Adding a text field to get the full name
-                  TextFormField(
-                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
-                      hintText: 'Full Name',
-                      prefixIcon: const Icon(
-                        Icons.person_outlined,
-                        color: kGreyThemeColor,
+                  /// Get the user's full name
+                  Padding(
+                    padding: const EdgeInsets.only(top: kPadding8),
+                    child: TextFormField(
+                      decoration:
+                          kSignInSignUpTextFormFieldDecorations.copyWith(
+                        hintText: 'Full Name',
+                        prefixIcon: const Icon(
+                          Icons.person_outlined,
+                          color: kGreyThemeColor,
+                        ),
                       ),
                     ),
                   ),
-                  //Adding a text field to get the email
-                  TextFormField(
-                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
-                      hintText: 'Email',
-                      prefixIcon: const Icon(
-                        Icons.email_outlined,
-                        color: kGreyThemeColor,
+
+                  /// Get the user's email
+                  Padding(
+                    padding: const EdgeInsets.only(top: kPadding8),
+                    child: TextFormField(
+                      decoration:
+                          kSignInSignUpTextFormFieldDecorations.copyWith(
+                        hintText: 'Email',
+                        prefixIcon: const Icon(
+                          Icons.email_outlined,
+                          color: kGreyThemeColor,
+                        ),
                       ),
+                      keyboardType: TextInputType.emailAddress,
                     ),
-                    keyboardType: TextInputType.emailAddress,
                   ),
-                  //Adding a text field to get the phone number
-                  TextFormField(
-                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
-                      hintText: 'Phone Number',
-                      prefixIcon: const Icon(
-                        Icons.phone_outlined,
-                        color: kGreyThemeColor,
+
+                  /// Get the user's phone number
+                  Padding(
+                    padding: const EdgeInsets.only(top: kPadding8),
+                    child: TextFormField(
+                      decoration:
+                          kSignInSignUpTextFormFieldDecorations.copyWith(
+                        hintText: 'Phone Number',
+                        prefixIcon: const Icon(
+                          Icons.phone_outlined,
+                          color: kGreyThemeColor,
+                        ),
                       ),
+                      keyboardType: TextInputType.number,
                     ),
-                    keyboardType: TextInputType.number,
                   ),
-                  //Adding a text field to get the password
-                  TextFormField(
-                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
-                      hintText: 'Password',
-                      prefixIcon: const Icon(
-                        Icons.lock_outline,
-                        color: kGreyThemeColor,
+
+                  /// Get the user's password
+                  Padding(
+                    padding: const EdgeInsets.only(top: kPadding8),
+                    child: TextFormField(
+                      decoration:
+                          kSignInSignUpTextFormFieldDecorations.copyWith(
+                        hintText: 'Password',
+                        prefixIcon: const Icon(
+                          Icons.lock_outline,
+                          color: kGreyThemeColor,
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              visibilityButtonClick();
+                            });
+                          },
+                          icon: isVisibilityButtonClicked
+                              ? const Icon(Icons.visibility_off_outlined)
+                              : const Icon(Icons.visibility_outlined),
+                        ),
                       ),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            visibilityButtonClick();
-                          });
-                        },
-                        icon: isVisibilityButtonClicked
-                            ? const Icon(Icons.visibility_off_outlined)
-                            : const Icon(Icons.visibility_outlined),
-                      ),
+                      obscureText: isVisibilityButtonClicked ? false : true,
+                      enableSuggestions: false,
+                      autofocus: false,
                     ),
-                    obscureText: isVisibilityButtonClicked ? false : true,
-                    enableSuggestions: false,
-                    autofocus: false,
                   ),
-                  //Adding a text field to get the confirm password
-                  TextFormField(
-                    decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
-                      hintText: 'Confirm Password',
-                      prefixIcon: const Icon(
-                        Icons.lock_outline,
-                        color: kGreyThemeColor,
+
+                  /// Confirm the password
+                  Padding(
+                    padding: const EdgeInsets.only(top: kPadding8),
+                    child: TextFormField(
+                      decoration:
+                          kSignInSignUpTextFormFieldDecorations.copyWith(
+                        hintText: 'Confirm Password',
+                        prefixIcon: const Icon(
+                          Icons.lock_outline,
+                          color: kGreyThemeColor,
+                        ),
+                        suffixIcon: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              visibilityButtonClick();
+                            });
+                          },
+                          icon: isVisibilityButtonClicked
+                              ? const Icon(Icons.visibility_off_outlined)
+                              : const Icon(Icons.visibility_outlined),
+                        ),
                       ),
-                      suffixIcon: IconButton(
-                        onPressed: () {
-                          setState(() {
-                            visibilityButtonClick();
-                          });
-                        },
-                        icon: isVisibilityButtonClicked
-                            ? const Icon(Icons.visibility_off_outlined)
-                            : const Icon(Icons.visibility_outlined),
-                      ),
+                      obscureText: isVisibilityButtonClicked ? false : true,
+                      enableSuggestions: false,
+                      autofocus: false,
                     ),
-                    obscureText: isVisibilityButtonClicked ? false : true,
-                    enableSuggestions: false,
-                    autofocus: false,
                   ),
-                  //Adding a check box for terms and conditions
+
+                  /// Check whether agree with the terms and conditions
                   CheckboxListTile(
                     title: const Text(
                       'I agree Terms & Conditions',
@@ -150,17 +177,20 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     checkColor: kWhiteThemeColor,
                     contentPadding: const EdgeInsets.all(0),
                   ),
-                  //Sign up button
+
+                  /// Sign up button
                   SignInSignUpButton(
                     onPressed: () {},
                     buttonText: 'Sign Up',
                   ),
-                  //Social media icon buttons with text
+
+                  /// Social media buttons container
                   SocialMediaButtonsContainer(
                     onPressedFacebook: () {},
                     onPressedGoogle: () {},
                   ),
-                  //Bottom text and button of bottom area
+
+                  /// Sign in text button container
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -168,7 +198,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         "Already have an account?",
                         style: kSmallGreyColorDescriptionTextStyle,
                       ),
-                      //Sign In text button
+
+                      /// Sign In text button
                       TextButton(
                         onPressed: () {
                           Navigator.pop(context);
