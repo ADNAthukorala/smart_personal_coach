@@ -48,7 +48,7 @@ const kTermsAndConditionsTitlesTextStyle = TextStyle(
 const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
-  color: kBlackThemeColor,
+  color: kGreyThemeColor,
 );
 
 /// Text styles for welcome screen's large text
