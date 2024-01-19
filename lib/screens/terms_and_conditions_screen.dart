@@ -80,7 +80,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
               },
               style: kNextButtonStyle,
               child: const Text(
-                'Go Back',
+                'OK',
                 style: kNextButtonTextStyle,
               ),
             ),
