@@ -24,10 +24,30 @@ const kSmallGreyColorDescriptionTextStyle = TextStyle(
   color: kGreyThemeColor,
 );
 
+/// Text style for text button
+const kTextButtonTextStyle = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+  color: kBlueThemeColor,
+);
+
 /// Text styles for large black color texts (Titles)
 const kLargeBlackTitleTextStyle = TextStyle(
   fontSize: 28,
   fontWeight: FontWeight.w900,
+  color: kBlackThemeColor,
+);
+
+/// Text style for terms and conditions titles
+const kTermsAndConditionsTitlesTextStyle = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w900,
+  color: kBlueThemeColor,
+);
+
+const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
   color: kBlackThemeColor,
 );
 
@@ -80,8 +100,6 @@ const kDayButtonTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
   color: kBlueThemeColor,
 );
-
-
 
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
@@ -149,11 +167,23 @@ const kDayButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 70.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius:
-    BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
   )),
 );
 
+/// Button style for signin/signup/forget password text button
+const kTextButtonStyle = ButtonStyle(
+  minimumSize: MaterialStatePropertyAll(Size.zero),
+  padding: MaterialStatePropertyAll(
+    EdgeInsets.only(
+      left: 4.0,
+      right: 4.0,
+    ),
+  ),
+  tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+  overlayColor:
+  MaterialStatePropertyAll(kGreyThemeColor02),
+);
 
 ///STYLES FOR SLIDERS
 ///Slider style
@@ -182,6 +212,10 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   ),
   filled: true,
   fillColor: kGreyThemeColor02,
-  contentPadding:
-      EdgeInsets.only(left: 8.0, top: 12.0, right: 8.0, bottom: 12.0),
+  contentPadding: EdgeInsets.only(
+    left: 8.0,
+    top: 12.0,
+    right: 8.0,
+    bottom: 12.0,
+  ),
 );
