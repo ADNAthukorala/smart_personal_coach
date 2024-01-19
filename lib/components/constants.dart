@@ -24,6 +24,13 @@ const kSmallGreyColorDescriptionTextStyle = TextStyle(
   color: kGreyThemeColor,
 );
 
+/// Text style for text button
+const kTextButtonTextStyle = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+  color: kBlueThemeColor,
+);
+
 /// Text styles for large black color texts (Titles)
 const kLargeBlackTitleTextStyle = TextStyle(
   fontSize: 28,
@@ -152,7 +159,7 @@ const kDayButtonStyle = ButtonStyle(
 );
 
 /// Button style for signin/signup/forget password text button
-const kSignInSignUpForgetPasswordTextButtonStyle = ButtonStyle(
+const kTextButtonStyle = ButtonStyle(
   minimumSize: MaterialStatePropertyAll(Size.zero),
   padding: MaterialStatePropertyAll(
     EdgeInsets.only(
