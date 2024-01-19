@@ -38,6 +38,19 @@ const kLargeBlackTitleTextStyle = TextStyle(
   color: kBlackThemeColor,
 );
 
+/// Text style for terms and conditions titles
+const kTermsAndConditionsTitlesTextStyle = TextStyle(
+  fontSize: 20,
+  fontWeight: FontWeight.w900,
+  color: kBlueThemeColor,
+);
+
+const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
+  fontSize: 14,
+  fontWeight: FontWeight.w500,
+  color: kBlackThemeColor,
+);
+
 /// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
   height: 1.15,
