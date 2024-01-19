@@ -52,12 +52,18 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
                     description: tncAgreementToTermsDescription,
                   ),
 
-                  /// Company name holder
-                  Center(
-                    child: Text(
-                      'Powered by ADNA',
-                      style: kTermsAndConditionsTitlesTextStyle,
-                    ),
+                  /// App name and Company name holder
+                  Column(
+                    children: [
+                      Text(
+                        'Smart Personal Coach',
+                        style: kTermsAndConditionsTitlesTextStyle,
+                      ),
+                      Text(
+                        'Powered by ADNA',
+                        style: kSmallGreyColorDescriptionTextStyle,
+                      ),
+                    ],
                   ),
                 ],
               ),
