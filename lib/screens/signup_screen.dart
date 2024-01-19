@@ -47,11 +47,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
 
                 /// The Title and the description holder
-                SizedBox(
-                  child: TitleAndDescriptionHolder(
-                    title: 'Sign Up',
-                    description: 'Create your account here',
-                  ),
+                TitleAndDescriptionHolder(
+                  title: 'Sign Up',
+                  description: 'Create your account here',
                 ),
               ],
             ),
