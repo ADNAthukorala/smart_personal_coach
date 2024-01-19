@@ -6,6 +6,7 @@ import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
 import 'package:smart_personal_coach/screens/terms_and_conditions_screen.dart';
 
+/// Sign-Up Screen
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
 
@@ -59,6 +60,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
           /// Bottom components holder (Middle and bottom of the screen)
           Expanded(
             flex: 2,
+            // Add padding around the bottom components
             child: Padding(
               padding: const EdgeInsets.only(
                 top: kPadding8,
@@ -73,8 +75,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   Expanded(
                     // Center the list view inside the expanded widget
                     child: Center(
+                      // Include all components in the list view and set padding around the components to 0
                       child: ListView(
-                        padding: const EdgeInsets.all(0),
+                        padding: EdgeInsets.zero,
                         shrinkWrap: true,
                         children: [
                           /// Get the user's full name
@@ -196,10 +199,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               ),
                               TextButton(
                                 onPressed: () {
+                                  // When the button is clicked, navigate to the terms and conditions screen
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => const TermsAndConditionsScreen(),
+                                      builder: (context) =>
+                                          const TermsAndConditionsScreen(),
                                     ),
                                   );
                                 },
@@ -219,8 +224,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   /// Bottom of the screen (Sign-up button, social media buttons, sign-in button)
                   Column(
                     children: [
-                      /// Add padding
-                      const SizedBox(height: kPadding8),
+                      /// Add space between the middle and the bottom of the screen
+                      const SizedBox(height: 8.0),
 
                       /// Sign up button
                       SignInSignUpButton(
@@ -252,6 +257,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           /// Sign In text button
                           TextButton(
                             onPressed: () {
+                              // Navigate to the sign-in screen
                               Navigator.pop(context);
                             },
                             style: kTextButtonStyle,
