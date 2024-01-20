@@ -7,7 +7,7 @@ class AppBarTitle extends StatelessWidget {
     super.key,
     required this.screenId,
   });
-
+  // To get which screen the user is on
   final int screenId;
 
   @override
