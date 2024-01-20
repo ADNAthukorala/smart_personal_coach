@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
@@ -21,49 +22,11 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: const SizedBox(
-            width: kAppBarSizedBoxWidth,
-            child: Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarActiveRoundedIconSize,
-                  color: kBlueThemeColor,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-              ],
-            ),
-          )),
+        centerTitle: true,
+        title: const AppBarTitle(
+          screenId: 3,
+        ),
+      ),
       // Add padding around the main column
       body: Padding(
         padding: const EdgeInsets.all(kPadding16),
@@ -229,6 +192,7 @@ class _FullBodyScreenState extends State<FullBodyScreen> {
             ),
             // Add spacer between the body area selection and the next button
             const Spacer(flex: 2),
+
             /// Button to go to the next screen
             NextButton(
               // If the bodyAreas array is empty, this button should be disabled

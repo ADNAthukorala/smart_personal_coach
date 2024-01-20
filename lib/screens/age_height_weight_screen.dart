@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
@@ -22,49 +23,11 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          centerTitle: true,
-          title: const SizedBox(
-            width: kAppBarSizedBoxWidth,
-            child: Row(
-              children: [
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarActiveRoundedIconSize,
-                  color: kBlueThemeColor,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-                Icon(
-                  Icons.circle,
-                  size: kAppBarRoundedIconSize,
-                  color: kGreyThemeColor02,
-                ),
-              ],
-            ),
-          )),
+        centerTitle: true,
+        title: const AppBarTitle(
+          screenId: 2,
+        ),
+      ),
       body: Padding(
         //Adding padding to screen
         padding: const EdgeInsets.all(kPadding16),
