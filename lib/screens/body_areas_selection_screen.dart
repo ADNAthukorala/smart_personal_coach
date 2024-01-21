@@ -56,176 +56,178 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
             /// Middle of the screen
             /// Body area selection container
             Expanded(
-              child: Center(
-                child: ListView(
-                  padding: EdgeInsets.zero,
-                  shrinkWrap: true,
-                  children: [
-                    SizedBox(
-                      // Add a fixed height to the container
-                      height: 496.0,
+              child: ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                children: [
+                  /// Add space
+                  const SizedBox(height: 12.0),
 
-                      /// Button bar and the body image holder
-                      child: Row(
-                        // Center button bar and image inside the holder
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ///  The Button bar
-                          Expanded(
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                /// Select the full body button
-                                SelectBodyAreaButton(
-                                  array: _userSelectedBodyAreas,
-                                  selectedBodyArea: BodyArea.fullBody,
-                                  onPressed: () {
-                                    setState(() {
-                                      // Check whether bodyAreas array length >= 5
-                                      if (_userSelectedBodyAreas.length >= 5) {
-                                        // If it is true, the bodyAreas array should be empty when this button is clicked
-                                        _userSelectedBodyAreas.clear();
-                                      } else {
-                                        // If it false, these body areas should be added to the array
-                                        _userSelectedBodyAreas.clear();
-                                        _userSelectedBodyAreas.add(BodyArea.arms);
-                                        _userSelectedBodyAreas.add(BodyArea.back);
-                                        _userSelectedBodyAreas
-                                            .add(BodyArea.chest);
-                                        _userSelectedBodyAreas.add(BodyArea.abs);
-                                        _userSelectedBodyAreas.add(BodyArea.legs);
-                                      }
-                                      print(_userSelectedBodyAreas);
-                                    });
-                                  },
-                                  buttonLabel: 'Full Body',
-                                ),
+                  /// Selection container
+                  SizedBox(
+                    // Add a fixed height to the container
+                    height: 496.0,
 
-                                /// Select arms button
-                                SelectBodyAreaButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      // Check whether bodyAreas array contains arms
-                                      if (_userSelectedBodyAreas
-                                          .contains(BodyArea.arms)) {
-                                        // If it is true, remove arms from the array when this button is clicked
-                                        _userSelectedBodyAreas
-                                            .remove(BodyArea.arms);
-                                      } else {
-                                        // If it false, add arms to the array when this button is clicked
-                                        _userSelectedBodyAreas.add(BodyArea.arms);
-                                      }
-                                      print(_userSelectedBodyAreas);
-                                    });
-                                  },
-                                  array: _userSelectedBodyAreas,
-                                  buttonLabel: 'Arms',
-                                  selectedBodyArea: BodyArea.arms,
-                                ),
+                    /// Button bar and the body image holder
+                    child: Row(
+                      // Center button bar and image inside the holder
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ///  The Button bar
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              /// Select the full body button
+                              SelectBodyAreaButton(
+                                array: _userSelectedBodyAreas,
+                                selectedBodyArea: BodyArea.fullBody,
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array length >= 5
+                                    if (_userSelectedBodyAreas.length >= 5) {
+                                      // If it is true, the bodyAreas array should be empty when this button is clicked
+                                      _userSelectedBodyAreas.clear();
+                                    } else {
+                                      // If it false, these body areas should be added to the array
+                                      _userSelectedBodyAreas.clear();
+                                      _userSelectedBodyAreas.add(BodyArea.arms);
+                                      _userSelectedBodyAreas.add(BodyArea.back);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.chest);
+                                      _userSelectedBodyAreas.add(BodyArea.abs);
+                                      _userSelectedBodyAreas.add(BodyArea.legs);
+                                    }
+                                    print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                buttonLabel: 'Full Body',
+                              ),
 
-                                /// Select back button
-                                SelectBodyAreaButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      // Check whether bodyAreas array contains back
-                                      if (_userSelectedBodyAreas
-                                          .contains(BodyArea.back)) {
-                                        // If it is true, remove back from the array when this button is clicked
-                                        _userSelectedBodyAreas
-                                            .remove(BodyArea.back);
-                                      } else {
-                                        // If it false, add arms to the array when this button is clicked
-                                        _userSelectedBodyAreas.add(BodyArea.back);
-                                      }
-                                      print(_userSelectedBodyAreas);
-                                    });
-                                  },
-                                  array: _userSelectedBodyAreas,
-                                  buttonLabel: 'Back',
-                                  selectedBodyArea: BodyArea.back,
-                                ),
+                              /// Select arms button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains arms
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.arms)) {
+                                      // If it is true, remove arms from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.arms);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas.add(BodyArea.arms);
+                                    }
+                                    print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Arms',
+                                selectedBodyArea: BodyArea.arms,
+                              ),
 
-                                /// Select chest button
-                                SelectBodyAreaButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      // Check whether bodyAreas array contains chest
-                                      if (_userSelectedBodyAreas
-                                          .contains(BodyArea.chest)) {
-                                        // If it is true, remove chest from the array when this button is clicked
-                                        _userSelectedBodyAreas
-                                            .remove(BodyArea.chest);
-                                      } else {
-                                        // If it false, add arms to the array when this button is clicked
-                                        _userSelectedBodyAreas
-                                            .add(BodyArea.chest);
-                                      }
-                                      print(_userSelectedBodyAreas);
-                                    });
-                                  },
-                                  array: _userSelectedBodyAreas,
-                                  buttonLabel: 'Chest',
-                                  selectedBodyArea: BodyArea.chest,
-                                ),
+                              /// Select back button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains back
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.back)) {
+                                      // If it is true, remove back from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.back);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas.add(BodyArea.back);
+                                    }
+                                    print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Back',
+                                selectedBodyArea: BodyArea.back,
+                              ),
 
-                                /// Select abs button
-                                SelectBodyAreaButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      // Check whether bodyAreas array contains abs
-                                      if (_userSelectedBodyAreas
-                                          .contains(BodyArea.abs)) {
-                                        // If it is true, remove abs from the array when this button is clicked
-                                        _userSelectedBodyAreas
-                                            .remove(BodyArea.abs);
-                                      } else {
-                                        // If it false, add arms to the array when this button is clicked
-                                        _userSelectedBodyAreas.add(BodyArea.abs);
-                                      }
-                                      print(_userSelectedBodyAreas);
-                                    });
-                                  },
-                                  array: _userSelectedBodyAreas,
-                                  buttonLabel: 'Abs',
-                                  selectedBodyArea: BodyArea.abs,
-                                ),
+                              /// Select chest button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains chest
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.chest)) {
+                                      // If it is true, remove chest from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.chest);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.chest);
+                                    }
+                                    print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Chest',
+                                selectedBodyArea: BodyArea.chest,
+                              ),
 
-                                /// Select legs button
-                                SelectBodyAreaButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      // Check whether bodyAreas array contains legs
-                                      if (_userSelectedBodyAreas
-                                          .contains(BodyArea.legs)) {
-                                        // If it is true, remove legs from array when this button is clicked
-                                        _userSelectedBodyAreas
-                                            .remove(BodyArea.legs);
-                                      } else {
-                                        // If it false, add legs to the array when this button is clicked
-                                        _userSelectedBodyAreas.add(BodyArea.legs);
-                                      }
-                                      print(_userSelectedBodyAreas);
-                                    });
-                                  },
-                                  array: _userSelectedBodyAreas,
-                                  buttonLabel: 'Legs',
-                                  selectedBodyArea: BodyArea.legs,
-                                ),
-                              ],
-                            ),
+                              /// Select abs button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains abs
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.abs)) {
+                                      // If it is true, remove abs from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.abs);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas.add(BodyArea.abs);
+                                    }
+                                    print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Abs',
+                                selectedBodyArea: BodyArea.abs,
+                              ),
+
+                              /// Select legs button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains legs
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.legs)) {
+                                      // If it is true, remove legs from array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.legs);
+                                    } else {
+                                      // If it false, add legs to the array when this button is clicked
+                                      _userSelectedBodyAreas.add(BodyArea.legs);
+                                    }
+                                    print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Legs',
+                                selectedBodyArea: BodyArea.legs,
+                              ),
+                            ],
                           ),
+                        ),
 
-                          /// Full body image
-                          Image.asset(
-                            'images/full_body_image.png',
-                            height: 496, // Fixed height to the image
-                            width: 243, // Fixed width to the image
-                          ),
-                        ],
-                      ),
+                        /// Full body image
+                        Image.asset(
+                          'images/full_body_image.png',
+                          height: 496, // Fixed height to the image
+                          width: 243, // Fixed width to the image
+                        ),
+                      ],
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
             ),
 
