@@ -55,35 +55,34 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             /// Middle of the screen
             /// The image and the gender selection buttons holder
             Expanded(
-              child: Column(
-                children: [
-                  const Spacer(),
+              child: Center(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  children: [
+                    /// Image of gender selection screen
+                    const SizedBox(
+                      height: 210.0,
+                      child: TopImage(
+                          imageUrl: 'images/gender_selection_screen_image.jpg'),
+                    ),
 
-                  /// Image of gender selection screen
-                  const SizedBox(
-                    height: 210.0,
-                    child: TopImage(
-                        imageUrl: 'images/gender_selection_screen_image.jpg'),
-                  ),
+                    /// Add space between the image and the gender selection buttons holder
+                    const SizedBox(height: 10.0),
 
-                  /// Add space between the image and the gender selection buttons holder
-                  const SizedBox(height: 10.0),
+                    /// Gender selection buttons holder
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        /// Male button
+                        _buildMaleButton(),
 
-                  /// Gender selection buttons holding row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      /// Male button
-                      _buildMaleButton(),
-
-                      /// Female button
-                      _buildFemaleButton(),
-                    ],
-                  ),
-                  const Spacer(
-                    flex: 2,
-                  ),
-                ],
+                        /// Female button
+                        _buildFemaleButton(),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
 
