@@ -116,6 +116,9 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                       });
                     },
                   ),
+
+                  /// Add space
+                  const SizedBox(height: 12.0),
                 ],
               ),
             ),
