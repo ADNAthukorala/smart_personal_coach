@@ -9,7 +9,7 @@ import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 /// Create an enum for gender
 enum Gender { male, female, notSelected }
 
-/// Getting the user's gender
+/// Screen to get the user's gender
 class GenderSelectionScreen extends StatefulWidget {
   const GenderSelectionScreen({super.key});
 
