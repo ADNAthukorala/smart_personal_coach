@@ -42,9 +42,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
           children: [
             /// Top of the screen
             /// The title and the description
-            const TitleAndDescriptionHolder(
-              title: "What's your gender?",
-              description: '',
+            const Padding(
+              padding: EdgeInsets.only(
+                bottom: kPadding8,
+              ),
+              child: TitleAndDescriptionHolder(
+                title: "What's your gender?",
+                description: '',
+              ),
             ),
 
             /// Middle of the screen
@@ -84,23 +89,28 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
 
             /// Bottom of the screen
             /// Next button
-            NextButton(
-              onPressed: _userGender == Gender.notSelected
-                  ? null // Disable the next button
-                  : () {
-                      // When the button is clicked, navigate to the age, height, weight screen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AgeHeightWeightScreen(),
-                        ),
-                      );
-                    },
-              style: kNextButtonStyle.copyWith(
-                  backgroundColor: MaterialStatePropertyAll(
-                      _userGender == Gender.notSelected
-                          ? kGreyThemeColor02
-                          : kBlueThemeColor)),
+            Padding(
+              padding: const EdgeInsets.only(
+                top: kPadding8,
+              ),
+              child: NextButton(
+                onPressed: _userGender == Gender.notSelected
+                    ? null // Disable the next button
+                    : () {
+                        // When the button is clicked, navigate to the age, height, weight screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AgeHeightWeightScreen(),
+                          ),
+                        );
+                      },
+                style: kNextButtonStyle.copyWith(
+                    backgroundColor: MaterialStatePropertyAll(
+                        _userGender == Gender.notSelected
+                            ? kGreyThemeColor02
+                            : kBlueThemeColor)),
+              ),
             ),
           ],
         ),
