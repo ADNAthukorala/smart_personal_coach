@@ -77,6 +77,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: ListView(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
+                        // If the viewport's max height is greater than 800 and the key board is hidden, the listview never scrolls, otherwise scrolls
+                        physics:
+                        (MediaQuery.of(context).viewInsets.bottom == 0 &&
+                            MediaQuery.of(context).size.height > 800)
+                            ? const NeverScrollableScrollPhysics()
+                            : const AlwaysScrollableScrollPhysics(),
                         children: [
                           /// Get the user's full name
                           TextFormField(

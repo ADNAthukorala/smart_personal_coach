@@ -59,6 +59,10 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                 child: ListView(
                   padding: EdgeInsets.zero,
                   shrinkWrap: true,
+                  // If the viewport's max height is greater than 600, the listview never scrolls, otherwise scrolls
+                  physics: MediaQuery.of(context).size.height > 600
+                      ? const NeverScrollableScrollPhysics()
+                      : const AlwaysScrollableScrollPhysics(),
                   children: [
                     /// Image of gender selection screen
                     const SizedBox(
