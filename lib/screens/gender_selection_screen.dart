@@ -83,7 +83,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             ),
 
             /// Bottom of the screen
-            /// Next button to go to the age, height, weight screen
+            /// Next button
             NextButton(
               onPressed: _userGender == Gender.notSelected
                   ? null // Disable the next button
