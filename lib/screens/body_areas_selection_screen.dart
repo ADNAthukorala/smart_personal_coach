@@ -7,14 +7,14 @@ import 'package:smart_personal_coach/screens/main_goal_screen.dart';
 
 enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
-class FullBodyScreen extends StatefulWidget {
-  const FullBodyScreen({super.key});
+class BodyAreasSelectionScreen extends StatefulWidget {
+  const BodyAreasSelectionScreen({super.key});
 
   @override
-  State<FullBodyScreen> createState() => _FullBodyScreenState();
+  State<BodyAreasSelectionScreen> createState() => _BodyAreasSelectionScreenState();
 }
 
-class _FullBodyScreenState extends State<FullBodyScreen> {
+class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
   /// Declare a list to store user selected body areas.
   List<BodyArea> userSelectedBodyAreas = [];
 

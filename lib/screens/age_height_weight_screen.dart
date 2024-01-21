@@ -122,11 +122,11 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             /// Next button
             NextButton(
               onPressed: () {
-                // When the button is clicked, navigate to the full body screen
+                // When the button is clicked, navigate to the body areas selection screen
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const FullBodyScreen(),
+                    builder: (context) => const BodyAreasSelectionScreen(),
                   ),
                 );
               },
