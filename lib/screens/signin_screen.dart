@@ -39,6 +39,7 @@ class _SignInScreenState extends State<SignInScreen> {
         children: [
           /// Top of the screen ( Top image, The title and the description)
           const Expanded(
+            flex: 1,
             child: Column(
               children: [
                 /// Top image container
@@ -57,6 +58,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
           /// Bottom components holder (Middle and bottom of the screen)
           Expanded(
+            flex: MediaQuery.of(context).viewInsets.bottom == 0 ? 1 : 2,
             // Add padding around the bottom components
             child: Padding(
               padding: const EdgeInsets.only(
@@ -78,6 +80,12 @@ class _SignInScreenState extends State<SignInScreen> {
                       child: ListView(
                         padding: EdgeInsets.zero,
                         shrinkWrap: true,
+                        // If the viewport's max height is greater than 800 and the key board is hidden, the listview never scrolls, otherwise scrolls
+                        physics:
+                            (MediaQuery.of(context).viewInsets.bottom == 0 &&
+                                    MediaQuery.of(context).size.height > 800)
+                                ? const NeverScrollableScrollPhysics()
+                                : const AlwaysScrollableScrollPhysics(),
                         children: [
                           /// Get the user's email
                           TextFormField(

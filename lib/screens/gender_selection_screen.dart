@@ -9,7 +9,7 @@ import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
 /// Create an enum for gender
 enum Gender { male, female, notSelected }
 
-/// Getting the user's gender
+/// Screen to get the user's gender
 class GenderSelectionScreen extends StatefulWidget {
   const GenderSelectionScreen({super.key});
 
@@ -42,65 +42,81 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
           children: [
             /// Top of the screen
             /// The title and the description
-            const TitleAndDescriptionHolder(
-              title: "What's your gender?",
-              description: '',
+            const Padding(
+              padding: EdgeInsets.only(
+                bottom: kPadding8,
+              ),
+              child: TitleAndDescriptionHolder(
+                title: "What's your gender?",
+                description: '',
+              ),
             ),
 
             /// Middle of the screen
             /// The image and the gender selection buttons holder
             Expanded(
-              child: Column(
-                children: [
-                  const Spacer(),
+              child: Center(
+                child: ListView(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  // If the viewport's max height is greater than 600, the listview never scrolls, otherwise scrolls
+                  physics: MediaQuery.of(context).size.height > 600
+                      ? const NeverScrollableScrollPhysics()
+                      : const AlwaysScrollableScrollPhysics(),
+                  children: [
+                    /// Image of gender selection screen
+                    const SizedBox(
+                      height: 210.0,
+                      child: TopImage(
+                          imageUrl: 'images/gender_selection_screen_image.jpg'),
+                    ),
 
-                  /// Image of gender selection screen
-                  const SizedBox(
-                    height: 210.0,
-                    child: TopImage(
-                        imageUrl: 'images/gender_selection_screen_image.jpg'),
-                  ),
+                    /// Add space between the image and the gender selection buttons holder
+                    const SizedBox(height: 10.0),
 
-                  /// Add space between the image and the gender selection buttons holder
-                  const SizedBox(height: 10.0),
+                    /// Gender selection buttons holder
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        /// Male button
+                        _buildMaleButton(),
 
-                  /// Gender selection buttons holding row
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      /// Male button
-                      _buildMaleButton(),
+                        /// Female button
+                        _buildFemaleButton(),
+                      ],
+                    ),
 
-                      /// Female button
-                      _buildFemaleButton(),
-                    ],
-                  ),
-                  const Spacer(
-                    flex: 2,
-                  ),
-                ],
+                    /// Add space
+                    const SizedBox(height: 12.0),
+                  ],
+                ),
               ),
             ),
 
             /// Bottom of the screen
-            /// Next button to go to the age, height, weight screen
-            NextButton(
-              onPressed: _userGender == Gender.notSelected
-                  ? null // Disable the next button
-                  : () {
-                      // When the button is clicked, navigate to the age, height, weight screen
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const AgeHeightWeightScreen(),
-                        ),
-                      );
-                    },
-              style: kNextButtonStyle.copyWith(
-                  backgroundColor: MaterialStatePropertyAll(
-                      _userGender == Gender.notSelected
-                          ? kGreyThemeColor02
-                          : kBlueThemeColor)),
+            /// Next button
+            Padding(
+              padding: const EdgeInsets.only(
+                top: kPadding8,
+              ),
+              child: NextButton(
+                onPressed: _userGender == Gender.notSelected
+                    ? null // Disable the next button
+                    : () {
+                        // When the button is clicked, navigate to the age, height, weight screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const AgeHeightWeightScreen(),
+                          ),
+                        );
+                      },
+                style: kNextButtonStyle.copyWith(
+                    backgroundColor: MaterialStatePropertyAll(
+                        _userGender == Gender.notSelected
+                            ? kGreyThemeColor02
+                            : kBlueThemeColor)),
+              ),
             ),
           ],
         ),
