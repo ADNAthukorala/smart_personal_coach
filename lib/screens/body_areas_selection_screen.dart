@@ -231,6 +231,9 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                       ],
                     ),
                   ),
+
+                  /// Add space
+                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

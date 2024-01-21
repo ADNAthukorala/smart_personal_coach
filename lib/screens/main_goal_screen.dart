@@ -114,6 +114,9 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     selectedMainGoal: MainGoal.keepFit,
                     buttonLabel: 'Keep Fit',
                   ),
+
+                  /// Add space
+                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

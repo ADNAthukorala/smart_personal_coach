@@ -85,6 +85,9 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         _buildFemaleButton(),
                       ],
                     ),
+
+                    /// Add space
+                    const SizedBox(height: 12.0),
                   ],
                 ),
               ),
