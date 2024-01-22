@@ -6,7 +6,7 @@ import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/checking_pullups_capacity.dart';
 
-/// Screen to get the user's pull ups capacity
+/// Screen to get the user's push ups capacity
 class CheckingPushUpsCapacity extends StatefulWidget {
   const CheckingPushUpsCapacity({super.key});
 
@@ -34,7 +34,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
 
       /// Body of the screen
       body: Padding(
-        // Add padding around the main column
+        // Add padding around the body of the screen
         padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [

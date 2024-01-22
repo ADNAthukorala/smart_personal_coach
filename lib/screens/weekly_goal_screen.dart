@@ -15,142 +15,186 @@ class WeeklyGoalScreen extends StatefulWidget {
 class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
   /// Declare an int variable to store how many days the user can dedicate to the workout plan
   /// and assign its value to 1
-  int userSelectedDays = 1;
+  int _userSelectedDays = 1;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       /// App Bar
       appBar: AppBar(
-          centerTitle: true,
-          title: const AppBarTitle(
-            screenId: 7,
-          ),),
+        centerTitle: true,
+
+        /// Show which screen the user is on
+        title: const AppBarTitle(
+          screenId: 7,
+        ),
+      ),
 
       /// Body of the screen
       body: Padding(
+        // Add padding around the body of the screen
         padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
-            const TitleAndDescriptionHolder(
-              title: 'Set your weekly goal',
-              description:
-                  'How many days per week can you dedicate to one workout plan?',
+            /// Top of the screen
+            /// The title and the description
+            const Padding(
+              padding: EdgeInsets.only(
+                bottom: kPadding8,
+              ),
+              child: TitleAndDescriptionHolder(
+                title: 'Set your weekly goal',
+                description:
+                    'How many days per week can you dedicate to one workout plan?',
+              ),
             ),
-            const Spacer(),
-            Column(
-              children: [
-                /// 1 day a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 1;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 1,
-                  title: '1 Day',
-                  description: 'Dedicate 1 day a week',
-                ),
-                const SizedBox(height: 10.0),
 
-                /// 2 days a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 2;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 2,
-                  title: '2 Days',
-                  description: 'Dedicate 2 days a week',
-                ),
-                const SizedBox(height: 10.0),
+            /// Middle of the screen
+            /// Week days buttons holder
+            Expanded(
+              child: ListView(
+                padding: EdgeInsets.zero,
+                shrinkWrap: true,
+                // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
+                physics: MediaQuery.of(context).size.height > 800
+                    ? const NeverScrollableScrollPhysics()
+                    : const AlwaysScrollableScrollPhysics(),
+                children: [
+                  /// Add space
+                  const SizedBox(height: 12.0),
 
-                /// 3 days a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 3;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 3,
-                  title: '3 Days',
-                  description: 'Dedicate 3 days a week',
-                ),
-                const SizedBox(height: 10.0),
+                  /// 1 day a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 1;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 1,
+                    title: '1 Day',
+                    description: 'Dedicate 1 day a week',
+                  ),
 
-                /// 4 days a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 4;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 4,
-                  title: '4 Days',
-                  description: 'Dedicate 4 days a week',
-                ),
-                const SizedBox(height: 10.0),
+                  /// Add space between buttons
+                  const SizedBox(height: 10.0),
 
-                /// 5 days a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 5;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 5,
-                  title: '5 Days',
-                  description: 'Dedicate 5 days a week',
-                ),
-                const SizedBox(height: 10.0),
+                  /// 2 days a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 2;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 2,
+                    title: '2 Days',
+                    description: 'Dedicate 2 days a week',
+                  ),
 
-                /// 6 days a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 6;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 6,
-                  title: '6 Days',
-                  description: 'Dedicate 6 days a week',
-                ),
-                const SizedBox(height: 10.0),
+                  /// Add space between buttons
+                  const SizedBox(height: 10.0),
 
-                /// 7 days a week button
-                DayButton(
-                  onPressed: () {
-                    setState(() {
-                      userSelectedDays = 7;
-                    });
-                    print(userSelectedDays);
-                  },
-                  userSelectedDays: userSelectedDays,
-                  selectedDays: 7,
-                  title: '7 Days',
-                  description: 'Dedicate 7 days a week',
-                ),
-              ],
+                  /// 3 days a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 3;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 3,
+                    title: '3 Days',
+                    description: 'Dedicate 3 days a week',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 10.0),
+
+                  /// 4 days a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 4;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 4,
+                    title: '4 Days',
+                    description: 'Dedicate 4 days a week',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 10.0),
+
+                  /// 5 days a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 5;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 5,
+                    title: '5 Days',
+                    description: 'Dedicate 5 days a week',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 10.0),
+
+                  /// 6 days a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 6;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 6,
+                    title: '6 Days',
+                    description: 'Dedicate 6 days a week',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 10.0),
+
+                  /// 7 days a week button
+                  DayButton(
+                    onPressed: () {
+                      setState(() {
+                        _userSelectedDays = 7;
+                      });
+                      print(_userSelectedDays);
+                    },
+                    userSelectedDays: _userSelectedDays,
+                    selectedDays: 7,
+                    title: '7 Days',
+                    description: 'Dedicate 7 days a week',
+                  ),
+
+                  /// Add space
+                  const SizedBox(height: 12.0),
+                ],
+              ),
             ),
-            const Spacer(),
 
-            /// Button to go to the next screen
-            NextButton(
-              onPressed: () {},
-              style: kNextButtonStyle,
+            /// Bottom of the screen
+            /// Next button
+            Padding(
+              padding: const EdgeInsets.only(
+                top: kPadding8,
+              ),
+              child: NextButton(
+                onPressed: () {},
+                style: kNextButtonStyle,
+              ),
             ),
           ],
         ),
