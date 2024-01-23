@@ -4,7 +4,7 @@ import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/screens/age_height_weight_screen.dart';
+import 'package:smart_personal_coach/screens/get_data/age_height_weight_screen.dart';
 
 /// Create an enum for gender
 enum Gender { male, female, notSelected }
