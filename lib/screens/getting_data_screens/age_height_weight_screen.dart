@@ -4,7 +4,7 @@ import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/get_data/body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 
 /// Screen to get the user age, height, weight
 class AgeHeightWeightScreen extends StatefulWidget {
