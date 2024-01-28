@@ -38,6 +38,7 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             _currentScreenIndex = index;
           });
         },
+        animationDuration: const Duration(microseconds: 1),
         surfaceTintColor: kWhiteThemeColor,
         backgroundColor: kWhiteThemeColor,
         indicatorColor: Colors.transparent,
