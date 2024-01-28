@@ -15,10 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: const Text(
           'SETTINGS',
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: kBlueThemeColor,
-          ),
+          style: kMainScreensAppBarTextStyle,
         ),
       ),
       body: const Center(

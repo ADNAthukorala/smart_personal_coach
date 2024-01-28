@@ -15,10 +15,7 @@ class _UserReportScreenState extends State<UserReportScreen> {
       appBar: AppBar(
         title: const Text(
           'USER REPORT',
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: kBlueThemeColor,
-          ),
+          style: kMainScreensAppBarTextStyle,
         ),
       ),
       body: const Center(

@@ -15,10 +15,7 @@ class _GlobalChatScreenState extends State<GlobalChatScreen> {
       appBar: AppBar(
         title: const Text(
           'GLOBAL CHAT',
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: kBlueThemeColor,
-          ),
+          style: kMainScreensAppBarTextStyle,
         ),
       ),
       body: const Center(

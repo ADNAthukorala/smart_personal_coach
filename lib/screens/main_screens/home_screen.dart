@@ -15,11 +15,9 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text(
           'HOME',
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: kBlueThemeColor,
-          ),
+          style: kMainScreensAppBarTextStyle,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: const Center(
         child: Text('Home'),
