@@ -17,6 +17,7 @@ class _UserReportScreenState extends State<UserReportScreen> {
           'USER REPORT',
           style: kMainScreensAppBarTextStyle,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: const Center(
         child: Text('User Report'),

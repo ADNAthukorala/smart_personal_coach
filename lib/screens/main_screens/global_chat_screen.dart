@@ -17,6 +17,7 @@ class _GlobalChatScreenState extends State<GlobalChatScreen> {
           'GLOBAL CHAT',
           style: kMainScreensAppBarTextStyle,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: const Center(
         child: Text('Global Chat'),

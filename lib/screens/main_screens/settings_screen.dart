@@ -17,6 +17,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
           'SETTINGS',
           style: kMainScreensAppBarTextStyle,
         ),
+        automaticallyImplyLeading: false,
       ),
       body: const Center(
         child: Text('Settings'),
