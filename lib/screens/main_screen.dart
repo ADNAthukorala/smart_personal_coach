@@ -10,8 +10,7 @@ class MainScreenScreen extends StatefulWidget {
   const MainScreenScreen({super.key});
 
   @override
-  State<MainScreenScreen> createState() =>
-      _MainScreenScreenState();
+  State<MainScreenScreen> createState() => _MainScreenScreenState();
 }
 
 class _MainScreenScreenState extends State<MainScreenScreen> {
@@ -80,7 +79,7 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             label: 'Global Chat',
           ),
 
-          /// Report button
+          /// User Report button
           NavigationDestination(
             // If the buttons is clicked, index = 2
             // If the button is clicked, color = kBlueThemeColor, otherwise kGreyThemeColor
