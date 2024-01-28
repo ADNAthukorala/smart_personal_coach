@@ -14,11 +14,15 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Home',
+          'HOME',
           style: TextStyle(
-
+            fontWeight: FontWeight.w900,
+            color: kBlueThemeColor,
           ),
         ),
+      ),
+      body: const Center(
+        child: Text('Home'),
       ),
     );
   }
