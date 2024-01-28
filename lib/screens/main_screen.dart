@@ -95,7 +95,7 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
                     Icons.bar_chart_outlined,
                     color: kGreyThemeColor,
                   ),
-            label: 'Report',
+            label: 'User Report',
           ),
 
           /// Settings button
