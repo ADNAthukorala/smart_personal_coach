@@ -3,6 +3,7 @@ import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/bottom_navigation_bar.dart';
 
 /// Screen to get data on how many days per week the user can dedicate to one workout plan
 class WeeklyGoalScreen extends StatefulWidget {
@@ -192,7 +193,15 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 top: kPadding8,
               ),
               child: NextButton(
-                onPressed: () {},
+                onPressed: () {
+                  // When the button is clicked, navigate to the home page
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const BottomNavigationBarScreen(),
+                    ),
+                  );
+                },
                 style: kNextButtonStyle,
               ),
             ),

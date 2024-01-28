@@ -2,22 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
-import 'package:smart_personal_coach/components/select_capacity_button.dart';
+import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/checking_pullups_capacity.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 
-/// Screen to get the user's push ups capacity
-class CheckingPushUpsCapacity extends StatefulWidget {
-  const CheckingPushUpsCapacity({super.key});
+/// Screen to get the user age, height, weight
+class AgeHeightWeightScreen extends StatefulWidget {
+  const AgeHeightWeightScreen({super.key});
 
   @override
-  State<CheckingPushUpsCapacity> createState() =>
-      _CheckingPushUpsCapacityState();
+  State<AgeHeightWeightScreen> createState() => _AgeHeightWeightScreenState();
 }
 
-class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
-  /// Declare a Capacity variable to store user's push ups capacity
-  Capacity _userPushUpsCapacity = Capacity.beginner;
+class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
+  /// Declare variables to store user age, height and weight and assign default values for them.
+  int _userAge = 18;
+  int _userHeight = 120;
+  double _userWeight = 60;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +29,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
 
         /// Show which screen the user is on
         title: const AppBarTitle(
-          screenId: 5,
+          screenId: 2,
         ),
       ),
 
@@ -45,13 +46,14 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                 bottom: kPadding8,
               ),
               child: TitleAndDescriptionHolder(
-                title: 'How many push-ups can you do at one time?',
-                description: '',
+                title: 'Let us known you better',
+                description:
+                    'Let us know you better to help boost your workout results',
               ),
             ),
 
             /// Middle of the screen
-            /// Capacity buttons holder
+            /// Sliders holder (Age, Height, Weight)
             Expanded(
               child: ListView(
                 padding: EdgeInsets.zero,
@@ -64,52 +66,55 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   /// Add space
                   const SizedBox(height: 12.0),
 
-                  /// Beginner button
-                  SelectCapacityButton(
-                    onPressed: () {
+                  /// Get the user's age
+                  ReusableCardWithSlider(
+                    text1: 'Age',
+                    text2: _userAge.toString(),
+                    text3: 'years',
+                    value: _userAge.toDouble(),
+                    min: 2.0,
+                    max: 200.0,
+                    onChanged: (double newAge) {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.beginner;
+                        _userAge = newAge.round();
                       });
-                      print(_userPushUpsCapacity);
                     },
-                    actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.beginner,
-                    title: 'Beginner',
-                    description: '0 - 5  Push-ups',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 20.0),
+                  /// Add space between sliders
+                  const SizedBox(height: 12.0),
 
-                  /// Intermediate button
-                  SelectCapacityButton(
-                    onPressed: () {
+                  /// Get the user's height
+                  ReusableCardWithSlider(
+                    text1: 'Height',
+                    text2: _userHeight.toString(),
+                    text3: 'cm',
+                    value: _userHeight.toDouble(),
+                    min: 60.0,
+                    max: 280.0,
+                    onChanged: (double newHeight) {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.intermediate;
+                        _userHeight = newHeight.round();
                       });
-                      print(_userPushUpsCapacity);
                     },
-                    actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.intermediate,
-                    title: 'Intermediate',
-                    description: '6 - 10  Push-ups',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 20.0),
+                  /// Add space between sliders
+                  const SizedBox(height: 12.0),
 
-                  /// Advanced button
-                  SelectCapacityButton(
-                    onPressed: () {
+                  /// Get the user's weight
+                  ReusableCardWithSlider(
+                    text1: 'Weight',
+                    text2: _userWeight.toStringAsFixed(1),
+                    text3: 'kg',
+                    value: _userWeight,
+                    min: 10.0,
+                    max: 300.0,
+                    onChanged: (double newWeight) {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.advanced;
+                        _userWeight = newWeight;
                       });
-                      print(_userPushUpsCapacity);
                     },
-                    actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.advanced,
-                    title: 'Advanced',
-                    description: 'More than 10  Push-ups',
                   ),
 
                   /// Add space
@@ -126,11 +131,11 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
               ),
               child: NextButton(
                 onPressed: () {
-                  // When the button is clicked, navigate to the checking pull ups capacity screen
+                  // When the button is clicked, navigate to the body areas selection screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CheckingPullUpsCapacity(),
+                      builder: (context) => const BodyAreasSelectionScreen(),
                     ),
                   );
                 },

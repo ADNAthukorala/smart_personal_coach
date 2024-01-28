@@ -101,6 +101,11 @@ const kDayButtonTextStyle = TextStyle(
   color: kBlueThemeColor,
 );
 
+/// Text style for main screens app bar
+const kMainScreensAppBarTextStyle = TextStyle(
+  fontWeight: FontWeight.w900,
+);
+
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(

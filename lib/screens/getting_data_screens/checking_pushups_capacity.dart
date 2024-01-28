@@ -4,20 +4,20 @@ import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/weekly_goal_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/checking_pullups_capacity.dart';
 
-/// Screen to get the user's pull ups capacity
-class CheckingPullUpsCapacity extends StatefulWidget {
-  const CheckingPullUpsCapacity({super.key});
+/// Screen to get the user's push ups capacity
+class CheckingPushUpsCapacity extends StatefulWidget {
+  const CheckingPushUpsCapacity({super.key});
 
   @override
-  State<CheckingPullUpsCapacity> createState() =>
-      _CheckingPullUpsCapacityState();
+  State<CheckingPushUpsCapacity> createState() =>
+      _CheckingPushUpsCapacityState();
 }
 
-class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
-  /// Declare a Capacity variable to store user's pull ups capacity
-  Capacity _userPullUpsCapacity = Capacity.beginner;
+class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
+  /// Declare a Capacity variable to store user's push ups capacity
+  Capacity _userPushUpsCapacity = Capacity.beginner;
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
 
         /// Show which screen the user is on
         title: const AppBarTitle(
-          screenId: 6,
+          screenId: 5,
         ),
       ),
 
@@ -45,7 +45,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                 bottom: kPadding8,
               ),
               child: TitleAndDescriptionHolder(
-                title: 'How many pull-ups can you do at one time?',
+                title: 'How many push-ups can you do at one time?',
                 description: '',
               ),
             ),
@@ -68,14 +68,14 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.beginner;
+                        _userPushUpsCapacity = Capacity.beginner;
                       });
-                      print(_userPullUpsCapacity);
+                      print(_userPushUpsCapacity);
                     },
-                    actualCapacity: _userPullUpsCapacity,
+                    actualCapacity: _userPushUpsCapacity,
                     selectedCapacity: Capacity.beginner,
                     title: 'Beginner',
-                    description: '0 - 5  Pull-ups',
+                    description: '0 - 5  Push-ups',
                   ),
 
                   /// Add space between buttons
@@ -85,14 +85,14 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.intermediate;
+                        _userPushUpsCapacity = Capacity.intermediate;
                       });
-                      print(_userPullUpsCapacity);
+                      print(_userPushUpsCapacity);
                     },
-                    actualCapacity: _userPullUpsCapacity,
+                    actualCapacity: _userPushUpsCapacity,
                     selectedCapacity: Capacity.intermediate,
                     title: 'Intermediate',
-                    description: '6 - 10  Pull-ups',
+                    description: '6 - 10  Push-ups',
                   ),
 
                   /// Add space between buttons
@@ -102,14 +102,14 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.advanced;
+                        _userPushUpsCapacity = Capacity.advanced;
                       });
-                      print(_userPullUpsCapacity);
+                      print(_userPushUpsCapacity);
                     },
-                    actualCapacity: _userPullUpsCapacity,
+                    actualCapacity: _userPushUpsCapacity,
                     selectedCapacity: Capacity.advanced,
                     title: 'Advanced',
-                    description: 'More than 10  Pull-ups',
+                    description: 'More than 10  Push-ups',
                   ),
 
                   /// Add space
@@ -117,6 +117,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                 ],
               ),
             ),
+
             /// Bottom of the screen
             /// Next button
             Padding(
@@ -125,11 +126,11 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               ),
               child: NextButton(
                 onPressed: () {
-                  // When the button is clicked, navigate to the weekly goal screen
+                  // When the button is clicked, navigate to the checking pull ups capacity screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const WeeklyGoalScreen(),
+                      builder: (context) => const CheckingPullUpsCapacity(),
                     ),
                   );
                 },
