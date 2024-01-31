@@ -15,7 +15,7 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text(
           'HOME',
-          style: kMainScreensAppBarTextStyle,
+          style: kAppBarTextStyle,
         ),
       ),
       drawer: Drawer(
@@ -43,9 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   fontWeight: FontWeight.w500,
                 ),
               ),
-              onTap: () {
-
-              },
+              onTap: () {},
             ),
           ],
         ),

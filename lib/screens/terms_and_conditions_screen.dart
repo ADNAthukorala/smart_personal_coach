@@ -20,6 +20,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
         centerTitle: true,
         title: const Text(
           'Terms & Conditions',
+          style: kAppBarTextStyle,
         ),
       ),
 

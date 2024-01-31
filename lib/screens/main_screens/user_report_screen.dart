@@ -15,7 +15,7 @@ class _UserReportScreenState extends State<UserReportScreen> {
       appBar: AppBar(
         title: const Text(
           'USER REPORT',
-          style: kMainScreensAppBarTextStyle,
+          style: kAppBarTextStyle,
         ),
         automaticallyImplyLeading: false,
       ),

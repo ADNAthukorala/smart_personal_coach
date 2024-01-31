@@ -102,7 +102,7 @@ const kDayButtonTextStyle = TextStyle(
 );
 
 /// Text style for main screens app bar
-const kMainScreensAppBarTextStyle = TextStyle(
+const kAppBarTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
@@ -186,8 +186,7 @@ const kTextButtonStyle = ButtonStyle(
     ),
   ),
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-  overlayColor:
-  MaterialStatePropertyAll(kGreyThemeColor02),
+  overlayColor: MaterialStatePropertyAll(kGreyThemeColor02),
 );
 
 ///STYLES FOR SLIDERS
