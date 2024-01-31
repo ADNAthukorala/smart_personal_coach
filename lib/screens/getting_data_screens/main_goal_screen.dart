@@ -57,13 +57,13 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
             /// Buttons holder
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
                 shrinkWrap: true,
                 primary: false,
                 children: [
-                  /// Add space
-                  const SizedBox(height: 12.0),
-
                   /// Lose weight button
                   SelectMainGoalButton(
                     onPressed: () {
@@ -111,9 +111,6 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     selectedMainGoal: MainGoal.keepFit,
                     buttonLabel: 'Keep Fit',
                   ),
-
-                  /// Add space
-                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

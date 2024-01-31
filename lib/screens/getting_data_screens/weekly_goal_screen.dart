@@ -54,13 +54,13 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
             /// Week days buttons holder
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
                 primary: false,
                 shrinkWrap: true,
                 children: [
-                  /// Add space
-                  const SizedBox(height: 12.0),
-
                   /// 1 day a week button
                   DayButton(
                     onPressed: () {
@@ -176,9 +176,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '7 Days',
                     description: 'Dedicate 7 days a week',
                   ),
-
-                  /// Add space
-                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

@@ -56,13 +56,13 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             /// Sliders holder (Age, Height, Weight)
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
                 shrinkWrap: true,
                 primary: false,
                 children: [
-                  /// Add space
-                  const SizedBox(height: 12.0),
-
                   /// Get the user's age
                   ReusableCardWithSlider(
                     text1: 'Age',
@@ -113,9 +113,6 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                       });
                     },
                   ),
-
-                  /// Add space
-                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

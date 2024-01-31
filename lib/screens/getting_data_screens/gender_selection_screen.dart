@@ -57,7 +57,10 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             Expanded(
               child: Center(
                 child: ListView(
-                  padding: EdgeInsets.zero,
+                  padding: const EdgeInsets.only(
+                    top: kPadding8,
+                    bottom: kPadding8,
+                  ),
                   shrinkWrap: true,
                   primary: false,
                   children: [
@@ -82,9 +85,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         _buildFemaleButton(),
                       ],
                     ),
-
-                    /// Add space
-                    const SizedBox(height: 12.0),
                   ],
                 ),
               ),

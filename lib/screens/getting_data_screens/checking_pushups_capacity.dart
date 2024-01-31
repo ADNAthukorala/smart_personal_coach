@@ -54,13 +54,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             /// Capacity buttons holder
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
                 shrinkWrap: true,
                 primary: false,
                 children: [
-                  /// Add space
-                  const SizedBox(height: 12.0),
-
                   /// Beginner button
                   SelectCapacityButton(
                     onPressed: () {
@@ -108,9 +108,6 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                     title: 'Advanced',
                     description: 'More than 10  Push-ups',
                   ),
-
-                  /// Add space
-                  const SizedBox(height: 12.0),
                 ],
               ),
             ),
