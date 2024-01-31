@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/screens/exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/settings_screen.dart';
@@ -20,6 +21,7 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
   /// List of screens to navigate between
   final List<Widget> _screens = [
     const HomeScreen(),
+    const ExercisesScreen(),
     const GlobalChatScreen(),
     const UserReportScreen(),
     const SettingsScreen(),
@@ -61,11 +63,28 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             label: 'Home',
           ),
 
-          /// Global Chat button
+          /// Exercises button
           NavigationDestination(
             // If the buttons is clicked, index = 1
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 1
+                ? const Icon(
+              size: 35.0,
+              Icons.fitness_center_rounded,
+              color: kWhiteThemeColor,
+            )
+                : const Icon(
+              size: 35.0,
+              Icons.fitness_center_outlined,
+            ),
+            label: 'Home',
+          ),
+
+          /// Global Chat button
+          NavigationDestination(
+            // If the buttons is clicked, index = 2
+            // If the button is clicked, color = kWhiteThemeColor, otherwise black
+            icon: _currentScreenIndex == 2
                 ? const Icon(
                     size: 35.0,
                     Icons.explore_rounded,
@@ -80,9 +99,9 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
 
           /// User Report button
           NavigationDestination(
-            // If the buttons is clicked, index = 2
+            // If the buttons is clicked, index = 3
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 2
+            icon: _currentScreenIndex == 3
                 ? const Icon(
                     size: 35.0,
                     Icons.bar_chart_rounded,
@@ -97,9 +116,9 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
 
           /// Settings button
           NavigationDestination(
-            // If the buttons is clicked, index = 3
+            // If the buttons is clicked, index = 4
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 3
+            icon: _currentScreenIndex == 4
                 ? const Icon(
                     size: 35.0,
                     Icons.settings_rounded,

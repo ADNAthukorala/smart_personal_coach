@@ -16,9 +16,10 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
       /// Appbar
       appBar: AppBar(
         title: const Text(
-          'Exercises',
+          'EXERCISES',
           style: kAppBarTextStyle,
         ),
+        automaticallyImplyLeading: false,
       ),
 
       /// Body of the screen

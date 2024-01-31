@@ -177,11 +177,7 @@ const kSelectCapacityButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(kRadius16),
-        topRight: Radius.circular(kRadius16),
-        bottomRight: Radius.circular(kRadius16),
-        bottomLeft: Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
@@ -191,7 +187,7 @@ const kDayButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 70.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 

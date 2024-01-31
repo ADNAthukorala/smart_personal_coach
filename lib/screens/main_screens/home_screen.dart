@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
-import 'package:smart_personal_coach/screens/exercises_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -18,38 +17,7 @@ class _HomeScreenState extends State<HomeScreen> {
           'HOME',
           style: kAppBarTextStyle,
         ),
-      ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: kBlueThemeColor,
-              ),
-              child: Text(
-                'Smart Personal Coach',
-                style: kDrawerHeaderTextStyle,
-              ),
-            ),
-            ListTile(
-              leading: const Icon(Icons.fitness_center),
-              title: const Text(
-                'Exercises',
-                style: kDrawerItemTextStyle,
-              ),
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) =>
-                    const ExercisesScreen(),
-                  ),
-                );
-              },
-            ),
-          ],
-        ),
+        automaticallyImplyLeading: false,
       ),
       body: const Padding(
         padding: EdgeInsets.only(
