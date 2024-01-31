@@ -29,16 +29,13 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
           left: kPadding16,
           right: kPadding16,
         ),
-        child: ListView(
-          padding: EdgeInsets.zero,
-          // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
-          physics: MediaQuery.of(context).size.height > 800
-              ? const NeverScrollableScrollPhysics()
-              : const AlwaysScrollableScrollPhysics(),
-          children: [
-            /// Add space
-            const SizedBox(height: 12.0),
+        child: GridView.count(
 
+          crossAxisCount: 2,
+          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 10.0,
+          primary: false,
+          children: [
             /// Abs button
             ElevatedButton(
               style: kExercisesScreenButton,
@@ -48,9 +45,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 style: kExercisesScreenButtonTextStyle,
               ),
             ),
-
-            /// Add space between buttons
-            const SizedBox(height: 12.0),
 
             /// Arms button
             ElevatedButton(
@@ -62,9 +56,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               ),
             ),
 
-            /// Add space between buttons
-            const SizedBox(height: 12.0),
-
             /// Back button
             ElevatedButton(
               style: kExercisesScreenButton,
@@ -74,9 +65,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 style: kExercisesScreenButtonTextStyle,
               ),
             ),
-
-            /// Add space between buttons
-            const SizedBox(height: 12.0),
 
             /// Chest button
             ElevatedButton(
@@ -88,9 +76,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               ),
             ),
 
-            /// Add space between buttons
-            const SizedBox(height: 12.0),
-
             /// Legs button
             ElevatedButton(
               style: kExercisesScreenButton,
@@ -101,8 +86,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               ),
             ),
 
-            /// Add space
-            const SizedBox(height: 12.0),
           ],
         ),
       ),

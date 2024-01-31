@@ -99,7 +99,7 @@ const kSelectCapacityButtonTextStyle = TextStyle(
 const kExercisesScreenButtonTextStyle = TextStyle(
   fontSize: 25,
   fontWeight: FontWeight.w900,
-  color: kBlueThemeColor,
+  color: kWhiteThemeColor,
 );
 
 /// Text styles for day button
@@ -213,7 +213,7 @@ const kTextButtonStyle = ButtonStyle(
 const kExercisesScreenButton = ButtonStyle(
   elevation: MaterialStatePropertyAll(kElevation2),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
-  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),

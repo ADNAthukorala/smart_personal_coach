@@ -35,10 +35,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
               child: ListView(
                 // Include all components in a list view and set padding around the components to 0
                 padding: EdgeInsets.zero,
-                // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
-                physics: MediaQuery.of(context).size.height > 800
-                    ? const NeverScrollableScrollPhysics()
-                    : const AlwaysScrollableScrollPhysics(),
+                primary: false,
                 children: const [
                   TermsAndConditionsHolder(
                     title: tncLastUpdateTitle,

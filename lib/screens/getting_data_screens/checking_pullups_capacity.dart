@@ -56,10 +56,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               child: ListView(
                 padding: EdgeInsets.zero,
                 shrinkWrap: true,
-                // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
-                physics: MediaQuery.of(context).size.height > 800
-                    ? const NeverScrollableScrollPhysics()
-                    : const AlwaysScrollableScrollPhysics(),
+                primary: false,
                 children: [
                   /// Add space
                   const SizedBox(height: 12.0),
