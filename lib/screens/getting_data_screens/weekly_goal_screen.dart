@@ -53,11 +53,14 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
             /// Middle of the screen
             /// Week days buttons holder
             Expanded(
-              child: ListView(
+              child: GridView.count(
                 padding: const EdgeInsets.only(
                   top: kPadding8,
                   bottom: kPadding8,
                 ),
+                crossAxisCount: 2,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
                 primary: false,
                 children: [
                   /// 1 day a week button
@@ -74,9 +77,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     description: 'Dedicate 1 day a week',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
-
                   /// 2 days a week button
                   DayButton(
                     onPressed: () {
@@ -90,9 +90,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '2 Days',
                     description: 'Dedicate 2 days a week',
                   ),
-
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
 
                   /// 3 days a week button
                   DayButton(
@@ -108,9 +105,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     description: 'Dedicate 3 days a week',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
-
                   /// 4 days a week button
                   DayButton(
                     onPressed: () {
@@ -124,9 +118,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '4 Days',
                     description: 'Dedicate 4 days a week',
                   ),
-
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
 
                   /// 5 days a week button
                   DayButton(
@@ -142,9 +133,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     description: 'Dedicate 5 days a week',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
-
                   /// 6 days a week button
                   DayButton(
                     onPressed: () {
@@ -158,9 +146,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '6 Days',
                     description: 'Dedicate 6 days a week',
                   ),
-
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
 
                   /// 7 days a week button
                   DayButton(
