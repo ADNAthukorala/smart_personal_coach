@@ -40,7 +40,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               onPressed: () {},
               child: const Text(
                 'ABS',
-                style: kExercisesScreenButtonsTextStyle,
+                style: kExercisesScreenButtonTextStyle,
               ),
             ),
 
@@ -53,7 +53,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               onPressed: () {},
               child: const Text(
                 'ARMS',
-                style: kExercisesScreenButtonsTextStyle,
+                style: kExercisesScreenButtonTextStyle,
               ),
             ),
 
@@ -66,7 +66,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               onPressed: () {},
               child: const Text(
                 'BACK',
-                style: kExercisesScreenButtonsTextStyle,
+                style: kExercisesScreenButtonTextStyle,
               ),
             ),
 
@@ -79,7 +79,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               onPressed: () {},
               child: const Text(
                 'CHEST',
-                style: kExercisesScreenButtonsTextStyle,
+                style: kExercisesScreenButtonTextStyle,
               ),
             ),
 
@@ -92,7 +92,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               onPressed: () {},
               child: const Text(
                 'LEGS',
-                style: kExercisesScreenButtonsTextStyle,
+                style: kExercisesScreenButtonTextStyle,
               ),
             ),
           ],
