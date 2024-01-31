@@ -12,6 +12,7 @@ const kRadius16 = 16.0;
 const kRadius30 = 30.0;
 const kPadding16 = 16.0;
 const kPadding8 = 8.0;
+const kElevation2 = 2.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
 const kAppBarSizedBoxWidth = 105.0;
@@ -128,7 +129,7 @@ const kDrawerItemTextStyle = TextStyle(
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
-  elevation: MaterialStatePropertyAll(4.0),
+  elevation: MaterialStatePropertyAll(kElevation2),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
@@ -165,7 +166,7 @@ const kNextButtonStyle = ButtonStyle(
 
 /// Button styles for select body area button
 const kSelectBodyAreaButtonStyle = ButtonStyle(
-  elevation: MaterialStatePropertyAll(4.0),
+  elevation: MaterialStatePropertyAll(kElevation2),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 40.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
@@ -176,7 +177,7 @@ const kSelectBodyAreaButtonStyle = ButtonStyle(
 /// Button styles for select capacity button
 const kSelectCapacityButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
-  elevation: MaterialStatePropertyAll(4.0),
+  elevation: MaterialStatePropertyAll(kElevation2),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
@@ -187,7 +188,7 @@ const kSelectCapacityButtonStyle = ButtonStyle(
 /// Button styles for day button
 const kDayButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
-  elevation: MaterialStatePropertyAll(4.0),
+  elevation: MaterialStatePropertyAll(kElevation2),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 70.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
@@ -210,7 +211,7 @@ const kTextButtonStyle = ButtonStyle(
 
 /// Button styles for exercises screen buttons
 const kExercisesScreenButton = ButtonStyle(
-  elevation: MaterialStatePropertyAll(4.0),
+  elevation: MaterialStatePropertyAll(kElevation2),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
