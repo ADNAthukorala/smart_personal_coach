@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/constants.dart';
-import 'package:smart_personal_coach/screens/exercises_screen.dart';
+import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/settings_screen.dart';
