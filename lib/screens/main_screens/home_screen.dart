@@ -28,22 +28,18 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               child: Text(
                 'Smart Personal Coach',
-                style: TextStyle(
-                  color: kWhiteThemeColor,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.w900,
-                ),
+                style: kDrawerHeaderTextStyle,
               ),
             ),
             ListTile(
               leading: const Icon(Icons.fitness_center),
               title: const Text(
                 'Exercises',
-                style: TextStyle(
-                  fontWeight: FontWeight.w500,
-                ),
+                style: kDrawerItemTextStyle,
               ),
-              onTap: () {},
+              onTap: () {
+
+              },
             ),
           ],
         ),

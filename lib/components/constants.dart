@@ -106,6 +106,18 @@ const kAppBarTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
+///Text style for drawer header
+const kDrawerHeaderTextStyle = TextStyle(
+  color: kWhiteThemeColor,
+  fontSize: 20.0,
+  fontWeight: FontWeight.w900,
+);
+
+///Text style for drawer item
+const kDrawerItemTextStyle = TextStyle(
+  fontWeight: FontWeight.w500,
+);
+
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
