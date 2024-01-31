@@ -27,12 +27,20 @@ class SocialMediaButtonsContainer extends StatelessWidget {
             //Google icon button
             IconButton(
               onPressed: onPressedGoogle,
-              icon: Image.asset('images/google_logo.png',height: 48.0, width: 48.0,),
+              icon: Image.asset(
+                'images/google_logo.png',
+                height: 48.0,
+                width: 48.0,
+              ),
             ),
             //Facebook icon button
             IconButton(
               onPressed: onPressedFacebook,
-              icon: Image.asset('images/facebook_logo.png',height: 48.0, width: 48.0,),
+              icon: Image.asset(
+                'images/facebook_logo.png',
+                height: 48.0,
+                width: 48.0,
+              ),
             ),
           ],
         ),
