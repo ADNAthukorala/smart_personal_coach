@@ -57,16 +57,12 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
             /// Buttons holder
             Expanded(
               child: ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
-                physics: MediaQuery.of(context).size.height > 800
-                    ? const NeverScrollableScrollPhysics()
-                    : const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
+                primary: false,
                 children: [
-                  /// Add space
-                  const SizedBox(height: 12.0),
-
                   /// Lose weight button
                   SelectMainGoalButton(
                     onPressed: () {
@@ -114,9 +110,6 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     selectedMainGoal: MainGoal.keepFit,
                     buttonLabel: 'Keep Fit',
                   ),
-
-                  /// Add space
-                  const SizedBox(height: 12.0),
                 ],
               ),
             ),

@@ -15,7 +15,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       appBar: AppBar(
         title: const Text(
           'SETTINGS',
-          style: kMainScreensAppBarTextStyle,
+          style: kAppBarTextStyle,
         ),
         automaticallyImplyLeading: false,
       ),

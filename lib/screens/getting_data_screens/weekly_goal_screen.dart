@@ -3,7 +3,7 @@ import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/bottom_navigation_bar.dart';
+import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
 
 /// Screen to get data on how many days per week the user can dedicate to one workout plan
 class WeeklyGoalScreen extends StatefulWidget {
@@ -53,17 +53,16 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
             /// Middle of the screen
             /// Week days buttons holder
             Expanded(
-              child: ListView(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
-                physics: MediaQuery.of(context).size.height > 800
-                    ? const NeverScrollableScrollPhysics()
-                    : const AlwaysScrollableScrollPhysics(),
+              child: GridView.count(
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
+                crossAxisCount: 2,
+                mainAxisSpacing: 10.0,
+                crossAxisSpacing: 10.0,
+                primary: false,
                 children: [
-                  /// Add space
-                  const SizedBox(height: 12.0),
-
                   /// 1 day a week button
                   DayButton(
                     onPressed: () {
@@ -77,9 +76,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '1 Day',
                     description: 'Dedicate 1 day a week',
                   ),
-
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
 
                   /// 2 days a week button
                   DayButton(
@@ -95,9 +91,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     description: 'Dedicate 2 days a week',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
-
                   /// 3 days a week button
                   DayButton(
                     onPressed: () {
@@ -111,9 +104,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '3 Days',
                     description: 'Dedicate 3 days a week',
                   ),
-
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
 
                   /// 4 days a week button
                   DayButton(
@@ -129,9 +119,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     description: 'Dedicate 4 days a week',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
-
                   /// 5 days a week button
                   DayButton(
                     onPressed: () {
@@ -145,9 +132,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '5 Days',
                     description: 'Dedicate 5 days a week',
                   ),
-
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
 
                   /// 6 days a week button
                   DayButton(
@@ -163,9 +147,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     description: 'Dedicate 6 days a week',
                   ),
 
-                  /// Add space between buttons
-                  const SizedBox(height: 10.0),
-
                   /// 7 days a week button
                   DayButton(
                     onPressed: () {
@@ -179,9 +160,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                     title: '7 Days',
                     description: 'Dedicate 7 days a week',
                   ),
-
-                  /// Add space
-                  const SizedBox(height: 12.0),
                 ],
               ),
             ),
@@ -198,7 +176,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BottomNavigationBarScreen(),
+                      builder: (context) => const MainScreenScreen(),
                     ),
                   );
                 },

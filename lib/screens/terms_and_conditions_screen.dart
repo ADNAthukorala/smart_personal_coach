@@ -20,6 +20,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
         centerTitle: true,
         title: const Text(
           'Terms & Conditions',
+          style: kAppBarTextStyle,
         ),
       ),
 
@@ -33,11 +34,11 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
             Expanded(
               child: ListView(
                 // Include all components in a list view and set padding around the components to 0
-                padding: EdgeInsets.zero,
-                // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
-                physics: MediaQuery.of(context).size.height > 800
-                    ? const NeverScrollableScrollPhysics()
-                    : const AlwaysScrollableScrollPhysics(),
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                  bottom: kPadding8,
+                ),
+                primary: false,
                 children: const [
                   TermsAndConditionsHolder(
                     title: tncLastUpdateTitle,

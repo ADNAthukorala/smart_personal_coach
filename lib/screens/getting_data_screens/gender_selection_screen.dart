@@ -57,12 +57,12 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             Expanded(
               child: Center(
                 child: ListView(
-                  padding: EdgeInsets.zero,
                   shrinkWrap: true,
-                  // If the viewport's max height is greater than 600, the listview never scrolls, otherwise scrolls
-                  physics: MediaQuery.of(context).size.height > 600
-                      ? const NeverScrollableScrollPhysics()
-                      : const AlwaysScrollableScrollPhysics(),
+                  padding: const EdgeInsets.only(
+                    top: kPadding8,
+                    bottom: kPadding8,
+                  ),
+                  primary: false,
                   children: [
                     /// Image of gender selection screen
                     const SizedBox(
@@ -85,9 +85,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         _buildFemaleButton(),
                       ],
                     ),
-
-                    /// Add space
-                    const SizedBox(height: 12.0),
                   ],
                 ),
               ),

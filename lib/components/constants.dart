@@ -12,6 +12,7 @@ const kRadius16 = 16.0;
 const kRadius30 = 30.0;
 const kPadding16 = 16.0;
 const kPadding8 = 8.0;
+const kElevation1 = 1.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
 const kAppBarSizedBoxWidth = 105.0;
@@ -94,6 +95,13 @@ const kSelectCapacityButtonTextStyle = TextStyle(
   color: kBlueThemeColor,
 );
 
+/// Text styles for exercises screen buttons
+const kExercisesScreenButtonTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.w900,
+  color: kWhiteThemeColor,
+);
+
 /// Text styles for day button
 const kDayButtonTextStyle = TextStyle(
   fontSize: 20,
@@ -102,16 +110,29 @@ const kDayButtonTextStyle = TextStyle(
 );
 
 /// Text style for main screens app bar
-const kMainScreensAppBarTextStyle = TextStyle(
+const kAppBarTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
+);
+
+/// Text style for drawer header
+const kDrawerHeaderTextStyle = TextStyle(
+  color: kWhiteThemeColor,
+  fontSize: 20.0,
+  fontWeight: FontWeight.w900,
+);
+
+/// Text style for drawer item
+const kDrawerItemTextStyle = TextStyle(
+  fontWeight: FontWeight.w500,
 );
 
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
+  elevation: MaterialStatePropertyAll(kElevation1),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
   fixedSize: MaterialStatePropertyAll(Size(160.0, 75.0)),
 );
@@ -121,7 +142,7 @@ const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
@@ -130,7 +151,7 @@ const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
@@ -139,40 +160,39 @@ const kNextButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
 /// Button styles for select body area button
 const kSelectBodyAreaButtonStyle = ButtonStyle(
+  elevation: MaterialStatePropertyAll(kElevation1),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 40.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
 /// Button styles for select capacity button
 const kSelectCapacityButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
+  elevation: MaterialStatePropertyAll(kElevation1),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.only(
-        topLeft: Radius.circular(kRadius16),
-        topRight: Radius.circular(kRadius16),
-        bottomRight: Radius.circular(kRadius16),
-        bottomLeft: Radius.circular(kRadius16)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
 /// Button styles for day button
 const kDayButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
+  elevation: MaterialStatePropertyAll(kElevation1),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 70.0)),
   backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius30)),
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
@@ -186,8 +206,17 @@ const kTextButtonStyle = ButtonStyle(
     ),
   ),
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-  overlayColor:
-  MaterialStatePropertyAll(kGreyThemeColor02),
+  overlayColor: MaterialStatePropertyAll(kGreyThemeColor02),
+);
+
+/// Button styles for exercises screen buttons
+const kExercisesScreenButton = ButtonStyle(
+  elevation: MaterialStatePropertyAll(kElevation1),
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
+  )),
 );
 
 ///STYLES FOR SLIDERS
@@ -211,7 +240,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius30),
+      Radius.circular(kRadius16),
     ),
     borderSide: BorderSide.none,
   ),

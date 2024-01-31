@@ -13,8 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
+        drawerTheme: const DrawerThemeData(
+          backgroundColor: kWhiteThemeColor,
+        ),
         scaffoldBackgroundColor: kWhiteThemeColor,
-        appBarTheme: const AppBarTheme(backgroundColor: kWhiteThemeColor),
+        appBarTheme: const AppBarTheme(
+          backgroundColor: kWhiteThemeColor,
+          scrolledUnderElevation: 0,
+        ),
       ),
       home: const WelcomeScreen(),
     );

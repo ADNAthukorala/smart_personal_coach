@@ -15,12 +15,18 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text(
           'HOME',
-          style: kMainScreensAppBarTextStyle,
+          style: kAppBarTextStyle,
         ),
         automaticallyImplyLeading: false,
       ),
-      body: const Center(
-        child: Text('Home'),
+      body: const Padding(
+        padding: EdgeInsets.only(
+          top: kPadding8,
+          right: kPadding16,
+          bottom: kPadding8,
+          left: kPadding16,
+        ),
+        child: Center(child: Text('Home')),
       ),
     );
   }
