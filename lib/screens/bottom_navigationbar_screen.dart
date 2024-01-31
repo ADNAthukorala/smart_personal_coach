@@ -77,7 +77,7 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
               size: 35.0,
               Icons.fitness_center_outlined,
             ),
-            label: 'Home',
+            label: 'Exercises',
           ),
 
           /// Global Chat button

@@ -31,6 +31,10 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
         ),
         child: ListView(
           padding: EdgeInsets.zero,
+          // If the viewport's max height is greater than 800, the listview never scrolls, otherwise scrolls
+          physics: MediaQuery.of(context).size.height > 800
+              ? const NeverScrollableScrollPhysics()
+              : const AlwaysScrollableScrollPhysics(),
           children: [
             /// Add space
             const SizedBox(height: 12.0),
@@ -96,6 +100,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 style: kExercisesScreenButtonTextStyle,
               ),
             ),
+
+            /// Add space
+            const SizedBox(height: 12.0),
           ],
         ),
       ),
