@@ -57,6 +57,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             Expanded(
               child: Center(
                 child: ListView(
+                  shrinkWrap: true,
                   padding: const EdgeInsets.only(
                     top: kPadding8,
                     bottom: kPadding8,

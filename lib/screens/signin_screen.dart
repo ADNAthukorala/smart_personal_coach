@@ -74,77 +74,73 @@ class _SignInScreenState extends State<SignInScreen> {
                   /// Middle of the screen (User input fields and check box)
                   /// User inputs container
                   Expanded(
-                    // Center the list view inside the expanded widget
-                    child: Center(
-                      // Include all components in the list view and set padding around the components to 0
-                      child: ListView(
-                        padding: const EdgeInsets.only(
-                          top: kPadding8,
-                          bottom: kPadding8,
-                        ),
-                        primary: false,
-                        children: [
-                          /// Get the user's email
-                          TextFormField(
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Email',
-                              prefixIcon: const Icon(
-                                Icons.email_outlined,
-                                color: kGreyThemeColor,
-                              ),
-                            ),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-
-                          /// Add space
-                          const SizedBox(height: 12.0),
-
-                          /// Get the user's password
-                          TextFormField(
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Password',
-                              prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: kGreyThemeColor,
-                              ),
-                              suffixIcon: IconButton(
-                                onPressed: () {
-                                  setState(() {
-                                    visibilityButtonClick();
-                                  });
-                                },
-                                icon: _isVisibilityButtonClicked
-                                    ? const Icon(Icons.visibility_outlined)
-                                    : const Icon(Icons.visibility_off_outlined),
-                              ),
-                            ),
-                            obscureText:
-                                _isVisibilityButtonClicked ? false : true,
-                            enableSuggestions: false,
-                            autofocus: false,
-                          ),
-
-                          /// Add a check box to remember user details
-                          CheckboxListTile(
-                            title: const Text(
-                              'Remember Me',
-                              style: kSmallGreyColorDescriptionTextStyle,
-                            ),
-                            value: _isChecked,
-                            onChanged: (value) {
-                              setState(() {
-                                _isChecked = value;
-                              });
-                            },
-                            controlAffinity: ListTileControlAffinity.leading,
-                            activeColor: kBlueThemeColor,
-                            checkColor: kWhiteThemeColor,
-                            contentPadding: const EdgeInsets.all(0),
-                          ),
-                        ],
+                    child: ListView(
+                      padding: const EdgeInsets.only(
+                        top: kPadding8,
+                        bottom: kPadding8,
                       ),
+                      primary: false,
+                      children: [
+                        /// Get the user's email
+                        TextFormField(
+                          decoration:
+                              kSignInSignUpTextFormFieldDecorations.copyWith(
+                            hintText: 'Email',
+                            prefixIcon: const Icon(
+                              Icons.email_outlined,
+                              color: kGreyThemeColor,
+                            ),
+                          ),
+                          keyboardType: TextInputType.emailAddress,
+                        ),
+
+                        /// Add space
+                        const SizedBox(height: 12.0),
+
+                        /// Get the user's password
+                        TextFormField(
+                          decoration:
+                              kSignInSignUpTextFormFieldDecorations.copyWith(
+                            hintText: 'Password',
+                            prefixIcon: const Icon(
+                              Icons.lock_outline,
+                              color: kGreyThemeColor,
+                            ),
+                            suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  visibilityButtonClick();
+                                });
+                              },
+                              icon: _isVisibilityButtonClicked
+                                  ? const Icon(Icons.visibility_outlined)
+                                  : const Icon(Icons.visibility_off_outlined),
+                            ),
+                          ),
+                          obscureText:
+                              _isVisibilityButtonClicked ? false : true,
+                          enableSuggestions: false,
+                          autofocus: false,
+                        ),
+
+                        /// Add a check box to remember user details
+                        CheckboxListTile(
+                          title: const Text(
+                            'Remember Me',
+                            style: kSmallGreyColorDescriptionTextStyle,
+                          ),
+                          value: _isChecked,
+                          onChanged: (value) {
+                            setState(() {
+                              _isChecked = value;
+                            });
+                          },
+                          controlAffinity: ListTileControlAffinity.leading,
+                          activeColor: kBlueThemeColor,
+                          checkColor: kWhiteThemeColor,
+                          contentPadding: const EdgeInsets.all(0),
+                        ),
+                      ],
                     ),
                   ),
 
