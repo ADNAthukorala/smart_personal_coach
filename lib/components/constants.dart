@@ -94,6 +94,13 @@ const kSelectCapacityButtonTextStyle = TextStyle(
   color: kBlueThemeColor,
 );
 
+/// Text styles for exercises screen buttons
+const kExercisesScreenButtonsTextStyle = TextStyle(
+  fontSize: 25,
+  fontWeight: FontWeight.w900,
+  color: kWhiteThemeColor,
+);
+
 /// Text styles for day button
 const kDayButtonTextStyle = TextStyle(
   fontSize: 20,
@@ -106,14 +113,14 @@ const kAppBarTextStyle = TextStyle(
   fontWeight: FontWeight.w900,
 );
 
-///Text style for drawer header
+/// Text style for drawer header
 const kDrawerHeaderTextStyle = TextStyle(
   color: kWhiteThemeColor,
   fontSize: 20.0,
   fontWeight: FontWeight.w900,
 );
 
-///Text style for drawer item
+/// Text style for drawer item
 const kDrawerItemTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
 );
@@ -199,6 +206,19 @@ const kTextButtonStyle = ButtonStyle(
   ),
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
   overlayColor: MaterialStatePropertyAll(kGreyThemeColor02),
+);
+
+/// Button styles for exercises screen buttons
+const kExercisesScreenButton = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+    borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(kRadius16),
+        topRight: Radius.circular(kRadius16),
+        bottomRight: Radius.circular(kRadius16),
+        bottomLeft: Radius.circular(kRadius16)),
+  )),
 );
 
 ///STYLES FOR SLIDERS
