@@ -38,26 +38,25 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             _currentScreenIndex = index;
           });
         },
-        animationDuration: Duration.zero,
+        animationDuration: const Duration(seconds: 1),
         surfaceTintColor: kWhiteThemeColor,
         backgroundColor: kWhiteThemeColor,
-        indicatorColor: Colors.transparent,
+        indicatorColor: kBlueThemeColor,
         selectedIndex: _currentScreenIndex,
         destinations: [
           /// Home button
           NavigationDestination(
             // If the buttons is clicked, index = 0
-            // If the button is clicked, color = kBlueThemeColor, otherwise kGreyThemeColor
+            // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 0
                 ? const Icon(
                     size: 35.0,
                     Icons.home_rounded,
-                    color: kBlueThemeColor,
+                    color: kWhiteThemeColor,
                   )
                 : const Icon(
                     size: 35.0,
                     Icons.home_outlined,
-                    color: kGreyThemeColor,
                   ),
             label: 'Home',
           ),
@@ -65,17 +64,16 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
           /// Global Chat button
           NavigationDestination(
             // If the buttons is clicked, index = 1
-            // If the button is clicked, color = kBlueThemeColor, otherwise kGreyThemeColor
+            // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 1
                 ? const Icon(
                     size: 35.0,
                     Icons.explore_rounded,
-                    color: kBlueThemeColor,
+                    color: kWhiteThemeColor,
                   )
                 : const Icon(
                     size: 35.0,
                     Icons.explore_outlined,
-                    color: kGreyThemeColor,
                   ),
             label: 'Global Chat',
           ),
@@ -83,17 +81,16 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
           /// User Report button
           NavigationDestination(
             // If the buttons is clicked, index = 2
-            // If the button is clicked, color = kBlueThemeColor, otherwise kGreyThemeColor
+            // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 2
                 ? const Icon(
                     size: 35.0,
                     Icons.bar_chart_rounded,
-                    color: kBlueThemeColor,
+                    color: kWhiteThemeColor,
                   )
                 : const Icon(
                     size: 35.0,
                     Icons.bar_chart_outlined,
-                    color: kGreyThemeColor,
                   ),
             label: 'User Report',
           ),
@@ -101,17 +98,16 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
           /// Settings button
           NavigationDestination(
             // If the buttons is clicked, index = 3
-            // If the button is clicked, color = kBlueThemeColor, otherwise kGreyThemeColor
+            // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 3
                 ? const Icon(
                     size: 35.0,
                     Icons.settings_rounded,
-                    color: kBlueThemeColor,
+                    color: kWhiteThemeColor,
                   )
                 : const Icon(
                     size: 35.0,
                     Icons.settings_outlined,
-                    color: kGreyThemeColor,
                   ),
             label: 'Settings',
           ),
