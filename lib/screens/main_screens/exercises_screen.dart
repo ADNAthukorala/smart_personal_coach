@@ -30,7 +30,10 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
           right: kPadding16,
         ),
         child: GridView.count(
-
+          padding: const EdgeInsets.only(
+            top: kPadding8,
+            bottom: kPadding8,
+          ),
           crossAxisCount: 2,
           mainAxisSpacing: 10.0,
           crossAxisSpacing: 10.0,
@@ -85,7 +88,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 style: kExercisesScreenButtonTextStyle,
               ),
             ),
-
           ],
         ),
       ),

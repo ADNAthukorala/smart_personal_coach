@@ -61,7 +61,6 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                   top: kPadding8,
                   bottom: kPadding8,
                 ),
-                shrinkWrap: true,
                 primary: false,
                 children: [
                   /// Selection container

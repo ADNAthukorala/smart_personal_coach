@@ -75,8 +75,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: Center(
                       // Include all components in the list view and set padding around the components to 0
                       child: ListView(
-                        padding: EdgeInsets.zero,
-                        shrinkWrap: true,
+                        padding: const EdgeInsets.only(
+                          top: kPadding8,
+                          bottom: kPadding8,
+                        ),
                         primary: false,
                         children: [
                           /// Get the user's full name

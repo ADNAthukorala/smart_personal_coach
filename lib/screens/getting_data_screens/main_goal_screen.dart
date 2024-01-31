@@ -61,7 +61,6 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                   top: kPadding8,
                   bottom: kPadding8,
                 ),
-                shrinkWrap: true,
                 primary: false,
                 children: [
                   /// Lose weight button

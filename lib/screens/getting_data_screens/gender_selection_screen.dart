@@ -61,7 +61,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                     top: kPadding8,
                     bottom: kPadding8,
                   ),
-                  shrinkWrap: true,
                   primary: false,
                   children: [
                     /// Image of gender selection screen

@@ -59,7 +59,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   bottom: kPadding8,
                 ),
                 primary: false,
-                shrinkWrap: true,
                 children: [
                   /// 1 day a week button
                   DayButton(

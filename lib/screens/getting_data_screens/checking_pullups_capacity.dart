@@ -58,7 +58,6 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   top: kPadding8,
                   bottom: kPadding8,
                 ),
-                shrinkWrap: true,
                 primary: false,
                 children: [
                   /// Beginner button

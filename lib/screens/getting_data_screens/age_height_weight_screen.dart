@@ -60,7 +60,6 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                   top: kPadding8,
                   bottom: kPadding8,
                 ),
-                shrinkWrap: true,
                 primary: false,
                 children: [
                   /// Get the user's age
