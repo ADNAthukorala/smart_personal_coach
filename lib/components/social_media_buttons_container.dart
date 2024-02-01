@@ -15,31 +15,94 @@ class SocialMediaButtonsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-          "Or continue with",
-          style: kSmallGreyColorDescriptionTextStyle,
-          textAlign: TextAlign.center,
-        ),
-        //Icon buttons row
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        const Row(
           children: [
-            //Google icon button
-            IconButton(
+            Expanded(
+              child: Divider(
+                color: kGreyThemeColor,
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(
+                left: kPadding8,
+                right: kPadding8,
+              ),
+              child: Text(
+                "Or continue with",
+                style: kSmallGreyColorDescriptionTextStyle,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Expanded(
+              child: Divider(
+                color: kGreyThemeColor,
+              ),
+            ),
+          ],
+        ),
+
+        /// Add space
+        const SizedBox(
+          height: 12.0,
+        ),
+
+        /// Icon buttons holder
+        Column(
+          children: [
+            /// Google icon button
+            TextButton.icon(
+              style: ButtonStyle(
+                fixedSize: const MaterialStatePropertyAll(
+                    Size.fromWidth(double.maxFinite)),
+                side: const MaterialStatePropertyAll(
+                    BorderSide(color: kGreyThemeColor02)),
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(kRadius16))),
+              ),
               onPressed: onPressedGoogle,
               icon: Image.asset(
                 'images/google_logo.png',
-                height: 48.0,
-                width: 48.0,
+                height: 30.0,
+                width: 30.0,
+              ),
+              label: const Text(
+                'Sign in with Google',
+                style: TextStyle(
+                  color: kBlackThemeColor,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
-            //Facebook icon button
-            IconButton(
-              onPressed: onPressedFacebook,
+
+            /// Add space
+            const SizedBox(
+              height: 12.0,
+            ),
+
+            /// Facebook icon button
+            TextButton.icon(
+              style: ButtonStyle(
+                fixedSize: const MaterialStatePropertyAll(
+                    Size.fromWidth(double.maxFinite)),
+                side: const MaterialStatePropertyAll(
+                    BorderSide(color: kGreyThemeColor02)),
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(kRadius16))),
+              ),
+              onPressed: onPressedGoogle,
               icon: Image.asset(
                 'images/facebook_logo.png',
-                height: 48.0,
-                width: 48.0,
+                height: 30.0,
+                width: 30.0,
+              ),
+              label: const Text(
+                'Sign in with Facebook',
+                style: TextStyle(
+                  color: kBlackThemeColor,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

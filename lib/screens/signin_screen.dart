@@ -16,9 +16,6 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  /// To check whether check box is checked or not.
-  bool? _isChecked = false;
-
   /// To check whether visibility button is clicked or not.
   bool _isVisibilityButtonClicked = false;
 
@@ -62,7 +59,6 @@ class _SignInScreenState extends State<SignInScreen> {
             // Add padding around the bottom components
             child: Padding(
               padding: const EdgeInsets.only(
-                top: kPadding8,
                 left: kPadding16,
                 right: kPadding16,
                 bottom: kPadding16,
@@ -123,65 +119,50 @@ class _SignInScreenState extends State<SignInScreen> {
                           autofocus: false,
                         ),
 
-                        /// Add a check box to remember user details
-                        CheckboxListTile(
-                          title: const Text(
-                            'Remember Me',
-                            style: kSmallGreyColorDescriptionTextStyle,
+                        /// Add space
+                        const SizedBox(height: 12.0),
+
+                        /// Forget password button
+                        Container(
+                          alignment: Alignment.centerLeft,
+                          child: TextButton(
+                            onPressed: () {},
+                            style: kTextButtonStyle,
+                            child: Text(
+                              'Forget Password?',
+                              style: kTextButtonTextStyle.copyWith(
+                                color: kGreyThemeColor,
+                              ),
+                            ),
                           ),
-                          value: _isChecked,
-                          onChanged: (value) {
-                            setState(() {
-                              _isChecked = value;
-                            });
+                        ),
+
+                        /// Add space
+                        const SizedBox(height: 12.0),
+
+                        /// Sign in button
+                        SignInSignUpButton(
+                          onPressed: () {
+                            // Navigate to the gender selection screen screen
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) =>
+                                    const GenderSelectionScreen(),
+                              ),
+                            );
                           },
-                          controlAffinity: ListTileControlAffinity.leading,
-                          activeColor: kBlueThemeColor,
-                          checkColor: kWhiteThemeColor,
-                          contentPadding: const EdgeInsets.all(0),
+                          buttonText: 'Sign In',
                         ),
                       ],
                     ),
                   ),
 
-                  /// Bottom of the screen (Sign-up button, social media buttons, sign-in button)
+                  /// Bottom of the screen (Sign-up button, social media buttons)
                   Column(
                     children: [
                       /// Add space between the middle and the bottom of the screen
                       const SizedBox(height: 8.0),
-
-                      /// Sign in button
-                      SignInSignUpButton(
-                        onPressed: () {
-                          // Navigate to the gender selection screen screen
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) =>
-                                  const GenderSelectionScreen(),
-                            ),
-                          );
-                        },
-                        buttonText: 'Sign In',
-                      ),
-
-                      /// Add space
-                      const SizedBox(height: 8.0),
-
-                      /// Forget password button
-                      Container(
-                        alignment: Alignment.centerLeft,
-                        child: TextButton(
-                          onPressed: () {},
-                          style: kTextButtonStyle,
-                          child: Text(
-                            'Forget Password',
-                            style: kTextButtonTextStyle.copyWith(
-                              color: kGreyThemeColor,
-                            ),
-                          ),
-                        ),
-                      ),
 
                       /// Social media buttons container
                       SocialMediaButtonsContainer(
@@ -190,7 +171,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       ),
 
                       /// Add space
-                      const SizedBox(height: 8.0),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
 
                       /// Sign up text button container
                       Row(

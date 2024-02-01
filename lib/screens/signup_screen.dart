@@ -37,9 +37,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: Column(
         children: [
           /// Top of the screen ( Top image, The title and the description)
-          const Expanded(
-            flex: 1,
-            child: Column(
+           Expanded(
+            flex: MediaQuery.of(context).viewInsets.bottom == 0 ? 3 : 1,
+            child: const Column(
               children: [
                 /// Top image container
                 Expanded(
@@ -57,11 +57,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
           /// Bottom components holder (Middle and bottom of the screen)
           Expanded(
-            flex: 2,
+            flex: MediaQuery.of(context).viewInsets.bottom == 0 ? 4 : 2,
             // Add padding around the bottom components
             child: Padding(
               padding: const EdgeInsets.only(
-                top: kPadding8,
                 left: kPadding16,
                 right: kPadding16,
                 bottom: kPadding16,
@@ -78,21 +77,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                       primary: false,
                       children: [
-                        /// Get the user's full name
-                        TextFormField(
-                          decoration:
-                              kSignInSignUpTextFormFieldDecorations.copyWith(
-                            hintText: 'Full Name',
-                            prefixIcon: const Icon(
-                              Icons.person_outlined,
-                              color: kGreyThemeColor,
-                            ),
-                          ),
-                        ),
-
-                        /// Add space
-                        const SizedBox(height: 8.0),
-
                         /// Get the user's email
                         TextFormField(
                           decoration:
@@ -107,23 +91,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
 
                         /// Add space
-                        const SizedBox(height: 8.0),
-
-                        /// Get the user's phone number
-                        TextFormField(
-                          decoration:
-                              kSignInSignUpTextFormFieldDecorations.copyWith(
-                            hintText: 'Phone Number',
-                            prefixIcon: const Icon(
-                              Icons.phone_outlined,
-                              color: kGreyThemeColor,
-                            ),
-                          ),
-                          keyboardType: TextInputType.number,
-                        ),
-
-                        /// Add space
-                        const SizedBox(height: 8.0),
+                        const SizedBox(height: 12.0),
 
                         /// Get the user's password
                         TextFormField(
@@ -152,7 +120,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
 
                         /// Add space
-                        const SizedBox(height: 8.0),
+                        const SizedBox(height: 12.0),
 
                         /// Confirm the password
                         TextFormField(
@@ -179,6 +147,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           enableSuggestions: false,
                           autofocus: false,
                         ),
+
+                        /// Add space
+                        const SizedBox(height: 8.0),
 
                         /// Check whether agree with the terms and conditions
                         Row(
@@ -214,23 +185,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             ),
                           ],
                         ),
+
+                        /// Add space
+                        const SizedBox(height: 8.0),
+
+                        /// Sign up button
+                        SignInSignUpButton(
+                          onPressed: () {},
+                          buttonText: 'Sign Up',
+                        ),
                       ],
                     ),
                   ),
 
-                  /// Bottom of the screen (Sign-up button, social media buttons, sign-in button)
+                  /// Bottom of the screen (Sign-in button, social media buttons)
                   Column(
                     children: [
                       /// Add space between the middle and the bottom of the screen
-                      const SizedBox(height: 8.0),
-
-                      /// Sign up button
-                      SignInSignUpButton(
-                        onPressed: () {},
-                        buttonText: 'Sign Up',
-                      ),
-
-                      /// Add space
                       const SizedBox(height: 8.0),
 
                       /// Social media buttons container
@@ -240,7 +211,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
 
                       /// Add space
-                      const SizedBox(height: 8.0),
+                      const SizedBox(
+                        height: 12.0,
+                      ),
 
                       /// Sign in text button container
                       Row(
