@@ -34,28 +34,17 @@ class _SignInScreenState extends State<SignInScreen> {
       /// Body of the screen
       body: Column(
         children: [
-          /// Top of the screen ( Top image, The title and the description)
-          const Expanded(
-            flex: 1,
-            child: Column(
-              children: [
-                /// Top image container
-                Expanded(
+          /// Top of the screen (Top image)
+          MediaQuery.of(context).viewInsets.bottom == 0
+              ? const Expanded(
+                  flex: 2,
                   child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
-                ),
-
-                /// The Title and the description holder
-                TitleAndDescriptionHolder(
-                  title: 'Sign In',
-                  description: 'Please enter email and password for login',
-                ),
-              ],
-            ),
-          ),
+                )
+              : const SizedBox(),
 
           /// Bottom components holder (Middle and bottom of the screen)
           Expanded(
-            flex: MediaQuery.of(context).viewInsets.bottom == 0 ? 1 : 2,
+            flex: MediaQuery.of(context).size.height > 800 ? 3 : 5,
             // Add padding around the bottom components
             child: Padding(
               padding: const EdgeInsets.only(
@@ -63,148 +52,152 @@ class _SignInScreenState extends State<SignInScreen> {
                 right: kPadding16,
                 bottom: kPadding16,
               ),
-              //Adding all the components at the bottom to a column
+              // Adding all the components at the bottom to a column
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisAlignment: MediaQuery.of(context).viewInsets.bottom == 0
+                    ? MainAxisAlignment.spaceBetween
+                    : MainAxisAlignment.center,
                 children: [
-                  /// Middle of the screen (User input fields and check box)
-                  /// User inputs container
-                  Expanded(
-                    child: ListView(
-                      padding: const EdgeInsets.only(
-                        top: kPadding8,
-                        bottom: kPadding8,
-                      ),
-                      primary: false,
-                      children: [
-                        /// Get the user's email
-                        TextFormField(
-                          decoration:
-                              kSignInSignUpTextFormFieldDecorations.copyWith(
-                            hintText: 'Email',
-                            prefixIcon: const Icon(
-                              Icons.email_outlined,
-                              color: kGreyThemeColor,
-                            ),
-                          ),
-                          keyboardType: TextInputType.emailAddress,
-                        ),
-
-                        /// Add space
-                        const SizedBox(height: 12.0),
-
-                        /// Get the user's password
-                        TextFormField(
-                          decoration:
-                              kSignInSignUpTextFormFieldDecorations.copyWith(
-                            hintText: 'Password',
-                            prefixIcon: const Icon(
-                              Icons.lock_outline,
-                              color: kGreyThemeColor,
-                            ),
-                            suffixIcon: IconButton(
-                              onPressed: () {
-                                setState(() {
-                                  visibilityButtonClick();
-                                });
-                              },
-                              icon: _isVisibilityButtonClicked
-                                  ? const Icon(Icons.visibility_outlined)
-                                  : const Icon(Icons.visibility_off_outlined),
-                            ),
-                          ),
-                          obscureText:
-                              _isVisibilityButtonClicked ? false : true,
-                          enableSuggestions: false,
-                          autofocus: false,
-                        ),
-
-                        /// Add space
-                        const SizedBox(height: 12.0),
-
-                        /// Forget password button
-                        Container(
-                          alignment: Alignment.centerLeft,
-                          child: TextButton(
-                            onPressed: () {},
-                            style: kTextButtonStyle,
-                            child: Text(
-                              'Forget Password?',
-                              style: kTextButtonTextStyle.copyWith(
-                                color: kGreyThemeColor,
-                              ),
-                            ),
-                          ),
-                        ),
-
-                        /// Add space
-                        const SizedBox(height: 12.0),
-
-                        /// Sign in button
-                        SignInSignUpButton(
-                          onPressed: () {
-                            // Navigate to the gender selection screen screen
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) =>
-                                    const GenderSelectionScreen(),
-                              ),
-                            );
-                          },
-                          buttonText: 'Sign In',
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  /// Bottom of the screen (Sign-up button, social media buttons)
+                  /// Middle of the screen (Title ans user input fields)
+                  /// User inputs container and title and description container
                   Column(
                     children: [
-                      /// Add space between the middle and the bottom of the screen
-                      const SizedBox(height: 8.0),
-
-                      /// Social media buttons container
-                      SocialMediaButtonsContainer(
-                        onPressedFacebook: () {},
-                        onPressedGoogle: () {},
+                      /// The Title and the description holder
+                      const TitleAndDescriptionHolder(
+                        title: 'Sign In',
+                        description:
+                            'Please enter email and password for login',
                       ),
 
                       /// Add space
-                      const SizedBox(
-                        height: 12.0,
+                      const SizedBox(height: 12.0),
+
+                      /// Get the user's email
+                      TextFormField(
+                        decoration:
+                            kSignInSignUpTextFormFieldDecorations.copyWith(
+                          hintText: 'Email',
+                          prefixIcon: const Icon(
+                            Icons.email_outlined,
+                            color: kGreyThemeColor,
+                          ),
+                        ),
+                        keyboardType: TextInputType.emailAddress,
                       ),
 
-                      /// Sign up text button container
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text(
-                            "Don’t have an account?",
-                            style: kSmallGreyColorDescriptionTextStyle,
-                          ),
+                      /// Add space
+                      const SizedBox(height: 12.0),
 
-                          /// Sign up text button
-                          TextButton(
+                      /// Get the user's password
+                      TextFormField(
+                        decoration:
+                            kSignInSignUpTextFormFieldDecorations.copyWith(
+                          hintText: 'Password',
+                          prefixIcon: const Icon(
+                            Icons.lock_outline,
+                            color: kGreyThemeColor,
+                          ),
+                          suffixIcon: IconButton(
                             onPressed: () {
-                              // Navigate to the sign-up screen
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) => const SignUpScreen(),
-                                ),
-                              );
+                              setState(() {
+                                visibilityButtonClick();
+                              });
                             },
-                            style: kTextButtonStyle,
-                            child: const Text(
-                              'Sign Up',
-                              style: kTextButtonTextStyle,
+                            icon: _isVisibilityButtonClicked
+                                ? const Icon(Icons.visibility_outlined)
+                                : const Icon(Icons.visibility_off_outlined),
+                          ),
+                        ),
+                        obscureText: _isVisibilityButtonClicked ? false : true,
+                        enableSuggestions: false,
+                        autofocus: false,
+                      ),
+
+                      /// Add space
+                      const SizedBox(height: 12.0),
+
+                      /// Forget password button
+                      Container(
+                        alignment: Alignment.centerLeft,
+                        child: TextButton(
+                          onPressed: () {},
+                          style: kTextButtonStyle,
+                          child: Text(
+                            'Forget Password?',
+                            style: kTextButtonTextStyle.copyWith(
+                              color: kGreyThemeColor,
                             ),
                           ),
-                        ],
+                        ),
+                      ),
+
+                      /// Add space
+                      const SizedBox(height: 12.0),
+
+                      /// Sign in button
+                      SignInSignUpButton(
+                        onPressed: () {
+                          // Navigate to the gender selection screen screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const GenderSelectionScreen(),
+                            ),
+                          );
+                        },
+                        buttonText: 'Sign In',
                       ),
                     ],
                   ),
+
+                  /// Bottom of the screen (Sign-up button, social media buttons)
+                  MediaQuery.of(context).viewInsets.bottom == 0
+                      ? Column(
+                          children: [
+                            /// Social media buttons container
+                            SocialMediaButtonsContainer(
+                              onPressedFacebook: () {},
+                              onPressedGoogle: () {},
+                            ),
+
+                            /// Add space
+                            const SizedBox(
+                              height: 12.0,
+                            ),
+
+                            /// Sign up text button container
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  "Don’t have an account?",
+                                  style: kSmallGreyColorDescriptionTextStyle,
+                                ),
+
+                                /// Sign up text button
+                                TextButton(
+                                  onPressed: () {
+                                    // Navigate to the sign-up screen
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const SignUpScreen(),
+                                      ),
+                                    );
+                                  },
+                                  style: kTextButtonStyle,
+                                  child: const Text(
+                                    'Sign Up',
+                                    style: kTextButtonTextStyle,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        )
+                      : const SizedBox(),
                 ],
               ),
             ),
