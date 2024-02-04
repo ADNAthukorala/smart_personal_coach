@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 
 /// Title and description holder
 class TitleAndDescriptionHolder extends StatelessWidget {

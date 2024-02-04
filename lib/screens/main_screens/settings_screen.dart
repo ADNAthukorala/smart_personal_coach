@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({super.key});

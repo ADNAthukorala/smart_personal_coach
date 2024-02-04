@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';

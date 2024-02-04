@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/terms_and_conditions.dart';
 
 /// Show terms and conditions
