@@ -156,7 +156,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           validator: _validateEmail,
                           controller: _emailController,
                           onChanged: (value) {
-                            _email = _emailController.text;
+                            _email = _emailController.text.trim();
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -177,7 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           validator: _validatePassword,
                           controller: _passwordController,
                           onChanged: (value) {
-                            _password = _passwordController.text;
+                            _password = _passwordController.text.trim();
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(

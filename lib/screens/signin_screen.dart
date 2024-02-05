@@ -145,7 +145,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           validator: _validateEmail,
                           controller: _emailController,
                           onChanged: (value) {
-                            _email = _emailController.text;
+                            _email = _emailController.text.trim();
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -166,7 +166,7 @@ class _SignInScreenState extends State<SignInScreen> {
                           validator: _validatePassword,
                           controller: _passwordController,
                           onChanged: (value) {
-                            _password = _passwordController.text;
+                            _password = _passwordController.text.trim();
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -205,7 +205,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 context,
                                 MaterialPageRoute(
                                   builder: (context) =>
-                                  const ForgotPasswordScreen(),
+                                      const ForgotPasswordScreen(),
                                 ),
                               );
                             },
@@ -247,6 +247,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   const SnackBar(content: Text('Signed in!')),
                                 );
                               } on FirebaseAuthException catch (e) {
+                                print(e);
                                 // Show snack bar with error message
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
