@@ -249,10 +249,11 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
       Radius.circular(kRadius8),
     ),
   ),
+
   contentPadding: EdgeInsets.only(
     left: 8.0,
-    top: 12.0,
+    top: 8.0,
     right: 8.0,
-    bottom: 12.0,
+    bottom: 8.0,
   ),
 );
