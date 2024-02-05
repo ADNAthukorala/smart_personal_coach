@@ -5,6 +5,7 @@ import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
+import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
 
@@ -22,7 +23,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  /// Declare variables to store email, password, confirm password and error message
+  /// Declare variables to store email, password, confirm password
   late String _email;
   late String _password;
 
@@ -196,15 +197,22 @@ class _SignInScreenState extends State<SignInScreen> {
 
                         /// Forget password button
                         Container(
-                          alignment: Alignment.centerLeft,
+                          alignment: Alignment.centerRight,
                           child: TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              // Go to the forgot password screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                  const ForgotPasswordScreen(),
+                                ),
+                              );
+                            },
                             style: kTextButtonStyle,
-                            child: Text(
-                              'Forget Password?',
-                              style: kTextButtonTextStyle.copyWith(
-                                color: kGreyThemeColor,
-                              ),
+                            child: const Text(
+                              'Forgot Password?',
+                              style: kTextButtonTextStyle,
                             ),
                           ),
                         ),

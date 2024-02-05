@@ -22,7 +22,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  /// Declare variables to store email, password, confirm password and error message
+  /// Declare variables to store email, password, confirm password
   late String _email;
   late String _password;
 
