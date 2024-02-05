@@ -206,7 +206,6 @@ const kTextButtonStyle = ButtonStyle(
     ),
   ),
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-  overlayColor: MaterialStatePropertyAll(kGreyThemeColor02),
 );
 
 /// Button styles for exercises screen buttons
