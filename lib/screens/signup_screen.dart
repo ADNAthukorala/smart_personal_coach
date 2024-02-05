@@ -272,7 +272,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             if (_formKeySignUp.currentState!.validate()) {
                               try {
                                 // Create a new user with email and password
-                                final credential = await FirebaseAuth.instance
+                                await FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
                                   email: _emailController.text.trim(),
                                   password: _passwordController.text.trim(),
@@ -293,7 +293,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   );
                                 }
                               } catch (e) {
-                                print(e);
+                                // print(e);
                               }
                             }
                           },

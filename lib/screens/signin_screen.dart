@@ -8,7 +8,6 @@ import 'package:smart_personal_coach/components/social_media_buttons_container.d
 import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 /// Sign-In Screen
 class SignInScreen extends StatefulWidget {
@@ -218,7 +217,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             if (_formKeySignIn.currentState!.validate()) {
                               try {
                                 // Sign in a user with an email address and password
-                                final credential = await FirebaseAuth.instance
+                                await FirebaseAuth.instance
                                     .signInWithEmailAndPassword(
                                   email: _emailController.text.trim(),
                                   password: _passwordController.text.trim(),
@@ -246,7 +245,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                           'Wrong email or password. Check again and re-enter!')),
                                 );
                               } catch (e) {
-                                print(e);
+                                // print(e);
                               }
                             }
                           },
