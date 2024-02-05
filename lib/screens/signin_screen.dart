@@ -8,6 +8,7 @@ import 'package:smart_personal_coach/components/social_media_buttons_container.d
 import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 /// Sign-In Screen
 class SignInScreen extends StatefulWidget {
@@ -18,13 +19,13 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  /// Create text controllers and use them to retrieve
-  /// the current values of the email, password and confirm password text boxes
+  // Create text controllers and use them to retrieve
+  // the current values of the email, password and confirm password text boxes
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  /// Create a global key that uniquely identifies the Form widget
-  /// and allows validation of the form.
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
   final _formKeySignIn = GlobalKey<FormState>();
 
   /// Validator for email
@@ -70,7 +71,7 @@ class _SignInScreenState extends State<SignInScreen> {
     return null;
   }
 
-  /// To check whether visibility button is clicked or not.
+  // To check whether visibility button is clicked or not.
   bool _isVisibilityButtonClicked = false;
 
   /// Visibility button click function
