@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 
 //Social media buttons container
 class SocialMediaButtonsContainer extends StatelessWidget {
   const SocialMediaButtonsContainer(
       {super.key,
-        required this.onPressedGoogle,
-        required this.onPressedFacebook});
+      required this.onPressedGoogle,
+      required this.onPressedFacebook});
 
   final void Function()? onPressedGoogle;
   final void Function()? onPressedFacebook;
@@ -15,27 +15,94 @@ class SocialMediaButtonsContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const Text(
-          "Or continue with",
-          style: kSmallGreyColorDescriptionTextStyle,
-          textAlign: TextAlign.center,
-        ),
-        //Icon buttons row
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+        const Row(
           children: [
-            //Google icon button
-            IconButton(
-              onPressed: onPressedGoogle,
-              icon: Image.asset(
-                'images/google_icon.png',
+            Expanded(
+              child: Divider(
+                color: kGreyThemeColor,
               ),
             ),
-            //Facebook icon button
-            IconButton(
-              onPressed: onPressedFacebook,
+            Padding(
+              padding: EdgeInsets.only(
+                left: kPadding8,
+                right: kPadding8,
+              ),
+              child: Text(
+                "Or continue with",
+                style: kSmallGreyColorDescriptionTextStyle,
+                textAlign: TextAlign.center,
+              ),
+            ),
+            Expanded(
+              child: Divider(
+                color: kGreyThemeColor,
+              ),
+            ),
+          ],
+        ),
+
+        /// Add space
+        const SizedBox(
+          height: 12.0,
+        ),
+
+        /// Icon buttons holder
+        Column(
+          children: [
+            /// Google icon button
+            TextButton.icon(
+              style: ButtonStyle(
+                fixedSize: const MaterialStatePropertyAll(
+                    Size.fromWidth(double.maxFinite)),
+                side: const MaterialStatePropertyAll(
+                    BorderSide(color: kGreyThemeColor02)),
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(kRadius16))),
+              ),
+              onPressed: onPressedGoogle,
               icon: Image.asset(
-                'images/facebook_icon.png',
+                'images/google_logo.png',
+                height: 30.0,
+                width: 30.0,
+              ),
+              label: const Text(
+                'Sign in with Google',
+                style: TextStyle(
+                  color: kBlackThemeColor,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            /// Add space
+            const SizedBox(
+              height: 12.0,
+            ),
+
+            /// Facebook icon button
+            TextButton.icon(
+              style: ButtonStyle(
+                fixedSize: const MaterialStatePropertyAll(
+                    Size.fromWidth(double.maxFinite)),
+                side: const MaterialStatePropertyAll(
+                    BorderSide(color: kGreyThemeColor02)),
+                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(kRadius16))),
+              ),
+              onPressed: onPressedGoogle,
+              icon: Image.asset(
+                'images/facebook_logo.png',
+                height: 30.0,
+                width: 30.0,
+              ),
+              label: const Text(
+                'Sign in with Facebook',
+                style: TextStyle(
+                  color: kBlackThemeColor,
+                  fontSize: 14.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
             ),
           ],

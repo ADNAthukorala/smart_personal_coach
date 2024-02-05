@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 
 // Terms and Conditions
 const String tncLastUpdateTitle = 'Last Updated: 19.01.2024';

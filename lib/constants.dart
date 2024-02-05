@@ -206,7 +206,6 @@ const kTextButtonStyle = ButtonStyle(
     ),
   ),
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-  overlayColor: MaterialStatePropertyAll(kGreyThemeColor02),
 );
 
 /// Button styles for exercises screen buttons
@@ -238,18 +237,22 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
     fontSize: 15,
     fontWeight: FontWeight.w500,
   ),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(kRadius8),
+    ),
+    borderSide: BorderSide(color: kBlueThemeColor, width: 2),
+  ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius16),
+      Radius.circular(kRadius8),
     ),
-    borderSide: BorderSide.none,
   ),
-  filled: true,
-  fillColor: kGreyThemeColor02,
+
   contentPadding: EdgeInsets.only(
     left: 8.0,
-    top: 12.0,
+    top: 8.0,
     right: 8.0,
-    bottom: 12.0,
+    bottom: 8.0,
   ),
 );

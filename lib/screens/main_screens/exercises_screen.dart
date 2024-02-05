@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/exercises_screens/exercises_for_chest_screen.dart';
 
 /// Exercises screen
 class ExercisesScreen extends StatefulWidget {
@@ -42,10 +43,29 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Abs button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
-              child: const Text(
-                'ABS',
-                style: kExercisesScreenButtonTextStyle,
+              onPressed: () {
+                // Navigate to the exercises for chest screen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ExercisesForChestScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'ABS',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/abs.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
               ),
             ),
 
@@ -53,9 +73,20 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             ElevatedButton(
               style: kExercisesScreenButton,
               onPressed: () {},
-              child: const Text(
-                'ARMS',
-                style: kExercisesScreenButtonTextStyle,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'ARMS',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/arms.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
               ),
             ),
 
@@ -63,9 +94,20 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             ElevatedButton(
               style: kExercisesScreenButton,
               onPressed: () {},
-              child: const Text(
-                'BACK',
-                style: kExercisesScreenButtonTextStyle,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'BACK',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/back.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
               ),
             ),
 
@@ -73,9 +115,20 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             ElevatedButton(
               style: kExercisesScreenButton,
               onPressed: () {},
-              child: const Text(
-                'CHEST',
-                style: kExercisesScreenButtonTextStyle,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'CHEST',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/chest.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
               ),
             ),
 
@@ -83,9 +136,41 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             ElevatedButton(
               style: kExercisesScreenButton,
               onPressed: () {},
-              child: const Text(
-                'LEGS',
-                style: kExercisesScreenButtonTextStyle,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'LEGS',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/legs.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
+            ),
+
+            /// Meditation button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {},
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'MED',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/meditation.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
               ),
             ),
           ],

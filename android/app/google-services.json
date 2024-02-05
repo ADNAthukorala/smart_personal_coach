@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "510841365522",
+    "project_id": "smartpersonalcoach",
+    "storage_bucket": "smartpersonalcoach.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:510841365522:android:786115f9f441bab2a064cb",
+        "android_client_info": {
+          "package_name": "com.adna.smart_personal_coach"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "510841365522-fqlg3klhvrk24rlgth6rhcapgn39iluj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKVCrMHUFgGDVbtlTz621btwNyEpr_RIs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "510841365522-fl4qm8pvlqbm10v67hghicibftemc0cd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

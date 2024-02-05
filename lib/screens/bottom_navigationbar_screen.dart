@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/constants.dart';
+import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/settings_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Main screen with bottom navigation bar
 class MainScreenScreen extends StatefulWidget {
@@ -52,13 +53,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 0
                 ? const Icon(
-                    size: 35.0,
-                    Icons.home_rounded,
+                    FontAwesomeIcons.house,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-                    size: 35.0,
-                    Icons.home_outlined,
+                    FontAwesomeIcons.house,
                   ),
             label: 'Home',
           ),
@@ -69,14 +68,12 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 1
                 ? const Icon(
-              size: 35.0,
-              Icons.fitness_center_rounded,
-              color: kWhiteThemeColor,
-            )
+              FontAwesomeIcons.dumbbell,
+                    color: kWhiteThemeColor,
+                  )
                 : const Icon(
-              size: 35.0,
-              Icons.fitness_center_outlined,
-            ),
+              FontAwesomeIcons.dumbbell,
+                  ),
             label: 'Exercises',
           ),
 
@@ -86,13 +83,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 2
                 ? const Icon(
-                    size: 35.0,
-                    Icons.explore_rounded,
+              FontAwesomeIcons.globe,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-                    size: 35.0,
-                    Icons.explore_outlined,
+              FontAwesomeIcons.globe,
                   ),
             label: 'Global Chat',
           ),
@@ -103,13 +98,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 3
                 ? const Icon(
-                    size: 35.0,
-                    Icons.bar_chart_rounded,
+              FontAwesomeIcons.chartSimple,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-                    size: 35.0,
-                    Icons.bar_chart_outlined,
+              FontAwesomeIcons.chartSimple,
                   ),
             label: 'User Report',
           ),
@@ -120,13 +113,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 4
                 ? const Icon(
-                    size: 35.0,
-                    Icons.settings_rounded,
+              FontAwesomeIcons.userGear,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-                    size: 35.0,
-                    Icons.settings_outlined,
+              FontAwesomeIcons.userGear,
                   ),
             label: 'Settings',
           ),
