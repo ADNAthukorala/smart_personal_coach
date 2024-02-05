@@ -23,10 +23,6 @@ class _SignInScreenState extends State<SignInScreen> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
 
-  /// Declare variables to store email, password, confirm password
-  late String _email;
-  late String _password;
-
   /// Create a global key that uniquely identifies the Form widget
   /// and allows validation of the form.
   final _formKeySignIn = GlobalKey<FormState>();
@@ -144,9 +140,6 @@ class _SignInScreenState extends State<SignInScreen> {
                         TextFormField(
                           validator: _validateEmail,
                           controller: _emailController,
-                          onChanged: (value) {
-                            _email = _emailController.text.trim();
-                          },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
                             hintText: 'Email',
@@ -165,9 +158,6 @@ class _SignInScreenState extends State<SignInScreen> {
                         TextFormField(
                           validator: _validatePassword,
                           controller: _passwordController,
-                          onChanged: (value) {
-                            _password = _passwordController.text.trim();
-                          },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
                             hintText: 'Password',
@@ -229,8 +219,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                 // Sign in a user with an email address and password
                                 final credential = await FirebaseAuth.instance
                                     .signInWithEmailAndPassword(
-                                  email: _email,
-                                  password: _password,
+                                  email: _emailController.text.trim(),
+                                  password: _passwordController.text.trim(),
                                 );
                                 _passwordController.clear();
                                 if (!context.mounted) return;

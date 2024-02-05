@@ -22,10 +22,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _passwordController = TextEditingController();
   final _confirmPasswordController = TextEditingController();
 
-  /// Declare variables to store email, password, confirm password
-  late String _email;
-  late String _password;
-
   /// Create a global key that uniquely identifies the Form widget
   /// and allows validation of the form.
   final _formKeySignUp = GlobalKey<FormState>();
@@ -75,7 +71,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   /// Validator for confirm password
   String? _validateConfirmPassword(String? value) {
-    if (value != _password) {
+    if (value != _passwordController.text.trim()) {
       return 'The password and confirmation password do not match';
     } else {
       return null;
@@ -155,9 +151,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextFormField(
                           validator: _validateEmail,
                           controller: _emailController,
-                          onChanged: (value) {
-                            _email = _emailController.text.trim();
-                          },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
                             hintText: 'Email',
@@ -176,9 +169,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         TextFormField(
                           validator: _validatePassword,
                           controller: _passwordController,
-                          onChanged: (value) {
-                            _password = _passwordController.text.trim();
-                          },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
                             hintText: 'Password',
@@ -284,8 +274,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 // Create a new user with email and password
                                 final credential = await FirebaseAuth.instance
                                     .createUserWithEmailAndPassword(
-                                  email: _email,
-                                  password: _password,
+                                  email: _emailController.text.trim(),
+                                  password: _passwordController.text.trim(),
                                 );
                                 // Back to the sign in page and show snack bar with 'Signed Up' message
                                 if (!context.mounted) return;

@@ -14,9 +14,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   /// the current values of the email text box
   final _emailController = TextEditingController();
 
-  /// Declare variable to store email
-  late String _email;
-
   /// Create a global key that uniquely identifies the Form widget
   /// and allows validation of the form.
   final _formKeyResetPassword = GlobalKey<FormState>();
@@ -24,7 +21,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   /// Password reset method
   Future _passwordReset() async {
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: _email);
+      await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
       if (!context.mounted) return;
       showDialog(
         context: context,
@@ -154,9 +151,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               TextFormField(
                 validator: _validateEmail,
                 controller: _emailController,
-                onChanged: (value) {
-                  _email = _emailController.text.trim();
-                },
                 decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
                   hintText: 'Email',
                   prefixIcon: const Icon(
