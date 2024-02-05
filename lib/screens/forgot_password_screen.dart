@@ -43,7 +43,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
             ),
             title: const Text('Email sent'),
             content: const Text(
-                'A password reset email will be sent. You can check it in your mailbox'),
+                'Password reset link sent! Check your email'),
             actions: [
               TextButton(
                 onPressed: () {
