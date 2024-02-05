@@ -18,9 +18,9 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   /// Create text controllers and use them to retrieve
   /// the current values of the email, password and confirm password text boxes
-  final _controllerForEmail = TextEditingController();
-  final _controllerForPassword = TextEditingController();
-  final _controllerForConfirmPassword = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
+  final _confirmPasswordController = TextEditingController();
 
   /// Declare variables to store email, password, confirm password and error message
   late String _email;
@@ -100,9 +100,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
   @override
   void dispose() {
     // Clean up the controllers when the widget is disposed
-    _controllerForEmail.dispose();
-    _controllerForPassword.dispose();
-    _controllerForConfirmPassword.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
+    _confirmPasswordController.dispose();
     super.dispose();
   }
 
@@ -154,9 +154,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         /// Get the user's email
                         TextFormField(
                           validator: _validateEmail,
-                          controller: _controllerForEmail,
+                          controller: _emailController,
                           onChanged: (value) {
-                            _email = _controllerForEmail.text;
+                            _email = _emailController.text;
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -175,9 +175,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         /// Get the user's password
                         TextFormField(
                           validator: _validatePassword,
-                          controller: _controllerForPassword,
+                          controller: _passwordController,
                           onChanged: (value) {
-                            _password = _controllerForPassword.text;
+                            _password = _passwordController.text;
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -209,7 +209,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         /// Confirm the password
                         TextFormField(
                           validator: _validateConfirmPassword,
-                          controller: _controllerForConfirmPassword,
+                          controller: _confirmPasswordController,
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
                             hintText: 'Confirm Password',

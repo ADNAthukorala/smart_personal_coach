@@ -19,8 +19,8 @@ class SignInScreen extends StatefulWidget {
 class _SignInScreenState extends State<SignInScreen> {
   /// Create text controllers and use them to retrieve
   /// the current values of the email, password and confirm password text boxes
-  final _controllerForEmail = TextEditingController();
-  final _controllerForPassword = TextEditingController();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   /// Declare variables to store email, password, confirm password and error message
   late String _email;
@@ -88,8 +88,8 @@ class _SignInScreenState extends State<SignInScreen> {
   @override
   void dispose() {
     // Clean up the controllers when the widget is disposed
-    _controllerForEmail.dispose();
-    _controllerForPassword.dispose();
+    _emailController.dispose();
+    _passwordController.dispose();
     super.dispose();
   }
 
@@ -142,9 +142,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         /// Get the user's email
                         TextFormField(
                           validator: _validateEmail,
-                          controller: _controllerForEmail,
+                          controller: _emailController,
                           onChanged: (value) {
-                            _email = _controllerForEmail.text;
+                            _email = _emailController.text;
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -163,9 +163,9 @@ class _SignInScreenState extends State<SignInScreen> {
                         /// Get the user's password
                         TextFormField(
                           validator: _validatePassword,
-                          controller: _controllerForPassword,
+                          controller: _passwordController,
                           onChanged: (value) {
-                            _password = _controllerForPassword.text;
+                            _password = _passwordController.text;
                           },
                           decoration:
                               kSignInSignUpTextFormFieldDecorations.copyWith(
@@ -224,7 +224,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   email: _email,
                                   password: _password,
                                 );
-                                _controllerForPassword.clear();
+                                _passwordController.clear();
                                 if (!context.mounted) return;
                                 // Go to the gender selection screen
                                 Navigator.push(
