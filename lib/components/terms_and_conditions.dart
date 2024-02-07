@@ -12,7 +12,7 @@ const String tncUserAccountsTitle = 'User Accounts';
 const String tncUserAccountsDescription = 'a. You are responsible for maintaining the confidentiality of your account information. b. You agree to provide accurate, current, and complete information during the registration process. c. You must notify us immediately of any unauthorized use of your account or any other security breach.';
 
 const String tncAgreementToTermsTitle = 'Agreement to Terms';
-const String tncAgreementToTermsDescription = 'By using the App, you acknowledge that you have read and understood these terms and agree to be bound bythem.';
+const String tncAgreementToTermsDescription = 'By using the App, you acknowledge that you have read and understood these terms and agree to be bound by them.';
 
 const String tncBottom = 'Remember to adapt these terms to the specific details of your fitness app and consult with legal professionals to ensure compliance with relevant laws and regulations.';
 
