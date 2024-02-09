@@ -250,8 +250,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 // show snack bar with error message
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
-                                      content: Text(
-                                          'An error has occurred')),
+                                      content: Text('An error has occurred')),
                                 );
                               }
                             }

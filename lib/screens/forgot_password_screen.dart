@@ -21,7 +21,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
   /// Password reset method
   Future _passwordReset() async {
     try {
-      await FirebaseAuth.instance.sendPasswordResetEmail(email: _emailController.text.trim());
+      await FirebaseAuth.instance
+          .sendPasswordResetEmail(email: _emailController.text.trim());
       if (!context.mounted) return;
       showDialog(
         context: context,
@@ -39,8 +40,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               ),
             ),
             title: const Text('Email sent'),
-            content: const Text(
-                'Password reset link sent! Check your email'),
+            content: const Text('Password reset link sent! Check your email'),
             actions: [
               TextButton(
                 onPressed: () {
