@@ -247,6 +247,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                 );
                               } catch (e) {
                                 // print(e);
+                                // show snack bar with error message
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'An error has occurred')),
+                                );
                               }
                             }
                           },
