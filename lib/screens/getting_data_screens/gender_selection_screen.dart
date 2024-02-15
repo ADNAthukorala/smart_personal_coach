@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -5,9 +6,7 @@ import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/age_height_weight_screen.dart';
-
-/// Create an enum for gender
-enum Gender { male, female, notSelected }
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Screen to get the user's gender
 class GenderSelectionScreen extends StatefulWidget {
@@ -18,8 +17,45 @@ class GenderSelectionScreen extends StatefulWidget {
 }
 
 class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
-  /// Variable to store the user's gender
-  Gender _userGender = Gender.notSelected;
+  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  // Creating an user variable to store logged in user
+  late User loggedInUser;
+
+  // Variable to store the user's gender
+  String _userGender = "Not Selected";
+
+  /// Creating a method to get the logged in user
+  void getLoggedIntUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred!')),
+      );
+    }
+  }
+
+  /// Adding data to the database (User gender)
+  void addData() {
+    _firestore
+        .collection("users")
+        .doc(loggedInUser.email)
+        .set({'gender': _userGender}, SetOptions(merge: true)).onError(
+            (error, stackTrace) => print("Error: $error"));
+  }
+
+  @override
+  void initState() {
+    getLoggedIntUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -97,9 +133,11 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                 top: kPadding8,
               ),
               child: NextButton(
-                onPressed: _userGender == Gender.notSelected
+                onPressed: _userGender == "Not Selected"
                     ? null // Disable the next button
                     : () {
+                        // Calling the addData method to add data to the database
+                        addData();
                         // When the button is clicked, navigate to the age, height, weight screen
                         Navigator.push(
                           context,
@@ -110,7 +148,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                       },
                 style: kNextButtonStyle.copyWith(
                     backgroundColor: MaterialStatePropertyAll(
-                        _userGender == Gender.notSelected
+                        _userGender == "Not Selected"
                             ? kGreyThemeColor02
                             : kBlueThemeColor)),
               ),
@@ -127,19 +165,18 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       onPressed: () {
         setState(() {
           // If the male button is clicked, selected gender = Female
-          _userGender = Gender.female;
+          _userGender = "Female";
         });
       },
       style: kGenderSelectionButtonStyle.copyWith(
         backgroundColor: MaterialStatePropertyAll(
-            _userGender == Gender.female ? kPinkThemeColor : kWhiteThemeColor),
+            _userGender == "Female" ? kPinkThemeColor : kWhiteThemeColor),
       ),
       child: Text(
         'Female',
         style: kLargeBlackTitleTextStyle.copyWith(
-            color: _userGender == Gender.female
-                ? kWhiteThemeColor
-                : kPinkThemeColor),
+            color:
+                _userGender == "Female" ? kWhiteThemeColor : kPinkThemeColor),
       ),
     );
   }
@@ -150,19 +187,17 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       onPressed: () {
         setState(() {
           // If the male button is clicked, selected gender = Male
-          _userGender = Gender.male;
+          _userGender = "Male";
         });
       },
       style: kGenderSelectionButtonStyle.copyWith(
         backgroundColor: MaterialStatePropertyAll(
-            _userGender == Gender.male ? kBlueThemeColor : kWhiteThemeColor),
+            _userGender == "Male" ? kBlueThemeColor : kWhiteThemeColor),
       ),
       child: Text(
         'Male',
         style: kLargeBlackTitleTextStyle.copyWith(
-            color: _userGender == Gender.male
-                ? kWhiteThemeColor
-                : kBlueThemeColor),
+            color: _userGender == "Male" ? kWhiteThemeColor : kBlueThemeColor),
       ),
     );
   }

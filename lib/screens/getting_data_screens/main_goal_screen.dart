@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -17,8 +19,44 @@ class MainGoalScreen extends StatefulWidget {
 }
 
 class _MainGoalScreenState extends State<MainGoalScreen> {
-  /// Declare a variable to store the user's main goal
+  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  // Creating an user variable to store logged in user
+  late User loggedInUser;
+
+  // Declare a variable to store the user's main goal
   MainGoal _userMainGoal = MainGoal.loseWeight;
+
+  /// Adding data to the database (User's main goal)
+  void addData() {
+    _firestore.collection("users").doc(loggedInUser.email).set({
+      'main goal': _userMainGoal.toString(),
+    }, SetOptions(merge: true)).onError(
+        (error, stackTrace) => print("Error: $error"));
+  }
+
+  /// Creating a method to get the logged in user
+  void getLoggedIntUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred!')),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    getLoggedIntUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -122,6 +160,8 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
               ),
               child: NextButton(
                 onPressed: () {
+                  // Calling the addData method to add data to the database
+                  addData();
                   // When the button is clicked, navigate to the checking push ups capacity screen
                   Navigator.push(
                     context,

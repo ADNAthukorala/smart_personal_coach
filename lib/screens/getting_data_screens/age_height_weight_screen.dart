@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -15,10 +17,48 @@ class AgeHeightWeightScreen extends StatefulWidget {
 }
 
 class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
-  /// Declare variables to store user age, height and weight and assign default values for them.
+  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  // Creating an user variable to store logged in user
+  late User loggedInUser;
+
+  // Declare variables to store user age, height and weight and assign default values for them.
   int _userAge = 18;
   int _userHeight = 120;
-  double _userWeight = 60;
+  int _userWeight = 60;
+
+  /// Adding data to the database (User age, height, weight)
+  void addData() {
+    _firestore.collection("users").doc(loggedInUser.email).set({
+      'age': _userAge,
+      'height': _userHeight,
+      'weight': _userWeight
+    }, SetOptions(merge: true)).onError(
+        (error, stackTrace) => print("Error: $error"));
+  }
+
+  /// Creating a method to get the logged in user
+  void getLoggedIntUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred!')),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    getLoggedIntUser();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -101,14 +141,14 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                   /// Get the user's weight
                   ReusableCardWithSlider(
                     text1: 'Weight',
-                    text2: _userWeight.toStringAsFixed(1),
+                    text2: _userWeight.toString(),
                     text3: 'kg',
-                    value: _userWeight,
+                    value: _userWeight.toDouble(),
                     min: 10.0,
                     max: 300.0,
                     onChanged: (double newWeight) {
                       setState(() {
-                        _userWeight = newWeight;
+                        _userWeight = newWeight.round();
                       });
                     },
                   ),
@@ -124,6 +164,8 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
               ),
               child: NextButton(
                 onPressed: () {
+                  // Calling the addData method to add data to the database
+                  addData();
                   // When the button is clicked, navigate to the body areas selection screen
                   Navigator.push(
                     context,

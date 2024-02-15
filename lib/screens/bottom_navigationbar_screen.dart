@@ -68,11 +68,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 1
                 ? const Icon(
-              FontAwesomeIcons.dumbbell,
+                    FontAwesomeIcons.dumbbell,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-              FontAwesomeIcons.dumbbell,
+                    FontAwesomeIcons.dumbbell,
                   ),
             label: 'Exercises',
           ),
@@ -83,11 +83,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 2
                 ? const Icon(
-              FontAwesomeIcons.globe,
+                    FontAwesomeIcons.globe,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-              FontAwesomeIcons.globe,
+                    FontAwesomeIcons.globe,
                   ),
             label: 'Global Chat',
           ),
@@ -98,11 +98,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 3
                 ? const Icon(
-              FontAwesomeIcons.chartSimple,
+                    FontAwesomeIcons.chartSimple,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-              FontAwesomeIcons.chartSimple,
+                    FontAwesomeIcons.chartSimple,
                   ),
             label: 'User Report',
           ),
@@ -113,11 +113,11 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
             // If the button is clicked, color = kWhiteThemeColor, otherwise black
             icon: _currentScreenIndex == 4
                 ? const Icon(
-              FontAwesomeIcons.userGear,
+                    FontAwesomeIcons.userGear,
                     color: kWhiteThemeColor,
                   )
                 : const Icon(
-              FontAwesomeIcons.userGear,
+                    FontAwesomeIcons.userGear,
                   ),
             label: 'Settings',
           ),

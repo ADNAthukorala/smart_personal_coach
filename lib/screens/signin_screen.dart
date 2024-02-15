@@ -237,6 +237,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                   const SnackBar(content: Text('Signed in!')),
                                 );
                               } on FirebaseAuthException catch (e) {
+                                // ignore: avoid_print
                                 print(e);
                                 // Show snack bar with error message
                                 ScaffoldMessenger.of(context).showSnackBar(
@@ -246,6 +247,11 @@ class _SignInScreenState extends State<SignInScreen> {
                                 );
                               } catch (e) {
                                 // print(e);
+                                // show snack bar with error message
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text('An error has occurred')),
+                                );
                               }
                             }
                           },
