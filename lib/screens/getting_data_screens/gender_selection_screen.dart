@@ -42,6 +42,22 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     }
   }
 
+  /// Deleting a document from database
+  void _deleteDocument() async {
+    try {
+      // Get a reference to the document you want to delete
+      DocumentReference documentReference =
+          _firestore.collection('users').doc(loggedInUser.email);
+
+      // Delete the document
+      await documentReference.delete();
+
+      print('Document deleted successfully');
+    } catch (e) {
+      print('Error deleting document: $e');
+    }
+  }
+
   /// Adding data to the database (User gender)
   void addData() {
     _firestore
@@ -54,7 +70,53 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    print('Sign out ${loggedInUser.email}');
+    if (!context.mounted) return;
+    // Show snack bar with 'Signed out' message
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Signed out!')),
+    );
+  }
+
+  void _showBackDialog() {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: kBlueThemeColor,
+          title: const Text(
+            'Are you sure?',
+            style: TextStyle(color: kWhiteThemeColor),
+          ),
+          content: const Text(
+            'Are you sure you want to leave this page?',
+            style: TextStyle(color: kWhiteThemeColor),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: const Text(
+                'No',
+                style: TextStyle(color: kBlueThemeColor),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            ElevatedButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: kBlueThemeColor),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.pop(context);
+                _deleteDocument();
+                _signOut();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -64,108 +126,113 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
   }
 
   @override
-  void dispose() {
-    _signOut();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /// App Bar
-      appBar: AppBar(
-        centerTitle: true,
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          return;
+        }
+        _showBackDialog();
+      },
+      child: Scaffold(
+        /// App Bar
+        appBar: AppBar(
+          centerTitle: true,
 
-        /// Show which screen the user is on
-        title: const AppBarTitle(
-          screenId: 1,
+          /// Show which screen the user is on
+          title: const AppBarTitle(
+            screenId: 1,
+          ),
         ),
-      ),
 
-      /// Body of the screen
-      body: Padding(
-        // Add padding around the body of the screen
-        padding: const EdgeInsets.all(kPadding16),
-        child: Column(
-          children: [
-            /// Top of the screen
-            /// The title and the description
-            const Padding(
-              padding: EdgeInsets.only(
-                bottom: kPadding8,
-              ),
-              child: TitleAndDescriptionHolder(
-                title: "What's your gender?",
-                description: '',
-              ),
-            ),
-
-            /// Middle of the screen
-            /// The image and the gender selection buttons holder
-            Expanded(
-              child: Center(
-                child: ListView(
-                  shrinkWrap: true,
-                  padding: const EdgeInsets.only(
-                    top: kPadding8,
-                    bottom: kPadding8,
-                  ),
-                  primary: false,
-                  children: [
-                    /// Image of gender selection screen
-                    const SizedBox(
-                      height: 210.0,
-                      child: TopImage(
-                          imageUrl: 'images/gender_selection_screen_image.jpg'),
-                    ),
-
-                    /// Add space between the image and the gender selection buttons holder
-                    const SizedBox(height: 10.0),
-
-                    /// Gender selection buttons holder
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        /// Male button
-                        _buildMaleButton(),
-
-                        /// Female button
-                        _buildFemaleButton(),
-                      ],
-                    ),
-                  ],
+        /// Body of the screen
+        body: Padding(
+          // Add padding around the body of the screen
+          padding: const EdgeInsets.all(kPadding16),
+          child: Column(
+            children: [
+              /// Top of the screen
+              /// The title and the description
+              const Padding(
+                padding: EdgeInsets.only(
+                  bottom: kPadding8,
+                ),
+                child: TitleAndDescriptionHolder(
+                  title: "What's your gender?",
+                  description: '',
                 ),
               ),
-            ),
 
-            /// Bottom of the screen
-            /// Next button
-            Padding(
-              padding: const EdgeInsets.only(
-                top: kPadding8,
+              /// Middle of the screen
+              /// The image and the gender selection buttons holder
+              Expanded(
+                child: Center(
+                  child: ListView(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.only(
+                      top: kPadding8,
+                      bottom: kPadding8,
+                    ),
+                    primary: false,
+                    children: [
+                      /// Image of gender selection screen
+                      const SizedBox(
+                        height: 210.0,
+                        child: TopImage(
+                            imageUrl:
+                                'images/gender_selection_screen_image.jpg'),
+                      ),
+
+                      /// Add space between the image and the gender selection buttons holder
+                      const SizedBox(height: 10.0),
+
+                      /// Gender selection buttons holder
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          /// Male button
+                          _buildMaleButton(),
+
+                          /// Female button
+                          _buildFemaleButton(),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
               ),
-              child: NextButton(
-                onPressed: _userGender == "Not Selected"
-                    ? null // Disable the next button
-                    : () {
-                        // Calling the addData method to add data to the database
-                        addData();
-                        // When the button is clicked, navigate to the age, height, weight screen
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const AgeHeightWeightScreen(),
-                          ),
-                        );
-                      },
-                style: kNextButtonStyle.copyWith(
-                    backgroundColor: MaterialStatePropertyAll(
-                        _userGender == "Not Selected"
-                            ? kGreyThemeColor02
-                            : kBlueThemeColor)),
+
+              /// Bottom of the screen
+              /// Next button
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                ),
+                child: NextButton(
+                  onPressed: _userGender == "Not Selected"
+                      ? null // Disable the next button
+                      : () {
+                          // Calling the addData method to add data to the database
+                          addData();
+                          // When the button is clicked, navigate to the age, height, weight screen
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) =>
+                                  const AgeHeightWeightScreen(),
+                            ),
+                          );
+                        },
+                  style: kNextButtonStyle.copyWith(
+                      backgroundColor: MaterialStatePropertyAll(
+                          _userGender == "Not Selected"
+                              ? kGreyThemeColor02
+                              : kBlueThemeColor)),
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

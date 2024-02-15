@@ -8,6 +8,7 @@ import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/settings_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:smart_personal_coach/screens/signin_screen.dart';
 
 /// Main screen with bottom navigation bar
 class BottomNavigationBarScreenScreen extends StatefulWidget {
@@ -57,7 +58,58 @@ class _BottomNavigationBarScreenScreenState
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    print('Sign out ${loggedInUser.email}');
+    if (!context.mounted) return;
+    // Show snack bar with 'Signed out' message
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Signed out!')),
+    );
+  }
+
+  void _showBackDialog() {
+    showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          backgroundColor: kBlueThemeColor,
+          title: const Text(
+            'Are you sure?',
+            style: TextStyle(color: kWhiteThemeColor),
+          ),
+          content: const Text(
+            'Are you sure you want to leave this page?',
+            style: TextStyle(color: kWhiteThemeColor),
+          ),
+          actions: <Widget>[
+            ElevatedButton(
+              child: const Text(
+                'No',
+                style: TextStyle(color: kBlueThemeColor),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+            ),
+            ElevatedButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: kBlueThemeColor),
+              ),
+              onPressed: () {
+                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>
+                    const SignInScreen(),
+                  ),
+                );
+                _signOut();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -67,105 +119,108 @@ class _BottomNavigationBarScreenScreenState
   }
 
   @override
-  void dispose() {
-    _signOut();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /// body of the main screen, selected from the list of screens
-      body: _screens[_currentScreenIndex],
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (didPop) {
+          return;
+        }
+        _showBackDialog();
+      },
+      child: Scaffold(
+        /// body of the main screen, selected from the list of screens
+        body: _screens[_currentScreenIndex],
 
-      /// Bottom navigation bar
-      bottomNavigationBar: NavigationBar(
-        onDestinationSelected: (index) {
-          setState(() {
-            _currentScreenIndex = index;
-          });
-        },
-        animationDuration: const Duration(seconds: 1),
-        surfaceTintColor: kWhiteThemeColor,
-        backgroundColor: kWhiteThemeColor,
-        indicatorColor: kBlueThemeColor,
-        selectedIndex: _currentScreenIndex,
-        destinations: [
-          /// Home button
-          NavigationDestination(
-            // If the buttons is clicked, index = 0
-            // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 0
-                ? const Icon(
-                    FontAwesomeIcons.house,
-                    color: kWhiteThemeColor,
-                  )
-                : const Icon(
-                    FontAwesomeIcons.house,
-                  ),
-            label: 'Home',
-          ),
+        /// Bottom navigation bar
+        bottomNavigationBar: NavigationBar(
+          onDestinationSelected: (index) {
+            setState(() {
+              _currentScreenIndex = index;
+            });
+          },
+          animationDuration: const Duration(seconds: 1),
+          surfaceTintColor: kWhiteThemeColor,
+          backgroundColor: kWhiteThemeColor,
+          indicatorColor: kBlueThemeColor,
+          selectedIndex: _currentScreenIndex,
+          destinations: [
+            /// Home button
+            NavigationDestination(
+              // If the buttons is clicked, index = 0
+              // If the button is clicked, color = kWhiteThemeColor, otherwise black
+              icon: _currentScreenIndex == 0
+                  ? const Icon(
+                      FontAwesomeIcons.house,
+                      color: kWhiteThemeColor,
+                    )
+                  : const Icon(
+                      FontAwesomeIcons.house,
+                    ),
+              label: 'Home',
+            ),
 
-          /// Exercises button
-          NavigationDestination(
-            // If the buttons is clicked, index = 1
-            // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 1
-                ? const Icon(
-                    FontAwesomeIcons.dumbbell,
-                    color: kWhiteThemeColor,
-                  )
-                : const Icon(
-                    FontAwesomeIcons.dumbbell,
-                  ),
-            label: 'Exercises',
-          ),
+            /// Exercises button
+            NavigationDestination(
+              // If the buttons is clicked, index = 1
+              // If the button is clicked, color = kWhiteThemeColor, otherwise black
+              icon: _currentScreenIndex == 1
+                  ? const Icon(
+                      FontAwesomeIcons.dumbbell,
+                      color: kWhiteThemeColor,
+                    )
+                  : const Icon(
+                      FontAwesomeIcons.dumbbell,
+                    ),
+              label: 'Exercises',
+            ),
 
-          /// Global Chat button
-          NavigationDestination(
-            // If the buttons is clicked, index = 2
-            // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 2
-                ? const Icon(
-                    FontAwesomeIcons.globe,
-                    color: kWhiteThemeColor,
-                  )
-                : const Icon(
-                    FontAwesomeIcons.globe,
-                  ),
-            label: 'Global Chat',
-          ),
+            /// Global Chat button
+            NavigationDestination(
+              // If the buttons is clicked, index = 2
+              // If the button is clicked, color = kWhiteThemeColor, otherwise black
+              icon: _currentScreenIndex == 2
+                  ? const Icon(
+                      FontAwesomeIcons.globe,
+                      color: kWhiteThemeColor,
+                    )
+                  : const Icon(
+                      FontAwesomeIcons.globe,
+                    ),
+              label: 'Global Chat',
+            ),
 
-          /// User Report button
-          NavigationDestination(
-            // If the buttons is clicked, index = 3
-            // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 3
-                ? const Icon(
-                    FontAwesomeIcons.chartSimple,
-                    color: kWhiteThemeColor,
-                  )
-                : const Icon(
-                    FontAwesomeIcons.chartSimple,
-                  ),
-            label: 'User Report',
-          ),
+            /// User Report button
+            NavigationDestination(
+              // If the buttons is clicked, index = 3
+              // If the button is clicked, color = kWhiteThemeColor, otherwise black
+              icon: _currentScreenIndex == 3
+                  ? const Icon(
+                      FontAwesomeIcons.chartSimple,
+                      color: kWhiteThemeColor,
+                    )
+                  : const Icon(
+                      FontAwesomeIcons.chartSimple,
+                    ),
+              label: 'User Report',
+            ),
 
-          /// Settings button
-          NavigationDestination(
-            // If the buttons is clicked, index = 4
-            // If the button is clicked, color = kWhiteThemeColor, otherwise black
-            icon: _currentScreenIndex == 4
-                ? const Icon(
-                    FontAwesomeIcons.userGear,
-                    color: kWhiteThemeColor,
-                  )
-                : const Icon(
-                    FontAwesomeIcons.userGear,
-                  ),
-            label: 'Settings',
-          ),
-        ],
+            /// Settings button
+            NavigationDestination(
+              // If the buttons is clicked, index = 4
+              // If the button is clicked, color = kWhiteThemeColor, otherwise black
+              icon: _currentScreenIndex == 4
+                  ? const Icon(
+                      FontAwesomeIcons.userGear,
+                      color: kWhiteThemeColor,
+                    )
+                  : const Icon(
+                      FontAwesomeIcons.userGear,
+                    ),
+              label: 'Settings',
+            ),
+          ],
+        ),
       ),
     );
   }
