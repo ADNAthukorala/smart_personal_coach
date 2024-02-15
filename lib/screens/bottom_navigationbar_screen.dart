@@ -14,10 +14,12 @@ class BottomNavigationBarScreenScreen extends StatefulWidget {
   const BottomNavigationBarScreenScreen({super.key});
 
   @override
-  State<BottomNavigationBarScreenScreen> createState() => _BottomNavigationBarScreenScreenState();
+  State<BottomNavigationBarScreenScreen> createState() =>
+      _BottomNavigationBarScreenScreenState();
 }
 
-class _BottomNavigationBarScreenScreenState extends State<BottomNavigationBarScreenScreen> {
+class _BottomNavigationBarScreenScreenState
+    extends State<BottomNavigationBarScreenScreen> {
   // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
@@ -55,7 +57,7 @@ class _BottomNavigationBarScreenScreenState extends State<BottomNavigationBarScr
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    // print('Sign out ${loggedInUser.email}');
+    print('Sign out ${loggedInUser.email}');
   }
 
   @override
