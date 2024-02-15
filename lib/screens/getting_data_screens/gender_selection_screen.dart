@@ -136,7 +136,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                 onPressed: _userGender == "Not Selected"
                     ? null // Disable the next button
                     : () {
-                        // Calling the addData function to add data to the database
+                        // Calling the addData method to add data to the database
                         addData();
                         // When the button is clicked, navigate to the age, height, weight screen
                         Navigator.push(
