@@ -51,10 +51,22 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             (error, stackTrace) => print("Error: $error"));
   }
 
+  /// Sign out method
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+    // print('Sign out ${loggedInUser.email}');
+  }
+
   @override
   void initState() {
     getLoggedIntUser();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _signOut();
+    super.dispose();
   }
 
   @override

@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -17,8 +18,30 @@ class BottomNavigationBarScreenScreen extends StatefulWidget {
 }
 
 class _BottomNavigationBarScreenScreenState extends State<BottomNavigationBarScreenScreen> {
-  /// Variable to store the current page index
+  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  // Creating an user variable to store logged in user
+  late User loggedInUser;
+
+  // Variable to store the current page index
   int _currentScreenIndex = 0;
+
+  /// Creating a method to get the logged in user
+  void getLoggedIntUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred!')),
+      );
+    }
+  }
 
   /// List of screens to navigate between
   final List<Widget> _screens = [
@@ -29,10 +52,16 @@ class _BottomNavigationBarScreenScreenState extends State<BottomNavigationBarScr
     const SettingsScreen(),
   ];
 
-  /// Sign out
+  /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    print("SIGNOUT");
+    // print('Sign out ${loggedInUser.email}');
+  }
+
+  @override
+  void initState() {
+    getLoggedIntUser();
+    super.initState();
   }
 
   @override
