@@ -20,12 +20,10 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
-  final _auth = FirebaseAuth.instance;
+  // Creating an instances of FirebaseFirestore
   final _firestore = FirebaseFirestore.instance;
 
-  // Creating an user variable to store logged in user
-  late User loggedInUser;
+
 
   // Create text controllers and use them to retrieve
   // the current values of the email, password and confirm password text boxes
@@ -39,7 +37,7 @@ class _SignInScreenState extends State<SignInScreen> {
   /// Checking if document exists
   Future<void> checkFieldIsEmpty() async {
     DocumentSnapshot snapshot =
-        await _firestore.collection('users').doc(loggedInUser.email).get();
+        await _firestore.collection('users').doc(_emailController.text.trim()).get();
     if (!mounted) return;
     // Checking if the document exists
     if (snapshot.exists) {
@@ -47,7 +45,7 @@ class _SignInScreenState extends State<SignInScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const MainScreenScreen(),
+          builder: (context) => const BottomNavigationBarScreenScreen(),
         ),
       );
     } else {
@@ -57,21 +55,6 @@ class _SignInScreenState extends State<SignInScreen> {
         MaterialPageRoute(
           builder: (context) => const GenderSelectionScreen(),
         ),
-      );
-    }
-  }
-
-  /// Creating a method to get the logged in user
-  void getLoggedIntUser() {
-    try {
-      final user = _auth.currentUser;
-      if (user != null) {
-        loggedInUser = user;
-      }
-    } catch (e) {
-      // Show snack bar with error message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('An error has occurred!')),
       );
     }
   }
@@ -129,12 +112,6 @@ class _SignInScreenState extends State<SignInScreen> {
     } else {
       _isVisibilityButtonClicked = false;
     }
-  }
-
-  @override
-  void initState() {
-    getLoggedIntUser();
-    super.initState();
   }
 
   @override

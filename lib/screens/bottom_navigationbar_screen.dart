@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
@@ -8,14 +9,14 @@ import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dar
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 /// Main screen with bottom navigation bar
-class MainScreenScreen extends StatefulWidget {
-  const MainScreenScreen({super.key});
+class BottomNavigationBarScreenScreen extends StatefulWidget {
+  const BottomNavigationBarScreenScreen({super.key});
 
   @override
-  State<MainScreenScreen> createState() => _MainScreenScreenState();
+  State<BottomNavigationBarScreenScreen> createState() => _BottomNavigationBarScreenScreenState();
 }
 
-class _MainScreenScreenState extends State<MainScreenScreen> {
+class _BottomNavigationBarScreenScreenState extends State<BottomNavigationBarScreenScreen> {
   /// Variable to store the current page index
   int _currentScreenIndex = 0;
 
@@ -27,6 +28,18 @@ class _MainScreenScreenState extends State<MainScreenScreen> {
     const UserReportScreen(),
     const SettingsScreen(),
   ];
+
+  /// Sign out
+  Future<void> _signOut() async {
+    await FirebaseAuth.instance.signOut();
+    print("SIGNOUT");
+  }
+
+  @override
+  void dispose() {
+    _signOut();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
