@@ -54,7 +54,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    // print('Sign out ${loggedInUser.email}');
+    print('Sign out ${loggedInUser.email}');
   }
 
   @override
