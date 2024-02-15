@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -5,6 +6,7 @@ import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
+import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
 import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
@@ -18,6 +20,13 @@ class SignInScreen extends StatefulWidget {
 }
 
 class _SignInScreenState extends State<SignInScreen> {
+  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
+
+  // Creating an user variable to store logged in user
+  late User loggedInUser;
+
   // Create text controllers and use them to retrieve
   // the current values of the email, password and confirm password text boxes
   final _emailController = TextEditingController();
@@ -26,6 +35,46 @@ class _SignInScreenState extends State<SignInScreen> {
   // Create a global key that uniquely identifies the Form widget
   // and allows validation of the form.
   final _formKeySignIn = GlobalKey<FormState>();
+
+  /// Checking if document exists
+  Future<void> checkFieldIsEmpty() async {
+    DocumentSnapshot snapshot =
+        await _firestore.collection('users').doc(loggedInUser.email).get();
+    if (!mounted) return;
+    // Checking if the document exists
+    if (snapshot.exists) {
+      // If the document exists, go to the gender main screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const MainScreenScreen(),
+        ),
+      );
+    } else {
+      // If the document does not exist, go to the gender selection screen
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const GenderSelectionScreen(),
+        ),
+      );
+    }
+  }
+
+  /// Creating a method to get the logged in user
+  void getLoggedIntUser() {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        loggedInUser = user;
+      }
+    } catch (e) {
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred!')),
+      );
+    }
+  }
 
   /// Validator for email
   String? _validateEmail(String? value) {
@@ -80,6 +129,12 @@ class _SignInScreenState extends State<SignInScreen> {
     } else {
       _isVisibilityButtonClicked = false;
     }
+  }
+
+  @override
+  void initState() {
+    getLoggedIntUser();
+    super.initState();
   }
 
   @override
@@ -225,13 +280,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 _passwordController.clear();
                                 if (!context.mounted) return;
                                 // Go to the gender selection screen
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const GenderSelectionScreen(),
-                                  ),
-                                );
+                                checkFieldIsEmpty();
                                 // Show snack bar with 'Signed in' message
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text('Signed in!')),
