@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -23,7 +22,6 @@ class _BottomNavigationBarScreenScreenState
     extends State<BottomNavigationBarScreenScreen> {
   // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
