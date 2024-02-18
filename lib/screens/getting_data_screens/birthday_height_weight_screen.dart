@@ -9,14 +9,14 @@ import 'package:smart_personal_coach/components/title_and_description_holder.dar
 import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 
 /// Screen to get the user age, height, weight
-class AgeHeightWeightScreen extends StatefulWidget {
-  const AgeHeightWeightScreen({super.key});
+class BirthDayHeightWeightScreen extends StatefulWidget {
+  const BirthDayHeightWeightScreen({super.key});
 
   @override
-  State<AgeHeightWeightScreen> createState() => _AgeHeightWeightScreenState();
+  State<BirthDayHeightWeightScreen> createState() => _BirthDayHeightWeightScreenState();
 }
 
-class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
+class _BirthDayHeightWeightScreenState extends State<BirthDayHeightWeightScreen> {
   // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
