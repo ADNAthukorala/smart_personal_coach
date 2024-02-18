@@ -63,14 +63,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     _firestore
         .collection("users")
         .doc(loggedInUser.email)
-        .set({'gender': _userGender, 'user name': loggedInUser.uid}, SetOptions(merge: true)).onError(
+        .set({'gender': _userGender, 'user name': "user", 'email': loggedInUser.email}, SetOptions(merge: true)).onError(
             (error, stackTrace) => print("Error: $error"));
   }
 
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    if (!context.mounted) return;
+    if (!mounted) return;
     // Show snack bar with 'Signed out' message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Signed out!')),
