@@ -24,7 +24,8 @@ class ReusableCardWithSlider extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       elevation: kElevation1,
-      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
       color: kBlueThemeColor,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
@@ -37,7 +38,8 @@ class ReusableCardWithSlider extends StatelessWidget {
                 children: [
                   Text(
                     text1,
-                    style: kLargeBlackTitleTextStyle.copyWith(color: kWhiteThemeColor),
+                    style: kLargeBlackTitleTextStyle.copyWith(
+                        color: kWhiteThemeColor),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -46,13 +48,13 @@ class ReusableCardWithSlider extends StatelessWidget {
                     children: [
                       Text(
                         text2,
-                        style:
-                            kLargeBlackTitleTextStyle.copyWith(color: kWhiteThemeColor),
+                        style: kLargeBlackTitleTextStyle.copyWith(
+                            color: kWhiteThemeColor),
                       ),
                       Text(
                         text3,
-                        style:
-                            kSmallGreyColorDescriptionTextStyle.copyWith(color: kWhiteThemeColor),
+                        style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                            color: kWhiteThemeColor),
                       ),
                     ],
                   ),
