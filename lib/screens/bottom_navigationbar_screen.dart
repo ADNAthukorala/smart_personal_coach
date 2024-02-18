@@ -5,7 +5,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
-import 'package:smart_personal_coach/screens/main_screens/settings_screen.dart';
+import 'package:smart_personal_coach/screens/main_screens/profile_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
@@ -52,7 +52,7 @@ class _BottomNavigationBarScreenScreenState
     const ExercisesScreen(),
     const GlobalChatScreen(),
     const UserReportScreen(),
-    const SettingsScreen(),
+    const ProfileScreen(),
   ];
 
   /// Sign out method
@@ -205,7 +205,7 @@ class _BottomNavigationBarScreenScreenState
               label: 'User Report',
             ),
 
-            /// Settings button
+            /// Profile button
             NavigationDestination(
               // If the buttons is clicked, index = 4
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
@@ -217,7 +217,7 @@ class _BottomNavigationBarScreenScreenState
                   : const Icon(
                       FontAwesomeIcons.userGear,
                     ),
-              label: 'Settings',
+              label: 'Profile',
             ),
           ],
         ),
