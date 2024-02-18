@@ -31,7 +31,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   /// Adding data to the database (User pull-ups capacity)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'pull-ups capacity': _userPullUpsCapacity.toString(),
+      'pull_ups_capacity': _userPullUpsCapacity.toString(),
     }, SetOptions(merge: true)).onError(
         (error, stackTrace) => print("Error: $error"));
   }

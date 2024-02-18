@@ -50,7 +50,7 @@ class _BirthDayHeightWeightScreenState
   /// Adding data to the database (User age, height, weight)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'birth day': userBirthDay,
+      'birth_day': userBirthDay,
       'height': _userHeight,
       'weight': _userWeight
     }, SetOptions(merge: true)).onError(

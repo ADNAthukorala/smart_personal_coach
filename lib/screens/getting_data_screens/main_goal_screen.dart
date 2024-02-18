@@ -32,7 +32,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
   /// Adding data to the database (User's main goal)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'main goal': _userMainGoal.toString(),
+      'main_goal': _userMainGoal.toString(),
     }, SetOptions(merge: true)).onError(
         (error, stackTrace) => print("Error: $error"));
   }

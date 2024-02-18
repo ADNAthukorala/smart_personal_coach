@@ -63,7 +63,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     _firestore
         .collection("users")
         .doc(loggedInUser.email)
-        .set({'gender': _userGender, 'user name': "user", 'email': loggedInUser.email}, SetOptions(merge: true)).onError(
+        .set({'gender': _userGender, 'user_name': "user", 'email': loggedInUser.email}, SetOptions(merge: true)).onError(
             (error, stackTrace) => print("Error: $error"));
   }
 
