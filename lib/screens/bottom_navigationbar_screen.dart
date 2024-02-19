@@ -68,20 +68,16 @@ class _BottomNavigationBarScreenScreenState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
           title: const Text(
             'Are you sure?',
-            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
-            'Are you sure you want to leave this page?',
-            style: TextStyle(color: kWhiteThemeColor),
+            'Are you sure you want to sign out?',
           ),
           actions: <Widget>[
             ElevatedButton(
               child: const Text(
                 'No',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -90,18 +86,16 @@ class _BottomNavigationBarScreenScreenState
             ElevatedButton(
               child: const Text(
                 'Yes',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
+                _signOut();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                    const SignInScreen(),
+                    builder: (context) => const SignInScreen(),
                   ),
                 );
-                _signOut();
               },
             ),
           ],
