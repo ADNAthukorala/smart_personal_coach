@@ -1,10 +1,15 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -200,6 +205,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+
+
+  File? _imageFile;
+  final picker = ImagePicker();
+
+  Future<void> _getImage(ImageSource source) async {
+    final pickedFile = await picker.pickImage(source: source);
+    if (pickedFile != null) {
+      setState(() {
+        _imageFile = File(pickedFile.path);
+      });
+      _uploadImage();
+    }
+  }
+
+  Future<void> _uploadImage() async {
+    if (_imageFile == null) return;
+
+    final storage = FirebaseStorage.instance;
+    final Reference storageReference = storage.ref().child('profile_pictures/${loggedInUser.email}/profile_picture.png');
+    final UploadTask uploadTask = storageReference.putFile(_imageFile!);
+    await uploadTask.whenComplete(() => null);
+
+    final imageUrl = await storageReference.getDownloadURL();
+    final userId = loggedInUser.email;
+
+    await FirebaseFirestore.instance.collection('users').doc(userId).update({
+      'profile_picture': imageUrl,
+    });
+  }
+
+
+
   @override
   void dispose() {
     super.dispose();
@@ -256,12 +294,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     userNameController.text = data['user_name'];
                     userWeightController.text = data['weight'].toString();
 
+                    String proPic = data['profile_picture'];
+
                     return Column(
                       children: [
                         /// Profile picture
                         CircleAvatar(
-                          backgroundImage: const AssetImage(
-                              "images/welcome_screen_image.jpg"),
+                          backgroundImage: proPic == "0" ? NetworkImage("") : NetworkImage(proPic),
                           radius: 60.0,
                           // Edit profile picture button
                           child: Container(
@@ -272,7 +311,80 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                               color: kBlueThemeColor,
                               icon: const Icon(Icons.edit),
-                              onPressed: () {},
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      contentPadding: EdgeInsets.zero,
+                                      content: SizedBox(
+                                        height: 120.0,
+                                        child: Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            ElevatedButton.icon(
+                                              onPressed: () async {
+                                                final status = await Permission.mediaLibrary.request();
+                                                if (status.isGranted) {
+                                                  _getImage(ImageSource.gallery);
+                                                  if (!context.mounted) return;
+                                                  Navigator.pop(context);
+                                                } else {
+                                                  if (!context.mounted) return;
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) => AlertDialog(
+                                                      title: Text('Permission Denied'),
+                                                      content: Text(
+                                                          'You have denied access to photos. Please enable photos access in device settings.'),
+                                                      actions: <Widget>[
+                                                        TextButton(
+                                                          onPressed: () => Navigator.pop(context),
+                                                          child: Text('OK'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                              },
+                                              label: Text("Gallery"),
+                                              icon: Icon(Icons.add_photo_alternate),
+                                            ),
+                                            ElevatedButton.icon(
+                                              onPressed: () async {
+                                                final status = await Permission.camera.request();
+                                                if (status.isGranted) {
+                                                  _getImage(ImageSource.camera);
+                                                  if (!context.mounted) return;
+                                                  Navigator.pop(context);
+                                                } else {
+                                                  if (!context.mounted) return;
+                                                  showDialog(
+                                                    context: context,
+                                                    builder: (BuildContext context) => AlertDialog(
+                                                      title: Text('Permission Denied'),
+                                                      content: Text(
+                                                          'You have denied access to the camera. Please enable camera access in device settings.'),
+                                                      actions: <Widget>[
+                                                        TextButton(
+                                                          onPressed: () => Navigator.pop(context),
+                                                          child: Text('OK'),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  );
+                                                }
+                                              },
+                                              label: Text("Camera"),
+                                              icon: Icon(Icons.add_a_photo),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
                             ),
                           ),
                         ),

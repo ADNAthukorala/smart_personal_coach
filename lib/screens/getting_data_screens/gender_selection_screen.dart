@@ -58,12 +58,15 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     }
   }
 
+  // Default profile picture url
+  final String defaultProfilePicture = "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Fdefault_profile_picture.jpg?alt=media&token=0cddd010-118c-47ce-ba0a-fad1e54b479b";
+
   /// Adding data to the database (User gender)
   void addData() {
     _firestore
         .collection("users")
         .doc(loggedInUser.email)
-        .set({'gender': _userGender, 'user_name': "user", 'email': loggedInUser.email}, SetOptions(merge: true)).onError(
+        .set({'gender': _userGender, 'user_name': "user", 'email': loggedInUser.email, 'profile_picture': defaultProfilePicture}, SetOptions(merge: true)).onError(
             (error, stackTrace) => print("Error: $error"));
   }
 
