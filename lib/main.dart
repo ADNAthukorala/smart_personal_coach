@@ -20,6 +20,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: kBlueThemeColor),
         useMaterial3: true,
         fontFamily: 'Roboto',
+        scaffoldBackgroundColor: kWhiteThemeColor,
+        appBarTheme: const AppBarTheme(color: kBlueThemeColor02),
       ),
       home: const WelcomeScreen(),
     );

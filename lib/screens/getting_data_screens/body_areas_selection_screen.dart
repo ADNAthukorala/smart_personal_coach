@@ -64,6 +64,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
     return Scaffold(
       /// App Bar
       appBar: AppBar(
+        backgroundColor: kWhiteThemeColor,
+        scrolledUnderElevation: 0,
         centerTitle: true,
 
         /// Show which screen the user is on
