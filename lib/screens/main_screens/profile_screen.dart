@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
@@ -85,14 +86,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
+  // Creating the stream
   final Stream<QuerySnapshot> _usersStream =
       FirebaseFirestore.instance.collection('users').snapshots();
 
-  // Create a text controller for the user name text field
-  final _userNameController = TextEditingController();
-
-  /// Update user name
-  Future<void> updateUserName() async {
+  /// Update username
+  Future<void> updateUserName(String userName) async {
     try {
       // Get a reference to the document
       DocumentReference documentRef = FirebaseFirestore.instance
@@ -101,9 +100,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       // Update the user name field
       await documentRef.update({
-        'user_name': _userNameController.text.isNotEmpty
-            ? _userNameController.text.trim()
-            : "user",
+        'user_name': userName,
       });
 
       print('Document updated successfully.');
@@ -112,9 +109,99 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  /// Update gender
+  Future<void> updateGender(String updatedGender) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the user name field
+      await documentRef.update({
+        'gender': updatedGender,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update height
+  Future<void> updateHeight(int height) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the user name field
+      await documentRef.update({
+        'height': height,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update height
+  Future<void> updateWeight(int weight) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the user name field
+      await documentRef.update({
+        'weight': weight,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update birth day
+  Future<void> updateBirthDay(DateTime userBirthDay) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the user name field
+      await documentRef.update({
+        'birth_day': userBirthDay,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Getting and updating user birthday
+  Future<void> _selectUserBirthDay(
+      BuildContext context, DateTime userBirthDay) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: userBirthDay,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != userBirthDay) {
+      userBirthDay = picked;
+      updateBirthDay(userBirthDay);
+    }
+  }
+
   @override
   void dispose() {
-    _userNameController.dispose();
     super.dispose();
   }
 
@@ -161,6 +248,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     // Declaring a variable to store the user's birth day
                     Timestamp userBirthDay = data['birth_day'];
 
+                    // Create text controllers for the user name text field and the height and weight text fields
+                    final userNameController = TextEditingController();
+                    final userWeightController = TextEditingController();
+                    final userHeightController = TextEditingController();
+                    userHeightController.text = data['height'].toString();
+                    userNameController.text = data['user_name'];
+                    userWeightController.text = data['weight'].toString();
+
                     return Column(
                       children: [
                         /// Profile picture
@@ -172,9 +267,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           child: Container(
                             alignment: Alignment.bottomRight,
                             child: IconButton(
-                              color: kWhiteThemeColor,
-                              iconSize: 20.0,
-                              icon: const Icon(FontAwesomeIcons.pen),
+                              style: IconButton.styleFrom(
+                                backgroundColor: kGreyThemeColor02,
+                              ),
+                              color: kBlueThemeColor,
+                              icon: const Icon(Icons.edit),
                               onPressed: () {},
                             ),
                           ),
@@ -182,6 +279,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
                         /// User name
                         ListTile(
+                          contentPadding: EdgeInsets.zero,
                           title: Container(
                             alignment: Alignment.center,
                             child: Text(
@@ -196,13 +294,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                // Changing the user name
+                                // Changing the username
                                 return AlertDialog(
-                                  title: const Text("Change username?"),
+                                  title: const Text("Enter your username"),
                                   content: TextField(
-                                    controller: _userNameController,
+                                    controller: userNameController,
                                     decoration: const InputDecoration(
-                                        hintText: "Enter a new username"),
+                                        hintText: "Enter your username"),
                                   ),
                                   actions: [
                                     ElevatedButton(
@@ -212,10 +310,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                         child: const Text("Cancel")),
                                     ElevatedButton(
                                         onPressed: () {
-                                          updateUserName();
+                                          updateUserName(userNameController.text
+                                                  .trim()
+                                                  .isNotEmpty
+                                              ? userNameController.text.trim()
+                                              : data['user_name']);
                                           Navigator.pop(context);
                                         },
-                                        child: const Text("Change")),
+                                        child: const Text("Save")),
                                   ],
                                 );
                               },
@@ -223,35 +325,194 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           },
                         ),
 
+                        /// Divider
+                        const Divider(height: 0.0),
+
                         /// Email
                         ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.email),
                           title: const Text("Email"),
                           subtitle: Text(data['email']),
+                          subtitleTextStyle:
+                              const TextStyle(color: kGreyThemeColor),
                         ),
 
                         /// Gender
                         ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: Icon(data['gender'] == "Male"
+                              ? Icons.male
+                              : Icons.female),
                           title: const Text("Gender"),
                           subtitle: Text(data['gender']),
+                          subtitleTextStyle:
+                              const TextStyle(color: kGreyThemeColor),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                // Changing the gender
+                                return AlertDialog(
+                                  title: const Text("Select your gender"),
+                                  actions: [
+                                    // Male button
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                        updateGender("Male");
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              data['gender'] == "Male"
+                                                  ? kBlueThemeColor
+                                                  : kWhiteThemeColor),
+                                      child: Text(
+                                        "Male",
+                                        style: TextStyle(
+                                            color: data['gender'] == "Male"
+                                                ? kWhiteThemeColor
+                                                : kBlueThemeColor),
+                                      ),
+                                    ),
+                                    // Female button
+                                    ElevatedButton(
+                                      onPressed: () {
+                                        updateGender("Female");
+                                        Navigator.pop(context);
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          backgroundColor:
+                                              data['gender'] == "Female"
+                                                  ? kPinkThemeColor
+                                                  : kWhiteThemeColor),
+                                      child: Text(
+                                        "Female",
+                                        style: TextStyle(
+                                            color: data['gender'] == "Female"
+                                                ? kWhiteThemeColor
+                                                : kPinkThemeColor),
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
 
                         /// Birth day
                         ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.calendar_month),
                           title: const Text("Birth Day"),
                           subtitle:
                               Text("${userBirthDay.toDate()}".split(' ')[0]),
+                          subtitleTextStyle:
+                              const TextStyle(color: kGreyThemeColor),
+                          onTap: () {
+                            _selectUserBirthDay(context, userBirthDay.toDate());
+                          },
                         ),
 
                         /// Height
                         ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.height),
                           title: const Text("Height"),
                           subtitle: Text("${data['height'].toString()} cm"),
+                          subtitleTextStyle:
+                              const TextStyle(color: kGreyThemeColor),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                // Changing the username
+                                return AlertDialog(
+                                  title: const Text("Enter your height"),
+                                  content: TextFormField(
+                                    controller: userHeightController,
+                                    decoration: const InputDecoration(
+                                      hintText: "Enter your height",
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
+                                  ),
+                                  actions: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Cancel")),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          updateHeight(userHeightController.text
+                                                  .trim()
+                                                  .isNotEmpty
+                                              ? int.parse(userHeightController
+                                                  .text
+                                                  .trim())
+                                              : data['height']);
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Save")),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
 
                         /// Weight
                         ListTile(
+                          contentPadding: EdgeInsets.zero,
+                          leading: const Icon(Icons.balance),
                           title: const Text("Weight"),
                           subtitle: Text("${data['weight'].toString()} kg"),
+                          subtitleTextStyle:
+                              const TextStyle(color: kGreyThemeColor),
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                // Changing the username
+                                return AlertDialog(
+                                  title: const Text("Enter your weight"),
+                                  content: TextFormField(
+                                    controller: userWeightController,
+                                    decoration: const InputDecoration(
+                                      hintText: "Enter your weight",
+                                    ),
+                                    keyboardType: TextInputType.number,
+                                    inputFormatters: [
+                                      FilteringTextInputFormatter.digitsOnly,
+                                    ],
+                                  ),
+                                  actions: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Cancel")),
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          updateWeight(userWeightController.text
+                                                  .trim()
+                                                  .isNotEmpty
+                                              ? int.parse(userWeightController
+                                                  .text
+                                                  .trim())
+                                              : data['weight']);
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Save")),
+                                  ],
+                                );
+                              },
+                            );
+                          },
                         ),
 
                         /// Sign out button
