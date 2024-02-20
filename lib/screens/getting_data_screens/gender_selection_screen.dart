@@ -5,7 +5,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/age_height_weight_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/birthday_height_weight_screen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Screen to get the user's gender
@@ -63,14 +63,14 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     _firestore
         .collection("users")
         .doc(loggedInUser.email)
-        .set({'gender': _userGender}, SetOptions(merge: true)).onError(
+        .set({'gender': _userGender, 'user_name': "user", 'email': loggedInUser.email}, SetOptions(merge: true)).onError(
             (error, stackTrace) => print("Error: $error"));
   }
 
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    if (!context.mounted) return;
+    if (!mounted) return;
     // Show snack bar with 'Signed out' message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Signed out!')),
@@ -220,7 +220,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  const AgeHeightWeightScreen(),
+                                  const BirthDayHeightWeightScreen(),
                             ),
                           );
                         },

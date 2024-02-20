@@ -1,11 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
-import 'package:smart_personal_coach/screens/main_screens/settings_screen.dart';
+import 'package:smart_personal_coach/screens/main_screens/profile_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
@@ -23,7 +22,6 @@ class _BottomNavigationBarScreenScreenState
     extends State<BottomNavigationBarScreenScreen> {
   // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
@@ -52,13 +50,13 @@ class _BottomNavigationBarScreenScreenState
     const ExercisesScreen(),
     const GlobalChatScreen(),
     const UserReportScreen(),
-    const SettingsScreen(),
+    const ProfileScreen(),
   ];
 
   /// Sign out method
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    if (!context.mounted) return;
+    if (!mounted) return;
     // Show snack bar with 'Signed out' message
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(content: Text('Signed out!')),
@@ -70,20 +68,16 @@ class _BottomNavigationBarScreenScreenState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
           title: const Text(
             'Are you sure?',
-            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
-            'Are you sure you want to leave this page?',
-            style: TextStyle(color: kWhiteThemeColor),
+            'Are you sure you want to sign out?',
           ),
           actions: <Widget>[
             ElevatedButton(
               child: const Text(
                 'No',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -92,18 +86,16 @@ class _BottomNavigationBarScreenScreenState
             ElevatedButton(
               child: const Text(
                 'Yes',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
+                _signOut();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) =>
-                    const SignInScreen(),
+                    builder: (context) => const SignInScreen(),
                   ),
                 );
-                _signOut();
               },
             ),
           ],
@@ -205,7 +197,7 @@ class _BottomNavigationBarScreenScreenState
               label: 'User Report',
             ),
 
-            /// Settings button
+            /// Profile button
             NavigationDestination(
               // If the buttons is clicked, index = 4
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
@@ -217,7 +209,7 @@ class _BottomNavigationBarScreenScreenState
                   : const Icon(
                       FontAwesomeIcons.userGear,
                     ),
-              label: 'Settings',
+              label: 'Profile',
             ),
           ],
         ),

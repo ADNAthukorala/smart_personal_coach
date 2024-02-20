@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/exercises_screens/exercises_for_chest_screen.dart';
 
 /// Exercises screen
 class ExercisesScreen extends StatefulWidget {
@@ -44,13 +43,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             ElevatedButton(
               style: kExercisesScreenButton,
               onPressed: () {
-                // Navigate to the exercises for chest screen
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ExercisesForChestScreen(),
-                  ),
-                );
+
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,

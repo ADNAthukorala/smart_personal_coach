@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/reusable_card_with_datepicker.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
@@ -9,14 +10,16 @@ import 'package:smart_personal_coach/components/title_and_description_holder.dar
 import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 
 /// Screen to get the user age, height, weight
-class AgeHeightWeightScreen extends StatefulWidget {
-  const AgeHeightWeightScreen({super.key});
+class BirthDayHeightWeightScreen extends StatefulWidget {
+  const BirthDayHeightWeightScreen({super.key});
 
   @override
-  State<AgeHeightWeightScreen> createState() => _AgeHeightWeightScreenState();
+  State<BirthDayHeightWeightScreen> createState() =>
+      _BirthDayHeightWeightScreenState();
 }
 
-class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
+class _BirthDayHeightWeightScreenState
+    extends State<BirthDayHeightWeightScreen> {
   // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
   final _firestore = FirebaseFirestore.instance;
@@ -24,15 +27,30 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
-  // Declare variables to store user age, height and weight and assign default values for them.
-  int _userAge = 18;
+  // Declare variables to store user birth day, height and weight and assign default values for them.
+  DateTime userBirthDay = DateTime.now();
   int _userHeight = 120;
   int _userWeight = 60;
+
+  /// Getting user birthday
+  Future<void> _selectUserBirthDay(BuildContext context) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: userBirthDay,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != userBirthDay) {
+      setState(() {
+        userBirthDay = picked;
+      });
+    }
+  }
 
   /// Adding data to the database (User age, height, weight)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'age': _userAge,
+      'birth_day': userBirthDay,
       'height': _userHeight,
       'weight': _userWeight
     }, SetOptions(merge: true)).onError(
@@ -93,7 +111,7 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
             ),
 
             /// Middle of the screen
-            /// Sliders holder (Age, Height, Weight)
+            /// Sliders holder (Birthday, Height, Weight)
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
@@ -102,18 +120,12 @@ class _AgeHeightWeightScreenState extends State<AgeHeightWeightScreen> {
                 ),
                 primary: false,
                 children: [
-                  /// Get the user's age
-                  ReusableCardWithSlider(
-                    text1: 'Age',
-                    text2: _userAge.toString(),
-                    text3: 'years',
-                    value: _userAge.toDouble(),
-                    min: 2.0,
-                    max: 200.0,
-                    onChanged: (double newAge) {
-                      setState(() {
-                        _userAge = newAge.round();
-                      });
+                  /// Get the user's birth day
+                  ReusableCardWithDatePicker(
+                    text1: "Birth Day",
+                    text2: "${userBirthDay.toLocal()}".split(' ')[0],
+                    onPressed: () {
+                      _selectUserBirthDay(context);
                     },
                   ),
 

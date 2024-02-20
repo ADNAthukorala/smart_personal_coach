@@ -33,7 +33,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
   /// Adding data to the database (Focus body areas)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'focus body areas': _userSelectedBodyAreas.toString(),
+      'focus_body_areas': _userSelectedBodyAreas.toString(),
     }, SetOptions(merge: true)).onError(
         (error, stackTrace) => print("Error: $error"));
   }

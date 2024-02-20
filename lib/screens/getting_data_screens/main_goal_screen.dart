@@ -32,7 +32,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
   /// Adding data to the database (User's main goal)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'main goal': _userMainGoal.toString(),
+      'main_goal': _userMainGoal.toString(),
     }, SetOptions(merge: true)).onError(
         (error, stackTrace) => print("Error: $error"));
   }
@@ -108,7 +108,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                         // If the button is clicked, the user's main goal should be to lose weight.
                         _userMainGoal = MainGoal.loseWeight;
                       });
-                      print(_userMainGoal);
+                      // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
                     selectedMainGoal: MainGoal.loseWeight,
@@ -125,7 +125,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                         // If the button is clicked, the user's main goal should be to build muscles.
                         _userMainGoal = MainGoal.buildMuscles;
                       });
-                      print(_userMainGoal);
+                      // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
                     selectedMainGoal: MainGoal.buildMuscles,
@@ -142,7 +142,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                         // If the button is clicked, the user's main goal should be to keep fit.
                         _userMainGoal = MainGoal.keepFit;
                       });
-                      print(_userMainGoal);
+                      // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
                     selectedMainGoal: MainGoal.keepFit,

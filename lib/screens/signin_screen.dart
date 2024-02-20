@@ -24,8 +24,6 @@ class _SignInScreenState extends State<SignInScreen> {
   // Creating an instances of FirebaseFirestore
   final _firestore = FirebaseFirestore.instance;
 
-
-
   // Create text controllers and use them to retrieve
   // the current values of the email, password and confirm password text boxes
   final _emailController = TextEditingController();
@@ -37,8 +35,10 @@ class _SignInScreenState extends State<SignInScreen> {
 
   /// Checking if document exists
   Future<void> checkFieldIsEmpty() async {
-    DocumentSnapshot snapshot =
-        await _firestore.collection('users').doc(_emailController.text.trim()).get();
+    DocumentSnapshot snapshot = await _firestore
+        .collection('users')
+        .doc(_emailController.text.trim())
+        .get();
     if (!mounted) return;
     // Checking if the document exists
     if (snapshot.exists) {
@@ -65,20 +65,16 @@ class _SignInScreenState extends State<SignInScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
           title: const Text(
             'Are you sure?',
-            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
             'Are you sure you want to leave the application?',
-            style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
             ElevatedButton(
               child: const Text(
                 'No',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -87,7 +83,6 @@ class _SignInScreenState extends State<SignInScreen> {
             ElevatedButton(
               child: const Text(
                 'Yes',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -197,9 +192,10 @@ class _SignInScreenState extends State<SignInScreen> {
                 ),
                 // Adding all the components at the bottom to a column
                 child: Column(
-                  mainAxisAlignment: MediaQuery.of(context).viewInsets.bottom == 0
-                      ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.center,
+                  mainAxisAlignment:
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.center,
                   children: [
                     /// Middle of the screen (Title ans user input fields)
                     /// User inputs container and title and description container

@@ -1,24 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-class ReusableCardWithSlider extends StatelessWidget {
-  const ReusableCardWithSlider(
+class ReusableCardWithDatePicker extends StatelessWidget {
+  const ReusableCardWithDatePicker(
       {super.key,
       required this.text1,
       required this.text2,
-      required this.text3,
-      required this.value,
-      required this.min,
-      required this.max,
-      required this.onChanged});
+      required this.onPressed});
 
   final String text1;
   final String text2;
-  final String text3;
-  final double value;
-  final double min;
-  final double max;
-  final void Function(double)? onChanged;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -51,23 +43,23 @@ class ReusableCardWithSlider extends StatelessWidget {
                         style: kLargeBlackTitleTextStyle.copyWith(
                             color: kWhiteThemeColor),
                       ),
-                      Text(
-                        text3,
-                        style: kSmallGreyColorDescriptionTextStyle.copyWith(
-                            color: kWhiteThemeColor),
-                      ),
                     ],
                   ),
                 ],
               ),
             ),
-            SliderTheme(
-              data: kSliderStyle,
-              child: Slider(
-                value: value,
-                min: min,
-                max: max,
-                onChanged: onChanged,
+            const SizedBox(
+              height: 10.0,
+            ),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(kRadius8)),
+              ),
+              onPressed: onPressed,
+              child: const Text(
+                'Select Date',
+                style: kSelectBodyAreaButtonTextStyle,
               ),
             ),
           ],

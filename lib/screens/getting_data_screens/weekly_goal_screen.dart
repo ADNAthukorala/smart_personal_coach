@@ -29,7 +29,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
   /// Adding data to the database (User weekly goal)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'weekly goal': _userSelectedDays,
+      'weekly_goal': _userSelectedDays,
     }, SetOptions(merge: true)).onError(
         (error, stackTrace) => print("Error: $error"));
   }
