@@ -201,6 +201,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
+  /// Updating profile picture
   File? _imageFile;
   final picker = ImagePicker();
 
@@ -230,11 +231,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     await FirebaseFirestore.instance.collection('users').doc(userId).update({
       'profile_picture': imageUrl,
     });
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
   }
 
   @override
@@ -294,91 +290,94 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 /// Profile picture
                 Container(
                   alignment: Alignment.center,
+                  // Wrapping the profile picture holder with a gesture detector
+                  // to tap the profile picture holder
                   child: GestureDetector(
                     onTap: () {
-                        showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              contentPadding: EdgeInsets.zero,
-                              content: SizedBox(
-                                height: 120.0,
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    ElevatedButton.icon(
-                                      onPressed: () async {
-                                        final status = await Permission
-                                            .storage
-                                            .request();
-                                        if (status.isGranted) {
-                                          _getImage(ImageSource.gallery);
-                                          if (!context.mounted) return;
-                                          Navigator.pop(context);
-                                        } else {
-                                          if (!context.mounted) return;
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                                  title: const Text(
-                                                      'Permission Denied'),
-                                                  content: const Text(
-                                                      'You have denied access to photos. Please enable photos access in device settings.'),
-                                                  actions: <Widget>[
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(context),
-                                                      child: const Text('OK'),
-                                                    ),
-                                                  ],
-                                                ),
-                                          );
-                                        }
-                                      },
-                                      label: const Text("Gallery"),
-                                      icon: const Icon(
-                                          Icons.add_photo_alternate),
-                                    ),
-                                    ElevatedButton.icon(
-                                      onPressed: () async {
-                                        final status =
-                                        await Permission.camera.request();
-                                        if (status.isGranted) {
-                                          _getImage(ImageSource.camera);
-                                          if (!context.mounted) return;
-                                          Navigator.pop(context);
-                                        } else {
-                                          if (!context.mounted) return;
-                                          showDialog(
-                                            context: context,
-                                            builder: (BuildContext context) =>
-                                                AlertDialog(
-                                                  title: const Text(
-                                                      'Permission Denied'),
-                                                  content: const Text(
-                                                      'You have denied access to the camera. Please enable camera access in device settings.'),
-                                                  actions: <Widget>[
-                                                    TextButton(
-                                                      onPressed: () =>
-                                                          Navigator.pop(context),
-                                                      child: const Text('OK'),
-                                                    ),
-                                                  ],
-                                                ),
-                                          );
-                                        }
-                                      },
-                                      label: const Text("Camera"),
-                                      icon: const Icon(Icons.add_a_photo),
-                                    ),
-                                  ],
-                                ),
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            contentPadding: EdgeInsets.zero,
+                            content: SizedBox(
+                              height: 120.0,
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  // Updating the profile picture with an image in the gallery
+                                  ElevatedButton.icon(
+                                    onPressed: () async {
+                                      final status =
+                                          await Permission.storage.request();
+                                      if (status.isGranted) {
+                                        _getImage(ImageSource.gallery);
+                                        if (!context.mounted) return;
+                                        Navigator.pop(context);
+                                      } else {
+                                        if (!context.mounted) return;
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            title:
+                                                const Text('Permission Denied'),
+                                            content: const Text(
+                                                'You have denied access to photos. Please enable photos access in device settings.'),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                                child: const Text('OK'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    label: const Text("Gallery"),
+                                    icon: const Icon(Icons.add_photo_alternate),
+                                  ),
+                                  // Updating the profile picture with an image captured by the device camera
+                                  ElevatedButton.icon(
+                                    onPressed: () async {
+                                      final status =
+                                          await Permission.camera.request();
+                                      if (status.isGranted) {
+                                        _getImage(ImageSource.camera);
+                                        if (!context.mounted) return;
+                                        Navigator.pop(context);
+                                      } else {
+                                        if (!context.mounted) return;
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) =>
+                                              AlertDialog(
+                                            title:
+                                                const Text('Permission Denied'),
+                                            content: const Text(
+                                                'You have denied access to the camera. Please enable camera access in device settings.'),
+                                            actions: <Widget>[
+                                              TextButton(
+                                                onPressed: () =>
+                                                    Navigator.pop(context),
+                                                child: const Text('OK'),
+                                              ),
+                                            ],
+                                          ),
+                                        );
+                                      }
+                                    },
+                                    label: const Text("Camera"),
+                                    icon: const Icon(Icons.add_a_photo),
+                                  ),
+                                ],
                               ),
-                            );
-                          },
-                        );
+                            ),
+                          );
+                        },
+                      );
                     },
+                    // Profile picture holder
                     child: CircleAvatar(
                       backgroundImage: NetworkImage(data['profile_picture']),
                       radius: 60.0,
