@@ -253,7 +253,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       /// Body of the screen
       body: Padding(
-        padding: const EdgeInsets.all(kPadding16),
+        // Add padding around the body
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+        ),
         child: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection('users')
@@ -285,6 +289,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             userWeightController.text = data['weight'].toString();
 
             return ListView(
+              padding: const EdgeInsets.only(
+                top: kPadding8,
+                bottom: kPadding8,
+              ),
               primary: false,
               children: [
                 /// Profile picture
