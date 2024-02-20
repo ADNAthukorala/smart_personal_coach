@@ -42,12 +42,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   /// Sign out method
   Future<void> _signOut() async {
-    await FirebaseAuth.instance.signOut();
-    if (!mounted) return;
-    // Show snack bar with 'Signed out' message
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Signed out!')),
-    );
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (!mounted) return;
+      // Show snack bar with 'Signed out' message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed out!')),
+      );
+    } catch (e) {
+      print("Error signing out: $e");
+    }
   }
 
   void _showSignOutDialog() {
