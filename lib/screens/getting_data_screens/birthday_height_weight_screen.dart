@@ -111,7 +111,7 @@ class _BirthDayHeightWeightScreenState
             ),
 
             /// Middle of the screen
-            /// Sliders holder (Age, Height, Weight)
+            /// Sliders holder (Birthday, Height, Weight)
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
