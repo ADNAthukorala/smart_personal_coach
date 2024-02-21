@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
         scaffoldBackgroundColor: kWhiteThemeColor,
-        appBarTheme: const AppBarTheme(color: kBlueThemeColor02),
+        appBarTheme: const AppBarTheme(color: kBlueThemeColor),
       ),
       home: const WelcomeScreen(),
     );

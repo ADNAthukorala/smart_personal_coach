@@ -85,30 +85,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
           children: [
             /// Top of the screen
             /// The title and the description
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                 bottom: kPadding8,
               ),
-              child: Stack(
-                children: [
-                  // Title
-                  const TitleAndDescriptionHolder(
-                    title: 'How many push-ups can you do at one time?',
-                    description: '',
-                  ),
-                  // Button to show how to do push_ups
-                  Positioned(
-                    bottom: 3,
-                    left: 295,
-                    width: 30,
-                    height: 30,
-                    child: IconButton.filledTonal(
-                      onPressed: () {},
-                      icon: const Icon(FontAwesomeIcons.exclamation),
-                      iconSize: 16,
-                    ),
-                  ),
-                ],
+              child: TitleAndDescriptionHolder(
+                title: 'How many push-ups can you do at one time?',
+                description: '',
               ),
             ),
 
@@ -168,6 +151,50 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                     selectedCapacity: Capacity.advanced,
                     title: 'Advanced',
                     description: 'More than 10  Push-ups',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 20.0),
+
+                  /// Button to show how to do push_ups
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "What is push ups?",
+                        style: TextStyle(
+                            color: kBlueThemeColor02,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w900),
+                      ),
+                      const SizedBox(width: 5.0),
+                      SizedBox(
+                        height: 28,
+                        width: 28,
+                        child: IconButton.filled(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text("Push Ups"),
+                                  content: const Text("This is how do push ups"),
+                                  actions: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("OK"))
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          icon: const Icon(FontAwesomeIcons.exclamation),
+                          iconSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
