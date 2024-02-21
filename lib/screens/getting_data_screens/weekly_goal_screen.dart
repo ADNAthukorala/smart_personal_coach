@@ -73,7 +73,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       /// Body of the screen
       body: Padding(
         // Add padding around the body of the screen
-        padding: const EdgeInsets.all(kPadding16),
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
+        ),
         child: Column(
           children: [
             /// Top of the screen
