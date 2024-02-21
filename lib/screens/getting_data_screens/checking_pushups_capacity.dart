@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
@@ -84,13 +85,30 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
           children: [
             /// Top of the screen
             /// The title and the description
-            const Padding(
-              padding: EdgeInsets.only(
+            Padding(
+              padding: const EdgeInsets.only(
                 bottom: kPadding8,
               ),
-              child: TitleAndDescriptionHolder(
-                title: 'How many push-ups can you do at one time?',
-                description: '',
+              child: Stack(
+                children: [
+                  // Title
+                  const TitleAndDescriptionHolder(
+                    title: 'How many push-ups can you do at one time?',
+                    description: '',
+                  ),
+                  // Button to show how to do push_ups
+                  Positioned(
+                    bottom: 3,
+                    left: 295,
+                    width: 30,
+                    height: 30,
+                    child: IconButton.filledTonal(
+                      onPressed: () {},
+                      icon: const Icon(FontAwesomeIcons.exclamation),
+                      iconSize: 16,
+                    ),
+                  ),
+                ],
               ),
             ),
 
