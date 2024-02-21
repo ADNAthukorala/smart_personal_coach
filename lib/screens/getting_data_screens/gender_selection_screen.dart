@@ -72,12 +72,16 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
 
   /// Sign out method
   Future<void> _signOut() async {
-    await FirebaseAuth.instance.signOut();
-    if (!mounted) return;
-    // Show snack bar with 'Signed out' message
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Signed out!')),
-    );
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (!mounted) return;
+      // Show snack bar with 'Signed out' message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed out!')),
+      );
+    } catch (e) {
+      print("Error signing out: $e");
+    }
   }
 
   void _showBackDialog() {
@@ -141,6 +145,8 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       child: Scaffold(
         /// App Bar
         appBar: AppBar(
+          backgroundColor: kWhiteThemeColor,
+          scrolledUnderElevation: 0,
           centerTitle: true,
 
           /// Show which screen the user is on
@@ -152,7 +158,11 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         /// Body of the screen
         body: Padding(
           // Add padding around the body of the screen
-          padding: const EdgeInsets.all(kPadding16),
+          padding: const EdgeInsets.only(
+            left: kPadding16,
+            right: kPadding16,
+            bottom: kPadding16,
+          ),
           child: Column(
             children: [
               /// Top of the screen

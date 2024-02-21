@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
@@ -62,6 +63,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
     return Scaffold(
       /// App Bar
       appBar: AppBar(
+        backgroundColor: kWhiteThemeColor,
+        scrolledUnderElevation: 0,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -73,7 +76,11 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       /// Body of the screen
       body: Padding(
         // Add padding around the body of the screen
-        padding: const EdgeInsets.all(kPadding16),
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
+        ),
         child: Column(
           children: [
             /// Top of the screen
@@ -144,6 +151,50 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                     selectedCapacity: Capacity.advanced,
                     title: 'Advanced',
                     description: 'More than 10  Push-ups',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 20.0),
+
+                  /// Button to show how to do push_ups
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "What is push ups?",
+                        style: TextStyle(
+                            color: kBlueThemeColor02,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w900),
+                      ),
+                      const SizedBox(width: 5.0),
+                      SizedBox(
+                        height: 28,
+                        width: 28,
+                        child: IconButton.filled(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  title: const Text("Push Ups"),
+                                  content: const Text("This is how do push ups"),
+                                  actions: [
+                                    ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("OK"))
+                                  ],
+                                );
+                              },
+                            );
+                          },
+                          icon: const Icon(FontAwesomeIcons.exclamation),
+                          iconSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

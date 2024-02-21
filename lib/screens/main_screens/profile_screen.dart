@@ -42,12 +42,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   /// Sign out method
   Future<void> _signOut() async {
-    await FirebaseAuth.instance.signOut();
-    if (!mounted) return;
-    // Show snack bar with 'Signed out' message
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Signed out!')),
-    );
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (!mounted) return;
+      // Show snack bar with 'Signed out' message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed out!')),
+      );
+    } catch (e) {
+      print("Error signing out: $e");
+    }
   }
 
   void _showSignOutDialog() {
@@ -253,7 +257,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       /// Body of the screen
       body: Padding(
-        padding: const EdgeInsets.all(kPadding16),
+        // Add padding around the body
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+        ),
         child: StreamBuilder<DocumentSnapshot>(
           stream: FirebaseFirestore.instance
               .collection('users')
@@ -285,6 +293,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
             userWeightController.text = data['weight'].toString();
 
             return ListView(
+              padding: const EdgeInsets.only(
+                top: kPadding8,
+                bottom: kPadding8,
+              ),
               primary: false,
               children: [
                 /// Profile picture

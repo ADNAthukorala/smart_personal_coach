@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 //Theme colors and font family
 const kBlueThemeColor = Color(0xFF2596BE);
+const kBlueThemeColor02 = Color(0xFF006685);
 const kPinkThemeColor = Color(0xFFEC22CC);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF7E7474);
@@ -111,6 +112,7 @@ const kDayButtonTextStyle = TextStyle(
 
 /// Text style for main screens app bar
 const kAppBarTextStyle = TextStyle(
+  color: kWhiteThemeColor,
   fontWeight: FontWeight.w900,
 );
 

@@ -20,14 +20,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: kBlueThemeColor),
         useMaterial3: true,
         fontFamily: 'Roboto',
-        drawerTheme: const DrawerThemeData(
-          backgroundColor: kWhiteThemeColor,
-        ),
         scaffoldBackgroundColor: kWhiteThemeColor,
-        appBarTheme: const AppBarTheme(
-          backgroundColor: kWhiteThemeColor,
-          scrolledUnderElevation: 0,
-        ),
+        appBarTheme: const AppBarTheme(color: kBlueThemeColor),
       ),
       home: const WelcomeScreen(),
     );

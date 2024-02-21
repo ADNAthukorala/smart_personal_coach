@@ -64,6 +64,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
     return Scaffold(
       /// App Bar
       appBar: AppBar(
+        backgroundColor: kWhiteThemeColor,
+        scrolledUnderElevation: 0,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -75,7 +77,11 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
       /// Body of the screen
       body: Padding(
         // Add padding around the body of the screen
-        padding: const EdgeInsets.all(kPadding16),
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
+        ),
         // The main column
         child: Column(
           children: [
