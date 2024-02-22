@@ -11,6 +11,7 @@ import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
 import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
 import 'package:smart_personal_coach/screens/signup_screen.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 /// Sign-In Screen
 class SignInScreen extends StatefulWidget {
@@ -141,6 +142,9 @@ class _SignInScreenState extends State<SignInScreen> {
   // To check whether visibility button is clicked or not.
   bool _isVisibilityButtonClicked = false;
 
+  // To show or hide spinner
+  bool showSpinner = false;
+
   /// Visibility button click function
   void visibilityButtonClick() {
     if (_isVisibilityButtonClicked == false) {
@@ -170,220 +174,234 @@ class _SignInScreenState extends State<SignInScreen> {
       },
       child: Scaffold(
         /// Body of the screen
-        body: Column(
-          children: [
-            /// Top of the screen (Top image)
-            MediaQuery.of(context).viewInsets.bottom == 0
-                ? const Expanded(
-                    flex: 2,
-                    child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
-                  )
-                : const SizedBox(),
+        body: ModalProgressHUD(
+          inAsyncCall: showSpinner,
+          progressIndicator: const CircularProgressIndicator(
+            color: kBlueThemeColor,
+          ),
+          child: Column(
+            children: [
+              /// Top of the screen (Top image)
+              MediaQuery.of(context).viewInsets.bottom == 0
+                  ? const Expanded(
+                      flex: 2,
+                      child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
+                    )
+                  : const SizedBox(),
 
-            /// Bottom components holder (Middle and bottom of the screen)
-            Expanded(
-              flex: MediaQuery.of(context).size.height > 800 ? 4 : 6,
-              // Add padding around the bottom components
-              child: Padding(
-                padding: const EdgeInsets.only(
-                  left: kPadding16,
-                  right: kPadding16,
-                  bottom: kPadding16,
-                ),
-                // Adding all the components at the bottom to a column
-                child: Column(
-                  mainAxisAlignment:
-                      MediaQuery.of(context).viewInsets.bottom == 0
-                          ? MainAxisAlignment.spaceBetween
-                          : MainAxisAlignment.center,
-                  children: [
-                    /// Middle of the screen (Title ans user input fields)
-                    /// User inputs container and title and description container
-                    Form(
-                      key: _formKeySignIn,
-                      child: Column(
-                        children: [
-                          /// The Title and the description holder
-                          const TitleAndDescriptionHolder(
-                            title: 'Sign In',
-                            description:
-                                'Please enter email and password for login',
-                          ),
-
-                          /// Add space
-                          const SizedBox(height: 12.0),
-
-                          /// Get the user's email
-                          TextFormField(
-                            validator: _validateEmail,
-                            controller: _emailController,
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Email',
-                              prefixIcon: const Icon(
-                                Icons.email_outlined,
-                                color: kGreyThemeColor,
-                              ),
+              /// Bottom components holder (Middle and bottom of the screen)
+              Expanded(
+                flex: MediaQuery.of(context).size.height > 800 ? 4 : 6,
+                // Add padding around the bottom components
+                child: Padding(
+                  padding: const EdgeInsets.only(
+                    left: kPadding16,
+                    right: kPadding16,
+                    bottom: kPadding16,
+                  ),
+                  // Adding all the components at the bottom to a column
+                  child: Column(
+                    mainAxisAlignment:
+                        MediaQuery.of(context).viewInsets.bottom == 0
+                            ? MainAxisAlignment.spaceBetween
+                            : MainAxisAlignment.center,
+                    children: [
+                      /// Middle of the screen (Title ans user input fields)
+                      /// User inputs container and title and description container
+                      Form(
+                        key: _formKeySignIn,
+                        child: Column(
+                          children: [
+                            /// The Title and the description holder
+                            const TitleAndDescriptionHolder(
+                              title: 'Sign In',
+                              description:
+                                  'Please enter email and password for login',
                             ),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
 
-                          /// Add space
-                          const SizedBox(height: 12.0),
+                            /// Add space
+                            const SizedBox(height: 12.0),
 
-                          /// Get the user's password
-                          TextFormField(
-                            validator: _validatePassword,
-                            controller: _passwordController,
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Password',
-                              prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: kGreyThemeColor,
+                            /// Get the user's email
+                            TextFormField(
+                              validator: _validateEmail,
+                              controller: _emailController,
+                              decoration:
+                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                                hintText: 'Email',
+                                prefixIcon: const Icon(
+                                  Icons.email_outlined,
+                                  color: kGreyThemeColor,
+                                ),
                               ),
-                              suffixIcon: IconButton(
+                              keyboardType: TextInputType.emailAddress,
+                            ),
+
+                            /// Add space
+                            const SizedBox(height: 12.0),
+
+                            /// Get the user's password
+                            TextFormField(
+                              validator: _validatePassword,
+                              controller: _passwordController,
+                              decoration:
+                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                                hintText: 'Password',
+                                prefixIcon: const Icon(
+                                  Icons.lock_outline,
+                                  color: kGreyThemeColor,
+                                ),
+                                suffixIcon: IconButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      visibilityButtonClick();
+                                    });
+                                  },
+                                  icon: _isVisibilityButtonClicked
+                                      ? const Icon(Icons.visibility_outlined)
+                                      : const Icon(Icons.visibility_off_outlined),
+                                ),
+                              ),
+                              obscureText:
+                                  _isVisibilityButtonClicked ? false : true,
+                              enableSuggestions: false,
+                              autofocus: false,
+                            ),
+
+                            /// Add space
+                            const SizedBox(height: 12.0),
+
+                            /// Forget password button
+                            Container(
+                              alignment: Alignment.centerRight,
+                              child: TextButton(
                                 onPressed: () {
-                                  setState(() {
-                                    visibilityButtonClick();
-                                  });
-                                },
-                                icon: _isVisibilityButtonClicked
-                                    ? const Icon(Icons.visibility_outlined)
-                                    : const Icon(Icons.visibility_off_outlined),
-                              ),
-                            ),
-                            obscureText:
-                                _isVisibilityButtonClicked ? false : true,
-                            enableSuggestions: false,
-                            autofocus: false,
-                          ),
-
-                          /// Add space
-                          const SizedBox(height: 12.0),
-
-                          /// Forget password button
-                          Container(
-                            alignment: Alignment.centerRight,
-                            child: TextButton(
-                              onPressed: () {
-                                // Go to the forgot password screen
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) =>
-                                        const ForgotPasswordScreen(),
-                                  ),
-                                );
-                              },
-                              style: kTextButtonStyle,
-                              child: const Text(
-                                'Forgot Password?',
-                                style: kTextButtonTextStyle,
-                              ),
-                            ),
-                          ),
-
-                          /// Add space
-                          const SizedBox(height: 12.0),
-
-                          /// Sign in button
-                          SignInSignUpButton(
-                            onPressed: () async {
-                              // Validate returns true if the form is valid, or false otherwise.
-                              if (_formKeySignIn.currentState!.validate()) {
-                                try {
-                                  // Sign in a user with an email address and password
-                                  await FirebaseAuth.instance
-                                      .signInWithEmailAndPassword(
-                                    email: _emailController.text.trim(),
-                                    password: _passwordController.text.trim(),
-                                  );
-                                  _passwordController.clear();
-                                  if (!context.mounted) return;
-                                  // Go to the gender selection screen
-                                  checkFieldIsEmpty();
-                                  // Show snack bar with 'Signed in' message
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Signed in!')),
-                                  );
-                                } on FirebaseAuthException catch (e) {
-                                  // ignore: avoid_print
-                                  print(e);
-                                  // Show snack bar with error message
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text(
-                                            'Wrong email or password. Check again and re-enter!')),
-                                  );
-                                } catch (e) {
-                                  // print(e);
-                                  // show snack bar with error message
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('An error has occurred')),
-                                  );
-                                }
-                              }
-                            },
-                            buttonText: 'Sign In',
-                          ),
-                        ],
-                      ),
-                    ),
-
-                    /// Bottom of the screen (Sign-up button, social media buttons)
-                    MediaQuery.of(context).viewInsets.bottom == 0
-                        ? Column(
-                            children: [
-                              /// Social media buttons container
-                              SocialMediaButtonsContainer(
-                                onPressedGoogle: () {},
-                                onPressedFacebook: () {},
-                              ),
-
-                              /// Add space
-                              const SizedBox(
-                                height: 12.0,
-                              ),
-
-                              /// Sign up text button container
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    "Don’t have an account?",
-                                    style: kSmallGreyColorDescriptionTextStyle,
-                                  ),
-
-                                  /// Sign up text button
-                                  TextButton(
-                                    onPressed: () {
-                                      // Navigate to the sign-up screen
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              const SignUpScreen(),
-                                        ),
-                                      );
-                                    },
-                                    style: kTextButtonStyle,
-                                    child: const Text(
-                                      'Sign Up',
-                                      style: kTextButtonTextStyle,
+                                  // Go to the forgot password screen
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const ForgotPasswordScreen(),
                                     ),
-                                  ),
-                                ],
+                                  );
+                                },
+                                style: kTextButtonStyle,
+                                child: const Text(
+                                  'Forgot Password?',
+                                  style: kTextButtonTextStyle,
+                                ),
                               ),
-                            ],
-                          )
-                        : const SizedBox(),
-                  ],
+                            ),
+
+                            /// Add space
+                            const SizedBox(height: 12.0),
+
+                            /// Sign in button
+                            SignInSignUpButton(
+                              onPressed: () async {
+                                setState(() {
+                                  //Once click on the register button, showSpinner is equal to true and
+                                  //shows the modal progress indicator.
+                                  showSpinner = true;
+                                });
+                                // Validate returns true if the form is valid, or false otherwise.
+                                if (_formKeySignIn.currentState!.validate()) {
+                                  try {
+                                    // Sign in a user with an email address and password
+                                    await FirebaseAuth.instance
+                                        .signInWithEmailAndPassword(
+                                      email: _emailController.text.trim(),
+                                      password: _passwordController.text.trim(),
+                                    );
+                                    if (!context.mounted) return;
+                                    // Go to the gender selection screen
+                                    checkFieldIsEmpty();
+                                    // Show snack bar with 'Signed in' message
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(content: Text('Signed in!')),
+                                    );
+                                  } on FirebaseAuthException catch (e) {
+                                    // ignore: avoid_print
+                                    print(e);
+                                    // Show snack bar with error message
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text(
+                                              'Wrong email or password. Check again and re-enter!')),
+                                    );
+                                  } catch (e) {
+                                    // print(e);
+                                    // show snack bar with error message
+                                    ScaffoldMessenger.of(context).showSnackBar(
+                                      const SnackBar(
+                                          content: Text('An error has occurred')),
+                                    );
+                                  }
+                                }
+                                //After all, showSpinner is equal to false and disappears modal progress indicator.
+                                setState(() {
+                                  showSpinner = false;
+                                });
+                              },
+                              buttonText: 'Sign In',
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      /// Bottom of the screen (Sign-up button, social media buttons)
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? Column(
+                              children: [
+                                /// Social media buttons container
+                                SocialMediaButtonsContainer(
+                                  onPressedGoogle: () {},
+                                  onPressedFacebook: () {},
+                                ),
+
+                                /// Add space
+                                const SizedBox(
+                                  height: 12.0,
+                                ),
+
+                                /// Sign up text button container
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    const Text(
+                                      "Don’t have an account?",
+                                      style: kSmallGreyColorDescriptionTextStyle,
+                                    ),
+
+                                    /// Sign up text button
+                                    TextButton(
+                                      onPressed: () {
+                                        // Navigate to the sign-up screen
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) =>
+                                                const SignUpScreen(),
+                                          ),
+                                        );
+                                      },
+                                      style: kTextButtonStyle,
+                                      child: const Text(
+                                        'Sign Up',
+                                        style: kTextButtonTextStyle,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            )
+                          : const SizedBox(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
