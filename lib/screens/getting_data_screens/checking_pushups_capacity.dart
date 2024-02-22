@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -7,11 +6,27 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/checking_pullups_capacity.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
 
 /// Screen to get the user's push ups capacity
 class CheckingPushUpsCapacity extends StatefulWidget {
-  const CheckingPushUpsCapacity({super.key});
+  const CheckingPushUpsCapacity(
+      {super.key,
+      required this.userGender,
+      required this.userBirthDay,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userSelectedBodyAreas,
+      required this.userMainGoal});
+
+  final String userGender;
+  final DateTime userBirthDay;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
+  final MainGoal userMainGoal;
 
   @override
   State<CheckingPushUpsCapacity> createState() =>
@@ -19,23 +34,14 @@ class CheckingPushUpsCapacity extends StatefulWidget {
 }
 
 class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  // Creating an instance of FirebaseAuth
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's push ups capacity
   Capacity _userPushUpsCapacity = Capacity.beginner;
-
-  /// Adding data to the database (User push-ups capacity)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'push_ups_capacity': _userPushUpsCapacity.toString(),
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
-  }
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -111,7 +117,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                       setState(() {
                         _userPushUpsCapacity = Capacity.beginner;
                       });
-                      print(_userPushUpsCapacity);
+                      // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
                     selectedCapacity: Capacity.beginner,
@@ -128,7 +134,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                       setState(() {
                         _userPushUpsCapacity = Capacity.intermediate;
                       });
-                      print(_userPushUpsCapacity);
+                      // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
                     selectedCapacity: Capacity.intermediate,
@@ -145,7 +151,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                       setState(() {
                         _userPushUpsCapacity = Capacity.advanced;
                       });
-                      print(_userPushUpsCapacity);
+                      // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
                     selectedCapacity: Capacity.advanced,
@@ -178,7 +184,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text("Push Ups"),
-                                  content: const Text("This is how do push ups"),
+                                  content:
+                                      const Text("This is how do push ups"),
                                   actions: [
                                     ElevatedButton(
                                         onPressed: () {
@@ -208,13 +215,19 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
               ),
               child: NextButton(
                 onPressed: () {
-                  // Calling the addData method to add data to the database
-                  addData();
                   // When the button is clicked, navigate to the checking pull ups capacity screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CheckingPullUpsCapacity(),
+                      builder: (context) => CheckingPullUpsCapacity(
+                        userGender: widget.userGender,
+                        userBirthDay: widget.userBirthDay,
+                        userHeight: widget.userHeight,
+                        userWeight: widget.userWeight,
+                        userSelectedBodyAreas: widget.userSelectedBodyAreas,
+                        userMainGoal: widget.userMainGoal,
+                        userPushUpsCapacity: _userPushUpsCapacity,
+                      ),
                     ),
                   );
                 },

@@ -1,10 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/checking_pushups_capacity.dart';
 
 /// Create an enum named main goals
@@ -12,30 +12,33 @@ enum MainGoal { loseWeight, buildMuscles, keepFit }
 
 /// Screen to get the user's main goal
 class MainGoalScreen extends StatefulWidget {
-  const MainGoalScreen({super.key});
+  const MainGoalScreen(
+      {super.key,
+      required this.userGender,
+      required this.userBirthDay,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userSelectedBodyAreas});
+
+  final String userGender;
+  final DateTime userBirthDay;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
 
   @override
   State<MainGoalScreen> createState() => _MainGoalScreenState();
 }
 
 class _MainGoalScreenState extends State<MainGoalScreen> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  // Creating an instance of FirebaseAuth
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
   // Declare a variable to store the user's main goal
   MainGoal _userMainGoal = MainGoal.loseWeight;
-
-  /// Adding data to the database (User's main goal)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'main_goal': _userMainGoal.toString(),
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
-  }
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -166,13 +169,18 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
               ),
               child: NextButton(
                 onPressed: () {
-                  // Calling the addData method to add data to the database
-                  addData();
                   // When the button is clicked, navigate to the checking push ups capacity screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CheckingPushUpsCapacity(),
+                      builder: (context) => CheckingPushUpsCapacity(
+                        userGender: widget.userGender,
+                        userBirthDay: widget.userBirthDay,
+                        userHeight: widget.userHeight,
+                        userWeight: widget.userWeight,
+                        userSelectedBodyAreas: widget.userSelectedBodyAreas,
+                        userMainGoal: _userMainGoal,
+                      ),
                     ),
                   );
                 },

@@ -1,15 +1,36 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
 
 /// Screen to get data on how many days per week the user can dedicate to one workout plan
 class WeeklyGoalScreen extends StatefulWidget {
-  const WeeklyGoalScreen({super.key});
+  const WeeklyGoalScreen(
+      {super.key,
+      required this.userGender,
+      required this.userBirthDay,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userSelectedBodyAreas,
+      required this.userMainGoal,
+      required this.userPushUpsCapacity,
+      required this.userPullUpsCapacity});
+
+  final String userGender;
+  final DateTime userBirthDay;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
+  final MainGoal userMainGoal;
+  final Capacity userPushUpsCapacity;
+  final Capacity userPullUpsCapacity;
 
   @override
   State<WeeklyGoalScreen> createState() => _WeeklyGoalScreenState();
@@ -23,15 +44,61 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
+  // Default profile picture url
+  final String defaultProfilePicture =
+      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Fdefault_profile_picture.jpg?alt=media&token=0cddd010-118c-47ce-ba0a-fad1e54b479b";
+
   // Declare an int variable to store how many days the user can dedicate to the workout plan
   int _userSelectedDays = 1;
 
+  // To show or hide spinner
+  bool showSpinner = false;
+
   /// Adding data to the database (User weekly goal)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'weekly_goal': _userSelectedDays,
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
+  Future<void> _setData() async {
+    setState(() {
+      //Once click on the register button, showSpinner is equal to true and
+      //shows the modal progress indicator.
+      showSpinner = true;
+    });
+    try {
+      await _firestore.collection("users").doc(loggedInUser.email).set(
+        {
+          'gender': widget.userGender,
+          'user_name': "user",
+          'email': loggedInUser.email,
+          'profile_picture': defaultProfilePicture,
+          'birth_day': widget.userBirthDay,
+          'height': widget.userHeight,
+          'weight': widget.userWeight,
+          'focus_body_areas': widget.userSelectedBodyAreas
+              .map((e) => e.toString().split('.').last)
+              .toList(),
+          'main_goal': widget.userMainGoal.toString().split('.').last,
+          'push_ups_capacity':
+              widget.userPushUpsCapacity.toString().split('.').last,
+          'pull_ups_capacity':
+              widget.userPullUpsCapacity.toString().split('.').last,
+          'weekly_goal': _userSelectedDays,
+        },
+      );
+      if (!mounted) return;
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const BottomNavigationBarScreenScreen(),
+        ),
+      );
+    } catch (e) {
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Something went wrong!')),
+      );
+    }
+    //After all, showSpinner is equal to false and disappears modal progress indicator.
+    setState(() {
+      showSpinner = false;
+    });
   }
 
   /// Creating a method to get the logged in user
@@ -71,164 +138,167 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       ),
 
       /// Body of the screen
-      body: Padding(
-        // Add padding around the body of the screen
-        padding: const EdgeInsets.only(
-          left: kPadding16,
-          right: kPadding16,
-          bottom: kPadding16,
+      body: ModalProgressHUD(
+        inAsyncCall: showSpinner,
+        progressIndicator: const CircularProgressIndicator(
+          color: kBlueThemeColor,
         ),
-        child: Column(
-          children: [
-            /// Top of the screen
-            /// The title and the description
-            const Padding(
-              padding: EdgeInsets.only(
-                bottom: kPadding8,
-              ),
-              child: TitleAndDescriptionHolder(
-                title: 'Set your weekly goal',
-                description:
-                    'How many days per week can you dedicate to one workout plan?',
-              ),
-            ),
-
-            /// Middle of the screen
-            /// Week days buttons holder
-            Expanded(
-              child: GridView.count(
-                padding: const EdgeInsets.only(
-                  top: kPadding8,
+        child: Padding(
+          // Add padding around the body of the screen
+          padding: const EdgeInsets.only(
+            left: kPadding16,
+            right: kPadding16,
+            bottom: kPadding16,
+          ),
+          child: Column(
+            children: [
+              /// Top of the screen
+              /// The title and the description
+              const Padding(
+                padding: EdgeInsets.only(
                   bottom: kPadding8,
                 ),
-                crossAxisCount: 2,
-                mainAxisSpacing: 10.0,
-                crossAxisSpacing: 10.0,
-                primary: false,
-                children: [
-                  /// 1 day a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 1;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 1,
-                    title: '1 Day',
-                    description: 'Dedicate 1 day a week',
-                  ),
-
-                  /// 2 days a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 2;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 2,
-                    title: '2 Days',
-                    description: 'Dedicate 2 days a week',
-                  ),
-
-                  /// 3 days a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 3;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 3,
-                    title: '3 Days',
-                    description: 'Dedicate 3 days a week',
-                  ),
-
-                  /// 4 days a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 4;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 4,
-                    title: '4 Days',
-                    description: 'Dedicate 4 days a week',
-                  ),
-
-                  /// 5 days a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 5;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 5,
-                    title: '5 Days',
-                    description: 'Dedicate 5 days a week',
-                  ),
-
-                  /// 6 days a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 6;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 6,
-                    title: '6 Days',
-                    description: 'Dedicate 6 days a week',
-                  ),
-
-                  /// 7 days a week button
-                  DayButton(
-                    onPressed: () {
-                      setState(() {
-                        _userSelectedDays = 7;
-                      });
-                      print(_userSelectedDays);
-                    },
-                    userSelectedDays: _userSelectedDays,
-                    selectedDays: 7,
-                    title: '7 Days',
-                    description: 'Dedicate 7 days a week',
-                  ),
-                ],
+                child: TitleAndDescriptionHolder(
+                  title: 'Set your weekly goal',
+                  description:
+                      'How many days per week can you dedicate to one workout plan?',
+                ),
               ),
-            ),
 
-            /// Bottom of the screen
-            /// Next button
-            Padding(
-              padding: const EdgeInsets.only(
-                top: kPadding8,
-              ),
-              child: NextButton(
-                onPressed: () {
-                  // Calling the addData method to add data to the database
-                  addData();
-                  // When the button is clicked, navigate to the home page
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const BottomNavigationBarScreenScreen(),
+              /// Middle of the screen
+              /// Week days buttons holder
+              Expanded(
+                child: GridView.count(
+                  padding: const EdgeInsets.only(
+                    top: kPadding8,
+                    bottom: kPadding8,
+                  ),
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 10.0,
+                  crossAxisSpacing: 10.0,
+                  primary: false,
+                  children: [
+                    /// 1 day a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 1;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 1,
+                      title: '1 Day',
+                      description: 'Dedicate 1 day a week',
                     ),
-                  );
-                },
-                style: kNextButtonStyle,
+
+                    /// 2 days a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 2;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 2,
+                      title: '2 Days',
+                      description: 'Dedicate 2 days a week',
+                    ),
+
+                    /// 3 days a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 3;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 3,
+                      title: '3 Days',
+                      description: 'Dedicate 3 days a week',
+                    ),
+
+                    /// 4 days a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 4;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 4,
+                      title: '4 Days',
+                      description: 'Dedicate 4 days a week',
+                    ),
+
+                    /// 5 days a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 5;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 5,
+                      title: '5 Days',
+                      description: 'Dedicate 5 days a week',
+                    ),
+
+                    /// 6 days a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 6;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 6,
+                      title: '6 Days',
+                      description: 'Dedicate 6 days a week',
+                    ),
+
+                    /// 7 days a week button
+                    DayButton(
+                      onPressed: () {
+                        setState(() {
+                          _userSelectedDays = 7;
+                        });
+                        // print(_userSelectedDays);
+                      },
+                      userSelectedDays: _userSelectedDays,
+                      selectedDays: 7,
+                      title: '7 Days',
+                      description: 'Dedicate 7 days a week',
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ],
+
+              /// Bottom of the screen
+              /// Next button
+              Padding(
+                padding: const EdgeInsets.only(
+                  top: kPadding8,
+                ),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // Calling the setData method to add data to the database
+                    _setData();
+                  },
+                  style: kNextButtonStyle,
+                  child: const Text(
+                    "Start",
+                    style: kNextButtonTextStyle,
+                  ),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

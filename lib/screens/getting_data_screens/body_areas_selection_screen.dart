@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
@@ -12,7 +11,17 @@ enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
 /// Getting the user's preferred body areas to focus on
 class BodyAreasSelectionScreen extends StatefulWidget {
-  const BodyAreasSelectionScreen({super.key});
+  const BodyAreasSelectionScreen(
+      {super.key,
+      required this.userBirthDay,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userGender});
+
+  final String userGender;
+  final DateTime userBirthDay;
+  final int userHeight;
+  final int userWeight;
 
   @override
   State<BodyAreasSelectionScreen> createState() =>
@@ -20,23 +29,14 @@ class BodyAreasSelectionScreen extends StatefulWidget {
 }
 
 class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  // Creating an instance of FirebaseAuth
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
   // Declare a list to store user selected body areas.
   final List<BodyArea> _userSelectedBodyAreas = [];
-
-  /// Adding data to the database (Focus body areas)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'focus_body_areas': _userSelectedBodyAreas.toString(),
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
-  }
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -142,7 +142,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                       _userSelectedBodyAreas.add(BodyArea.abs);
                                       _userSelectedBodyAreas.add(BodyArea.legs);
                                     }
-                                    print(_userSelectedBodyAreas);
+                                    // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 buttonLabel: 'Full Body',
@@ -162,7 +162,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                       // If it false, add arms to the array when this button is clicked
                                       _userSelectedBodyAreas.add(BodyArea.arms);
                                     }
-                                    print(_userSelectedBodyAreas);
+                                    // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
@@ -184,7 +184,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                       // If it false, add arms to the array when this button is clicked
                                       _userSelectedBodyAreas.add(BodyArea.back);
                                     }
-                                    print(_userSelectedBodyAreas);
+                                    // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
@@ -207,7 +207,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                       _userSelectedBodyAreas
                                           .add(BodyArea.chest);
                                     }
-                                    print(_userSelectedBodyAreas);
+                                    // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
@@ -229,7 +229,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                       // If it false, add arms to the array when this button is clicked
                                       _userSelectedBodyAreas.add(BodyArea.abs);
                                     }
-                                    print(_userSelectedBodyAreas);
+                                    // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
@@ -251,7 +251,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                       // If it false, add legs to the array when this button is clicked
                                       _userSelectedBodyAreas.add(BodyArea.legs);
                                     }
-                                    print(_userSelectedBodyAreas);
+                                    // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
@@ -286,13 +286,17 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                 onPressed: _userSelectedBodyAreas.isEmpty
                     ? null
                     : () {
-                        // Calling the addData method to add data to the database
-                        addData();
                         // When the button is clicked, navigate to the main goal screen
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MainGoalScreen(),
+                            builder: (context) => MainGoalScreen(
+                              userGender: widget.userGender,
+                              userBirthDay: widget.userBirthDay,
+                              userHeight: widget.userHeight,
+                              userWeight: widget.userWeight,
+                              userSelectedBodyAreas: _userSelectedBodyAreas,
+                            ),
                           ),
                         );
                       },
