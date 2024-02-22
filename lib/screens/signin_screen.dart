@@ -185,7 +185,8 @@ class _SignInScreenState extends State<SignInScreen> {
               MediaQuery.of(context).viewInsets.bottom == 0
                   ? const Expanded(
                       flex: 2,
-                      child: TopImage(imageUrl: 'images/signin_screen_image.jpg'),
+                      child:
+                          TopImage(imageUrl: 'images/signin_screen_image.jpg'),
                     )
                   : const SizedBox(),
 
@@ -226,8 +227,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             TextFormField(
                               validator: _validateEmail,
                               controller: _emailController,
-                              decoration:
-                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                              decoration: kSignInSignUpTextFormFieldDecorations
+                                  .copyWith(
                                 hintText: 'Email',
                                 prefixIcon: const Icon(
                                   Icons.email_outlined,
@@ -244,8 +245,8 @@ class _SignInScreenState extends State<SignInScreen> {
                             TextFormField(
                               validator: _validatePassword,
                               controller: _passwordController,
-                              decoration:
-                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                              decoration: kSignInSignUpTextFormFieldDecorations
+                                  .copyWith(
                                 hintText: 'Password',
                                 prefixIcon: const Icon(
                                   Icons.lock_outline,
@@ -259,7 +260,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   },
                                   icon: _isVisibilityButtonClicked
                                       ? const Icon(Icons.visibility_outlined)
-                                      : const Icon(Icons.visibility_off_outlined),
+                                      : const Icon(
+                                          Icons.visibility_off_outlined),
                                 ),
                               ),
                               obscureText:
@@ -318,7 +320,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                     checkFieldIsEmpty();
                                     // Show snack bar with 'Signed in' message
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(content: Text('Signed in!')),
+                                      const SnackBar(
+                                          content: Text('Signed in!')),
                                     );
                                   } on FirebaseAuthException catch (e) {
                                     // ignore: avoid_print
@@ -334,7 +337,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                     // show snack bar with error message
                                     ScaffoldMessenger.of(context).showSnackBar(
                                       const SnackBar(
-                                          content: Text('An error has occurred')),
+                                          content:
+                                              Text('An error has occurred')),
                                     );
                                   }
                                 }
@@ -370,7 +374,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   children: [
                                     const Text(
                                       "Don’t have an account?",
-                                      style: kSmallGreyColorDescriptionTextStyle,
+                                      style:
+                                          kSmallGreyColorDescriptionTextStyle,
                                     ),
 
                                     /// Sign up text button

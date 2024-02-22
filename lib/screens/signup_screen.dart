@@ -137,9 +137,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ),
                 // Adding all the components at the bottom to a column
                 child: Column(
-                  mainAxisAlignment: MediaQuery.of(context).viewInsets.bottom == 0
-                      ? MainAxisAlignment.spaceBetween
-                      : MainAxisAlignment.center,
+                  mainAxisAlignment:
+                      MediaQuery.of(context).viewInsets.bottom == 0
+                          ? MainAxisAlignment.spaceBetween
+                          : MainAxisAlignment.center,
                   children: [
                     /// Middle of the screen (Title, user input fields and check box)
                     /// User inputs container and title and description container
