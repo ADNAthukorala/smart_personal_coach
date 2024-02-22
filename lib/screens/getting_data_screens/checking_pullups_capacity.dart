@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
@@ -15,7 +14,7 @@ class CheckingPullUpsCapacity extends StatefulWidget {
   const CheckingPullUpsCapacity(
       {super.key,
       required this.userGender,
-      required this.userBirthday,
+      required this.userBirthDay,
       required this.userHeight,
       required this.userWeight,
       required this.userSelectedBodyAreas,
@@ -23,7 +22,7 @@ class CheckingPullUpsCapacity extends StatefulWidget {
       required this.userPushUpsCapacity});
 
   final String userGender;
-  final DateTime userBirthday;
+  final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
   final List<BodyArea> userSelectedBodyAreas;
@@ -36,23 +35,14 @@ class CheckingPullUpsCapacity extends StatefulWidget {
 }
 
 class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  // Creating an instance of FirebaseAuth
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's pull ups capacity
   Capacity _userPullUpsCapacity = Capacity.beginner;
-
-  /// Adding data to the database (User pull-ups capacity)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'pull_ups_capacity': _userPullUpsCapacity.toString(),
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
-  }
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -128,7 +118,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                       setState(() {
                         _userPullUpsCapacity = Capacity.beginner;
                       });
-                      print(_userPullUpsCapacity);
+                      // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
                     selectedCapacity: Capacity.beginner,
@@ -145,7 +135,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                       setState(() {
                         _userPullUpsCapacity = Capacity.intermediate;
                       });
-                      print(_userPullUpsCapacity);
+                      // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
                     selectedCapacity: Capacity.intermediate,
@@ -162,7 +152,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                       setState(() {
                         _userPullUpsCapacity = Capacity.advanced;
                       });
-                      print(_userPullUpsCapacity);
+                      // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
                     selectedCapacity: Capacity.advanced,
@@ -181,15 +171,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               ),
               child: NextButton(
                 onPressed: () {
-                  // Calling the addData method to add data to the database
-                  addData();
                   // When the button is clicked, navigate to the weekly goal screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => WeeklyGoalScreen(
                         userGender: widget.userGender,
-                        userBirthday: widget.userBirthday,
+                        userBirthDay: widget.userBirthDay,
                         userHeight: widget.userHeight,
                         userWeight: widget.userWeight,
                         userSelectedBodyAreas: widget.userSelectedBodyAreas,

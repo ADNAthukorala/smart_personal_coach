@@ -14,7 +14,7 @@ class WeeklyGoalScreen extends StatefulWidget {
   const WeeklyGoalScreen(
       {super.key,
       required this.userGender,
-      required this.userBirthday,
+      required this.userBirthDay,
       required this.userHeight,
       required this.userWeight,
       required this.userSelectedBodyAreas,
@@ -23,7 +23,7 @@ class WeeklyGoalScreen extends StatefulWidget {
       required this.userPullUpsCapacity});
 
   final String userGender;
-  final DateTime userBirthday;
+  final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
   final List<BodyArea> userSelectedBodyAreas;
@@ -43,12 +43,27 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
+  // Default profile picture url
+  final String defaultProfilePicture =
+      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Fdefault_profile_picture.jpg?alt=media&token=0cddd010-118c-47ce-ba0a-fad1e54b479b";
+
   // Declare an int variable to store how many days the user can dedicate to the workout plan
   int _userSelectedDays = 1;
 
   /// Adding data to the database (User weekly goal)
-  void addData() {
+  void _setData() async {
     _firestore.collection("users").doc(loggedInUser.email).set({
+      'gender': widget.userGender,
+      'user_name': "user",
+      'email': loggedInUser.email,
+      'profile_picture': defaultProfilePicture,
+      'birth_day': widget.userBirthDay,
+      'height': widget.userHeight,
+      'weight': widget.userWeight,
+      'focus_body_areas': widget.userSelectedBodyAreas.toList(),
+      'main_goal': widget.userMainGoal.toString(),
+      'push_ups_capacity': widget.userPushUpsCapacity.toString(),
+      'pull_ups_capacity': widget.userPullUpsCapacity.toString(),
       'weekly_goal': _userSelectedDays,
     }, SetOptions(merge: true)).onError(
         (error, stackTrace) => print("Error: $error"));
@@ -132,7 +147,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 1;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 1,
@@ -146,7 +161,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 2;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 2,
@@ -160,7 +175,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 3;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 3,
@@ -174,7 +189,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 4;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 4,
@@ -188,7 +203,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 5;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 5,
@@ -202,7 +217,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 6;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 6,
@@ -216,7 +231,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                       setState(() {
                         _userSelectedDays = 7;
                       });
-                      print(_userSelectedDays);
+                      // print(_userSelectedDays);
                     },
                     userSelectedDays: _userSelectedDays,
                     selectedDays: 7,
@@ -236,7 +251,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   // Calling the addData method to add data to the database
-                  addData();
+                  _setData();
                   // When the button is clicked, navigate to the home page
                   Navigator.push(
                     context,

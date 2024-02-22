@@ -6,7 +6,6 @@ import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/birthday_height_weight_screen.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Screen to get the user's gender
 class GenderSelectionScreen extends StatefulWidget {
@@ -17,9 +16,8 @@ class GenderSelectionScreen extends StatefulWidget {
 }
 
 class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  // Creating an instance of FirebaseAuth
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
@@ -42,36 +40,21 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
     }
   }
 
-  /// Deleting a document from database
-  void _deleteDocument() async {
-    try {
-      // Get a reference to the document you want to delete
-      DocumentReference documentReference =
-          _firestore.collection('users').doc(loggedInUser.email);
-
-      // Delete the document
-      await documentReference.delete();
-
-      print('Document deleted successfully');
-    } catch (e) {
-      print('Error deleting document: $e');
-    }
-  }
-
-  // Default profile picture url
-  final String defaultProfilePicture =
-      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Fdefault_profile_picture.jpg?alt=media&token=0cddd010-118c-47ce-ba0a-fad1e54b479b";
-
-  /// Adding data to the database (User gender)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'gender': _userGender,
-      'user_name': "user",
-      'email': loggedInUser.email,
-      'profile_picture': defaultProfilePicture
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
-  }
+  // /// Deleting a document from database
+  // void _deleteDocument() async {
+  //   try {
+  //     // Get a reference to the document you want to delete
+  //     DocumentReference documentReference =
+  //         _firestore.collection('users').doc(loggedInUser.email);
+  //
+  //     // Delete the document
+  //     await documentReference.delete();
+  //
+  //     print('Document deleted successfully');
+  //   } catch (e) {
+  //     print('Error deleting document: $e');
+  //   }
+  // }
 
   /// Sign out method
   Future<void> _signOut() async {
@@ -119,7 +102,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
               onPressed: () {
                 Navigator.pop(context);
                 Navigator.pop(context);
-                _deleteDocument();
                 _signOut();
               },
             ),
@@ -229,8 +211,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   onPressed: _userGender == "Not Selected"
                       ? null // Disable the next button
                       : () {
-                          // Calling the addData method to add data to the database
-                          addData();
                           // When the button is clicked, navigate to the age, height, weight screen
                           Navigator.push(
                             context,

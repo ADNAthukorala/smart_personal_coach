@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
@@ -22,9 +21,8 @@ class BirthDayHeightWeightScreen extends StatefulWidget {
 
 class _BirthDayHeightWeightScreenState
     extends State<BirthDayHeightWeightScreen> {
-  // Creating an instances of FirebaseAuth and FirebaseFirestore
+  // Creating an instance of FirebaseAuth
   final _auth = FirebaseAuth.instance;
-  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
@@ -47,16 +45,6 @@ class _BirthDayHeightWeightScreenState
         _userBirthDay = picked;
       });
     }
-  }
-
-  /// Adding data to the database (User age, height, weight)
-  void addData() {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'birth_day': _userBirthDay,
-      'height': _userHeight,
-      'weight': _userWeight
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
   }
 
   /// Creating a method to get the logged in user
@@ -184,15 +172,13 @@ class _BirthDayHeightWeightScreenState
               ),
               child: NextButton(
                 onPressed: () {
-                  // Calling the addData method to add data to the database
-                  addData();
                   // When the button is clicked, navigate to the body areas selection screen
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                       builder: (context) => BodyAreasSelectionScreen(
                         userGender: widget.userGender,
-                        userBirthday: _userBirthDay,
+                        userBirthDay: _userBirthDay,
                         userHeight: _userHeight,
                         userWeight: _userWeight,
                       ),
