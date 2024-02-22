@@ -52,21 +52,22 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
   /// Adding data to the database (User weekly goal)
   void _setData() async {
-    _firestore.collection("users").doc(loggedInUser.email).set({
-      'gender': widget.userGender,
-      'user_name': "user",
-      'email': loggedInUser.email,
-      'profile_picture': defaultProfilePicture,
-      'birth_day': widget.userBirthDay,
-      'height': widget.userHeight,
-      'weight': widget.userWeight,
-      'focus_body_areas': widget.userSelectedBodyAreas.toList(),
-      'main_goal': widget.userMainGoal.toString(),
-      'push_ups_capacity': widget.userPushUpsCapacity.toString(),
-      'pull_ups_capacity': widget.userPullUpsCapacity.toString(),
-      'weekly_goal': _userSelectedDays,
-    }, SetOptions(merge: true)).onError(
-        (error, stackTrace) => print("Error: $error"));
+    _firestore.collection("users").doc(loggedInUser.email).set(
+      {
+        'gender': widget.userGender,
+        'user_name': "user",
+        'email': loggedInUser.email,
+        'profile_picture': defaultProfilePicture,
+        'birth_day': widget.userBirthDay,
+        'height': widget.userHeight,
+        'weight': widget.userWeight,
+        'focus_body_areas': widget.userSelectedBodyAreas.toList(),
+        'main_goal': widget.userMainGoal.toString(),
+        'push_ups_capacity': widget.userPushUpsCapacity.toString(),
+        'pull_ups_capacity': widget.userPullUpsCapacity.toString(),
+        'weekly_goal': _userSelectedDays,
+      },
+    ).onError((error, stackTrace) => print("Error: $error"));
   }
 
   /// Creating a method to get the logged in user
@@ -250,7 +251,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               ),
               child: ElevatedButton(
                 onPressed: () {
-                  // Calling the addData method to add data to the database
+                  // Calling the setData method to add data to the database
                   _setData();
                   // When the button is clicked, navigate to the home page
                   Navigator.push(
