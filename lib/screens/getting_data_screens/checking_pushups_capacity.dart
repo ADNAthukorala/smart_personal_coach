@@ -7,11 +7,27 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/checking_pullups_capacity.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
 
 /// Screen to get the user's push ups capacity
 class CheckingPushUpsCapacity extends StatefulWidget {
-  const CheckingPushUpsCapacity({super.key});
+  const CheckingPushUpsCapacity(
+      {super.key,
+      required this.userGender,
+      required this.userBirthday,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userSelectedBodyAreas,
+      required this.userMainGoal});
+
+  final String userGender;
+  final DateTime userBirthday;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
+  final MainGoal userMainGoal;
 
   @override
   State<CheckingPushUpsCapacity> createState() =>
@@ -178,7 +194,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                               builder: (context) {
                                 return AlertDialog(
                                   title: const Text("Push Ups"),
-                                  content: const Text("This is how do push ups"),
+                                  content:
+                                      const Text("This is how do push ups"),
                                   actions: [
                                     ElevatedButton(
                                         onPressed: () {
@@ -214,7 +231,15 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CheckingPullUpsCapacity(),
+                      builder: (context) => CheckingPullUpsCapacity(
+                        userGender: widget.userGender,
+                        userBirthday: widget.userBirthday,
+                        userHeight: widget.userHeight,
+                        userWeight: widget.userWeight,
+                        userSelectedBodyAreas: widget.userSelectedBodyAreas,
+                        userMainGoal: widget.userMainGoal,
+                        userPushUpsCapacity: _userPushUpsCapacity,
+                      ),
                     ),
                   );
                 },

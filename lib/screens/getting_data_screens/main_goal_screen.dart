@@ -5,6 +5,7 @@ import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/checking_pushups_capacity.dart';
 
 /// Create an enum named main goals
@@ -12,7 +13,13 @@ enum MainGoal { loseWeight, buildMuscles, keepFit }
 
 /// Screen to get the user's main goal
 class MainGoalScreen extends StatefulWidget {
-  const MainGoalScreen({super.key});
+  const MainGoalScreen({super.key, required this.userGender, required this.userBirthday, required this.userHeight, required this.userWeight, required this.userSelectedBodyAreas});
+
+  final String userGender;
+  final DateTime userBirthday;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
 
   @override
   State<MainGoalScreen> createState() => _MainGoalScreenState();
@@ -172,7 +179,14 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const CheckingPushUpsCapacity(),
+                      builder: (context) => CheckingPushUpsCapacity(
+                        userGender: widget.userGender,
+                        userBirthday: widget.userBirthday,
+                        userHeight: widget.userHeight,
+                        userWeight: widget.userWeight,
+                        userSelectedBodyAreas: widget.userSelectedBodyAreas,
+                        userMainGoal: _userMainGoal,
+                      ),
                     ),
                   );
                 },

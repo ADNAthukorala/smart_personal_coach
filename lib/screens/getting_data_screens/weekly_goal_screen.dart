@@ -2,14 +2,34 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
 
 /// Screen to get data on how many days per week the user can dedicate to one workout plan
 class WeeklyGoalScreen extends StatefulWidget {
-  const WeeklyGoalScreen({super.key});
+  const WeeklyGoalScreen(
+      {super.key,
+      required this.userGender,
+      required this.userBirthday,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userSelectedBodyAreas,
+      required this.userMainGoal,
+      required this.userPushUpsCapacity,
+      required this.userPullUpsCapacity});
+
+  final String userGender;
+  final DateTime userBirthday;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
+  final MainGoal userMainGoal;
+  final Capacity userPushUpsCapacity;
+  final Capacity userPullUpsCapacity;
 
   @override
   State<WeeklyGoalScreen> createState() => _WeeklyGoalScreenState();
@@ -213,7 +233,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               padding: const EdgeInsets.only(
                 top: kPadding8,
               ),
-              child: NextButton(
+              child: ElevatedButton(
                 onPressed: () {
                   // Calling the addData method to add data to the database
                   addData();
@@ -221,11 +241,16 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BottomNavigationBarScreenScreen(),
+                      builder: (context) =>
+                          const BottomNavigationBarScreenScreen(),
                     ),
                   );
                 },
                 style: kNextButtonStyle,
+                child: const Text(
+                  "Start",
+                  style: kNextButtonTextStyle,
+                ),
               ),
             ),
           ],

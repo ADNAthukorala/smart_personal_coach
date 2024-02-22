@@ -12,7 +12,17 @@ enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
 /// Getting the user's preferred body areas to focus on
 class BodyAreasSelectionScreen extends StatefulWidget {
-  const BodyAreasSelectionScreen({super.key});
+  const BodyAreasSelectionScreen(
+      {super.key,
+      required this.userBirthday,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userGender});
+
+  final String userGender;
+  final DateTime userBirthday;
+  final int userHeight;
+  final int userWeight;
 
   @override
   State<BodyAreasSelectionScreen> createState() =>
@@ -292,7 +302,13 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => const MainGoalScreen(),
+                            builder: (context) => MainGoalScreen(
+                              userGender: widget.userGender,
+                              userBirthday: widget.userBirthday,
+                              userHeight: widget.userHeight,
+                              userWeight: widget.userWeight,
+                              userSelectedBodyAreas: _userSelectedBodyAreas,
+                            ),
                           ),
                         );
                       },

@@ -11,7 +11,9 @@ import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_sel
 
 /// Screen to get the user age, height, weight
 class BirthDayHeightWeightScreen extends StatefulWidget {
-  const BirthDayHeightWeightScreen({super.key});
+  const BirthDayHeightWeightScreen({super.key, required this.userGender});
+
+  final String userGender;
 
   @override
   State<BirthDayHeightWeightScreen> createState() =>
@@ -28,7 +30,7 @@ class _BirthDayHeightWeightScreenState
   late User loggedInUser;
 
   // Declare variables to store user birth day, height and weight and assign default values for them.
-  DateTime userBirthDay = DateTime.now();
+  DateTime _userBirthDay = DateTime.now();
   int _userHeight = 120;
   int _userWeight = 60;
 
@@ -36,13 +38,13 @@ class _BirthDayHeightWeightScreenState
   Future<void> _selectUserBirthDay(BuildContext context) async {
     final DateTime? picked = await showDatePicker(
       context: context,
-      initialDate: userBirthDay,
+      initialDate: _userBirthDay,
       firstDate: DateTime(1900),
       lastDate: DateTime(2101),
     );
-    if (picked != null && picked != userBirthDay) {
+    if (picked != null && picked != _userBirthDay) {
       setState(() {
-        userBirthDay = picked;
+        _userBirthDay = picked;
       });
     }
   }
@@ -50,7 +52,7 @@ class _BirthDayHeightWeightScreenState
   /// Adding data to the database (User age, height, weight)
   void addData() {
     _firestore.collection("users").doc(loggedInUser.email).set({
-      'birth_day': userBirthDay,
+      'birth_day': _userBirthDay,
       'height': _userHeight,
       'weight': _userWeight
     }, SetOptions(merge: true)).onError(
@@ -129,7 +131,7 @@ class _BirthDayHeightWeightScreenState
                   /// Get the user's birth day
                   ReusableCardWithDatePicker(
                     text1: "Birth Day",
-                    text2: "${userBirthDay.toLocal()}".split(' ')[0],
+                    text2: "${_userBirthDay.toLocal()}".split(' ')[0],
                     onPressed: () {
                       _selectUserBirthDay(context);
                     },
@@ -188,7 +190,12 @@ class _BirthDayHeightWeightScreenState
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const BodyAreasSelectionScreen(),
+                      builder: (context) => BodyAreasSelectionScreen(
+                        userGender: widget.userGender,
+                        userBirthday: _userBirthDay,
+                        userHeight: _userHeight,
+                        userWeight: _userWeight,
+                      ),
                     ),
                   );
                 },

@@ -6,11 +6,29 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/weekly_goal_screen.dart';
 
 /// Screen to get the user's pull ups capacity
 class CheckingPullUpsCapacity extends StatefulWidget {
-  const CheckingPullUpsCapacity({super.key});
+  const CheckingPullUpsCapacity(
+      {super.key,
+      required this.userGender,
+      required this.userBirthday,
+      required this.userHeight,
+      required this.userWeight,
+      required this.userSelectedBodyAreas,
+      required this.userMainGoal,
+      required this.userPushUpsCapacity});
+
+  final String userGender;
+  final DateTime userBirthday;
+  final int userHeight;
+  final int userWeight;
+  final List<BodyArea> userSelectedBodyAreas;
+  final MainGoal userMainGoal;
+  final Capacity userPushUpsCapacity;
 
   @override
   State<CheckingPullUpsCapacity> createState() =>
@@ -169,7 +187,16 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const WeeklyGoalScreen(),
+                      builder: (context) => WeeklyGoalScreen(
+                        userGender: widget.userGender,
+                        userBirthday: widget.userBirthday,
+                        userHeight: widget.userHeight,
+                        userWeight: widget.userWeight,
+                        userSelectedBodyAreas: widget.userSelectedBodyAreas,
+                        userMainGoal: widget.userMainGoal,
+                        userPushUpsCapacity: widget.userPushUpsCapacity,
+                        userPullUpsCapacity: _userPullUpsCapacity,
+                      ),
                     ),
                   );
                 },
