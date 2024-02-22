@@ -154,6 +154,48 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
+  /// Sign in existing user
+  Future<void> _signIn() async {
+    setState(() {
+      //Once click on the register button, showSpinner is equal to true and
+      //shows the modal progress indicator.
+      showSpinner = true;
+    });
+    try {
+      // Sign in a user with an email address and password
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      if (!mounted) return;
+      // Go to the gender selection screen
+      checkFieldIsEmpty();
+      // Show snack bar with 'Signed in' message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed in!')),
+      );
+    } on FirebaseAuthException catch (e) {
+      // ignore: avoid_print
+      print(e);
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content:
+                Text('Wrong email or password. Check again and re-enter!')),
+      );
+    } catch (e) {
+      // print(e);
+      // show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred')),
+      );
+    }
+    //After all, showSpinner is equal to false and disappears modal progress indicator.
+    setState(() {
+      showSpinner = false;
+    });
+  }
+
   @override
   void dispose() {
     // Clean up the controllers when the widget is disposed
@@ -300,52 +342,11 @@ class _SignInScreenState extends State<SignInScreen> {
 
                             /// Sign in button
                             SignInSignUpButton(
-                              onPressed: () async {
-                                setState(() {
-                                  //Once click on the register button, showSpinner is equal to true and
-                                  //shows the modal progress indicator.
-                                  showSpinner = true;
-                                });
+                              onPressed: () {
                                 // Validate returns true if the form is valid, or false otherwise.
                                 if (_formKeySignIn.currentState!.validate()) {
-                                  try {
-                                    // Sign in a user with an email address and password
-                                    await FirebaseAuth.instance
-                                        .signInWithEmailAndPassword(
-                                      email: _emailController.text.trim(),
-                                      password: _passwordController.text.trim(),
-                                    );
-                                    if (!context.mounted) return;
-                                    // Go to the gender selection screen
-                                    checkFieldIsEmpty();
-                                    // Show snack bar with 'Signed in' message
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text('Signed in!')),
-                                    );
-                                  } on FirebaseAuthException catch (e) {
-                                    // ignore: avoid_print
-                                    print(e);
-                                    // Show snack bar with error message
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              'Wrong email or password. Check again and re-enter!')),
-                                    );
-                                  } catch (e) {
-                                    // print(e);
-                                    // show snack bar with error message
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content:
-                                              Text('An error has occurred')),
-                                    );
-                                  }
+                                  _signIn();
                                 }
-                                //After all, showSpinner is equal to false and disappears modal progress indicator.
-                                setState(() {
-                                  showSpinner = false;
-                                });
                               },
                               buttonText: 'Sign In',
                             ),

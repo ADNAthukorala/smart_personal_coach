@@ -97,6 +97,46 @@ class _SignUpScreenState extends State<SignUpScreen> {
     }
   }
 
+  /// Sign up new user
+  Future<void> _signUp() async {
+    setState(() {
+      //Once click on the register button, showSpinner is equal to true and
+      //shows the modal progress indicator.
+      showSpinner = true;
+    });
+    try {
+      // Create a new user with email and password
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      // Back to the sign in page and show snack bar with 'Signed Up' message
+      if (!mounted) return;
+      Navigator.pop(context);
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed up!')),
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'email-already-in-use') {
+        // show snack bar with error message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('The account already exists for that email')),
+        );
+      }
+    } catch (e) {
+      // print(e);
+      // show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('An error has occurred')),
+      );
+    }
+    //After all, showSpinner is equal to false and disappears modal progress indicator.
+    setState(() {
+      showSpinner = false;
+    });
+  }
+
   @override
   void dispose() {
     // Clean up the controllers when the widget is disposed
@@ -277,49 +317,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
                           /// Sign up button
                           SignInSignUpButton(
-                            onPressed: () async {
-                              setState(() {
-                                //Once click on the register button, showSpinner is equal to true and
-                                //shows the modal progress indicator.
-                                showSpinner = true;
-                              });
+                            onPressed: () {
                               // Validate returns true if the form is valid, or false otherwise.
                               if (_formKeySignUp.currentState!.validate()) {
-                                try {
-                                  // Create a new user with email and password
-                                  await FirebaseAuth.instance
-                                      .createUserWithEmailAndPassword(
-                                    email: _emailController.text.trim(),
-                                    password: _passwordController.text.trim(),
-                                  );
-                                  // Back to the sign in page and show snack bar with 'Signed Up' message
-                                  if (!context.mounted) return;
-                                  Navigator.pop(context);
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(content: Text('Signed up!')),
-                                  );
-                                } on FirebaseAuthException catch (e) {
-                                  if (e.code == 'email-already-in-use') {
-                                    // show snack bar with error message
-                                    ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                          content: Text(
-                                              'The account already exists for that email')),
-                                    );
-                                  }
-                                } catch (e) {
-                                  // print(e);
-                                  // show snack bar with error message
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    const SnackBar(
-                                        content: Text('An error has occurred')),
-                                  );
-                                }
+                                _signUp();
                               }
-                              //After all, showSpinner is equal to false and disappears modal progress indicator.
-                              setState(() {
-                                showSpinner = false;
-                              });
                             },
                             buttonText: 'Sign Up',
                           ),

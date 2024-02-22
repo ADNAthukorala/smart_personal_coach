@@ -56,6 +56,11 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
   /// Adding data to the database (User weekly goal)
   Future<void> _setData() async {
+    setState(() {
+      //Once click on the register button, showSpinner is equal to true and
+      //shows the modal progress indicator.
+      showSpinner = true;
+    });
     try {
       await _firestore.collection("users").doc(loggedInUser.email).set(
         {
@@ -90,6 +95,10 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
         const SnackBar(content: Text('Something went wrong!')),
       );
     }
+    //After all, showSpinner is equal to false and disappears modal progress indicator.
+    setState(() {
+      showSpinner = false;
+    });
   }
 
   /// Creating a method to get the logged in user
@@ -278,17 +287,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                    setState(() {
-                      //Once click on the register button, showSpinner is equal to true and
-                      //shows the modal progress indicator.
-                      showSpinner = true;
-                    });
                     // Calling the setData method to add data to the database
                     _setData();
-                    //After all, showSpinner is equal to false and disappears modal progress indicator.
-                    setState(() {
-                      showSpinner = false;
-                    });
                   },
                   style: kNextButtonStyle,
                   child: const Text(
