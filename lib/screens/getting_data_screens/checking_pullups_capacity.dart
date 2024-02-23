@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
@@ -158,6 +160,51 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                     selectedCapacity: Capacity.advanced,
                     title: 'Advanced',
                     description: 'More than 10  Pull-ups',
+                  ),
+                  /// Add space between buttons
+                  const SizedBox(height: 20.0),
+
+                  /// Button to show how to do pull ups
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "What is pull ups?",
+                        style: TextStyle(
+                            color: kBlueThemeColor02,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w900),
+                      ),
+                      const SizedBox(width: 5.0),
+                      SizedBox(
+                        height: 28,
+                        width: 28,
+                        child: IconButton.filled(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const ExerciseCard(
+                                  title: "Push Ups",
+                                  animationImage:
+                                  "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fpush-ups%2Fanim-push-ups.gif?alt=media&token=e5ac39fb-b3a0-425e-abae-aee0bb4da085",
+                                  description01:
+                                  "Lay prone on the ground with arms supporting your body.",
+                                  description02:
+                                  "Keep your body straight while rising and lowering your body with your arms.",
+                                  description03:
+                                  "This exercise works the chest, shoulders, triceps, back and legs.",
+                                  focusAreaImage:
+                                  "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fpush-ups%2Ffocus-push-ups.png?alt=media&token=4fe683c4-9f64-42dc-9375-7f02b115b1a6",
+                                );
+                              },
+                            );
+                          },
+                          icon: const Icon(FontAwesomeIcons.exclamation),
+                          iconSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

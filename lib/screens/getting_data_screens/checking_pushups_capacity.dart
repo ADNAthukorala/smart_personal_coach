@@ -163,7 +163,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   /// Add space between buttons
                   const SizedBox(height: 20.0),
 
-                  /// Button to show how to do push_ups
+                  /// Button to show how to do push ups
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
