@@ -105,7 +105,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Chest button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
+              onPressed: () {
+
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
