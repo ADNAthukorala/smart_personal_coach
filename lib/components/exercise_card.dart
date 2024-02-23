@@ -10,6 +10,7 @@ class ExerciseCard extends StatelessWidget {
     required this.description01,
     required this.description02,
     required this.description03,
+    required this.description04,
   });
 
   final String animationImage;
@@ -18,6 +19,7 @@ class ExerciseCard extends StatelessWidget {
   final String description01;
   final String description02;
   final String description03;
+  final String description04;
 
   @override
   Widget build(BuildContext context) {
@@ -84,6 +86,17 @@ class ExerciseCard extends StatelessWidget {
               contentPadding: EdgeInsets.zero,
               title: Text(
                 description03,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+
+            /// Description 04
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                description04,
                 style: const TextStyle(
                   fontWeight: FontWeight.w600,
                 ),
