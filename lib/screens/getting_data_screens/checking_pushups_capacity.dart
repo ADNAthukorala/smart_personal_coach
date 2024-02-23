@@ -182,17 +182,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return AlertDialog(
-                                  title: const Text("Push Ups"),
-                                  content:
-                                      const Text("This is how do push ups"),
-                                  actions: [
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text("OK"))
-                                  ],
+                                return const Exercise(
+                                  title: "Push Ups",
+                                  animationImage: "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fpush-ups%2Fanim-push-ups.gif?alt=media&token=e5ac39fb-b3a0-425e-abae-aee0bb4da085",
+                                  description01: "Lay prone on the ground with arms supporting your body.",
+                                  description02: "Keep your body straight while rising and lowering your body with your arms.",
+                                  description03: "This exercise works the chest, shoulders, triceps, back and legs.",
+                                  focusAreaImage: "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fpush-ups%2Ffocus-push-ups.png?alt=media&token=4fe683c4-9f64-42dc-9375-7f02b115b1a6",
                                 );
                               },
                             );
@@ -232,6 +228,142 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   );
                 },
                 style: kNextButtonStyle,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class Exercise extends StatelessWidget {
+  const Exercise({
+    super.key,
+    required this.animationImage,
+    required this.focusAreaImage,
+    required this.title,
+    required this.description01,
+    required this.description02,
+    required this.description03,
+  });
+
+  final String animationImage;
+  final String focusAreaImage;
+  final String title;
+  final String description01;
+  final String description02;
+  final String description03;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      surfaceTintColor: kWhiteThemeColor,
+      color: kWhiteThemeColor,
+      child: Padding(
+        padding: const EdgeInsets.all(kPadding16),
+        child: ListView(
+          primary: false,
+          children: [
+            /// Animation image
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: SizedBox(
+                height: 250,
+                child: Image.network(
+                  animationImage,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+
+            /// Title
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                title,
+                style: TextStyle(
+                  color: kBlueThemeColor02,
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            /// Divider line
+            const Divider(),
+
+            /// Description 01
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                description01,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+
+            /// Description 02
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                description02,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+
+            /// Description 03
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                description03,
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+
+            /// Focus area (Title)
+            const ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: Text(
+                "Focus Areas",
+                style: TextStyle(
+                  color: kBlueThemeColor02,
+                  fontSize: 24.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+
+            /// Focus areas (Image)
+            ListTile(
+              contentPadding: EdgeInsets.zero,
+              title: SizedBox(
+                height: 280.0,
+                child: Image.network(
+                  focusAreaImage,
+                  fit: BoxFit.fitWidth,
+                ),
+              ),
+            ),
+
+            /// Close button
+            ListTile(
+              title: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    backgroundColor: kBlueThemeColor02),
+                onPressed: () => Navigator.pop(context),
+                child: const Text(
+                  "Close",
+                  style: TextStyle(
+                    color: kWhiteThemeColor,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
           ],
