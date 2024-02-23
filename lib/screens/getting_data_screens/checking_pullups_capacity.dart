@@ -186,19 +186,8 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                               context: context,
                               builder: (context) {
                                 return const ExerciseCard(
-                                  title: "Pull Ups",
-                                  animationImage:
-                                      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fback%2Fpull%20ups%2Fanim-pull-ups.gif?alt=media&token=a3a15df7-3eaf-4680-8f88-313e140a76f7",
-                                  description01:
-                                      "Begin hanging from a pull-up bar with an overhand grip. The body should be in a straight line from head-to-toe with the spine and hips in neutral and the legs straight. You may cross the legs, if desired.",
-                                  description02:
-                                      "Draw your shoulder blades down away from your ears to engage the lats first.",
-                                  description03:
-                                      "Now pull your entire body straight up toward the ceiling until your chin is above the bar. The arms will bend as you draw your elbows down toward your rib cage on either side.",
-                                  description04:
-                                      "Then, slowly lower your body back down to a dead hang as you straighten the arms overhead. Repeat for the desired repetitions.",
-                                  focusAreaImage:
-                                      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fback%2Fpull%20ups%2Ffocus-pull-ups.png?alt=media&token=e265a5ad-c935-46c7-b453-5d876a12709e",
+                                  collection: "back_exercises",
+                                  document: "Pull Ups",
                                 );
                               },
                             );

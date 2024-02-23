@@ -184,19 +184,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                               context: context,
                               builder: (context) {
                                 return const ExerciseCard(
-                                  title: "Push Ups",
-                                  animationImage:
-                                      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fchest%2Fpush%20ups%2Fanim-push-ups.gif?alt=media&token=0d56e308-6d4c-41a1-93d4-77d51298d976",
-                                  description01:
-                                      "Begin in a high plank position on your hands and feet. Your palms should be flat on the ground about shoulder-width apart. You should be on your toes with the feet hip-distance apart. Your gaze should be down at the ground in order to keep the neck in a neutral position.",
-                                  description02:
-                                      "Draw your belly button toward your spine to engage the core muscles and maintain a straight line from head-to-toe.",
-                                  description03:
-                                      "Now lower your body toward the floor while keeping the neck and low back in a neutral position. The elbows will bend as the upper arms flare out to about a 45-degree angle away from the torso. Lower down until your chest touches the floor.",
-                                  description04:
-                                      "Then, press back up as you straighten your arms completely and return to the high plank position. Repeat for the desired repetitions.",
-                                  focusAreaImage:
-                                      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fchest%2Fpush%20ups%2Ffocus-push-ups.png?alt=media&token=7665e040-5ed1-479c-a148-3e995fccc402",
+                                  collection: "chest_exercises",
+                                  document: "Push Ups",
                                 );
                               },
                             );

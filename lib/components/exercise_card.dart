@@ -1,149 +1,166 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class ExerciseCard extends StatelessWidget {
   const ExerciseCard({
     super.key,
-    required this.animationImage,
-    required this.focusAreaImage,
-    required this.title,
-    required this.description01,
-    required this.description02,
-    required this.description03,
-    required this.description04,
+    required this.collection,
+    required this.document,
   });
 
-  final String animationImage;
-  final String focusAreaImage;
-  final String title;
-  final String description01;
-  final String description02;
-  final String description03;
-  final String description04;
+  final String collection;
+  final String document;
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      surfaceTintColor: kWhiteThemeColor,
-      color: kWhiteThemeColor,
-      child: Padding(
-        padding: const EdgeInsets.all(kPadding16),
-        child: ListView(
-          primary: false,
-          children: [
-            /// Animation image
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: SizedBox(
-                height: 300,
-                child: Image.network(
-                  animationImage,
-                ),
-              ),
-            ),
+    return StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection(collection)
+            .doc(document)
+            .snapshots(),
+        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Something went wrong');
+          }
 
-            /// Title
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                title,
-                style: const TextStyle(
-                  color: kBlueThemeColor02,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text(
+              "Loading...",
+              style: TextStyle(color: kBlueThemeColor),
+            );
+          }
 
-            /// Divider line
-            const Divider(),
+          if (!snapshot.hasData) {
+            return const Text('No data available');
+          }
 
-            /// Description 01
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                description01,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
+          // Access the data from the snapshot
+          Map<String, dynamic> data =
+              snapshot.data!.data() as Map<String, dynamic>;
 
-            /// Description 02
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                description02,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-
-            /// Description 03
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                description03,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-
-            /// Description 04
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                description04,
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-
-            /// Focus area (Title)
-            const ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: Text(
-                "Focus Areas",
-                style: TextStyle(
-                  color: kBlueThemeColor02,
-                  fontSize: 24.0,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-            ),
-
-            /// Focus areas (Image)
-            ListTile(
-              contentPadding: EdgeInsets.zero,
-              title: SizedBox(
-                height: 280.0,
-                child: Image.network(
-                  focusAreaImage,
-                ),
-              ),
-            ),
-
-            /// Close button
-            ListTile(
-              title: ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                    backgroundColor: kBlueThemeColor02),
-                onPressed: () => Navigator.pop(context),
-                child: const Text(
-                  "Close",
-                  style: TextStyle(
-                    color: kWhiteThemeColor,
-                    fontWeight: FontWeight.bold,
+          return Card(
+            surfaceTintColor: kWhiteThemeColor,
+            color: kWhiteThemeColor,
+            child: Padding(
+              padding: const EdgeInsets.all(kPadding16),
+              child: ListView(
+                primary: false,
+                children: [
+                  /// Animation image
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: SizedBox(
+                      height: 300,
+                      child: Image.network(
+                        data['animationImage'],
+                      ),
+                    ),
                   ),
-                ),
+
+                  /// Title
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      data['title'],
+                      style: const TextStyle(
+                        color: kBlueThemeColor02,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  /// Divider line
+                  const Divider(),
+
+                  /// Description 01
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      data['description01'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+
+                  /// Description 02
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      data['description02'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+
+                  /// Description 03
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      data['description03'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+
+                  /// Description 04
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      data['description04'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+
+                  /// Focus area (Title)
+                  const ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: Text(
+                      "Focus Areas",
+                      style: TextStyle(
+                        color: kBlueThemeColor02,
+                        fontSize: 24.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  /// Focus areas (Image)
+                  ListTile(
+                    contentPadding: EdgeInsets.zero,
+                    title: SizedBox(
+                      height: 280.0,
+                      child: Image.network(
+                        data['focusAreaImage'],
+                      ),
+                    ),
+                  ),
+
+                  /// Close button
+                  ListTile(
+                    title: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: kBlueThemeColor02),
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Close",
+                        style: TextStyle(
+                          color: kWhiteThemeColor,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }
