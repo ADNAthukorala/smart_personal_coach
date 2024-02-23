@@ -35,10 +35,9 @@ class ExerciseCard extends StatelessWidget {
             ListTile(
               contentPadding: EdgeInsets.zero,
               title: SizedBox(
-                height: 250,
+                height: 300,
                 child: Image.network(
                   animationImage,
-                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
@@ -123,7 +122,6 @@ class ExerciseCard extends StatelessWidget {
                 height: 280.0,
                 child: Image.network(
                   focusAreaImage,
-                  fit: BoxFit.fitWidth,
                 ),
               ),
             ),
