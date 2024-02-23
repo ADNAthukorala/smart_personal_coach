@@ -277,6 +277,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
               return const Text("Loading");
             }
 
+            if (!snapshot.hasData) {
+              return const Text('No data available');
+            }
+
             // Access the data from the snapshot
             Map<String, dynamic> data =
                 snapshot.data!.data() as Map<String, dynamic>;
