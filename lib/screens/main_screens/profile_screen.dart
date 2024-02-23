@@ -274,7 +274,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             }
 
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return const Text("Loading");
+              return const Text("Loading...");
             }
 
             if (!snapshot.hasData) {
