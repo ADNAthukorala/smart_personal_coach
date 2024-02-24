@@ -170,7 +170,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                       const Text(
                         "What is push ups?",
                         style: TextStyle(
-                            color: kBlueThemeColor02,
+                            color: kBlueThemeColor,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w900),
                       ),

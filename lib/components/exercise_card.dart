@@ -64,7 +64,7 @@ class ExerciseCard extends StatelessWidget {
                     title: Text(
                       data['title'],
                       style: const TextStyle(
-                        color: kBlueThemeColor02,
+                        color: kBlueThemeColor,
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -124,7 +124,7 @@ class ExerciseCard extends StatelessWidget {
                     title: Text(
                       "Focus Areas",
                       style: TextStyle(
-                        color: kBlueThemeColor02,
+                        color: kBlueThemeColor,
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -146,7 +146,7 @@ class ExerciseCard extends StatelessWidget {
                   ListTile(
                     title: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: kBlueThemeColor02),
+                          backgroundColor: kBlueThemeColor),
                       onPressed: () => Navigator.pop(context),
                       child: const Text(
                         "Close",
