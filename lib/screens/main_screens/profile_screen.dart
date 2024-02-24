@@ -59,12 +59,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kThemeColor,
+          backgroundColor: kAppThemeColor,
           title: const Text(
             'Are you sure?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
             'Are you sure you want to sign out?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
             ElevatedButton(

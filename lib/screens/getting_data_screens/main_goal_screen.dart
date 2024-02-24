@@ -68,6 +68,8 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -216,7 +218,7 @@ class SelectMainGoalButton extends StatelessWidget {
       style: kSelectCapacityButtonStyle.copyWith(
         // If the selected main goal is equal to the user's main goal, the button color should be blue, otherwise white
         backgroundColor: selectedMainGoal == userMainGoal
-            ? const MaterialStatePropertyAll(kThemeColor)
+            ? const MaterialStatePropertyAll(kAppThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
@@ -225,7 +227,7 @@ class SelectMainGoalButton extends StatelessWidget {
           // If the selected main goal is equal to the user's main goal, the button text color should be white, otherwise blue
           color: selectedMainGoal == userMainGoal
               ? kWhiteThemeColor
-              : kThemeColor,
+              : kAppThemeColor,
         ),
       ),
     );

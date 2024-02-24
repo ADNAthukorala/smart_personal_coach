@@ -27,7 +27,7 @@ class ExerciseCard extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Text(
               "Loading...",
-              style: TextStyle(color: kThemeColor),
+              style: TextStyle(color: kAppThemeColor),
             );
           }
 
@@ -64,7 +64,7 @@ class ExerciseCard extends StatelessWidget {
                     title: Text(
                       data['title'],
                       style: const TextStyle(
-                        color: kThemeColor,
+                        color: kAppThemeColor,
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -124,7 +124,7 @@ class ExerciseCard extends StatelessWidget {
                     title: Text(
                       "Focus Areas",
                       style: TextStyle(
-                        color: kThemeColor,
+                        color: kAppThemeColor,
                         fontSize: 24.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -146,7 +146,7 @@ class ExerciseCard extends StatelessWidget {
                   ListTile(
                     title: ElevatedButton(
                       style: ElevatedButton.styleFrom(
-                          backgroundColor: kThemeColor),
+                          backgroundColor: kAppThemeColor),
                       onPressed: () => Navigator.pop(context),
                       child: const Text(
                         "Close",

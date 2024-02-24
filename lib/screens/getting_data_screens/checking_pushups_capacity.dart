@@ -72,6 +72,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -170,7 +172,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                       const Text(
                         "What is push ups?",
                         style: TextStyle(
-                            color: kThemeColor,
+                            color: kAppThemeColor,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w900),
                       ),

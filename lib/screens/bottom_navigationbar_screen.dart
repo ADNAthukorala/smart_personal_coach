@@ -72,12 +72,14 @@ class _BottomNavigationBarScreenScreenState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kThemeColor,
+          backgroundColor: kAppThemeColor,
           title: const Text(
             'Are you sure?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
             'Are you sure you want to sign out?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -139,7 +141,7 @@ class _BottomNavigationBarScreenScreenState
           animationDuration: const Duration(seconds: 1),
           surfaceTintColor: kWhiteThemeColor,
           backgroundColor: kWhiteThemeColor,
-          indicatorColor: kThemeColor,
+          indicatorColor: kAppThemeColor,
           selectedIndex: _currentScreenIndex,
           destinations: [
             /// Home button

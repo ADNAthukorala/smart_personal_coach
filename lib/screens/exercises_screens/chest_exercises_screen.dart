@@ -59,7 +59,7 @@ class _ChestExercisesScreenState extends State<ChestExercisesScreen> {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: kPadding8),
                   child: ListTile(
-                    tileColor: kThemeColor,
+                    tileColor: kAppThemeColor,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(kRadius16)),
                     title: Text(
