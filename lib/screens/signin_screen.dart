@@ -66,7 +66,7 @@ class _SignInScreenState extends State<SignInScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
+          backgroundColor: kThemeColor,
           title: const Text(
             'Are you sure?',
           ),
@@ -218,7 +218,7 @@ class _SignInScreenState extends State<SignInScreen> {
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
           progressIndicator: const CircularProgressIndicator(
-            color: kBlueThemeColor,
+            color: kThemeColor,
           ),
           child: Column(
             children: [

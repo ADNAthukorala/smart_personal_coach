@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 
 //Theme colors and font family
-const kBlueThemeColor = Color(0xFF006685);
+const kThemeColor = Color(0xFF006685);
 // const kBlueThemeColor02 = Color(0xFF2596BE);
 const kPinkThemeColor = Color(0xFFBA1E8B);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF7E7474);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
+
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
 const kRadius30 = 30.0;
@@ -30,7 +31,7 @@ const kSmallGreyColorDescriptionTextStyle = TextStyle(
 const kTextButtonTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
-  color: kBlueThemeColor,
+  color: kThemeColor,
 );
 
 /// Text styles for large black color texts (Titles)
@@ -44,7 +45,7 @@ const kLargeBlackTitleTextStyle = TextStyle(
 const kTermsAndConditionsTitlesTextStyle = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w900,
-  color: kBlueThemeColor,
+  color: kThemeColor,
 );
 
 const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
@@ -86,14 +87,14 @@ const kNextButtonTextStyle = TextStyle(
 const kSelectBodyAreaButtonTextStyle = TextStyle(
   fontSize: 18,
   fontWeight: FontWeight.w900,
-  color: kBlueThemeColor,
+  color: kThemeColor,
 );
 
 /// Text styles for select capacity button
 const kSelectCapacityButtonTextStyle = TextStyle(
   fontSize: 25,
   fontWeight: FontWeight.w900,
-  color: kBlueThemeColor,
+  color: kThemeColor,
 );
 
 /// Text styles for exercises screen buttons
@@ -107,7 +108,7 @@ const kExercisesScreenButtonTextStyle = TextStyle(
 const kDayButtonTextStyle = TextStyle(
   fontSize: 20,
   fontWeight: FontWeight.w900,
-  color: kBlueThemeColor,
+  color: kThemeColor,
 );
 
 /// Text style for main screens app bar
@@ -131,7 +132,7 @@ const kDrawerItemTextStyle = TextStyle(
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
-  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
@@ -141,7 +142,7 @@ const kGenderSelectionButtonStyle = ButtonStyle(
 /// Button styles for login and signup buttons
 const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
-  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
@@ -150,7 +151,7 @@ const kSignInSignUpButtonStyle = ButtonStyle(
 /// Button style for welcome screen button
 const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
-  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
@@ -159,7 +160,7 @@ const kWelcomeButtonStyle = ButtonStyle(
 /// Button styles for next button
 const kNextButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
-  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
@@ -209,7 +210,7 @@ const kTextButtonStyle = ButtonStyle(
 /// Button styles for exercises screen buttons
 const kExercisesScreenButton = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
-  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
@@ -238,7 +239,7 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
     borderRadius: BorderRadius.all(
       Radius.circular(kRadius8),
     ),
-    borderSide: BorderSide(color: kBlueThemeColor, width: 2),
+    borderSide: BorderSide(color: kThemeColor, width: 2),
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(

@@ -75,7 +75,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
+          backgroundColor: kThemeColor,
           title: const Text(
             'Are you sure?',
             style: TextStyle(color: kWhiteThemeColor),
@@ -88,7 +88,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             ElevatedButton(
               child: const Text(
                 'No',
-                style: TextStyle(color: kBlueThemeColor),
+                style: TextStyle(color: kThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -97,7 +97,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             ElevatedButton(
               child: const Text(
                 'Yes',
-                style: TextStyle(color: kBlueThemeColor),
+                style: TextStyle(color: kThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -225,7 +225,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                       backgroundColor: MaterialStatePropertyAll(
                           _userGender == "Not Selected"
                               ? kGreyThemeColor02
-                              : kBlueThemeColor)),
+                              : kThemeColor)),
                 ),
               ),
             ],
@@ -268,12 +268,12 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       },
       style: kGenderSelectionButtonStyle.copyWith(
         backgroundColor: MaterialStatePropertyAll(
-            _userGender == "Male" ? kBlueThemeColor : kWhiteThemeColor),
+            _userGender == "Male" ? kThemeColor : kWhiteThemeColor),
       ),
       child: Text(
         'Male',
         style: kLargeBlackTitleTextStyle.copyWith(
-            color: _userGender == "Male" ? kWhiteThemeColor : kBlueThemeColor),
+            color: _userGender == "Male" ? kWhiteThemeColor : kThemeColor),
       ),
     );
   }

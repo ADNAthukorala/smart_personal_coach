@@ -172,7 +172,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                       const Text(
                         "What is pull ups?",
                         style: TextStyle(
-                            color: kBlueThemeColor,
+                            color: kThemeColor,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w900),
                       ),

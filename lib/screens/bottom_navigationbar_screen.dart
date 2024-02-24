@@ -72,7 +72,7 @@ class _BottomNavigationBarScreenScreenState
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
+          backgroundColor: kThemeColor,
           title: const Text(
             'Are you sure?',
           ),
@@ -139,7 +139,7 @@ class _BottomNavigationBarScreenScreenState
           animationDuration: const Duration(seconds: 1),
           surfaceTintColor: kWhiteThemeColor,
           backgroundColor: kWhiteThemeColor,
-          indicatorColor: kBlueThemeColor,
+          indicatorColor: kThemeColor,
           selectedIndex: _currentScreenIndex,
           destinations: [
             /// Home button

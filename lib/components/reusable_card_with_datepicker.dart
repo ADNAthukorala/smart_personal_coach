@@ -17,7 +17,7 @@ class ReusableCardWithDatePicker extends StatelessWidget {
     return Card(
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
-      color: kBlueThemeColor,
+      color: kThemeColor,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
         child: Column(

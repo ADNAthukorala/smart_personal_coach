@@ -59,7 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
+          backgroundColor: kThemeColor,
           title: const Text(
             'Are you sure?',
           ),
@@ -486,14 +486,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: data['gender'] == "Male"
-                                      ? kBlueThemeColor
+                                      ? kThemeColor
                                       : kWhiteThemeColor),
                               child: Text(
                                 "Male",
                                 style: TextStyle(
                                     color: data['gender'] == "Male"
                                         ? kWhiteThemeColor
-                                        : kBlueThemeColor),
+                                        : kThemeColor),
                               ),
                             ),
                             // Female button

@@ -28,7 +28,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: kBlueThemeColor,
+            backgroundColor: kThemeColor,
             titleTextStyle: const TextStyle(
               color: kWhiteThemeColor,
               fontSize: 20.0,
@@ -60,7 +60,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         context: context,
         builder: (context) {
           return AlertDialog(
-            backgroundColor: kBlueThemeColor,
+            backgroundColor: kThemeColor,
             titleTextStyle: const TextStyle(
               color: kWhiteThemeColor,
               fontSize: 20.0,
@@ -174,7 +174,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                   }
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: kBlueThemeColor,
+                  backgroundColor: kThemeColor,
                   shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(
                       Radius.circular(kRadius16),

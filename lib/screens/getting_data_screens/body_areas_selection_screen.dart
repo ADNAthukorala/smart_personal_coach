@@ -305,7 +305,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                     backgroundColor: MaterialStatePropertyAll(
                         _userSelectedBodyAreas.isEmpty
                             ? kGreyThemeColor02
-                            : kBlueThemeColor)),
+                            : kThemeColor)),
               ),
             ),
           ],
@@ -336,7 +336,7 @@ class SelectBodyAreaButton extends StatelessWidget {
       onPressed: onPressed,
       style: kSelectBodyAreaButtonStyle.copyWith(
         backgroundColor: array.contains(selectedBodyArea) || array.length == 5
-            ? const MaterialStatePropertyAll(kBlueThemeColor)
+            ? const MaterialStatePropertyAll(kThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
@@ -344,7 +344,7 @@ class SelectBodyAreaButton extends StatelessWidget {
         style: kSelectBodyAreaButtonTextStyle.copyWith(
           color: array.contains(selectedBodyArea) || array.length == 5
               ? kWhiteThemeColor
-              : kBlueThemeColor,
+              : kThemeColor,
         ),
       ),
     );

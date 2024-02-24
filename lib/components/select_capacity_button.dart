@@ -31,7 +31,7 @@ class SelectCapacityButton extends StatelessWidget {
       style: kSelectCapacityButtonStyle.copyWith(
         // If the actual capacity is equal to button capacity, the button color should be blue, otherwise white
         backgroundColor: actualCapacity == selectedCapacity
-            ? const MaterialStatePropertyAll(kBlueThemeColor)
+            ? const MaterialStatePropertyAll(kThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Column(
@@ -44,7 +44,7 @@ class SelectCapacityButton extends StatelessWidget {
               // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
               color: actualCapacity == selectedCapacity
                   ? kWhiteThemeColor
-                  : kBlueThemeColor,
+                  : kThemeColor,
             ),
           ),
           Text(

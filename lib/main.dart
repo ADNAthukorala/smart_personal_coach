@@ -17,11 +17,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: kBlueThemeColor),
+        colorScheme: ColorScheme.fromSeed(seedColor: kThemeColor),
         useMaterial3: true,
         fontFamily: 'Roboto',
         scaffoldBackgroundColor: kWhiteThemeColor,
-        appBarTheme: const AppBarTheme(color: kBlueThemeColor),
+        appBarTheme: const AppBarTheme(color: kThemeColor),
       ),
       home: const WelcomeScreen(),
     );

@@ -152,7 +152,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         progressIndicator: const CircularProgressIndicator(
-          color: kBlueThemeColor,
+          color: kThemeColor,
         ),
         child: Column(
           children: [

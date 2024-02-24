@@ -141,7 +141,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         progressIndicator: const CircularProgressIndicator(
-          color: kBlueThemeColor,
+          color: kThemeColor,
         ),
         child: Padding(
           // Add padding around the body of the screen
@@ -328,7 +328,7 @@ class DayButton extends StatelessWidget {
       onPressed: onPressed,
       style: kDayButtonStyle.copyWith(
         backgroundColor: userSelectedDays == selectedDays
-            ? const MaterialStatePropertyAll(kBlueThemeColor)
+            ? const MaterialStatePropertyAll(kThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Column(
@@ -340,7 +340,7 @@ class DayButton extends StatelessWidget {
             style: kDayButtonTextStyle.copyWith(
               color: userSelectedDays == selectedDays
                   ? kWhiteThemeColor
-                  : kBlueThemeColor,
+                  : kThemeColor,
             ),
           ),
           Text(
