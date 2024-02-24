@@ -59,6 +59,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          backgroundColor: kBlueThemeColor,
           title: const Text(
             'Are you sure?',
           ),
