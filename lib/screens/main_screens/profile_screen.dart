@@ -153,7 +153,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  /// Update height
+  /// Update weight
   Future<void> updateWeight(int weight) async {
     try {
       // Get a reference to the document
@@ -486,14 +486,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               },
                               style: ElevatedButton.styleFrom(
                                   backgroundColor: data['gender'] == "Male"
-                                      ? kThemeColor
+                                      ? kBlueThemeColor
                                       : kWhiteThemeColor),
                               child: Text(
                                 "Male",
                                 style: TextStyle(
                                     color: data['gender'] == "Male"
                                         ? kWhiteThemeColor
-                                        : kThemeColor),
+                                        : kBlueThemeColor),
                               ),
                             ),
                             // Female button
