@@ -215,7 +215,7 @@ const kTextButtonStyle = ButtonStyle(
 const kExercisesScreenButton = ButtonStyle(
   elevation: MaterialStatePropertyAll(kElevation1),
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
-  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor),
+  backgroundColor: MaterialStatePropertyAll(kBlueThemeColor02),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
