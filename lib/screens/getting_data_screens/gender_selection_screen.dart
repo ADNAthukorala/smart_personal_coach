@@ -268,12 +268,12 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       },
       style: kGenderSelectionButtonStyle.copyWith(
         backgroundColor: MaterialStatePropertyAll(
-            _userGender == "Male" ? kThemeColor : kWhiteThemeColor),
+            _userGender == "Male" ? kBlueThemeColor : kWhiteThemeColor),
       ),
       child: Text(
         'Male',
         style: kLargeBlackTitleTextStyle.copyWith(
-            color: _userGender == "Male" ? kWhiteThemeColor : kThemeColor),
+            color: _userGender == "Male" ? kWhiteThemeColor : kBlueThemeColor),
       ),
     );
   }
