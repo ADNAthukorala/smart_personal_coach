@@ -14,6 +14,7 @@ const kRadius30 = 30.0;
 const kPadding16 = 16.0;
 const kPadding8 = 8.0;
 const kPadding4 = 4.0;
+const kElevation0 = 0.0;
 const kElevation1 = 1.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
