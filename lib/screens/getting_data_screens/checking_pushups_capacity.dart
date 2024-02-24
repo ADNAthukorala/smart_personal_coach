@@ -72,7 +72,6 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
-        elevation: kElevation0,
         centerTitle: true,
 
         /// Show which screen the user is on
