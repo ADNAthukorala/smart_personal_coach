@@ -60,7 +60,7 @@ class ExerciseCard extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CircularProgressIndicator(),
-                              Text("Loading image...")
+                              Text("Loading animation...")
                             ],
                           ),
                         ),
