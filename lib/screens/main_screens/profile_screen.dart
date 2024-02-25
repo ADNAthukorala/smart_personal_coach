@@ -229,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final storage = FirebaseStorage.instance;
     final Reference storageReference = storage
         .ref()
-        .child('profile_pictures/${loggedInUser.email}/profile_picture.png');
+        .child('profile_pictures/${loggedInUser.email}/profile_picture.jpg');
     final UploadTask uploadTask = storageReference.putFile(_imageFile!);
     await uploadTask.whenComplete(() => null);
 
