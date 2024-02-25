@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -52,8 +53,19 @@ class ExerciseCard extends StatelessWidget {
                     contentPadding: EdgeInsets.zero,
                     title: SizedBox(
                       height: 300,
-                      child: Image.network(
-                        data['animationImage'],
+                      child: CachedNetworkImage(
+                        imageUrl: data['animationImage'],
+                        placeholder: (context, url) => const Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(),
+                              Text("Loading image...")
+                            ],
+                          ),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
@@ -136,8 +148,19 @@ class ExerciseCard extends StatelessWidget {
                     contentPadding: EdgeInsets.zero,
                     title: SizedBox(
                       height: 280.0,
-                      child: Image.network(
-                        data['focusAreaImage'],
+                      child: CachedNetworkImage(
+                        imageUrl: data['focusAreaImage'],
+                        placeholder: (context, url) => const Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(),
+                              Text("Loading image...")
+                            ],
+                          ),
+                        ),
+                        errorWidget: (context, url, error) =>
+                            const Icon(Icons.error),
                       ),
                     ),
                   ),
