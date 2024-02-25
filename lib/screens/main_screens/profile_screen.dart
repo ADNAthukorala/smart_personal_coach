@@ -10,6 +10,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -299,6 +300,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
             userNameController.text = data['user_name'];
             userWeightController.text = data['weight'].toString();
 
+            String imageUrl = data['profile_picture'];
+
             return ListView(
               padding: const EdgeInsets.only(
                 top: kPadding8,
@@ -397,10 +400,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       );
                     },
                     // Profile picture holder
-                    child: CircleAvatar(
-                      backgroundImage: NetworkImage(data['profile_picture']),
-                      radius: 60.0,
-                      // Edit profile picture button
+                    child: CachedNetworkImage(
+                      imageUrl: imageUrl,
+                      imageBuilder: (context, imageProvider) => CircleAvatar(
+                        backgroundImage: imageProvider,
+                      ),
+                      placeholder: (context, url) =>
+                      const CircularProgressIndicator(),
+                      errorWidget: (context, url, error) =>
+                      const Icon(Icons.error),
+                      width: 200.0,
+                      height: 200.0,
                     ),
                   ),
                 ),
