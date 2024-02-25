@@ -406,9 +406,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         backgroundImage: imageProvider,
                       ),
                       placeholder: (context, url) =>
-                      const CircularProgressIndicator(),
+                          const CircularProgressIndicator(),
                       errorWidget: (context, url, error) =>
-                      const Icon(Icons.error),
+                          const Icon(Icons.error),
                       width: 200.0,
                       height: 200.0,
                     ),
