@@ -69,9 +69,11 @@ class _SignInScreenState extends State<SignInScreen> {
           backgroundColor: kAppThemeColor,
           title: const Text(
             'Are you sure?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
             'Are you sure you want to leave the application?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
             ElevatedButton(
