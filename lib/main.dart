@@ -35,7 +35,6 @@ class MyApp extends StatelessWidget {
     for (String path in assetPaths) {
       await precacheImage(AssetImage(path), context);
     }
-
   }
 
   @override
