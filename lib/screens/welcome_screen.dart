@@ -19,7 +19,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: [
           /// Top image container
           const Expanded(
-            child: TopImage(imageUrl: 'images/welcome_screen_image.jpg'),
+            child: TopImage(imageUrl: 'images/theme_image.jpg'),
           ),
 
           /// The Title and the description holder

@@ -28,28 +28,14 @@ class MyApp extends StatelessWidget {
       'images/meditation.png',
       'images/signin_screen_image.jpg',
       'images/signup_screen_image.jpg',
-      'images/welcome_screen_image.jpg',
-    ];
-
-    // List of network images paths
-    final List<String> networkPaths = [
-      'https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fchest%2Fpush_ups%2Fanim-push-ups.gif?alt=media&token=19676f39-725f-4339-a4d2-50be22837dd4',
-      'https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fchest%2Fpush_ups%2Ffocus-push-ups.png?alt=media&token=502ad1b6-70c3-43d5-aefa-8ccc0deaa4a8',
-      'https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fback%2Fpull_ups%2Fanim-pull-ups.gif?alt=media&token=68a1711a-db68-4de0-964b-054b340c0883',
-      'https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/exercises%2Fback%2Fpull_ups%2Ffocus-pull-ups.png?alt=media&token=c8138577-9b8b-4017-acdf-0ebbb5b4679b',
+      'images/theme_image.jpg',
     ];
 
     // Precache all asset images
     for (String path in assetPaths) {
-      if (!context.mounted) return;
       await precacheImage(AssetImage(path), context);
     }
 
-    // Precache all network images
-    for (String url in networkPaths) {
-      if (!context.mounted) return;
-      await precacheImage(NetworkImage(url), context);
-    }
   }
 
   @override
@@ -64,7 +50,7 @@ class MyApp extends StatelessWidget {
               body: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/welcome_screen_image.jpg'),
+                    image: AssetImage('images/theme_image.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),
