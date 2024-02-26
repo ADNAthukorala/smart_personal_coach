@@ -46,7 +46,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
   // Default profile picture url
   final String defaultProfilePicture =
-      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Fdefault_profile_picture.jpg?alt=media&token=0cddd010-118c-47ce-ba0a-fad1e54b479b";
+      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Ftheme-image.jpg?alt=media&token=777d29fb-0bcc-4bbb-bddd-b65d6c1f4eea";
 
   // Declare an int variable to store how many days the user can dedicate to the workout plan
   int _userSelectedDays = 1;

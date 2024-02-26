@@ -266,7 +266,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
 
                         /// Full body image
                         Image.asset(
-                          'images/full_body_image.png',
+                          'images/full-body-image.png',
                           height: 496, // Fixed height to the image
                           width: 243, // Fixed width to the image
                         ),

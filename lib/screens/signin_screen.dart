@@ -229,7 +229,7 @@ class _SignInScreenState extends State<SignInScreen> {
                   ? const Expanded(
                       flex: 2,
                       child:
-                          TopImage(imageUrl: 'images/signin_screen_image.jpg'),
+                          TopImage(imageUrl: 'images/signin-screen-image.jpg'),
                     )
                   : const SizedBox(),
 

@@ -179,7 +179,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                         height: 210.0,
                         child: TopImage(
                             imageUrl:
-                                'images/gender_selection_screen_image.jpg'),
+                                'images/gender-selection-screen-image.jpg'),
                       ),
 
                       /// Add space between the image and the gender selection buttons holder

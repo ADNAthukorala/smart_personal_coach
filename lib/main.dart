@@ -20,15 +20,15 @@ class MyApp extends StatelessWidget {
       'images/arms.png',
       'images/back.png',
       'images/chest.png',
-      'images/facebook_logo.png',
-      'images/full_body_image.png',
-      'images/gender_selection_screen_image.jpg',
-      'images/google_logo.png',
+      'images/facebook-logo.png',
+      'images/full-body-image.png',
+      'images/gender-selection-screen-image.jpg',
+      'images/google-logo.png',
       'images/legs.png',
       'images/meditation.png',
-      'images/signin_screen_image.jpg',
-      'images/signup_screen_image.jpg',
-      'images/theme_image.jpg',
+      'images/signin-screen-image.jpg',
+      'images/signup-screen-image.jpg',
+      'images/theme-image.jpg',
     ];
 
     // Precache all asset images
@@ -49,7 +49,7 @@ class MyApp extends StatelessWidget {
               body: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/theme_image.jpg'),
+                    image: AssetImage('images/theme-image.jpg'),
                     fit: BoxFit.cover,
                   ),
                 ),

@@ -160,7 +160,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             MediaQuery.of(context).viewInsets.bottom == 0
                 ? const Expanded(
                     flex: 2,
-                    child: TopImage(imageUrl: 'images/signup_screen_image.jpg'),
+                    child: TopImage(imageUrl: 'images/signup-screen-image.jpg'),
                   )
                 : const SizedBox(),
 
