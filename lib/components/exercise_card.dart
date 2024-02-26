@@ -72,11 +72,7 @@ class ExerciseCard extends StatelessWidget {
                   children: [
                     Text(
                       data['name'],
-                      style: const TextStyle(
-                        color: kAppThemeColor,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      style: kExerciseCardTitleTextStyle,
                     ),
                     Text(
                       data['description'],
@@ -98,8 +94,8 @@ class ExerciseCard extends StatelessWidget {
                     children: [
                       // Title
                       const Text(
-                        "How To Do",
-                        style: kExerciseCardTitleTextStyle,
+                        "How To Do The Exercise Properly",
+                        style: kExerciseCardSubtitleTextStyle,
                       ),
 
                       // Step 01
@@ -192,7 +188,7 @@ class ExerciseCard extends StatelessWidget {
                       // Title
                       const Text(
                         "Common Mistakes",
-                        style: kExerciseCardTitleTextStyle,
+                        style: kExerciseCardSubtitleTextStyle,
                       ),
                       Text(
                         data['commonMistakes'],
@@ -213,8 +209,8 @@ class ExerciseCard extends StatelessWidget {
                     children: [
                       // Title
                       const Text(
-                        "Which Muscles Are Worked?",
-                        style: kExerciseCardTitleTextStyle,
+                        "Muscles Worked",
+                        style: kExerciseCardSubtitleTextStyle,
                       ),
 
                       // Image
