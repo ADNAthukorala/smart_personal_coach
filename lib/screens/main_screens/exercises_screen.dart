@@ -29,181 +29,184 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
       ),
 
       /// Body of the screen
-      body: GridView.count(
-        padding: const EdgeInsets.all(kPadding8),
-        crossAxisCount: 2,
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 10.0,
-        primary: false,
-        children: [
-          /// Abs button
-          ElevatedButton(
-            style: kExercisesScreenButton,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const AbsExercisesScreen(),
-                ),
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'ABS',
-                  style: kExercisesScreenButtonTextStyle,
-                ),
-                Image.asset(
-                  'images/abs.png',
-                  color: kWhiteThemeColor,
-                  height: 100.0,
-                  width: 100.0,
-                ),
-              ],
+      body: Center(
+        child: GridView.count(
+          padding: const EdgeInsets.all(kPadding8),
+          crossAxisCount: 2,
+          mainAxisSpacing: 10.0,
+          crossAxisSpacing: 10.0,
+          shrinkWrap: true,
+          primary: false,
+          children: [
+            /// Abs button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AbsExercisesScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'ABS',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/abs.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          /// Arms button
-          ElevatedButton(
-            style: kExercisesScreenButton,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ArmsExercisesScreen(),
-                ),
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'ARMS',
-                  style: kExercisesScreenButtonTextStyle,
-                ),
-                Image.asset(
-                  'images/arms.png',
-                  color: kWhiteThemeColor,
-                  height: 100.0,
-                  width: 100.0,
-                ),
-              ],
+            /// Arms button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ArmsExercisesScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'ARMS',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/arms.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          /// Back button
-          ElevatedButton(
-            style: kExercisesScreenButton,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const BackExercisesScreen(),
-                ),
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'BACK',
-                  style: kExercisesScreenButtonTextStyle,
-                ),
-                Image.asset(
-                  'images/back.png',
-                  color: kWhiteThemeColor,
-                  height: 100.0,
-                  width: 100.0,
-                ),
-              ],
+            /// Back button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BackExercisesScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'BACK',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/back.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          /// Chest button
-          ElevatedButton(
-            style: kExercisesScreenButton,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const ChestExercisesScreen(),
-                ),
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'CHEST',
-                  style: kExercisesScreenButtonTextStyle,
-                ),
-                Image.asset(
-                  'images/chest.png',
-                  color: kWhiteThemeColor,
-                  height: 100.0,
-                  width: 100.0,
-                ),
-              ],
+            /// Chest button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ChestExercisesScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'CHEST',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/chest.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          /// Legs button
-          ElevatedButton(
-            style: kExercisesScreenButton,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const LegsExercisesScreen(),
-                ),
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'LEGS',
-                  style: kExercisesScreenButtonTextStyle,
-                ),
-                Image.asset(
-                  'images/legs.png',
-                  color: kWhiteThemeColor,
-                  height: 100.0,
-                  width: 100.0,
-                ),
-              ],
+            /// Legs button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LegsExercisesScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'LEGS',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/legs.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          /// Meditation button
-          ElevatedButton(
-            style: kExercisesScreenButton,
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MeditationExercisesScreen(),
-                ),
-              );
-            },
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                const Text(
-                  'MED',
-                  style: kExercisesScreenButtonTextStyle,
-                ),
-                Image.asset(
-                  'images/meditation.png',
-                  color: kWhiteThemeColor,
-                  height: 100.0,
-                  width: 100.0,
-                ),
-              ],
+            /// Meditation button
+            ElevatedButton(
+              style: kExercisesScreenButton,
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MeditationExercisesScreen(),
+                  ),
+                );
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'MED',
+                    style: kExercisesScreenButtonTextStyle,
+                  ),
+                  Image.asset(
+                    'images/meditation.png',
+                    color: kWhiteThemeColor,
+                    height: 100.0,
+                    width: 100.0,
+                  ),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
