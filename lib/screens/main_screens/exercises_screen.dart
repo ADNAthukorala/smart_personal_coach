@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/exercises_screens/abs_exercises_screen.dart';
+import 'package:smart_personal_coach/screens/exercises_screens/arms_exercises_screen.dart';
+import 'package:smart_personal_coach/screens/exercises_screens/back_exercises_screen.dart';
 import 'package:smart_personal_coach/screens/exercises_screens/chest_exercises_screen.dart';
+import 'package:smart_personal_coach/screens/exercises_screens/legs_exercises_screen.dart';
+import 'package:smart_personal_coach/screens/exercises_screens/meditation_exercises_screen.dart';
 
 /// Exercises screen
 class ExercisesScreen extends StatefulWidget {
@@ -43,7 +48,14 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Abs button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const AbsExercisesScreen(),
+                  ),
+                );
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -64,7 +76,14 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Arms button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ArmsExercisesScreen(),
+                  ),
+                );
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -85,7 +104,14 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Back button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const BackExercisesScreen(),
+                  ),
+                );
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -134,7 +160,14 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Legs button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const LegsExercisesScreen(),
+                  ),
+                );
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
@@ -155,7 +188,14 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             /// Meditation button
             ElevatedButton(
               style: kExercisesScreenButton,
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MeditationExercisesScreen(),
+                  ),
+                );
+              },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

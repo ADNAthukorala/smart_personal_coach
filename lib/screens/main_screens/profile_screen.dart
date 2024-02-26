@@ -463,7 +463,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
 
                 /// Divider
-                const Divider(height: 0.0),
+                const Divider(),
 
                 /// Email
                 ListTile(

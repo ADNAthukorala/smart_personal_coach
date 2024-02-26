@@ -99,7 +99,7 @@ class MyApp extends StatelessWidget {
               appBarTheme: const AppBarTheme(
                 color: kAppThemeColor,
                 shadowColor: kAppThemeColor,
-                elevation: 4,
+                elevation: 2,
               ),
             ),
             home: const WelcomeScreen(),
