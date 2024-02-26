@@ -27,6 +27,13 @@ const kSmallGreyColorDescriptionTextStyle = TextStyle(
   color: kGreyThemeColor,
 );
 
+/// Text styles for exercise card title
+const kExerciseCardTitleTextStyle = TextStyle(
+  color: kAppThemeColor,
+  fontSize: 24.0,
+  fontWeight: FontWeight.bold,
+);
+
 /// Text styles for exercise card step title
 const kExerciseCardStepTextStyle = TextStyle(
   color: kGreyThemeColor,
@@ -35,8 +42,10 @@ const kExerciseCardStepTextStyle = TextStyle(
 );
 
 /// Text styles for exercise card step description
-const kExerciseCardDescriptionTextStyle =
-    TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold);
+const kExerciseCardDescriptionTextStyle = TextStyle(
+  fontSize: 17.0,
+  fontWeight: FontWeight.bold,
+);
 
 /// Text style for text button
 const kTextButtonTextStyle = TextStyle(

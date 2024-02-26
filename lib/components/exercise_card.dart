@@ -70,129 +70,175 @@ class ExerciseCard extends StatelessWidget {
                 ),
 
                 /// Name of the exercise
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    data['name'],
-                    style: const TextStyle(
-                      color: kAppThemeColor,
-                      fontSize: 26.0,
-                      fontWeight: FontWeight.bold,
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      data['name'],
+                      style: const TextStyle(
+                        color: kAppThemeColor,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
+                    Text(
+                      data['description'],
+                      style: kExerciseCardDescriptionTextStyle,
+                    ),
+                  ],
                 ),
 
                 /// Divider line
                 const Divider(),
 
-                /// Step 01
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  titleAlignment: ListTileTitleAlignment.center,
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                /// How to do the exercise
+                Padding(
+                  padding: const EdgeInsets.only(
+                    bottom: kPadding8,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
+                      // Title
                       const Text(
-                        "Step 1",
-                        style: kExerciseCardStepTextStyle,
+                        "How To Do",
+                        style: kExerciseCardTitleTextStyle,
                       ),
-                      Text(
-                        data['step1'],
-                        style: kExerciseCardDescriptionTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
 
-                /// Step 02
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  titleAlignment: ListTileTitleAlignment.center,
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Step 2",
-                        style: kExerciseCardStepTextStyle,
+                      // Step 01
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            "Step 1",
+                            style: kExerciseCardStepTextStyle,
+                          ),
+                          Text(
+                            data['step1'],
+                            style: kExerciseCardDescriptionTextStyle,
+                          ),
+                        ],
                       ),
-                      Text(
-                        data['step2'],
-                        style: kExerciseCardDescriptionTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
 
-                /// Step 03
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  titleAlignment: ListTileTitleAlignment.center,
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Step 3",
-                        style: kExerciseCardStepTextStyle,
-                      ),
-                      Text(
-                        data['step3'],
-                        style: kExerciseCardDescriptionTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
-
-                /// Step 04
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  titleAlignment: ListTileTitleAlignment.center,
-                  title: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text(
-                        "Step 4",
-                        style: kExerciseCardStepTextStyle,
-                      ),
-                      Text(
-                        data['step4'],
-                        style: kExerciseCardDescriptionTextStyle,
-                      ),
-                    ],
-                  ),
-                ),
-
-                /// Muscles worked (Title)
-                const ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    "Muscles Worked",
-                    style: TextStyle(
-                      color: kAppThemeColor,
-                      fontSize: 24.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
-
-                /// Muscles worked image
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: SizedBox(
-                    height: 280.0,
-                    child: CachedNetworkImage(
-                      imageUrl: data['musclesWorkedImage'],
-                      placeholder: (context, url) => const Center(
+                      // Step 02
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: kPadding8,
+                        ),
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            CircularProgressIndicator(),
-                            Text("Loading image...")
+                            const Text(
+                              "Step 2",
+                              style: kExerciseCardStepTextStyle,
+                            ),
+                            Text(
+                              data['step2'],
+                              style: kExerciseCardDescriptionTextStyle,
+                            ),
                           ],
                         ),
                       ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
-                    ),
+
+                      // Step 03
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: kPadding8,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Step 3",
+                              style: kExerciseCardStepTextStyle,
+                            ),
+                            Text(
+                              data['step3'],
+                              style: kExerciseCardDescriptionTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+
+                      // Step 04
+                      Padding(
+                        padding: const EdgeInsets.only(
+                          top: kPadding8,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const Text(
+                              "Step 4",
+                              style: kExerciseCardStepTextStyle,
+                            ),
+                            Text(
+                              data['step4'],
+                              style: kExerciseCardDescriptionTextStyle,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                /// Common mistakes
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: kPadding8,
+                    bottom: kPadding8,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Title
+                      const Text(
+                        "Common Mistakes",
+                        style: kExerciseCardTitleTextStyle,
+                      ),
+                      Text(
+                        data['commonMistakes'],
+                        style: kExerciseCardDescriptionTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+
+                /// Muscles worked
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: kPadding8,
+                    bottom: kPadding8,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Title
+                      const Text(
+                        "Which Muscles Are Worked?",
+                        style: kExerciseCardTitleTextStyle,
+                      ),
+
+                      // Image
+                      SizedBox(
+                        height: 280.0,
+                        child: CachedNetworkImage(
+                          imageUrl: data['musclesWorkedImage'],
+                          placeholder: (context, url) => const Center(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                CircularProgressIndicator(),
+                                Text("Loading image...")
+                              ],
+                            ),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
 
