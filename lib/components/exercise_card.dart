@@ -76,7 +76,7 @@ class ExerciseCard extends StatelessWidget {
                     data['name'],
                     style: const TextStyle(
                       color: kAppThemeColor,
-                      fontSize: 24.0,
+                      fontSize: 26.0,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -88,44 +88,76 @@ class ExerciseCard extends StatelessWidget {
                 /// Step 01
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    data['step1'],
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
+                  titleAlignment: ListTileTitleAlignment.center,
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Step 1",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step1'],
+                        style: kExerciseCardDescriptionTextStyle,
+                      ),
+                    ],
                   ),
                 ),
 
                 /// Step 02
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    data['step2'],
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
+                  titleAlignment: ListTileTitleAlignment.center,
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Step 2",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step2'],
+                        style: kExerciseCardDescriptionTextStyle,
+                      ),
+                    ],
                   ),
                 ),
 
                 /// Step 03
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    data['step3'],
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
+                  titleAlignment: ListTileTitleAlignment.center,
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Step 3",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step3'],
+                        style: kExerciseCardDescriptionTextStyle,
+                      ),
+                    ],
                   ),
                 ),
 
                 /// Step 04
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  title: Text(
-                    data['step4'],
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                    ),
+                  titleAlignment: ListTileTitleAlignment.center,
+                  title: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text(
+                        "Step 4",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step4'],
+                        style: kExerciseCardDescriptionTextStyle,
+                      ),
+                    ],
                   ),
                 ),
 
