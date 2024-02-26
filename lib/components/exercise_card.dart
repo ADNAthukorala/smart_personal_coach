@@ -6,19 +6,19 @@ import 'package:smart_personal_coach/constants.dart';
 class ExerciseCard extends StatelessWidget {
   const ExerciseCard({
     super.key,
-    required this.collection,
-    required this.document,
+    required this.focusedBodyArea,
+    required this.nameOfTheExercise,
   });
 
-  final String collection;
-  final String document;
+  final String focusedBodyArea;
+  final String nameOfTheExercise;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
-            .collection(collection)
-            .doc(document)
+            .collection(focusedBodyArea)
+            .doc(nameOfTheExercise)
             .snapshots(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
@@ -130,11 +130,11 @@ class ExerciseCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// Focus area (Title)
+                  /// Muscles worked (Title)
                   const ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      "Focus Areas",
+                      "Muscles Worked",
                       style: TextStyle(
                         color: kAppThemeColor,
                         fontSize: 24.0,
@@ -143,13 +143,13 @@ class ExerciseCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// Focus areas image
+                  /// Muscles worked image
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: SizedBox(
                       height: 280.0,
                       child: CachedNetworkImage(
-                        imageUrl: data['focusAreaImage'],
+                        imageUrl: data['musclesWorkedImage'],
                         placeholder: (context, url) => const Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
