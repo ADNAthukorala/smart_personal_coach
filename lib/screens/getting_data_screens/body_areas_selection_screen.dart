@@ -66,6 +66,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -78,9 +80,9 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding16,
-          right: kPadding16,
-          bottom: kPadding16,
+          left: kPadding8,
+          right: kPadding8,
+          bottom: kPadding8,
         ),
         // The main column
         child: Column(
@@ -305,7 +307,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                     backgroundColor: MaterialStatePropertyAll(
                         _userSelectedBodyAreas.isEmpty
                             ? kGreyThemeColor02
-                            : kBlueThemeColor)),
+                            : kAppThemeColor)),
               ),
             ),
           ],
@@ -336,7 +338,7 @@ class SelectBodyAreaButton extends StatelessWidget {
       onPressed: onPressed,
       style: kSelectBodyAreaButtonStyle.copyWith(
         backgroundColor: array.contains(selectedBodyArea) || array.length == 5
-            ? const MaterialStatePropertyAll(kBlueThemeColor)
+            ? const MaterialStatePropertyAll(kAppThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
@@ -344,7 +346,7 @@ class SelectBodyAreaButton extends StatelessWidget {
         style: kSelectBodyAreaButtonTextStyle.copyWith(
           color: array.contains(selectedBodyArea) || array.length == 5
               ? kWhiteThemeColor
-              : kBlueThemeColor,
+              : kAppThemeColor,
         ),
       ),
     );

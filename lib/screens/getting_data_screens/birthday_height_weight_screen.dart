@@ -75,6 +75,8 @@ class _BirthDayHeightWeightScreenState
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -87,9 +89,9 @@ class _BirthDayHeightWeightScreenState
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding16,
-          right: kPadding16,
-          bottom: kPadding16,
+          left: kPadding8,
+          right: kPadding8,
+          bottom: kPadding8,
         ),
         child: Column(
           children: [

@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
@@ -72,6 +74,8 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -84,9 +88,9 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding16,
-          right: kPadding16,
-          bottom: kPadding16,
+          left: kPadding8,
+          right: kPadding8,
+          bottom: kPadding8,
         ),
         child: Column(
           children: [
@@ -158,6 +162,43 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                     selectedCapacity: Capacity.advanced,
                     title: 'Advanced',
                     description: 'More than 10  Pull-ups',
+                  ),
+
+                  /// Add space between buttons
+                  const SizedBox(height: 20.0),
+
+                  /// Button to show how to do pull ups
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "What is pull ups?",
+                        style: TextStyle(
+                            color: kAppThemeColor,
+                            fontSize: 14.0,
+                            fontWeight: FontWeight.w900),
+                      ),
+                      const SizedBox(width: 5.0),
+                      SizedBox(
+                        height: 28,
+                        width: 28,
+                        child: IconButton.filled(
+                          onPressed: () {
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return const ExerciseCard(
+                                  focusedBodyArea: "back_exercises",
+                                  nameOfTheExercise: "pull_ups",
+                                );
+                              },
+                            );
+                          },
+                          icon: const Icon(FontAwesomeIcons.exclamation),
+                          iconSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),

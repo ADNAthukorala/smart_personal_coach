@@ -19,19 +19,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
         children: [
           /// Top image container
           const Expanded(
-            child: TopImage(imageUrl: 'images/welcome_screen_image.jpg'),
+            child: TopImage(imageUrl: 'images/theme_image.jpg'),
           ),
 
           /// The Title and the description holder
           const SizedBox(
             child: Padding(
               // Add padding around the title and description holder
-              padding: EdgeInsets.only(
-                top: kPadding8,
-                left: kPadding16,
-                right: kPadding16,
-                bottom: kPadding16,
-              ),
+              padding: EdgeInsets.all(kPadding8),
               child: Column(
                 children: [
                   Column(
@@ -66,11 +61,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           SizedBox(
             child: Padding(
               // Add padding around the button
-              padding: const EdgeInsets.only(
-                  top: kPadding16,
-                  bottom: kPadding16,
-                  left: kPadding16,
-                  right: kPadding16),
+              padding: const EdgeInsets.all(kPadding8),
               child: ElevatedButton(
                 style: kWelcomeButtonStyle,
                 onPressed: () {

@@ -117,18 +117,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
         const SnackBar(content: Text('Signed up!')),
       );
     } on FirebaseAuthException catch (e) {
-      if (e.code == 'email-already-in-use') {
-        // show snack bar with error message
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('The account already exists for that email')),
-        );
-      }
+      // ignore: avoid_print
+      print(e);
+      // Show snack bar with error message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Error: ${e.message}')),
+      );
     } catch (e) {
       // print(e);
       // show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('An error has occurred')),
+        SnackBar(content: Text('Error: $e')),
       );
     }
     //After all, showSpinner is equal to false and disappears modal progress indicator.
@@ -153,7 +152,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         progressIndicator: const CircularProgressIndicator(
-          color: kBlueThemeColor,
+          color: kAppThemeColor,
         ),
         child: Column(
           children: [
@@ -171,9 +170,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               // Add padding around the bottom components
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: kPadding16,
-                  right: kPadding16,
-                  bottom: kPadding16,
+                  left: kPadding8,
+                  right: kPadding8,
+                  bottom: kPadding8,
                 ),
                 // Adding all the components at the bottom to a column
                 child: Column(

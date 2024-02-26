@@ -66,11 +66,14 @@ class _SignInScreenState extends State<SignInScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
+          backgroundColor: kAppThemeColor,
           title: const Text(
             'Are you sure?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
             'Are you sure you want to leave the application?',
+            style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
             ElevatedButton(
@@ -179,15 +182,13 @@ class _SignInScreenState extends State<SignInScreen> {
       print(e);
       // Show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content:
-                Text('Wrong email or password. Check again and re-enter!')),
+        SnackBar(content: Text('Error: ${e.message}')),
       );
     } catch (e) {
       // print(e);
       // show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('An error has occurred')),
+        SnackBar(content: Text('Error: $e')),
       );
     }
     //After all, showSpinner is equal to false and disappears modal progress indicator.
@@ -219,7 +220,7 @@ class _SignInScreenState extends State<SignInScreen> {
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
           progressIndicator: const CircularProgressIndicator(
-            color: kBlueThemeColor,
+            color: kAppThemeColor,
           ),
           child: Column(
             children: [
@@ -238,9 +239,9 @@ class _SignInScreenState extends State<SignInScreen> {
                 // Add padding around the bottom components
                 child: Padding(
                   padding: const EdgeInsets.only(
-                    left: kPadding16,
-                    right: kPadding16,
-                    bottom: kPadding16,
+                    left: kPadding8,
+                    right: kPadding8,
+                    bottom: kPadding8,
                   ),
                   // Adding all the components at the bottom to a column
                   child: Column(

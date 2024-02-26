@@ -129,6 +129,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -141,14 +143,14 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
         progressIndicator: const CircularProgressIndicator(
-          color: kBlueThemeColor,
+          color: kAppThemeColor,
         ),
         child: Padding(
           // Add padding around the body of the screen
           padding: const EdgeInsets.only(
-            left: kPadding16,
-            right: kPadding16,
-            bottom: kPadding16,
+            left: kPadding8,
+            right: kPadding8,
+            bottom: kPadding8,
           ),
           child: Column(
             children: [
@@ -328,7 +330,7 @@ class DayButton extends StatelessWidget {
       onPressed: onPressed,
       style: kDayButtonStyle.copyWith(
         backgroundColor: userSelectedDays == selectedDays
-            ? const MaterialStatePropertyAll(kBlueThemeColor)
+            ? const MaterialStatePropertyAll(kAppThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Column(
@@ -340,7 +342,7 @@ class DayButton extends StatelessWidget {
             style: kDayButtonTextStyle.copyWith(
               color: userSelectedDays == selectedDays
                   ? kWhiteThemeColor
-                  : kBlueThemeColor,
+                  : kAppThemeColor,
             ),
           ),
           Text(

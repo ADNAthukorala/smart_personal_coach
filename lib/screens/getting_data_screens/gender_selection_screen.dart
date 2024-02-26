@@ -75,7 +75,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          backgroundColor: kBlueThemeColor,
+          backgroundColor: kAppThemeColor,
           title: const Text(
             'Are you sure?',
             style: TextStyle(color: kWhiteThemeColor),
@@ -88,7 +88,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             ElevatedButton(
               child: const Text(
                 'No',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -97,7 +96,6 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
             ElevatedButton(
               child: const Text(
                 'Yes',
-                style: TextStyle(color: kBlueThemeColor),
               ),
               onPressed: () {
                 Navigator.pop(context);
@@ -132,6 +130,8 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         appBar: AppBar(
           backgroundColor: kWhiteThemeColor,
           scrolledUnderElevation: 0,
+          elevation: 0,
+          shadowColor: kWhiteThemeColor,
           centerTitle: true,
 
           /// Show which screen the user is on
@@ -144,9 +144,9 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         body: Padding(
           // Add padding around the body of the screen
           padding: const EdgeInsets.only(
-            left: kPadding16,
-            right: kPadding16,
-            bottom: kPadding16,
+            left: kPadding8,
+            right: kPadding8,
+            bottom: kPadding8,
           ),
           child: Column(
             children: [
@@ -225,7 +225,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                       backgroundColor: MaterialStatePropertyAll(
                           _userGender == "Not Selected"
                               ? kGreyThemeColor02
-                              : kBlueThemeColor)),
+                              : kAppThemeColor)),
                 ),
               ),
             ],

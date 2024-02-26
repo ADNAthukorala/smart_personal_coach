@@ -15,10 +15,9 @@ class ReusableCardWithDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: kElevation1,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
-      color: kBlueThemeColor,
+      color: kAppThemeColor,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
         child: Column(

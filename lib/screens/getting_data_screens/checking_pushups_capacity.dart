@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
@@ -71,6 +72,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       appBar: AppBar(
         backgroundColor: kWhiteThemeColor,
         scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
         centerTitle: true,
 
         /// Show which screen the user is on
@@ -83,9 +86,9 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding16,
-          right: kPadding16,
-          bottom: kPadding16,
+          left: kPadding8,
+          right: kPadding8,
+          bottom: kPadding8,
         ),
         child: Column(
           children: [
@@ -162,14 +165,14 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   /// Add space between buttons
                   const SizedBox(height: 20.0),
 
-                  /// Button to show how to do push_ups
+                  /// Button to show how to do push ups
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       const Text(
                         "What is push ups?",
                         style: TextStyle(
-                            color: kBlueThemeColor02,
+                            color: kAppThemeColor,
                             fontSize: 14.0,
                             fontWeight: FontWeight.w900),
                       ),
@@ -182,17 +185,9 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                             showDialog(
                               context: context,
                               builder: (context) {
-                                return AlertDialog(
-                                  title: const Text("Push Ups"),
-                                  content:
-                                      const Text("This is how do push ups"),
-                                  actions: [
-                                    ElevatedButton(
-                                        onPressed: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: const Text("OK"))
-                                  ],
+                                return const ExerciseCard(
+                                  focusedBodyArea: "chest_exercises",
+                                  nameOfTheExercise: "push_ups",
                                 );
                               },
                             );

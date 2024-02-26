@@ -13,17 +13,99 @@ Future<void> main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+  Future<void> precacheAssets(BuildContext context) async {
+    // List of asset images paths
+    final List<String> assetPaths = [
+      'images/abs.png',
+      'images/arms.png',
+      'images/back.png',
+      'images/chest.png',
+      'images/facebook_logo.png',
+      'images/full_body_image.png',
+      'images/gender_selection_screen_image.jpg',
+      'images/google_logo.png',
+      'images/legs.png',
+      'images/meditation.png',
+      'images/signin_screen_image.jpg',
+      'images/signup_screen_image.jpg',
+      'images/theme_image.jpg',
+    ];
+
+    // Precache all asset images
+    for (String path in assetPaths) {
+      await precacheImage(AssetImage(path), context);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: kBlueThemeColor),
-        useMaterial3: true,
-        fontFamily: 'Roboto',
-        scaffoldBackgroundColor: kWhiteThemeColor,
-        appBarTheme: const AppBarTheme(color: kBlueThemeColor),
-      ),
-      home: const WelcomeScreen(),
+    return FutureBuilder(
+      future: precacheAssets(context),
+      builder: (BuildContext context, AsyncSnapshot<void> snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          // While the initialization is in progress, show a loading indicator
+          return MaterialApp(
+            home: Scaffold(
+              body: Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage('images/theme_image.jpg'),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                child: const Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircularProgressIndicator(
+                        color: kAppThemeColor,
+                        strokeAlign: 4.0,
+                        backgroundColor: kWhiteThemeColor,
+                        strokeWidth: 8.0,
+                      ),
+                      SizedBox(
+                        height: 25.0,
+                      ),
+                      Text(
+                        "Loading...",
+                        style: TextStyle(
+                            color: kWhiteThemeColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 20.0),
+                      )
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        } else if (snapshot.hasError) {
+          // If an error occurs during initialization, display an error message
+          return const MaterialApp(
+            home: Scaffold(
+              body: Center(
+                child: Text('Error occurred during initialization'),
+              ),
+            ),
+          );
+        } else {
+          // Once initialization is complete, build the main app UI
+          return MaterialApp(
+            theme: ThemeData(
+              colorScheme: ColorScheme.fromSeed(seedColor: kAppThemeColor),
+              useMaterial3: true,
+              fontFamily: 'Roboto',
+              scaffoldBackgroundColor: kWhiteThemeColor,
+              appBarTheme: const AppBarTheme(
+                color: kAppThemeColor,
+                shadowColor: kAppThemeColor,
+                elevation: 2,
+              ),
+            ),
+            home: const WelcomeScreen(),
+          );
+        }
+      },
     );
   }
 }

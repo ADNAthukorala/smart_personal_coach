@@ -20,12 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
         automaticallyImplyLeading: false,
       ),
       body: const Padding(
-        padding: EdgeInsets.only(
-          top: kPadding8,
-          right: kPadding16,
-          bottom: kPadding8,
-          left: kPadding16,
-        ),
+        padding: EdgeInsets.all(kPadding8),
         child: Center(child: Text('Home')),
       ),
     );
