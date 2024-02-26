@@ -144,9 +144,9 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         body: Padding(
           // Add padding around the body of the screen
           padding: const EdgeInsets.only(
-            left: kPadding8,
-            right: kPadding8,
-            bottom: kPadding8,
+            left: kPadding12,
+            right: kPadding12,
+            bottom: kPadding12,
           ),
           child: Column(
             children: [
@@ -154,7 +154,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
               /// The title and the description
               const Padding(
                 padding: EdgeInsets.only(
-                  bottom: kPadding8,
+                  bottom: kPadding12,
                 ),
                 child: TitleAndDescriptionHolder(
                   title: "What's your gender?",
@@ -169,8 +169,8 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   child: ListView(
                     shrinkWrap: true,
                     padding: const EdgeInsets.only(
-                      top: kPadding8,
-                      bottom: kPadding8,
+                      top: kPadding12,
+                      bottom: kPadding12,
                     ),
                     primary: false,
                     children: [
@@ -205,7 +205,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
               /// Next button
               Padding(
                 padding: const EdgeInsets.only(
-                  top: kPadding8,
+                  top: kPadding12,
                 ),
                 child: NextButton(
                   onPressed: _userGender == "Not Selected"

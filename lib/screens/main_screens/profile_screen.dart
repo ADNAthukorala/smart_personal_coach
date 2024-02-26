@@ -297,7 +297,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           String imageUrl = data['profile_picture'];
 
           return ListView(
-            padding: const EdgeInsets.all(kPadding8),
+            padding: const EdgeInsets.all(kPadding12),
             primary: false,
             children: [
               /// Profile picture

@@ -44,7 +44,7 @@ class ExerciseCard extends StatelessWidget {
             surfaceTintColor: kWhiteThemeColor,
             color: kWhiteThemeColor,
             child: ListView(
-              padding: const EdgeInsets.all(kPadding8),
+              padding: const EdgeInsets.all(kPadding12),
               primary: false,
               children: [
                 /// Animation image
@@ -91,7 +91,7 @@ class ExerciseCard extends StatelessWidget {
                 /// How to do the exercise
                 Padding(
                   padding: const EdgeInsets.only(
-                    bottom: kPadding8,
+                    bottom: kPadding12,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -120,7 +120,7 @@ class ExerciseCard extends StatelessWidget {
                       // Step 02
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: kPadding8,
+                          top: kPadding12,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -140,7 +140,7 @@ class ExerciseCard extends StatelessWidget {
                       // Step 03
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: kPadding8,
+                          top: kPadding12,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -160,7 +160,7 @@ class ExerciseCard extends StatelessWidget {
                       // Step 04
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: kPadding8,
+                          top: kPadding12,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -183,8 +183,8 @@ class ExerciseCard extends StatelessWidget {
                 /// Common mistakes
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: kPadding8,
-                    bottom: kPadding8,
+                    top: kPadding12,
+                    bottom: kPadding12,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -205,8 +205,8 @@ class ExerciseCard extends StatelessWidget {
                 /// Muscles worked
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: kPadding8,
-                    bottom: kPadding8,
+                    top: kPadding12,
+                    bottom: kPadding12,
                   ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.stretch,

@@ -26,7 +26,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           const SizedBox(
             child: Padding(
               // Add padding around the title and description holder
-              padding: EdgeInsets.all(kPadding8),
+              padding: EdgeInsets.all(kPadding12),
               child: Column(
                 children: [
                   Column(
@@ -61,7 +61,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           SizedBox(
             child: Padding(
               // Add padding around the button
-              padding: const EdgeInsets.all(kPadding8),
+              padding: const EdgeInsets.all(kPadding12),
               child: ElevatedButton(
                 style: kWelcomeButtonStyle,
                 onPressed: () {

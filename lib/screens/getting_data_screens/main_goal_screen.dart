@@ -82,9 +82,9 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding8,
-          right: kPadding8,
-          bottom: kPadding8,
+          left: kPadding12,
+          right: kPadding12,
+          bottom: kPadding12,
         ),
 
         /// The main column of the screen
@@ -94,7 +94,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
             /// The title and the description
             const Padding(
               padding: EdgeInsets.only(
-                bottom: kPadding8,
+                bottom: kPadding12,
               ),
               child: TitleAndDescriptionHolder(
                 title: 'What are your main goals?',
@@ -107,8 +107,8 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
-                  top: kPadding8,
-                  bottom: kPadding8,
+                  top: kPadding12,
+                  bottom: kPadding12,
                 ),
                 primary: false,
                 children: [
@@ -167,7 +167,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
             /// Next button
             Padding(
               padding: const EdgeInsets.only(
-                top: kPadding8,
+                top: kPadding12,
               ),
               child: NextButton(
                 onPressed: () {

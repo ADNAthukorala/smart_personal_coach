@@ -148,9 +148,9 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
         body: Padding(
           // Add padding around the body of the screen
           padding: const EdgeInsets.only(
-            left: kPadding8,
-            right: kPadding8,
-            bottom: kPadding8,
+            left: kPadding12,
+            right: kPadding12,
+            bottom: kPadding12,
           ),
           child: Column(
             children: [
@@ -158,7 +158,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               /// The title and the description
               const Padding(
                 padding: EdgeInsets.only(
-                  bottom: kPadding8,
+                  bottom: kPadding12,
                 ),
                 child: TitleAndDescriptionHolder(
                   title: 'Set your weekly goal',
@@ -172,8 +172,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               Expanded(
                 child: GridView.count(
                   padding: const EdgeInsets.only(
-                    top: kPadding8,
-                    bottom: kPadding8,
+                    top: kPadding12,
+                    bottom: kPadding12,
                   ),
                   crossAxisCount: 2,
                   mainAxisSpacing: 10.0,
@@ -285,7 +285,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               /// Next button
               Padding(
                 padding: const EdgeInsets.only(
-                  top: kPadding8,
+                  top: kPadding12,
                 ),
                 child: ElevatedButton(
                   onPressed: () {

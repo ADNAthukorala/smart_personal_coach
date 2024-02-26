@@ -170,9 +170,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               // Add padding around the bottom components
               child: Padding(
                 padding: const EdgeInsets.only(
-                  left: kPadding8,
-                  right: kPadding8,
-                  bottom: kPadding8,
+                  left: kPadding12,
+                  right: kPadding12,
+                  bottom: kPadding12,
                 ),
                 // Adding all the components at the bottom to a column
                 child: Column(

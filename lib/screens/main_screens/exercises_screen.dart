@@ -31,7 +31,7 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
       /// Body of the screen
       body: Center(
         child: GridView.count(
-          padding: const EdgeInsets.all(kPadding8),
+          padding: const EdgeInsets.all(kPadding12),
           crossAxisCount: 2,
           mainAxisSpacing: 10.0,
           crossAxisSpacing: 10.0,
