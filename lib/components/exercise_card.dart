@@ -48,24 +48,21 @@ class ExerciseCard extends StatelessWidget {
               primary: false,
               children: [
                 /// Animation image
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  title: SizedBox(
-                    height: 300,
-                    child: CachedNetworkImage(
-                      imageUrl: data['animationImage'],
-                      placeholder: (context, url) => const Center(
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            CircularProgressIndicator(),
-                            Text("Loading animation...")
-                          ],
-                        ),
+                SizedBox(
+                  height: 300,
+                  child: CachedNetworkImage(
+                    imageUrl: data['animationImage'],
+                    placeholder: (context, url) => const Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircularProgressIndicator(),
+                          Text("Loading animation...")
+                        ],
                       ),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
                     ),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
 
