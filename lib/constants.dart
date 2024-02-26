@@ -37,13 +37,13 @@ const kExerciseCardTitleTextStyle = TextStyle(
 /// Text styles for exercise card step title
 const kExerciseCardStepTextStyle = TextStyle(
   color: kGreyThemeColor,
-  fontSize: 18.0,
+  fontSize: 17.0,
   fontWeight: FontWeight.bold,
 );
 
 /// Text styles for exercise card step description
 const kExerciseCardDescriptionTextStyle = TextStyle(
-  fontSize: 17.0,
+  fontSize: 16.0,
   fontWeight: FontWeight.bold,
 );
 
