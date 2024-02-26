@@ -70,11 +70,11 @@ class ExerciseCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// Title
+                  /// Name of the exercise
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      data['title'],
+                      data['name'],
                       style: const TextStyle(
                         color: kAppThemeColor,
                         fontSize: 24.0,
