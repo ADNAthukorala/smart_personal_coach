@@ -43,145 +43,143 @@ class ExerciseCard extends StatelessWidget {
           return Card(
             surfaceTintColor: kWhiteThemeColor,
             color: kWhiteThemeColor,
-            child: Padding(
-              padding: const EdgeInsets.all(kPadding16),
-              child: ListView(
-                primary: false,
-                children: [
-                  /// Animation image
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: SizedBox(
-                      height: 300,
-                      child: CachedNetworkImage(
-                        imageUrl: data['animationImage'],
-                        placeholder: (context, url) => const Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircularProgressIndicator(),
-                              Text("Loading animation...")
-                            ],
-                          ),
+            child: ListView(
+              padding: const EdgeInsets.all(kPadding8),
+              primary: false,
+              children: [
+                /// Animation image
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: SizedBox(
+                    height: 300,
+                    child: CachedNetworkImage(
+                      imageUrl: data['animationImage'],
+                      placeholder: (context, url) => const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                            Text("Loading animation...")
+                          ],
                         ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
                       ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
                     ),
                   ),
+                ),
 
-                  /// Name of the exercise
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      data['name'],
-                      style: const TextStyle(
-                        color: kAppThemeColor,
-                        fontSize: 24.0,
-                        fontWeight: FontWeight.bold,
-                      ),
+                /// Name of the exercise
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    data['name'],
+                    style: const TextStyle(
+                      color: kAppThemeColor,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
+                ),
 
-                  /// Divider line
-                  const Divider(),
+                /// Divider line
+                const Divider(),
 
-                  /// Step 01
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      data['step1'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
+                /// Step 01
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    data['step1'],
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
 
-                  /// Step 02
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      data['step2'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
+                /// Step 02
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    data['step2'],
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
 
-                  /// Step 03
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      data['step3'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
+                /// Step 03
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    data['step3'],
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
 
-                  /// Step 04
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      data['step4'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                      ),
+                /// Step 04
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    data['step4'],
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
+                ),
 
-                  /// Muscles worked (Title)
-                  const ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: Text(
-                      "Muscles Worked",
+                /// Muscles worked (Title)
+                const ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: Text(
+                    "Muscles Worked",
+                    style: TextStyle(
+                      color: kAppThemeColor,
+                      fontSize: 24.0,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                ),
+
+                /// Muscles worked image
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  title: SizedBox(
+                    height: 280.0,
+                    child: CachedNetworkImage(
+                      imageUrl: data['musclesWorkedImage'],
+                      placeholder: (context, url) => const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                            Text("Loading image...")
+                          ],
+                        ),
+                      ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    ),
+                  ),
+                ),
+
+                /// Close button
+                ListTile(
+                  title: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: kAppThemeColor),
+                    onPressed: () => Navigator.pop(context),
+                    child: const Text(
+                      "Close",
                       style: TextStyle(
-                        color: kAppThemeColor,
-                        fontSize: 24.0,
+                        color: kWhiteThemeColor,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
-
-                  /// Muscles worked image
-                  ListTile(
-                    contentPadding: EdgeInsets.zero,
-                    title: SizedBox(
-                      height: 280.0,
-                      child: CachedNetworkImage(
-                        imageUrl: data['musclesWorkedImage'],
-                        placeholder: (context, url) => const Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircularProgressIndicator(),
-                              Text("Loading image...")
-                            ],
-                          ),
-                        ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    ),
-                  ),
-
-                  /// Close button
-                  ListTile(
-                    title: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: kAppThemeColor),
-                      onPressed: () => Navigator.pop(context),
-                      child: const Text(
-                        "Close",
-                        style: TextStyle(
-                          color: kWhiteThemeColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           );
         });

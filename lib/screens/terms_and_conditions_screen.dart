@@ -27,7 +27,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
       /// Body of the screen
       body: Padding(
         // Add padding around the body content
-        padding: const EdgeInsets.all(kPadding16),
+        padding: const EdgeInsets.all(kPadding8),
         child: Column(
           children: [
             /// Terms and Conditions holder

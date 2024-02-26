@@ -82,9 +82,9 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding16,
-          right: kPadding16,
-          bottom: kPadding16,
+          left: kPadding8,
+          right: kPadding8,
+          bottom: kPadding8,
         ),
 
         /// The main column of the screen

@@ -43,12 +43,7 @@ class _ChestExercisesScreenState extends State<ChestExercisesScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.only(
-              top: kPadding8,
-              bottom: kPadding8,
-              left: kPadding16,
-              right: kPadding16,
-            ),
+            padding: const EdgeInsets.all(kPadding8),
             primary: false,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
@@ -70,7 +65,7 @@ class _ChestExercisesScreenState extends State<ChestExercisesScreen> {
                       builder: (context) {
                         return ExerciseCard(
                           focusedBodyArea: _focusedBodyArea,
-                          nameOfTheExercise: document["name"],
+                          nameOfTheExercise: document["docName"],
                         );
                       },
                     );

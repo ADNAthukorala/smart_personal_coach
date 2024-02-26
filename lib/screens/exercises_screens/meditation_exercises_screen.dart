@@ -7,7 +7,8 @@ class MeditationExercisesScreen extends StatefulWidget {
   const MeditationExercisesScreen({super.key});
 
   @override
-  State<MeditationExercisesScreen> createState() => _MeditationExercisesScreenState();
+  State<MeditationExercisesScreen> createState() =>
+      _MeditationExercisesScreenState();
 }
 
 class _MeditationExercisesScreenState extends State<MeditationExercisesScreen> {
@@ -28,7 +29,7 @@ class _MeditationExercisesScreenState extends State<MeditationExercisesScreen> {
       /// Body of the screen
       body: StreamBuilder(
         stream:
-        FirebaseFirestore.instance.collection(_focusedBodyArea).snapshots(),
+            FirebaseFirestore.instance.collection(_focusedBodyArea).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Text("Something went wrong");
@@ -43,12 +44,7 @@ class _MeditationExercisesScreenState extends State<MeditationExercisesScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.only(
-              top: kPadding8,
-              bottom: kPadding8,
-              left: kPadding16,
-              right: kPadding16,
-            ),
+            padding: const EdgeInsets.all(kPadding8),
             primary: false,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
