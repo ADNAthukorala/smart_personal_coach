@@ -86,44 +86,44 @@ class ExerciseCard extends StatelessWidget {
                   /// Divider line
                   const Divider(),
 
-                  /// Description 01
+                  /// Step 01
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      data['description01'],
+                      data['step1'],
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
 
-                  /// Description 02
+                  /// Step 02
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      data['description02'],
+                      data['step2'],
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
 
-                  /// Description 03
+                  /// Step 03
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      data['description03'],
+                      data['step3'],
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                   ),
 
-                  /// Description 04
+                  /// Step 04
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: Text(
-                      data['description04'],
+                      data['step4'],
                       style: const TextStyle(
                         fontWeight: FontWeight.w600,
                       ),
@@ -143,7 +143,7 @@ class ExerciseCard extends StatelessWidget {
                     ),
                   ),
 
-                  /// Focus areas (Image)
+                  /// Focus areas image
                   ListTile(
                     contentPadding: EdgeInsets.zero,
                     title: SizedBox(
