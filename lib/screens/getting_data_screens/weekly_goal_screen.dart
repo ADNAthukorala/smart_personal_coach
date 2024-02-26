@@ -124,28 +124,28 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /// App Bar
-      appBar: AppBar(
-        backgroundColor: kWhiteThemeColor,
-        scrolledUnderElevation: 0,
-        elevation: 0,
-        shadowColor: kWhiteThemeColor,
-        centerTitle: true,
-
-        /// Show which screen the user is on
-        title: const AppBarTitle(
-          screenId: 7,
-        ),
+    return ModalProgressHUD(
+      inAsyncCall: showSpinner,
+      progressIndicator: const CircularProgressIndicator(
+        color: kAppThemeColor,
       ),
+      child: Scaffold(
+        /// App Bar
+        appBar: AppBar(
+          backgroundColor: kWhiteThemeColor,
+          scrolledUnderElevation: 0,
+          elevation: 0,
+          shadowColor: kWhiteThemeColor,
+          centerTitle: true,
 
-      /// Body of the screen
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        progressIndicator: const CircularProgressIndicator(
-          color: kAppThemeColor,
+          /// Show which screen the user is on
+          title: const AppBarTitle(
+            screenId: 7,
+          ),
         ),
-        child: Padding(
+
+        /// Body of the screen
+        body: Padding(
           // Add padding around the body of the screen
           padding: const EdgeInsets.only(
             left: kPadding8,
