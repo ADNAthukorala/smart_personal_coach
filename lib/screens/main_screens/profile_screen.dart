@@ -458,7 +458,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Email
               ListTile(
-                contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.email),
                 title: const Text("Email"),
                 subtitle: Text(data['email']),
@@ -467,7 +466,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Gender
               ListTile(
-                contentPadding: EdgeInsets.zero,
                 leading:
                     Icon(data['gender'] == "Male" ? Icons.male : Icons.female),
                 title: const Text("Gender"),
@@ -526,7 +524,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Birth day
               ListTile(
-                contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.calendar_month),
                 title: const Text("Birth Day"),
                 subtitle: Text("${userBirthDay.toDate()}".split(' ')[0]),
@@ -538,7 +535,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Height
               ListTile(
-                contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.height),
                 title: const Text("Height"),
                 subtitle: Text("${data['height'].toString()} cm"),
@@ -585,7 +581,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Weight
               ListTile(
-                contentPadding: EdgeInsets.zero,
                 leading: const Icon(Icons.balance),
                 title: const Text("Weight"),
                 subtitle: Text("${data['weight'].toString()} kg"),
@@ -632,49 +627,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Weekly goal
               ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.balance),
+                leading: const Icon(Icons.access_time),
                 title: const Text("Weekly Goal"),
                 subtitle: Text("${data['weeklyGoal'].toString()} kg"),
                 subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
-                onTap: () {
-                  showDialog(
-                    context: context,
-                    builder: (context) {
-                      // Changing the username
-                      return AlertDialog(
-                        title: const Text("Enter your weight"),
-                        content: TextFormField(
-                          controller: userWeightController,
-                          decoration: const InputDecoration(
-                            hintText: "Enter your weight",
-                          ),
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                          ],
-                        ),
-                        actions: [
-                          ElevatedButton(
-                              onPressed: () {
-                                Navigator.pop(context);
-                              },
-                              child: const Text("Cancel")),
-                          ElevatedButton(
-                              onPressed: () {
-                                updateWeight(
-                                    userWeightController.text.trim().isNotEmpty
-                                        ? int.parse(
-                                            userWeightController.text.trim())
-                                        : data['weight']);
-                                Navigator.pop(context);
-                              },
-                              child: const Text("Save")),
-                        ],
-                      );
-                    },
-                  );
-                },
+              ),
+
+              /// Focused body areas
+              ListTile(
+                leading: const Icon(Icons.boy),
+                title: const Text("Focused Body Areas"),
+                subtitle: Text(data['focusBodyAreas'].toString()),
+                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
               ),
 
               /// Sign out button
