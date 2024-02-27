@@ -229,7 +229,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final storage = FirebaseStorage.instance;
     final Reference storageReference = storage
         .ref()
-        .child('profile_pictures/${loggedInUser.email}/profile_picture.jpg');
+        .child('profile_pictures/${loggedInUser.email}/profile-picture.jpg');
     final UploadTask uploadTask = storageReference.putFile(_imageFile!);
     await uploadTask.whenComplete(() => null);
 
@@ -297,7 +297,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           String imageUrl = data['profile_picture'];
 
           return ListView(
-            padding: const EdgeInsets.all(kPadding8),
+            padding: const EdgeInsets.all(kPadding16),
             primary: false,
             children: [
               /// Profile picture

@@ -46,7 +46,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
   // Default profile picture url
   final String defaultProfilePicture =
-      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Fdefault_profile_picture.jpg?alt=media&token=0cddd010-118c-47ce-ba0a-fad1e54b479b";
+      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Ftheme-image.jpg?alt=media&token=777d29fb-0bcc-4bbb-bddd-b65d6c1f4eea";
 
   // Declare an int variable to store how many days the user can dedicate to the workout plan
   int _userSelectedDays = 1;
@@ -124,33 +124,33 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      /// App Bar
-      appBar: AppBar(
-        backgroundColor: kWhiteThemeColor,
-        scrolledUnderElevation: 0,
-        elevation: 0,
-        shadowColor: kWhiteThemeColor,
-        centerTitle: true,
-
-        /// Show which screen the user is on
-        title: const AppBarTitle(
-          screenId: 7,
-        ),
+    return ModalProgressHUD(
+      inAsyncCall: showSpinner,
+      progressIndicator: const CircularProgressIndicator(
+        color: kAppThemeColor,
       ),
+      child: Scaffold(
+        /// App Bar
+        appBar: AppBar(
+          backgroundColor: kWhiteThemeColor,
+          scrolledUnderElevation: 0,
+          elevation: 0,
+          shadowColor: kWhiteThemeColor,
+          centerTitle: true,
 
-      /// Body of the screen
-      body: ModalProgressHUD(
-        inAsyncCall: showSpinner,
-        progressIndicator: const CircularProgressIndicator(
-          color: kAppThemeColor,
+          /// Show which screen the user is on
+          title: const AppBarTitle(
+            screenId: 7,
+          ),
         ),
-        child: Padding(
+
+        /// Body of the screen
+        body: Padding(
           // Add padding around the body of the screen
           padding: const EdgeInsets.only(
-            left: kPadding8,
-            right: kPadding8,
-            bottom: kPadding8,
+            left: kPadding16,
+            right: kPadding16,
+            bottom: kPadding16,
           ),
           child: Column(
             children: [
@@ -158,7 +158,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               /// The title and the description
               const Padding(
                 padding: EdgeInsets.only(
-                  bottom: kPadding8,
+                  bottom: kPadding16,
                 ),
                 child: TitleAndDescriptionHolder(
                   title: 'Set your weekly goal',
@@ -172,8 +172,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               Expanded(
                 child: GridView.count(
                   padding: const EdgeInsets.only(
-                    top: kPadding8,
-                    bottom: kPadding8,
+                    top: kPadding16,
+                    bottom: kPadding16,
                   ),
                   crossAxisCount: 2,
                   mainAxisSpacing: 10.0,
@@ -285,7 +285,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               /// Next button
               Padding(
                 padding: const EdgeInsets.only(
-                  top: kPadding8,
+                  top: kPadding16,
                 ),
                 child: ElevatedButton(
                   onPressed: () {

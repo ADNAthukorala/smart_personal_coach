@@ -31,7 +31,7 @@ class TermsAndConditionsHolder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(
-        bottom: kPadding8,
+        bottom: kPadding16,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

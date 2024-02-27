@@ -43,7 +43,7 @@ class _AbsExercisesScreenState extends State<AbsExercisesScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.all(kPadding8),
+            padding: const EdgeInsets.all(kPadding16),
             primary: false,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {

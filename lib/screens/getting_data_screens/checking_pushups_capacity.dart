@@ -86,9 +86,9 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding8,
-          right: kPadding8,
-          bottom: kPadding8,
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
         ),
         child: Column(
           children: [
@@ -96,7 +96,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             /// The title and the description
             const Padding(
               padding: EdgeInsets.only(
-                bottom: kPadding8,
+                bottom: kPadding16,
               ),
               child: TitleAndDescriptionHolder(
                 title: 'How many push-ups can you do at one time?',
@@ -109,8 +109,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
-                  top: kPadding8,
-                  bottom: kPadding8,
+                  top: kPadding16,
+                  bottom: kPadding16,
                 ),
                 primary: false,
                 children: [
@@ -172,9 +172,10 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                       const Text(
                         "What is push ups?",
                         style: TextStyle(
-                            color: kAppThemeColor,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w900),
+                          color: kAppThemeColor,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                       const SizedBox(width: 5.0),
                       SizedBox(
@@ -206,7 +207,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             /// Next button
             Padding(
               padding: const EdgeInsets.only(
-                top: kPadding8,
+                top: kPadding16,
               ),
               child: NextButton(
                 onPressed: () {

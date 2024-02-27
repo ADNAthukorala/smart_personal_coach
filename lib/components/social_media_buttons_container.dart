@@ -24,8 +24,8 @@ class SocialMediaButtonsContainer extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(
-                left: kPadding8,
-                right: kPadding8,
+                left: kPadding16,
+                right: kPadding16,
               ),
               child: Text(
                 "Or continue with",
@@ -51,17 +51,10 @@ class SocialMediaButtonsContainer extends StatelessWidget {
           children: [
             /// Google icon button
             TextButton.icon(
-              style: ButtonStyle(
-                fixedSize: const MaterialStatePropertyAll(
-                    Size.fromWidth(double.maxFinite)),
-                side: const MaterialStatePropertyAll(
-                    BorderSide(color: kGreyThemeColor02)),
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kRadius16))),
-              ),
+              style: kSocialMediaIconButtonStyle,
               onPressed: onPressedGoogle,
               icon: Image.asset(
-                'images/google_logo.png',
+                'images/google-logo.png',
                 height: 30.0,
                 width: 30.0,
               ),
@@ -82,17 +75,10 @@ class SocialMediaButtonsContainer extends StatelessWidget {
 
             /// Facebook icon button
             TextButton.icon(
-              style: ButtonStyle(
-                fixedSize: const MaterialStatePropertyAll(
-                    Size.fromWidth(double.maxFinite)),
-                side: const MaterialStatePropertyAll(
-                    BorderSide(color: kGreyThemeColor02)),
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kRadius16))),
-              ),
+              style: kSocialMediaIconButtonStyle,
               onPressed: onPressedGoogle,
               icon: Image.asset(
-                'images/facebook_logo.png',
+                'images/facebook-logo.png',
                 height: 30.0,
                 width: 30.0,
               ),

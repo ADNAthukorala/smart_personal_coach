@@ -13,8 +13,10 @@ const kAppThemeColor = kBlueThemeColor;
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
 const kRadius30 = 30.0;
-const kPadding8 = 8.0;
 const kPadding4 = 4.0;
+const kPadding8 = 8.0;
+const kPadding12 = 12.0;
+const kPadding16 = 16.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
 const kAppBarSizedBoxWidth = 105.0;
@@ -30,21 +32,28 @@ const kSmallGreyColorDescriptionTextStyle = TextStyle(
 /// Text styles for exercise card title
 const kExerciseCardTitleTextStyle = TextStyle(
   color: kAppThemeColor,
-  fontSize: 24.0,
-  fontWeight: FontWeight.bold,
+  fontSize: 28.0,
+  fontWeight: FontWeight.w900,
+);
+
+/// Text styles for exercise card subtitle
+const kExerciseCardSubtitleTextStyle = TextStyle(
+  color: kAppThemeColor,
+  fontSize: 22.0,
+  fontWeight: FontWeight.w700,
 );
 
 /// Text styles for exercise card step title
 const kExerciseCardStepTextStyle = TextStyle(
   color: kGreyThemeColor,
-  fontSize: 18.0,
-  fontWeight: FontWeight.bold,
+  fontSize: 17.0,
+  fontWeight: FontWeight.w600,
 );
 
 /// Text styles for exercise card step description
 const kExerciseCardDescriptionTextStyle = TextStyle(
-  fontSize: 17.0,
-  fontWeight: FontWeight.bold,
+  fontSize: 16.0,
+  fontWeight: FontWeight.w500,
 );
 
 /// Text style for text button
@@ -57,17 +66,18 @@ const kTextButtonTextStyle = TextStyle(
 /// Text styles for large black color texts (Titles)
 const kLargeBlackTitleTextStyle = TextStyle(
   fontSize: 28,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kBlackThemeColor,
 );
 
 /// Text style for terms and conditions titles
 const kTermsAndConditionsTitlesTextStyle = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
+/// Text style for terms and conditions descriptions
 const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
@@ -78,7 +88,7 @@ const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
 const kWelcomeTextStyle = TextStyle(
   height: 1.15,
   fontSize: 32,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kBlackThemeColor,
 );
 
@@ -99,27 +109,27 @@ const kWelcomeButtonTextStyle = TextStyle(
 /// Text style for next button
 const kNextButtonTextStyle = TextStyle(
   fontSize: 24,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
 
 /// Text styles for select body area button
 const kSelectBodyAreaButtonTextStyle = TextStyle(
   fontSize: 18,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text styles for select capacity button
 const kSelectCapacityButtonTextStyle = TextStyle(
   fontSize: 25,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text styles for exercises screen buttons
 const kExercisesScreenButtonTextStyle = TextStyle(
-  fontSize: 25,
+  fontSize: 36,
   fontWeight: FontWeight.w900,
   color: kWhiteThemeColor,
 );
@@ -127,26 +137,14 @@ const kExercisesScreenButtonTextStyle = TextStyle(
 /// Text styles for day button
 const kDayButtonTextStyle = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text style for main screens app bar
 const kAppBarTextStyle = TextStyle(
   color: kWhiteThemeColor,
-  fontWeight: FontWeight.w900,
-);
-
-/// Text style for drawer header
-const kDrawerHeaderTextStyle = TextStyle(
-  color: kWhiteThemeColor,
-  fontSize: 20.0,
-  fontWeight: FontWeight.w900,
-);
-
-/// Text style for drawer item
-const kDrawerItemTextStyle = TextStyle(
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w700,
 );
 
 /// STYLES FOR BUTTONS
@@ -163,27 +161,24 @@ const kGenderSelectionButtonStyle = ButtonStyle(
 const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-  )),
 );
 
 /// Button style for welcome screen button
 const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-  )),
 );
 
 /// Button styles for next button
 const kNextButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-  )),
+);
+
+/// Button style for social media icon button
+const kSocialMediaIconButtonStyle = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size.fromWidth(double.maxFinite)),
+  side: MaterialStatePropertyAll(BorderSide(color: kGreyThemeColor02)),
 );
 
 /// Button styles for select body area button
@@ -229,7 +224,7 @@ const kTextButtonStyle = ButtonStyle(
 
 /// Button styles for exercises screen buttons
 const kExercisesScreenButton = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
+  padding: MaterialStatePropertyAll(EdgeInsets.zero),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
@@ -266,10 +261,5 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
       Radius.circular(kRadius8),
     ),
   ),
-  contentPadding: EdgeInsets.only(
-    left: 8.0,
-    top: 8.0,
-    right: 8.0,
-    bottom: 8.0,
-  ),
+  contentPadding: EdgeInsets.zero,
 );
