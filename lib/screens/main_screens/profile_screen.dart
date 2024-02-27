@@ -665,7 +665,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 updateWeight(
                                     userWeightController.text.trim().isNotEmpty
                                         ? int.parse(
-                                        userWeightController.text.trim())
+                                            userWeightController.text.trim())
                                         : data['weight']);
                                 Navigator.pop(context);
                               },
