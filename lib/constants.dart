@@ -40,7 +40,7 @@ const kExerciseCardTitleTextStyle = TextStyle(
 const kExerciseCardSubtitleTextStyle = TextStyle(
   color: kAppThemeColor,
   fontSize: 22.0,
-  fontWeight: FontWeight.w800,
+  fontWeight: FontWeight.w700,
 );
 
 /// Text styles for exercise card step title
@@ -53,7 +53,7 @@ const kExerciseCardStepTextStyle = TextStyle(
 /// Text styles for exercise card step description
 const kExerciseCardDescriptionTextStyle = TextStyle(
   fontSize: 16.0,
-  fontWeight: FontWeight.w400,
+  fontWeight: FontWeight.w500,
 );
 
 /// Text style for text button
@@ -66,14 +66,14 @@ const kTextButtonTextStyle = TextStyle(
 /// Text styles for large black color texts (Titles)
 const kLargeBlackTitleTextStyle = TextStyle(
   fontSize: 28,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kBlackThemeColor,
 );
 
 /// Text style for terms and conditions titles
 const kTermsAndConditionsTitlesTextStyle = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
@@ -108,54 +108,42 @@ const kWelcomeButtonTextStyle = TextStyle(
 /// Text style for next button
 const kNextButtonTextStyle = TextStyle(
   fontSize: 24,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
 
 /// Text styles for select body area button
 const kSelectBodyAreaButtonTextStyle = TextStyle(
   fontSize: 18,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text styles for select capacity button
 const kSelectCapacityButtonTextStyle = TextStyle(
   fontSize: 25,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text styles for exercises screen buttons
 const kExercisesScreenButtonTextStyle = TextStyle(
   fontSize: 25,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
 
 /// Text styles for day button
 const kDayButtonTextStyle = TextStyle(
   fontSize: 20,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text style for main screens app bar
 const kAppBarTextStyle = TextStyle(
   color: kWhiteThemeColor,
-  fontWeight: FontWeight.w900,
-);
-
-/// Text style for drawer header
-const kDrawerHeaderTextStyle = TextStyle(
-  color: kWhiteThemeColor,
-  fontSize: 20.0,
-  fontWeight: FontWeight.w900,
-);
-
-/// Text style for drawer item
-const kDrawerItemTextStyle = TextStyle(
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w700,
 );
 
 /// STYLES FOR BUTTONS
@@ -238,7 +226,6 @@ const kTextButtonStyle = ButtonStyle(
 
 /// Button styles for exercises screen buttons
 const kExercisesScreenButton = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
