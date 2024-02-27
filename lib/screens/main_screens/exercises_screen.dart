@@ -30,11 +30,8 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
 
       /// Body of the screen
       body: Center(
-        child: GridView.count(
+        child: ListView(
           padding: const EdgeInsets.all(kPadding16),
-          crossAxisCount: 2,
-          mainAxisSpacing: 10.0,
-          crossAxisSpacing: 10.0,
           shrinkWrap: true,
           primary: false,
           children: [
@@ -66,6 +63,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               ),
             ),
 
+            /// Adding space
+            const SizedBox(height: 12.0),
+
             /// Arms button
             ElevatedButton(
               style: kExercisesScreenButton,
@@ -93,6 +93,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 ],
               ),
             ),
+
+            /// Adding space
+            const SizedBox(height: 12.0),
 
             /// Back button
             ElevatedButton(
@@ -122,6 +125,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               ),
             ),
 
+            /// Adding space
+            const SizedBox(height: 12.0),
+
             /// Chest button
             ElevatedButton(
               style: kExercisesScreenButton,
@@ -150,6 +156,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               ),
             ),
 
+            /// Adding space
+            const SizedBox(height: 12.0),
+
             /// Legs button
             ElevatedButton(
               style: kExercisesScreenButton,
@@ -177,6 +186,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 ],
               ),
             ),
+
+            /// Adding space
+            const SizedBox(height: 12.0),
 
             /// Meditation button
             ElevatedButton(
