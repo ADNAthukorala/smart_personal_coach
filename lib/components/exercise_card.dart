@@ -111,78 +111,43 @@ class ExerciseCard extends StatelessWidget {
                       ),
 
                       // Step 01
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const Text(
-                            "Step 1",
-                            style: kExerciseCardStepTextStyle,
-                          ),
-                          Text(
-                            data['step1'],
-                            style: kExerciseCardDescriptionTextStyle,
-                          ),
-                        ],
+                      const Text(
+                        "Step 1",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step1'],
+                        style: kExerciseCardDescriptionTextStyle,
                       ),
 
                       // Step 02
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: kPadding4,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Step 2",
-                              style: kExerciseCardStepTextStyle,
-                            ),
-                            Text(
-                              data['step2'],
-                              style: kExerciseCardDescriptionTextStyle,
-                            ),
-                          ],
-                        ),
+                      const Text(
+                        "Step 2",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step2'],
+                        style: kExerciseCardDescriptionTextStyle,
                       ),
 
                       // Step 03
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: kPadding4,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Step 3",
-                              style: kExerciseCardStepTextStyle,
-                            ),
-                            Text(
-                              data['step3'],
-                              style: kExerciseCardDescriptionTextStyle,
-                            ),
-                          ],
-                        ),
+                      const Text(
+                        "Step 3",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step3'],
+                        style: kExerciseCardDescriptionTextStyle,
                       ),
 
                       // Step 04
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: kPadding4,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            const Text(
-                              "Step 4",
-                              style: kExerciseCardStepTextStyle,
-                            ),
-                            Text(
-                              data['step4'],
-                              style: kExerciseCardDescriptionTextStyle,
-                            ),
-                          ],
-                        ),
+                      const Text(
+                        "Step 4",
+                        style: kExerciseCardStepTextStyle,
+                      ),
+                      Text(
+                        data['step4'],
+                        style: kExerciseCardDescriptionTextStyle,
                       ),
                     ],
                   ),
