@@ -109,7 +109,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       // Update the user name field
       await documentRef.update({
-        'user_name': userName,
+        'userName': userName,
       });
 
       print('Document updated successfully.');
@@ -185,7 +185,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
       // Update the user name field
       await documentRef.update({
-        'birth_day': userBirthDay,
+        'birthDay': userBirthDay,
       });
 
       print('Document updated successfully.');
@@ -237,7 +237,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final userId = loggedInUser.email;
 
     await FirebaseFirestore.instance.collection('users').doc(userId).update({
-      'profile_picture': imageUrl,
+      'profilePicture': imageUrl,
     });
   }
 
@@ -284,17 +284,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
               snapshot.data!.data() as Map<String, dynamic>;
 
           // Declaring a variable to store the user's birth day
-          Timestamp userBirthDay = data['birth_day'];
+          Timestamp userBirthDay = data['birthDay'];
 
           // Create text controllers for the user name text field and the height and weight text fields
           final userNameController = TextEditingController();
           final userWeightController = TextEditingController();
           final userHeightController = TextEditingController();
           userHeightController.text = data['height'].toString();
-          userNameController.text = data['user_name'];
+          userNameController.text = data['userName'];
           userWeightController.text = data['weight'].toString();
 
-          String imageUrl = data['profile_picture'];
+          String imageUrl = data['profilePicture'];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -412,7 +412,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    data['user_name'],
+                    data['userName'],
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 24.0,
@@ -442,7 +442,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 updateUserName(
                                     userNameController.text.trim().isNotEmpty
                                         ? userNameController.text.trim()
-                                        : data['user_name']);
+                                        : data['userName']);
                                 Navigator.pop(context);
                               },
                               child: const Text("Save")),
@@ -619,6 +619,53 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     userWeightController.text.trim().isNotEmpty
                                         ? int.parse(
                                             userWeightController.text.trim())
+                                        : data['weight']);
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Save")),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+
+              /// Weekly goal
+              ListTile(
+                contentPadding: EdgeInsets.zero,
+                leading: const Icon(Icons.balance),
+                title: const Text("Weekly Goal"),
+                subtitle: Text("${data['weeklyGoal'].toString()} kg"),
+                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      // Changing the username
+                      return AlertDialog(
+                        title: const Text("Enter your weight"),
+                        content: TextFormField(
+                          controller: userWeightController,
+                          decoration: const InputDecoration(
+                            hintText: "Enter your weight",
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                        ),
+                        actions: [
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Cancel")),
+                          ElevatedButton(
+                              onPressed: () {
+                                updateWeight(
+                                    userWeightController.text.trim().isNotEmpty
+                                        ? int.parse(
+                                        userWeightController.text.trim())
                                         : data['weight']);
                                 Navigator.pop(context);
                               },

@@ -65,21 +65,21 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       await _firestore.collection("users").doc(loggedInUser.email).set(
         {
           'gender': widget.userGender,
-          'user_name': "user",
+          'userName': "user",
           'email': loggedInUser.email,
-          'profile_picture': defaultProfilePicture,
-          'birth_day': widget.userBirthDay,
+          'profilePicture': defaultProfilePicture,
+          'birthDay': widget.userBirthDay,
           'height': widget.userHeight,
           'weight': widget.userWeight,
-          'focus_body_areas': widget.userSelectedBodyAreas
+          'focusBodyAreas': widget.userSelectedBodyAreas
               .map((e) => e.toString().split('.').last)
               .toList(),
-          'main_goal': widget.userMainGoal.toString().split('.').last,
-          'push_ups_capacity':
+          'mainGoal': widget.userMainGoal.toString().split('.').last,
+          'pushUpsCapacity':
               widget.userPushUpsCapacity.toString().split('.').last,
-          'pull_ups_capacity':
+          'pullUpsCapacity':
               widget.userPullUpsCapacity.toString().split('.').last,
-          'weekly_goal': _userSelectedDays,
+          'weeklyGoal': _userSelectedDays,
         },
       );
       if (!mounted) return;
