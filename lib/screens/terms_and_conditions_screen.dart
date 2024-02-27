@@ -27,7 +27,7 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
       /// Body of the screen
       body: Padding(
         // Add padding around the body content
-        padding: const EdgeInsets.all(kPadding12),
+        padding: const EdgeInsets.all(kPadding16),
         child: Column(
           children: [
             /// Terms and Conditions holder
@@ -35,8 +35,8 @@ class _TermsAndConditionsScreenState extends State<TermsAndConditionsScreen> {
               child: ListView(
                 // Include all components in a list view and set padding around the components to 0
                 padding: const EdgeInsets.only(
-                  top: kPadding12,
-                  bottom: kPadding12,
+                  top: kPadding16,
+                  bottom: kPadding16,
                 ),
                 primary: false,
                 children: const [

@@ -44,7 +44,7 @@ class ExerciseCard extends StatelessWidget {
             surfaceTintColor: kWhiteThemeColor,
             color: kWhiteThemeColor,
             child: ListView(
-              padding: const EdgeInsets.all(kPadding12),
+              padding: const EdgeInsets.all(kPadding16),
               primary: false,
               children: [
                 /// Animation image

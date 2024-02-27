@@ -44,13 +44,13 @@ class _MeditationExercisesScreenState extends State<MeditationExercisesScreen> {
           }
 
           return ListView.builder(
-            padding: const EdgeInsets.all(kPadding12),
+            padding: const EdgeInsets.all(kPadding16),
             primary: false,
             itemCount: snapshot.data!.docs.length,
             itemBuilder: (context, index) {
               DocumentSnapshot document = snapshot.data!.docs[index];
               return Padding(
-                padding: const EdgeInsets.only(bottom: kPadding12),
+                padding: const EdgeInsets.only(bottom: kPadding16),
                 child: ListTile(
                   tileColor: kAppThemeColor,
                   shape: RoundedRectangleBorder(

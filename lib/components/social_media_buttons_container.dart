@@ -24,8 +24,8 @@ class SocialMediaButtonsContainer extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(
-                left: kPadding12,
-                right: kPadding12,
+                left: kPadding16,
+                right: kPadding16,
               ),
               child: Text(
                 "Or continue with",

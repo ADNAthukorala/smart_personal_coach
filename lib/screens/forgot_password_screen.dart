@@ -126,9 +126,9 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
       body: Padding(
         // Add padding around the body
         padding: const EdgeInsets.only(
-          left: kPadding12,
-          right: kPadding12,
-          bottom: kPadding12,
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
         ),
         child: Form(
           key: _formKeyResetPassword,

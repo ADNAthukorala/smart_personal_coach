@@ -86,9 +86,9 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding12,
-          right: kPadding12,
-          bottom: kPadding12,
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
         ),
         child: Column(
           children: [
@@ -96,7 +96,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             /// The title and the description
             const Padding(
               padding: EdgeInsets.only(
-                bottom: kPadding12,
+                bottom: kPadding16,
               ),
               child: TitleAndDescriptionHolder(
                 title: 'How many push-ups can you do at one time?',
@@ -109,8 +109,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
-                  top: kPadding12,
-                  bottom: kPadding12,
+                  top: kPadding16,
+                  bottom: kPadding16,
                 ),
                 primary: false,
                 children: [
@@ -206,7 +206,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
             /// Next button
             Padding(
               padding: const EdgeInsets.only(
-                top: kPadding12,
+                top: kPadding16,
               ),
               child: NextButton(
                 onPressed: () {

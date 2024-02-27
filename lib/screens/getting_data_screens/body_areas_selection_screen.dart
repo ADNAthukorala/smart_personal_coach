@@ -80,9 +80,9 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding12,
-          right: kPadding12,
-          bottom: kPadding12,
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
         ),
         // The main column
         child: Column(
@@ -91,7 +91,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
             /// The title and the description
             const Padding(
               padding: EdgeInsets.only(
-                bottom: kPadding12,
+                bottom: kPadding16,
               ),
               child: TitleAndDescriptionHolder(
                 title: 'Please select your focus area/areas',
@@ -104,8 +104,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
-                  top: kPadding12,
-                  bottom: kPadding12,
+                  top: kPadding16,
+                  bottom: kPadding16,
                 ),
                 primary: false,
                 children: [
@@ -281,7 +281,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
             /// Next button
             Padding(
               padding: const EdgeInsets.only(
-                top: kPadding12,
+                top: kPadding16,
               ),
               child: NextButton(
                 // If the bodyAreas array is empty, this button should be disabled

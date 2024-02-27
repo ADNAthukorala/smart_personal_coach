@@ -89,9 +89,9 @@ class _BirthDayHeightWeightScreenState
       body: Padding(
         // Add padding around the body of the screen
         padding: const EdgeInsets.only(
-          left: kPadding12,
-          right: kPadding12,
-          bottom: kPadding12,
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
         ),
         child: Column(
           children: [
@@ -99,7 +99,7 @@ class _BirthDayHeightWeightScreenState
             /// The title and the description
             const Padding(
               padding: EdgeInsets.only(
-                bottom: kPadding12,
+                bottom: kPadding16,
               ),
               child: TitleAndDescriptionHolder(
                 title: 'Let us known you better',
@@ -113,8 +113,8 @@ class _BirthDayHeightWeightScreenState
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.only(
-                  top: kPadding12,
-                  bottom: kPadding12,
+                  top: kPadding16,
+                  bottom: kPadding16,
                 ),
                 primary: false,
                 children: [
@@ -170,7 +170,7 @@ class _BirthDayHeightWeightScreenState
             /// Next button
             Padding(
               padding: const EdgeInsets.only(
-                top: kPadding12,
+                top: kPadding16,
               ),
               child: NextButton(
                 onPressed: () {
