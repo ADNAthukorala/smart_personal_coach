@@ -77,6 +77,7 @@ const kTermsAndConditionsTitlesTextStyle = TextStyle(
   color: kAppThemeColor,
 );
 
+/// Text style for terms and conditions descriptions
 const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
   fontSize: 14,
   fontWeight: FontWeight.w500,
@@ -87,7 +88,7 @@ const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
 const kWelcomeTextStyle = TextStyle(
   height: 1.15,
   fontSize: 32,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.w700,
   color: kBlackThemeColor,
 );
 
@@ -160,27 +161,24 @@ const kGenderSelectionButtonStyle = ButtonStyle(
 const kSignInSignUpButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-  )),
 );
 
 /// Button style for welcome screen button
 const kWelcomeButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-  )),
 );
 
 /// Button styles for next button
 const kNextButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-    borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-  )),
+);
+
+/// Button style for social media icon button
+const kSocialMediaIconButtonStyle = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size.fromWidth(double.maxFinite)),
+  side: MaterialStatePropertyAll(BorderSide(color: kGreyThemeColor02)),
 );
 
 /// Button styles for select body area button

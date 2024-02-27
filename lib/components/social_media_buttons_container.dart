@@ -51,14 +51,7 @@ class SocialMediaButtonsContainer extends StatelessWidget {
           children: [
             /// Google icon button
             TextButton.icon(
-              style: ButtonStyle(
-                fixedSize: const MaterialStatePropertyAll(
-                    Size.fromWidth(double.maxFinite)),
-                side: const MaterialStatePropertyAll(
-                    BorderSide(color: kGreyThemeColor02)),
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kRadius16))),
-              ),
+              style: kSocialMediaIconButtonStyle,
               onPressed: onPressedGoogle,
               icon: Image.asset(
                 'images/google-logo.png',
@@ -82,14 +75,7 @@ class SocialMediaButtonsContainer extends StatelessWidget {
 
             /// Facebook icon button
             TextButton.icon(
-              style: ButtonStyle(
-                fixedSize: const MaterialStatePropertyAll(
-                    Size.fromWidth(double.maxFinite)),
-                side: const MaterialStatePropertyAll(
-                    BorderSide(color: kGreyThemeColor02)),
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kRadius16))),
-              ),
+              style: kSocialMediaIconButtonStyle,
               onPressed: onPressedGoogle,
               icon: Image.asset(
                 'images/facebook-logo.png',
