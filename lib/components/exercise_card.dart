@@ -67,24 +67,15 @@ class ExerciseCard extends StatelessWidget {
                 ),
 
                 /// Name of the exercise
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      data['name'],
-                      style: kExerciseCardTitleTextStyle,
-                    ),
-                    Text(
-                      data['description'],
-                      style: kExerciseCardDescriptionTextStyle,
-                    ),
-                  ],
+                Text(
+                  data['name'],
+                  style: kExerciseCardTitleTextStyle,
                 ),
 
                 /// Divider line
                 const Divider(),
 
-                /// How to do the exercise
+                /// Introduction
                 Padding(
                   padding: const EdgeInsets.only(
                     bottom: kPadding12,
@@ -94,7 +85,29 @@ class ExerciseCard extends StatelessWidget {
                     children: [
                       // Title
                       const Text(
-                        "How To Do The Exercise Properly",
+                        "Introduction",
+                        style: kExerciseCardSubtitleTextStyle,
+                      ),
+                      Text(
+                        data['introduction'],
+                        style: kExerciseCardDescriptionTextStyle,
+                      ),
+                    ],
+                  ),
+                ),
+
+                /// How to do the exercise
+                Padding(
+                  padding: const EdgeInsets.only(
+                    top: kPadding12,
+                    bottom: kPadding12,
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      // Title
+                      const Text(
+                        "How To Do The Exercise",
                         style: kExerciseCardSubtitleTextStyle,
                       ),
 
