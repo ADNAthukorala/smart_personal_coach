@@ -30,7 +30,7 @@ const kSmallGreyColorDescriptionTextStyle = TextStyle(
 /// Text styles for exercise card title
 const kExerciseCardTitleTextStyle = TextStyle(
   color: kAppThemeColor,
-  fontSize: 30.0,
+  fontSize: 28.0,
   fontWeight: FontWeight.w900,
 );
 
