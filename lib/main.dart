@@ -16,19 +16,19 @@ class MyApp extends StatelessWidget {
   Future<void> precacheAssets(BuildContext context) async {
     // List of asset images paths
     final List<String> assetPaths = [
-      'images/abs.png',
-      'images/arms.png',
-      'images/back.png',
-      'images/chest.png',
-      'images/facebook-logo.png',
-      'images/full-body-image.png',
-      'images/gender-selection-screen-image.jpg',
-      'images/google-logo.png',
-      'images/legs.png',
-      'images/meditation.png',
-      'images/signin-screen-image.jpg',
-      'images/signup-screen-image.jpg',
-      'images/theme-image.jpg',
+      "images/abs.jpg",
+      "images/arms.jpg",
+      "images/back.jpg",
+      "images/chest.jpg",
+      "images/legs.jpg",
+      "images/meditation.jpg",
+      "images/signin-screen-image.jpg",
+      "images/signup-screen-image.jpg",
+      "images/theme-image.jpg",
+      "images/facebook-logo.png",
+      "images/google-logo.png",
+      "images/full-body-image.png",
+      "images/gender-selection-screen-image.jpg",
     ];
 
     // Precache all asset images

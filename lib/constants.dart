@@ -128,8 +128,8 @@ const kSelectCapacityButtonTextStyle = TextStyle(
 
 /// Text styles for exercises screen buttons
 const kExercisesScreenButtonTextStyle = TextStyle(
-  fontSize: 25,
-  fontWeight: FontWeight.w700,
+  fontSize: 36,
+  fontWeight: FontWeight.w900,
   color: kWhiteThemeColor,
 );
 
@@ -226,6 +226,7 @@ const kTextButtonStyle = ButtonStyle(
 
 /// Button styles for exercises screen buttons
 const kExercisesScreenButton = ButtonStyle(
+  padding: MaterialStatePropertyAll(EdgeInsets.zero),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
