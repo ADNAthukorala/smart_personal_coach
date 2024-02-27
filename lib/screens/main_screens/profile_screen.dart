@@ -398,8 +398,17 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     placeholder: (context, url) =>
                         const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    errorWidget: (context, url, error) => Container(
+                      decoration: const BoxDecoration(
+                        color: kGreyThemeColor02,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.person,
+                        size: 100,
+                        color: kWhiteThemeColor,
+                      ),
+                    ),
                     width: 200.0,
                     height: 200.0,
                   ),
@@ -625,11 +634,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
 
+              /// Main goal
+              ListTile(
+                leading: const Icon(Icons.arrow_circle_right_outlined),
+                title: const Text("Main Goal"),
+                subtitle: Text(data['mainGoal']),
+                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+              ),
+
               /// Weekly goal
               ListTile(
                 leading: const Icon(Icons.access_time),
                 title: const Text("Weekly Goal"),
-                subtitle: Text("${data['weeklyGoal'].toString()} kg"),
+                subtitle: data['weeklyGoal'] > 1
+                    ? Text("${data['weeklyGoal'].toString()} Days")
+                    : Text("${data['weeklyGoal'].toString()} Day"),
                 subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
               ),
 
@@ -637,7 +656,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(Icons.boy),
                 title: const Text("Focused Body Areas"),
-                subtitle: Text(data['focusBodyAreas'].toString()),
+                subtitle: Text(data['focusBodyAreas']
+                    .toString()
+                    .split("[")
+                    .last
+                    .split("]")
+                    .first),
                 subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
               ),
 
