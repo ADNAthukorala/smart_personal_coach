@@ -174,9 +174,10 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                       const Text(
                         "What is pull ups?",
                         style: TextStyle(
-                            color: kAppThemeColor,
-                            fontSize: 14.0,
-                            fontWeight: FontWeight.w900),
+                          color: kAppThemeColor,
+                          fontSize: 14.0,
+                          fontWeight: FontWeight.w900,
+                        ),
                       ),
                       const SizedBox(width: 5.0),
                       SizedBox(
