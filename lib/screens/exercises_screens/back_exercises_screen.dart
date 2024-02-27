@@ -49,7 +49,7 @@ class _BackExercisesScreenState extends State<BackExercisesScreen> {
             itemBuilder: (context, index) {
               DocumentSnapshot document = snapshot.data!.docs[index];
               return Padding(
-                padding: const EdgeInsets.only(bottom: kPadding16),
+                padding: const EdgeInsets.only(bottom: kPadding8),
                 child: ListTile(
                   tileColor: kAppThemeColor,
                   shape: RoundedRectangleBorder(
