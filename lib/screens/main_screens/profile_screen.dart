@@ -423,7 +423,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     data['userName'],
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w600,
                       fontSize: 24.0,
                     ),
                   ),
