@@ -99,7 +99,6 @@ class ExerciseCard extends StatelessWidget {
                 /// How to do the exercise
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: kPadding12,
                     bottom: kPadding12,
                   ),
                   child: Column(
@@ -129,7 +128,7 @@ class ExerciseCard extends StatelessWidget {
                       // Step 02
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: kPadding12,
+                          top: kPadding4,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -149,7 +148,7 @@ class ExerciseCard extends StatelessWidget {
                       // Step 03
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: kPadding12,
+                          top: kPadding4,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -169,7 +168,7 @@ class ExerciseCard extends StatelessWidget {
                       // Step 04
                       Padding(
                         padding: const EdgeInsets.only(
-                          top: kPadding12,
+                          top: kPadding4,
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +191,6 @@ class ExerciseCard extends StatelessWidget {
                 /// Common mistakes
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: kPadding12,
                     bottom: kPadding12,
                   ),
                   child: Column(
@@ -214,7 +212,6 @@ class ExerciseCard extends StatelessWidget {
                 /// Muscles worked
                 Padding(
                   padding: const EdgeInsets.only(
-                    top: kPadding12,
                     bottom: kPadding12,
                   ),
                   child: Column(
