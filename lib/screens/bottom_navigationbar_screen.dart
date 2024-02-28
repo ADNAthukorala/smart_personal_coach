@@ -6,7 +6,6 @@ import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dar
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/profile_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
 
 /// Main screen with bottom navigation bar
@@ -150,11 +149,11 @@ class _BottomNavigationBarScreenScreenState
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
               icon: _currentScreenIndex == 0
                   ? const Icon(
-                      FontAwesomeIcons.house,
+                      Icons.home_rounded,
                       color: kWhiteThemeColor,
                     )
                   : const Icon(
-                      FontAwesomeIcons.house,
+                      Icons.home_rounded,
                     ),
               label: 'Home',
             ),
@@ -165,11 +164,11 @@ class _BottomNavigationBarScreenScreenState
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
               icon: _currentScreenIndex == 1
                   ? const Icon(
-                      FontAwesomeIcons.dumbbell,
+                      Icons.fitness_center_rounded,
                       color: kWhiteThemeColor,
                     )
                   : const Icon(
-                      FontAwesomeIcons.dumbbell,
+                      Icons.fitness_center_rounded,
                     ),
               label: 'Exercises',
             ),
@@ -180,11 +179,11 @@ class _BottomNavigationBarScreenScreenState
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
               icon: _currentScreenIndex == 2
                   ? const Icon(
-                      FontAwesomeIcons.globe,
+                      Icons.group_rounded,
                       color: kWhiteThemeColor,
                     )
                   : const Icon(
-                      FontAwesomeIcons.globe,
+                      Icons.group_rounded,
                     ),
               label: 'Global Chat',
             ),
@@ -195,11 +194,11 @@ class _BottomNavigationBarScreenScreenState
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
               icon: _currentScreenIndex == 3
                   ? const Icon(
-                      FontAwesomeIcons.chartSimple,
+                      Icons.bar_chart_rounded,
                       color: kWhiteThemeColor,
                     )
                   : const Icon(
-                      FontAwesomeIcons.chartSimple,
+                      Icons.bar_chart_rounded,
                     ),
               label: 'User Report',
             ),
@@ -210,11 +209,11 @@ class _BottomNavigationBarScreenScreenState
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
               icon: _currentScreenIndex == 4
                   ? const Icon(
-                      FontAwesomeIcons.userGear,
+                      Icons.person,
                       color: kWhiteThemeColor,
                     )
                   : const Icon(
-                      FontAwesomeIcons.userGear,
+                      Icons.person,
                     ),
               label: 'Profile',
             ),
