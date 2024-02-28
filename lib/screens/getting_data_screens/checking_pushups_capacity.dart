@@ -187,8 +187,8 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                               context: context,
                               builder: (context) {
                                 return const ExerciseCard(
-                                  focusedBodyArea: "chest_exercises",
-                                  nameOfTheExercise: "push_ups",
+                                  collectionName: "chest_exercises",
+                                  documentName: "push_ups",
                                 );
                               },
                             );

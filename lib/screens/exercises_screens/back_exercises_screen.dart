@@ -11,7 +11,7 @@ class BackExercisesScreen extends StatefulWidget {
 }
 
 class _BackExercisesScreenState extends State<BackExercisesScreen> {
-  final String _focusedBodyArea = "back_exercises";
+  final String _collectionName = "back_exercises";
 
   @override
   Widget build(BuildContext context) {
@@ -28,7 +28,7 @@ class _BackExercisesScreenState extends State<BackExercisesScreen> {
       /// Body of the screen
       body: StreamBuilder(
         stream:
-            FirebaseFirestore.instance.collection(_focusedBodyArea).snapshots(),
+            FirebaseFirestore.instance.collection(_collectionName).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
             return const Text("Something went wrong");
@@ -64,8 +64,8 @@ class _BackExercisesScreenState extends State<BackExercisesScreen> {
                       context: context,
                       builder: (context) {
                         return ExerciseCard(
-                          focusedBodyArea: _focusedBodyArea,
-                          nameOfTheExercise: document["name"],
+                          collectionName: _collectionName,
+                          documentName: document["docName"],
                         );
                       },
                     );

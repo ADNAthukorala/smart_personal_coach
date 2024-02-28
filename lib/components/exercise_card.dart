@@ -6,19 +6,19 @@ import 'package:smart_personal_coach/constants.dart';
 class ExerciseCard extends StatelessWidget {
   const ExerciseCard({
     super.key,
-    required this.focusedBodyArea,
-    required this.nameOfTheExercise,
+    required this.collectionName,
+    required this.documentName,
   });
 
-  final String focusedBodyArea;
-  final String nameOfTheExercise;
+  final String collectionName;
+  final String documentName;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
-            .collection(focusedBodyArea)
-            .doc(nameOfTheExercise)
+            .collection(collectionName)
+            .doc(documentName)
             .snapshots(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
