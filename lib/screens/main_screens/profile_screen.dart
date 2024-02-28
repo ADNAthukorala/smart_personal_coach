@@ -5,7 +5,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/signin_screen.dart';
@@ -672,7 +671,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
                 label: const Text("Sign out"),
                 icon: const Icon(
-                  FontAwesomeIcons.arrowRightFromBracket,
+                  Icons.logout_rounded,
                   size: 20.0,
                 ),
               ),
