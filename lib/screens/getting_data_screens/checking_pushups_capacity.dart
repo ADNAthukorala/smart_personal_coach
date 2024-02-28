@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
@@ -166,38 +165,27 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   const SizedBox(height: 20.0),
 
                   /// Button to show how to do push ups
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      label: const Text(
                         "What is push ups?",
-                        style: TextStyle(
-                          color: kAppThemeColor,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w900,
-                        ),
+                        style: kTextButtonTextStyle,
                       ),
-                      const SizedBox(width: 5.0),
-                      SizedBox(
-                        height: 28,
-                        width: 28,
-                        child: IconButton.filled(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return const ExerciseCard(
-                                  collectionName: "chest_exercises",
-                                  documentName: "push_ups",
-                                );
-                              },
+                      icon: const Icon(Icons.info_rounded),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const ExerciseCard(
+                              collectionName: "chest_exercises",
+                              documentName: "push_ups",
                             );
                           },
-                          icon: const Icon(FontAwesomeIcons.exclamation),
-                          iconSize: 14,
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                      style: kTextButtonStyle,
+                    ),
                   ),
                 ],
               ),
