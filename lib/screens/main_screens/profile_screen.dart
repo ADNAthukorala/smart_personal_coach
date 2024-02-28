@@ -672,7 +672,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 label: const Text("Sign out"),
                 icon: const Icon(
                   Icons.logout_rounded,
-                  size: 20.0,
                 ),
               ),
             ],
