@@ -30,7 +30,9 @@ class ReusableCardWithDatePicker extends StatelessWidget {
                   Text(
                     text1,
                     style: kLargeBlackTitleTextStyle.copyWith(
-                        color: kWhiteThemeColor),
+                      fontSize: 25,
+                      color: kWhiteThemeColor,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -40,7 +42,9 @@ class ReusableCardWithDatePicker extends StatelessWidget {
                       Text(
                         text2,
                         style: kLargeBlackTitleTextStyle.copyWith(
-                            color: kWhiteThemeColor),
+                          fontSize: 25,
+                          color: kWhiteThemeColor,
+                        ),
                       ),
                     ],
                   ),
@@ -53,7 +57,7 @@ class ReusableCardWithDatePicker extends StatelessWidget {
             ElevatedButton(
               style: ElevatedButton.styleFrom(
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(kRadius8)),
+                    borderRadius: BorderRadius.circular(kRadius16)),
               ),
               onPressed: onPressed,
               child: const Text(

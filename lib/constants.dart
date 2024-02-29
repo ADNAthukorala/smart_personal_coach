@@ -71,7 +71,7 @@ const kLargeBlackTitleTextStyle = TextStyle(
 
 /// Text style for terms and conditions titles
 const kTermsAndConditionsTitlesTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 22,
   fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
@@ -99,7 +99,7 @@ const kSignInSignUpSignOutButtonResetPasswordTextStyle = TextStyle(
 
 /// Text styles for welcome screen button
 const kWelcomeButtonTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 24,
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
@@ -134,7 +134,7 @@ const kExercisesScreenButtonTextStyle = TextStyle(
 
 /// Text styles for day button
 const kDayButtonTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 25,
   fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
