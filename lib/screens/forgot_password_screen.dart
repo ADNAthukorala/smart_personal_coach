@@ -155,8 +155,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
                   hintText: 'Email',
                   prefixIcon: const Icon(
-                    Icons.email_outlined,
-                    color: kGreyThemeColor,
+                    Icons.email_rounded,
+                    color: kAppThemeColor,
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,

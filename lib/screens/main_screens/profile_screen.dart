@@ -347,7 +347,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     }
                                   },
                                   label: const Text("Gallery"),
-                                  icon: const Icon(Icons.add_photo_alternate),
+                                  icon: const Icon(
+                                      Icons.add_photo_alternate_rounded),
                                 ),
                                 // Updating the profile picture with an image captured by the device camera
                                 ElevatedButton.icon(
@@ -380,7 +381,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     }
                                   },
                                   label: const Text("Camera"),
-                                  icon: const Icon(Icons.add_a_photo),
+                                  icon: const Icon(Icons.add_a_photo_rounded),
                                 ),
                               ],
                             ),
@@ -403,9 +404,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         shape: BoxShape.circle,
                       ),
                       child: const Icon(
-                        Icons.person,
+                        Icons.person_rounded,
                         size: 100,
-                        color: kWhiteThemeColor,
+                        color: kAppThemeColor,
                       ),
                     ),
                     width: 200.0,
@@ -466,19 +467,46 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Email
               ListTile(
-                leading: const Icon(Icons.email),
+                leading: const Icon(
+                  Icons.email_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Email"),
                 subtitle: Text(data['email']),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
 
               /// Gender
               ListTile(
-                leading:
-                    Icon(data['gender'] == "Male" ? Icons.male : Icons.female),
+                leading: Icon(
+                  data['gender'] == "Male"
+                      ? Icons.male_rounded
+                      : Icons.female_rounded,
+                  color: data['gender'] == "Male"
+                      ? kAppThemeColor
+                      : kPinkThemeColor,
+                ),
                 title: const Text("Gender"),
                 subtitle: Text(data['gender']),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: TextStyle(
+                  color: data['gender'] == "Male"
+                      ? kAppThemeColor
+                      : kPinkThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -532,10 +560,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Birth day
               ListTile(
-                leading: const Icon(Icons.calendar_month),
+                leading: const Icon(
+                  Icons.calendar_month_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Birth Day"),
                 subtitle: Text("${userBirthDay.toDate()}".split(' ')[0]),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
                 onTap: () {
                   _selectUserBirthDay(context, userBirthDay.toDate());
                 },
@@ -543,10 +582,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Height
               ListTile(
-                leading: const Icon(Icons.height),
+                leading: const Icon(
+                  Icons.height_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Height"),
                 subtitle: Text("${data['height'].toString()} cm"),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -589,10 +639,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Weight
               ListTile(
-                leading: const Icon(Icons.balance),
+                leading: const Icon(
+                  Icons.balance_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Weight"),
                 subtitle: Text("${data['weight'].toString()} kg"),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -635,25 +696,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Main goal
               ListTile(
-                leading: const Icon(Icons.arrow_circle_right_outlined),
+                leading: const Icon(
+                  Icons.arrow_circle_right_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Main Goal"),
                 subtitle: Text(data['mainGoal']),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+
+              /// Level
+              ListTile(
+                leading: const Icon(
+                  Icons.health_and_safety_rounded,
+                  color: kAppThemeColor,
+                ),
+                title: const Text("Level"),
+                subtitle: Text(data['level']),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
 
               /// Weekly goal
               ListTile(
-                leading: const Icon(Icons.access_time),
+                leading: const Icon(
+                  Icons.access_time_filled_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Weekly Goal"),
                 subtitle: data['weeklyGoal'] > 1
                     ? Text("${data['weeklyGoal'].toString()} Days")
                     : Text("${data['weeklyGoal'].toString()} Day"),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
 
               /// Focused body areas
               ListTile(
-                leading: const Icon(Icons.boy),
+                leading: const Icon(
+                  Icons.boy_rounded,
+                  color: kAppThemeColor,
+                ),
                 title: const Text("Focused Body Areas"),
                 subtitle: Text(data['focusedBodyAreas']
                     .toString()
@@ -661,7 +766,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     .last
                     .split("]")
                     .first),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: const TextStyle(
+                  color: kAppThemeColor,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600,
+                ),
+                subtitleTextStyle: const TextStyle(
+                  color: kGreyThemeColor,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
 
               /// Sign out button

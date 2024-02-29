@@ -204,8 +204,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 kSignInSignUpTextFormFieldDecorations.copyWith(
                               hintText: 'Email',
                               prefixIcon: const Icon(
-                                Icons.email_outlined,
-                                color: kGreyThemeColor,
+                                Icons.email_rounded,
+                                color: kAppThemeColor,
                               ),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -222,8 +222,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 kSignInSignUpTextFormFieldDecorations.copyWith(
                               hintText: 'Password',
                               prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: kGreyThemeColor,
+                                Icons.lock_rounded,
+                                color: kAppThemeColor,
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -232,8 +232,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   });
                                 },
                                 icon: _isVisibilityButtonClicked
-                                    ? const Icon(Icons.visibility_outlined)
-                                    : const Icon(Icons.visibility_off_outlined),
+                                    ? const Icon(
+                                        Icons.visibility_rounded,
+                                        color: kAppThemeColor,
+                                      )
+                                    : const Icon(
+                                        Icons.visibility_off_rounded,
+                                        color: kAppThemeColor,
+                                      ),
                               ),
                             ),
                             obscureText:
@@ -253,8 +259,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 kSignInSignUpTextFormFieldDecorations.copyWith(
                               hintText: 'Confirm Password',
                               prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: kGreyThemeColor,
+                                Icons.lock_rounded,
+                                color: kAppThemeColor,
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -263,8 +269,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   });
                                 },
                                 icon: _isVisibilityButtonClicked
-                                    ? const Icon(Icons.visibility_outlined)
-                                    : const Icon(Icons.visibility_off_outlined),
+                                    ? const Icon(
+                                        Icons.visibility_rounded,
+                                        color: kAppThemeColor,
+                                      )
+                                    : const Icon(
+                                        Icons.visibility_off_rounded,
+                                        color: kAppThemeColor,
+                                      ),
                               ),
                             ),
                             obscureText:

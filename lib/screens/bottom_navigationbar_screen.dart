@@ -209,11 +209,11 @@ class _BottomNavigationBarScreenScreenState
               // If the button is clicked, color = kWhiteThemeColor, otherwise black
               icon: _currentScreenIndex == 4
                   ? const Icon(
-                      Icons.person,
+                      Icons.person_rounded,
                       color: kWhiteThemeColor,
                     )
                   : const Icon(
-                      Icons.person,
+                      Icons.person_rounded,
                     ),
               label: 'Profile',
             ),

@@ -5,7 +5,7 @@ const kBlueThemeColor = Color(0xFF006685);
 // const kBlueThemeColor02 = Color(0xFF2596BE);
 const kPinkThemeColor = Color(0xFFBA1E8B);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
-const kGreyThemeColor = Color(0xFF7E7474);
+const kGreyThemeColor = Color(0xFF757575);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 // Main theme color
