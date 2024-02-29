@@ -72,7 +72,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               .map((e) => e.toString().split('.').last)
               .toList(),
           'mainGoal': widget.userMainGoal.toString().split('.').last,
-          'userLevel': widget.userLevel,
+          'level': widget.userLevel,
           'weeklyGoal': _userSelectedDays,
         },
       );
