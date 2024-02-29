@@ -46,13 +46,13 @@ const kExerciseCardSubtitleTextStyle = TextStyle(
 /// Text styles for exercise card step title
 const kExerciseCardStepTextStyle = TextStyle(
   color: kGreyThemeColor,
-  fontSize: 16.0,
+  fontSize: 17.0,
   fontWeight: FontWeight.w600,
 );
 
 /// Text styles for exercise card step description
 const kExerciseCardDescriptionTextStyle = TextStyle(
-  fontSize: 15.0,
+  fontSize: 16.0,
   fontWeight: FontWeight.w500,
 );
 
@@ -78,7 +78,7 @@ const kTermsAndConditionsTitlesTextStyle = TextStyle(
 
 /// Text style for terms and conditions descriptions
 const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
-  fontSize: 14,
+  fontSize: 16,
   fontWeight: FontWeight.w500,
   color: kGreyThemeColor,
 );
@@ -93,7 +93,7 @@ const kWelcomeTextStyle = TextStyle(
 
 /// Text styles for signin, signup, sign out and reset password  buttons
 const kSignInSignUpSignOutButtonResetPasswordTextStyle = TextStyle(
-  fontSize: 15,
+  fontSize: 16,
   color: kWhiteThemeColor,
 );
 
@@ -148,7 +148,7 @@ const kAppBarTextStyle = TextStyle(
 /// Text style for profile titles
 const kProfileTitleTextStyle = TextStyle(
   color: kBlackThemeColor,
-  fontSize: 15,
+  fontSize: 16,
   fontWeight: FontWeight.w500,
 );
 
