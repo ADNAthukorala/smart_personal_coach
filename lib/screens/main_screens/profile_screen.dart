@@ -655,7 +655,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(Icons.boy),
                 title: const Text("Focused Body Areas"),
-                subtitle: Text(data['focusBodyAreas']
+                subtitle: Text(data['focusedBodyAreas']
                     .toString()
                     .split("[")
                     .last
