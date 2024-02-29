@@ -758,10 +758,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 onPressed: () {
                   _showSignOutDialog();
                 },
-                style: kSignInSignUpSignOutButtonStyle,
+                style: kSignInSignUpSignOutResetPasswordButtonStyle,
                 label: const Text(
                   "Sign out",
-                  style: kSignInSignUpSignOutButtonTextStyle,
+                  style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
                 ),
                 icon: const Icon(
                   Icons.logout_rounded,

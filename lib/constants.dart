@@ -91,8 +91,8 @@ const kWelcomeTextStyle = TextStyle(
   color: kBlackThemeColor,
 );
 
-/// Text styles for signin and signup buttons
-const kSignInSignUpSignOutButtonTextStyle = TextStyle(
+/// Text styles for signin, signup, sign out and reset password  buttons
+const kSignInSignUpSignOutButtonResetPasswordTextStyle = TextStyle(
   fontSize: 15,
   color: kWhiteThemeColor,
 );
@@ -155,8 +155,8 @@ const kGenderSelectionButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(160.0, 75.0)),
 );
 
-/// Button styles for login and signup buttons
-const kSignInSignUpSignOutButtonStyle = ButtonStyle(
+/// Button styles for signin, signup, sign out and reset password buttons
+const kSignInSignUpSignOutResetPasswordButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
 );
@@ -243,11 +243,7 @@ const kSliderStyle = SliderThemeData(
 ///STYLES FOR TEXT FIELDS
 ///Input decorations for signin signup text form fields
 const kSignInSignUpTextFormFieldDecorations = InputDecoration(
-  hintStyle: TextStyle(
-    color: kGreyThemeColor,
-    fontSize: 15,
-    fontWeight: FontWeight.w500,
-  ),
+  hintStyle: kSmallGreyColorDescriptionTextStyle,
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.all(
       Radius.circular(kRadius8),

@@ -29,26 +29,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         builder: (context) {
           return AlertDialog(
             backgroundColor: kAppThemeColor,
-            titleTextStyle: const TextStyle(
-              color: kWhiteThemeColor,
-              fontSize: 20.0,
+            title: const Text(
+              'Email sent',
+              style: TextStyle(color: kWhiteThemeColor),
             ),
-            contentTextStyle: const TextStyle(color: kWhiteThemeColor),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(kRadius16),
-              ),
+            content: const Text(
+              'Password reset link sent! Check your email',
+              style: TextStyle(color: kWhiteThemeColor),
             ),
-            title: const Text('Email sent'),
-            content: const Text('Password reset link sent! Check your email'),
             actions: [
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: const Text(
                   'Ok',
-                  style: TextStyle(color: kWhiteThemeColor),
                 ),
               ),
             ],
@@ -61,18 +56,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         builder: (context) {
           return AlertDialog(
             backgroundColor: kAppThemeColor,
-            titleTextStyle: const TextStyle(
-              color: kWhiteThemeColor,
-              fontSize: 20.0,
+            title: const Text(
+              'Error',
+              style: TextStyle(color: kWhiteThemeColor),
             ),
-            contentTextStyle: const TextStyle(color: kWhiteThemeColor),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(kRadius16),
-              ),
+            content: Text(
+              e.message.toString(),
+              style: const TextStyle(color: kWhiteThemeColor),
             ),
-            title: const Text('Error'),
-            content: Text(e.message.toString()),
             actions: [
               TextButton(
                 onPressed: () {
@@ -80,7 +71,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 },
                 child: const Text(
                   'Ok',
-                  style: TextStyle(color: kWhiteThemeColor),
                 ),
               ),
             ],
@@ -173,19 +163,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     _passwordReset();
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kAppThemeColor,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(kRadius16),
-                    ),
-                  ),
-                ),
+                style: kSignInSignUpSignOutResetPasswordButtonStyle,
                 child: const Text(
                   'Reset Password',
-                  style: TextStyle(
-                    color: kWhiteThemeColor,
-                  ),
+                  style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
                 ),
               ),
             ],
