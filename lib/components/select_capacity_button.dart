@@ -47,12 +47,12 @@ class SelectCapacityButton extends StatelessWidget {
           ),
           Text(
             description,
-            style: kSelectCapacityButtonTextStyle.copyWith(
+            style: kSmallGreyColorDescriptionTextStyle.copyWith(
               // If the actual capacity is equal to button capacity, the button text color should be white, otherwise blue
               color: actualCapacity == selectedCapacity
                   ? kGreyThemeColor02
                   : kGreyThemeColor,
-              fontSize: 14.0,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

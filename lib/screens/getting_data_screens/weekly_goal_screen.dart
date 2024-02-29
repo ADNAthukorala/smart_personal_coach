@@ -340,11 +340,11 @@ class DayButton extends StatelessWidget {
           ),
           Text(
             description,
-            style: kDayButtonTextStyle.copyWith(
+            style: kSmallGreyColorDescriptionTextStyle.copyWith(
               color: userSelectedDays == selectedDays
                   ? kGreyThemeColor02
                   : kGreyThemeColor,
-              fontSize: 14.0,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],
