@@ -1,14 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/checking_pushups_capacity.dart';
-
-/// Create an enum named main goals
-enum MainGoal { loseWeight, buildMuscles, keepFit }
 
 /// Screen to get the user's main goal
 class MainGoalScreen extends StatefulWidget {

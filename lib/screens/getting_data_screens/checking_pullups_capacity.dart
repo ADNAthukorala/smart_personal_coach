@@ -1,13 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/weekly_goal_screen.dart';
 
 /// Screen to get the user's pull ups capacity
@@ -46,23 +45,23 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   Capacity _userPullUpsCapacity = Capacity.beginner;
 
   // User level
-  late String _userLevel;
+  late Level _userLevel;
 
   /// Checking the user's level (Beginner, Intermediate or Advanced)
   void checkingUserLevel() {
     if (_userPullUpsCapacity == Capacity.beginner &&
         widget.userPushUpsCapacity == Capacity.beginner) {
       setState(() {
-        _userLevel = "Beginner";
+        _userLevel = Level.beginner;
       });
     } else if (_userPullUpsCapacity == Capacity.advanced &&
         widget.userPushUpsCapacity == Capacity.advanced) {
       setState(() {
-        _userLevel = "Advanced";
+        _userLevel = Level.advanced;
       });
     } else {
       setState(() {
-        _userLevel = "Intermediate";
+        _userLevel = Level.intermediate;
       });
     }
   }

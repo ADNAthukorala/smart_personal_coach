@@ -1,13 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
-
-/// Enum for body areas
-enum BodyArea { arms, back, chest, abs, legs, fullBody }
 
 /// Getting the user's preferred body areas to focus on
 class BodyAreasSelectionScreen extends StatefulWidget {
