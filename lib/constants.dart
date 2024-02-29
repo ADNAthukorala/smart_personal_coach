@@ -92,7 +92,7 @@ const kWelcomeTextStyle = TextStyle(
 );
 
 /// Text styles for signin and signup buttons
-const kSignInSignUpButtonTextStyle = TextStyle(
+const kSignInSignUpSignOutButtonTextStyle = TextStyle(
   fontSize: 15,
   color: kWhiteThemeColor,
 );
@@ -156,7 +156,7 @@ const kGenderSelectionButtonStyle = ButtonStyle(
 );
 
 /// Button styles for login and signup buttons
-const kSignInSignUpButtonStyle = ButtonStyle(
+const kSignInSignUpSignOutButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
 );

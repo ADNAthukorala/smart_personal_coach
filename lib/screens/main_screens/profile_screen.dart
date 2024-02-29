@@ -777,14 +777,22 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
               ),
 
+              /// Adding space
+              const SizedBox(height: 8.0),
+
               /// Sign out button
               ElevatedButton.icon(
                 onPressed: () {
                   _showSignOutDialog();
                 },
-                label: const Text("Sign out"),
+                style: kSignInSignUpSignOutButtonStyle,
+                label: const Text(
+                  "Sign out",
+                  style: kSignInSignUpSignOutButtonTextStyle,
+                ),
                 icon: const Icon(
                   Icons.logout_rounded,
+                  color: kWhiteThemeColor,
                 ),
               ),
             ],
