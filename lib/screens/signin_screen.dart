@@ -260,7 +260,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             const TitleAndDescriptionHolder(
                               title: 'Sign In',
                               description:
-                                  'Please enter email and password for login',
+                                  'Please enter email and password to login',
                             ),
 
                             /// Add space
