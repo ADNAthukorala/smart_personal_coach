@@ -130,7 +130,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 'Enter your email and we will send you a password reset link',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 14.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),

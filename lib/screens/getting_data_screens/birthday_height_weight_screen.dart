@@ -128,7 +128,7 @@ class _BirthDayHeightWeightScreenState
                   ),
 
                   /// Add space between sliders
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 20.0),
 
                   /// Get the user's height
                   ReusableCardWithSlider(
@@ -146,7 +146,7 @@ class _BirthDayHeightWeightScreenState
                   ),
 
                   /// Add space between sliders
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 20.0),
 
                   /// Get the user's weight
                   ReusableCardWithSlider(

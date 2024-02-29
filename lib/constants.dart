@@ -93,13 +93,13 @@ const kWelcomeTextStyle = TextStyle(
 
 /// Text styles for signin, signup, sign out and reset password  buttons
 const kSignInSignUpSignOutButtonResetPasswordTextStyle = TextStyle(
-  fontSize: 16,
+  fontSize: 14,
   color: kWhiteThemeColor,
 );
 
 /// Text styles for welcome screen button
 const kWelcomeButtonTextStyle = TextStyle(
-  fontSize: 24,
+  fontSize: 20,
   fontWeight: FontWeight.w700,
   color: kWhiteThemeColor,
 );
@@ -120,7 +120,14 @@ const kSelectBodyAreaButtonTextStyle = TextStyle(
 
 /// Text styles for select capacity button
 const kSelectCapacityButtonTextStyle = TextStyle(
-  fontSize: 25,
+  fontSize: 24,
+  fontWeight: FontWeight.w700,
+  color: kAppThemeColor,
+);
+
+/// Text styles for day button
+const kDayButtonTextStyle = TextStyle(
+  fontSize: 24,
   fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
@@ -132,13 +139,6 @@ const kExercisesScreenButtonTextStyle = TextStyle(
   color: kWhiteThemeColor,
 );
 
-/// Text styles for day button
-const kDayButtonTextStyle = TextStyle(
-  fontSize: 25,
-  fontWeight: FontWeight.w700,
-  color: kAppThemeColor,
-);
-
 /// Text style for main screens app bar
 const kAppBarTextStyle = TextStyle(
   color: kWhiteThemeColor,
@@ -148,7 +148,7 @@ const kAppBarTextStyle = TextStyle(
 /// Text style for profile titles
 const kProfileTitleTextStyle = TextStyle(
   color: kBlackThemeColor,
-  fontSize: 16,
+  fontSize: 15,
   fontWeight: FontWeight.w500,
 );
 

@@ -251,6 +251,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       child: Text(
         'Female',
         style: kLargeBlackTitleTextStyle.copyWith(
+            fontSize: 24,
             color:
                 _userGender == "Female" ? kWhiteThemeColor : kPinkThemeColor),
       ),
@@ -273,6 +274,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       child: Text(
         'Male',
         style: kLargeBlackTitleTextStyle.copyWith(
+            fontSize: 24,
             color: _userGender == "Male" ? kWhiteThemeColor : kBlueThemeColor),
       ),
     );

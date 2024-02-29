@@ -15,6 +15,7 @@ class ReusableCardWithDatePicker extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.zero,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
       color: kAppThemeColor,
@@ -29,8 +30,7 @@ class ReusableCardWithDatePicker extends StatelessWidget {
                 children: [
                   Text(
                     text1,
-                    style: kLargeBlackTitleTextStyle.copyWith(
-                      fontSize: 25,
+                    style: kSelectCapacityButtonTextStyle.copyWith(
                       color: kWhiteThemeColor,
                     ),
                   ),
@@ -41,8 +41,7 @@ class ReusableCardWithDatePicker extends StatelessWidget {
                     children: [
                       Text(
                         text2,
-                        style: kLargeBlackTitleTextStyle.copyWith(
-                          fontSize: 25,
+                        style: kSelectCapacityButtonTextStyle.copyWith(
                           color: kWhiteThemeColor,
                         ),
                       ),
