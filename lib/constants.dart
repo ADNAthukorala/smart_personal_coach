@@ -12,10 +12,7 @@ const kBlackThemeColor = Color(0xFF000000);
 const kAppThemeColor = kBlueThemeColor;
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
-const kRadius30 = 30.0;
-const kPadding4 = 4.0;
 const kPadding8 = 8.0;
-const kPadding12 = 12.0;
 const kPadding16 = 16.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
@@ -253,13 +250,13 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   hintStyle: kSmallGreyColorDescriptionTextStyle,
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius8),
+      Radius.circular(kRadius16),
     ),
     borderSide: BorderSide(color: kAppThemeColor, width: 2),
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius8),
+      Radius.circular(kRadius16),
     ),
   ),
   contentPadding: EdgeInsets.zero,
