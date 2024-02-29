@@ -474,7 +474,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Email"),
                 subtitle: Text(data['email']),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
 
               /// Gender
@@ -490,7 +492,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Gender"),
                 subtitle: Text(data['gender']),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -551,7 +555,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Birth Day"),
                 subtitle: Text("${userBirthDay.toDate()}".split(' ')[0]),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   _selectUserBirthDay(context, userBirthDay.toDate());
                 },
@@ -566,7 +572,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Height"),
                 subtitle: Text("${data['height'].toString()} cm"),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -616,7 +624,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Weight"),
                 subtitle: Text("${data['weight'].toString()} kg"),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -666,7 +676,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Main Goal"),
                 subtitle: Text(data['mainGoal']),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
 
               /// Level
@@ -678,7 +690,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: const Text("Level"),
                 subtitle: Text(data['level']),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
 
               /// Weekly goal
@@ -692,7 +706,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ? Text("${data['weeklyGoal'].toString()} Days")
                     : Text("${data['weeklyGoal'].toString()} Day"),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
 
               /// Focused body areas
@@ -709,7 +725,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     .split("]")
                     .first),
                 titleTextStyle: kProfileTitleTextStyle,
-                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
 
               /// Adding space

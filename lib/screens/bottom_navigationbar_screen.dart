@@ -142,80 +142,76 @@ class _BottomNavigationBarScreenScreenState
           backgroundColor: kWhiteThemeColor,
           indicatorColor: kAppThemeColor,
           selectedIndex: _currentScreenIndex,
-          destinations: [
+          destinations: const [
             /// Home button
             NavigationDestination(
               // If the buttons is clicked, index = 0
-              // If the button is clicked, color = kWhiteThemeColor, otherwise black
-              icon: _currentScreenIndex == 0
-                  ? const Icon(
-                      Icons.home_rounded,
-                      color: kWhiteThemeColor,
-                    )
-                  : const Icon(
-                      Icons.home_rounded,
-                    ),
+              icon: Icon(
+                Icons.home_rounded,
+                color: kBlackThemeColor,
+              ),
+
               label: 'Home',
+              selectedIcon: Icon(
+                Icons.home_rounded,
+                color: kWhiteThemeColor,
+              ),
             ),
 
             /// Exercises button
             NavigationDestination(
               // If the buttons is clicked, index = 1
-              // If the button is clicked, color = kWhiteThemeColor, otherwise black
-              icon: _currentScreenIndex == 1
-                  ? const Icon(
-                      Icons.fitness_center_rounded,
-                      color: kWhiteThemeColor,
-                    )
-                  : const Icon(
-                      Icons.fitness_center_rounded,
-                    ),
+              icon: Icon(
+                Icons.fitness_center_rounded,
+                color: kBlackThemeColor,
+              ),
               label: 'Exercises',
+              selectedIcon: Icon(
+                Icons.fitness_center_rounded,
+                color: kWhiteThemeColor,
+              ),
             ),
 
             /// Global Chat button
             NavigationDestination(
               // If the buttons is clicked, index = 2
-              // If the button is clicked, color = kWhiteThemeColor, otherwise black
-              icon: _currentScreenIndex == 2
-                  ? const Icon(
-                      Icons.group_rounded,
-                      color: kWhiteThemeColor,
-                    )
-                  : const Icon(
-                      Icons.group_rounded,
-                    ),
+              icon: Icon(
+                Icons.group_rounded,
+                color: kBlackThemeColor,
+              ),
               label: 'Global Chat',
+              selectedIcon: Icon(
+                Icons.group_rounded,
+                color: kWhiteThemeColor,
+              ),
             ),
 
             /// User Report button
             NavigationDestination(
               // If the buttons is clicked, index = 3
-              // If the button is clicked, color = kWhiteThemeColor, otherwise black
-              icon: _currentScreenIndex == 3
-                  ? const Icon(
-                      Icons.bar_chart_rounded,
-                      color: kWhiteThemeColor,
-                    )
-                  : const Icon(
-                      Icons.bar_chart_rounded,
-                    ),
+              icon: Icon(
+                Icons.bar_chart_rounded,
+                color: kBlackThemeColor,
+              ),
               label: 'User Report',
+              selectedIcon: Icon(
+                Icons.bar_chart_rounded,
+                color: kWhiteThemeColor,
+              ),
             ),
 
             /// Profile button
             NavigationDestination(
               // If the buttons is clicked, index = 4
-              // If the button is clicked, color = kWhiteThemeColor, otherwise black
-              icon: _currentScreenIndex == 4
-                  ? const Icon(
-                      Icons.person_rounded,
-                      color: kWhiteThemeColor,
-                    )
-                  : const Icon(
-                      Icons.person_rounded,
-                    ),
+              icon: Icon(
+                Icons.person_rounded,
+                color: kBlackThemeColor,
+              ),
               label: 'Profile',
+              selectedIcon: Icon(
+                Icons.person_rounded,
+                color: kWhiteThemeColor,
+              ),
             ),
           ],
         ),
