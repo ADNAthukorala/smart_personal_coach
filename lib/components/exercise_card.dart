@@ -41,6 +41,8 @@ class ExerciseCard extends StatelessWidget {
               snapshot.data!.data() as Map<String, dynamic>;
 
           return Card(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
             surfaceTintColor: kWhiteThemeColor,
             color: kWhiteThemeColor,
             child: ListView(
