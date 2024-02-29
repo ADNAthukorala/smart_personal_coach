@@ -46,13 +46,13 @@ const kExerciseCardSubtitleTextStyle = TextStyle(
 /// Text styles for exercise card step title
 const kExerciseCardStepTextStyle = TextStyle(
   color: kGreyThemeColor,
-  fontSize: 17.0,
+  fontSize: 16.0,
   fontWeight: FontWeight.w600,
 );
 
 /// Text styles for exercise card step description
 const kExerciseCardDescriptionTextStyle = TextStyle(
-  fontSize: 16.0,
+  fontSize: 15.0,
   fontWeight: FontWeight.w500,
 );
 
@@ -148,7 +148,7 @@ const kAppBarTextStyle = TextStyle(
 /// Text style for profile titles
 const kProfileTitleTextStyle = TextStyle(
   color: kBlackThemeColor,
-  fontSize: 16,
+  fontSize: 15,
   fontWeight: FontWeight.w500,
 );
 
