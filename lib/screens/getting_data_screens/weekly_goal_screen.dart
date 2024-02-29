@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
@@ -20,8 +19,7 @@ class WeeklyGoalScreen extends StatefulWidget {
       required this.userWeight,
       required this.userSelectedBodyAreas,
       required this.userMainGoal,
-      required this.userPushUpsCapacity,
-      required this.userPullUpsCapacity});
+      required this.userLevel});
 
   final String userGender;
   final DateTime userBirthDay;
@@ -29,8 +27,7 @@ class WeeklyGoalScreen extends StatefulWidget {
   final int userWeight;
   final List<BodyArea> userSelectedBodyAreas;
   final MainGoal userMainGoal;
-  final Capacity userPushUpsCapacity;
-  final Capacity userPullUpsCapacity;
+  final String userLevel;
 
   @override
   State<WeeklyGoalScreen> createState() => _WeeklyGoalScreenState();
@@ -75,10 +72,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
               .map((e) => e.toString().split('.').last)
               .toList(),
           'mainGoal': widget.userMainGoal.toString().split('.').last,
-          'pushUpsCapacity':
-              widget.userPushUpsCapacity.toString().split('.').last,
-          'pullUpsCapacity':
-              widget.userPullUpsCapacity.toString().split('.').last,
+          'userLevel': widget.userLevel,
           'weeklyGoal': _userSelectedDays,
         },
       );
