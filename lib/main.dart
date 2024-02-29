@@ -69,9 +69,10 @@ class MyApp extends StatelessWidget {
                       Text(
                         "Loading...",
                         style: TextStyle(
-                            color: kWhiteThemeColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
+                          color: kWhiteThemeColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        ),
                       )
                     ],
                   ),
