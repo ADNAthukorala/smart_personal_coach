@@ -45,6 +45,28 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   // Declare a Capacity variable to store user's pull ups capacity
   Capacity _userPullUpsCapacity = Capacity.beginner;
 
+  // User level
+  late String _userLevel;
+
+  /// Checking the user's level (Beginner, Intermediate or Advanced)
+  void checkingUserLevel() {
+    if (_userPullUpsCapacity == Capacity.beginner &&
+        widget.userPushUpsCapacity == Capacity.beginner) {
+      setState(() {
+        _userLevel = "Beginner";
+      });
+    } else if (_userPullUpsCapacity == Capacity.advanced &&
+        widget.userPushUpsCapacity == Capacity.advanced) {
+      setState(() {
+        _userLevel = "Advanced";
+      });
+    } else {
+      setState(() {
+        _userLevel = "Intermediate";
+      });
+    }
+  }
+
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
     try {
@@ -202,6 +224,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               child: NextButton(
                 onPressed: () {
                   // When the button is clicked, navigate to the weekly goal screen
+                  checkingUserLevel();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -212,8 +235,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                         userWeight: widget.userWeight,
                         userSelectedBodyAreas: widget.userSelectedBodyAreas,
                         userMainGoal: widget.userMainGoal,
-                        userPushUpsCapacity: widget.userPushUpsCapacity,
-                        userPullUpsCapacity: _userPullUpsCapacity,
+                        userLevel: _userLevel,
                       ),
                     ),
                   );
