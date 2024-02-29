@@ -423,8 +423,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   child: Text(
                     data['userName'],
                     style: const TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 24.0,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 26.0,
                     ),
                   ),
                 ),
@@ -469,15 +469,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.email_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Email"),
                 subtitle: Text(data['email']),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
@@ -493,13 +489,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 title: const Text("Gender"),
                 subtitle: Text(data['gender']),
-                titleTextStyle: TextStyle(
-                  color: data['gender'] == "Male"
-                      ? kAppThemeColor
-                      : kPinkThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   showDialog(
@@ -556,15 +546,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.calendar_month_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Birth Day"),
                 subtitle: Text("${userBirthDay.toDate()}".split(' ')[0]),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   _selectUserBirthDay(context, userBirthDay.toDate());
@@ -575,15 +561,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.height_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Height"),
                 subtitle: Text("${data['height'].toString()} cm"),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   showDialog(
@@ -629,15 +611,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.balance_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Weight"),
                 subtitle: Text("${data['weight'].toString()} kg"),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   showDialog(
@@ -683,15 +661,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.arrow_circle_right_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Main Goal"),
                 subtitle: Text(data['mainGoal']),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
@@ -699,15 +673,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.health_and_safety_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Level"),
                 subtitle: Text(data['level']),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
@@ -715,17 +685,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.access_time_filled_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Weekly Goal"),
                 subtitle: data['weeklyGoal'] > 1
                     ? Text("${data['weeklyGoal'].toString()} Days")
                     : Text("${data['weeklyGoal'].toString()} Day"),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
@@ -733,7 +699,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ListTile(
                 leading: const Icon(
                   Icons.boy_rounded,
-                  color: kAppThemeColor,
+                  color: kBlackThemeColor,
                 ),
                 title: const Text("Focused Body Areas"),
                 subtitle: Text(data['focusedBodyAreas']
@@ -742,11 +708,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     .last
                     .split("]")
                     .first),
-                titleTextStyle: const TextStyle(
-                  color: kAppThemeColor,
-                  fontSize: 16,
-                  fontWeight: FontWeight.w600,
-                ),
+                titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 

@@ -145,6 +145,13 @@ const kAppBarTextStyle = TextStyle(
   fontWeight: FontWeight.w700,
 );
 
+/// Text style for profile titles
+const kProfileTitleTextStyle = TextStyle(
+  color: kBlackThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
