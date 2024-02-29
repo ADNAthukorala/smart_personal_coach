@@ -478,10 +478,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Gender
@@ -503,10 +500,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   showDialog(
                     context: context,
@@ -571,10 +565,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   _selectUserBirthDay(context, userBirthDay.toDate());
                 },
@@ -593,10 +584,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   showDialog(
                     context: context,
@@ -650,10 +638,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
                 onTap: () {
                   showDialog(
                     context: context,
@@ -707,10 +692,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Level
@@ -726,10 +708,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Weekly goal
@@ -747,10 +726,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Focused body areas
@@ -771,10 +747,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                 ),
-                subtitleTextStyle: const TextStyle(
-                  color: kGreyThemeColor,
-                  fontWeight: FontWeight.w500,
-                ),
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Adding space
