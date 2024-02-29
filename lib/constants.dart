@@ -59,7 +59,6 @@ const kExerciseCardDescriptionTextStyle = TextStyle(
 /// Text style for text button
 const kTextButtonTextStyle = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w500,
   color: kAppThemeColor,
 );
 
@@ -92,10 +91,9 @@ const kWelcomeTextStyle = TextStyle(
   color: kBlackThemeColor,
 );
 
-/// Text styles for login and signup buttons
+/// Text styles for signin and signup buttons
 const kSignInSignUpButtonTextStyle = TextStyle(
   fontSize: 15,
-  fontWeight: FontWeight.w500,
   color: kWhiteThemeColor,
 );
 

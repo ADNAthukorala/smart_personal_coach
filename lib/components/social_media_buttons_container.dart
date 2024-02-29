@@ -63,7 +63,6 @@ class SocialMediaButtonsContainer extends StatelessWidget {
                 style: TextStyle(
                   color: kBlackThemeColor,
                   fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
@@ -87,7 +86,6 @@ class SocialMediaButtonsContainer extends StatelessWidget {
                 style: TextStyle(
                   color: kBlackThemeColor,
                   fontSize: 14.0,
-                  fontWeight: FontWeight.bold,
                 ),
               ),
             ),
