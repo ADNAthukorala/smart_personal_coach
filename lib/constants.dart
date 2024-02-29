@@ -148,7 +148,7 @@ const kAppBarTextStyle = TextStyle(
 /// Text style for profile titles
 const kProfileTitleTextStyle = TextStyle(
   color: kBlackThemeColor,
-  fontSize: 15,
+  fontSize: 16,
   fontWeight: FontWeight.w500,
 );
 
