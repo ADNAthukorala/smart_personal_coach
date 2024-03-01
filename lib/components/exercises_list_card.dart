@@ -24,7 +24,7 @@ class ExercisesListCard extends StatelessWidget {
             // When clicked on the exercises list card, return an exercise card
             return ExerciseCard(
               collectionName: collectionName,
-              documentName: document["docName"],
+              docName: document["docName"],
             );
           },
         );

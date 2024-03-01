@@ -7,18 +7,18 @@ class ExerciseCard extends StatelessWidget {
   const ExerciseCard({
     super.key,
     required this.collectionName,
-    required this.documentName,
+    required this.docName,
   });
 
   final String collectionName;
-  final String documentName;
+  final String docName;
 
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<DocumentSnapshot>(
         stream: FirebaseFirestore.instance
             .collection(collectionName)
-            .doc(documentName)
+            .doc(docName)
             .snapshots(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
