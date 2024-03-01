@@ -191,7 +191,7 @@ class ExerciseCard extends StatelessWidget {
                       ),
                       errorWidget: (context, url, error) =>
                           const Icon(Icons.error),
-                      height: 280,
+                      height: 300,
                     ),
                   ],
                 ),
