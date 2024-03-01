@@ -31,15 +31,15 @@ class _AbsExercisesScreenState extends State<AbsExercisesScreen> {
             FirebaseFirestore.instance.collection(_collectionName).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text("Something went wrong");
+            return const Center(child: Text("Something went wrong"));
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading...");
+            return const Center(child: Text("Loading exercises..."));
           }
 
           if (!snapshot.hasData) {
-            return const Text("No data available");
+            return const Center(child: Text("No data available"));
           }
 
           return ListView.builder(
