@@ -70,12 +70,18 @@ class ExercisesListCard extends StatelessWidget {
                       const BorderRadius.all(Radius.circular(kRadius16)),
                 ),
               ),
-              placeholder: (context, url) => const Center(
-                child: Column(
+              placeholder: (context, url) => Container(
+                alignment: Alignment.center,
+                color: kWhiteThemeColor,
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     CircularProgressIndicator(),
-                    Text("Loading animation...")
+                    Text(
+                      "Loading animation...",
+                      style: TextStyle(fontSize: 12.0),
+                      textAlign: TextAlign.center,
+                    )
                   ],
                 ),
               ),
