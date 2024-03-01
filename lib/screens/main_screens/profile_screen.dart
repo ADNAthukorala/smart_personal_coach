@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/signin_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 

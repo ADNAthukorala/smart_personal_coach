@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/profile_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/user_report_screen.dart';
-import 'package:smart_personal_coach/screens/signin_screen.dart';
 
 /// Main screen with bottom navigation bar
 class BottomNavigationBarScreenScreen extends StatefulWidget {

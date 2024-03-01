@@ -7,10 +7,10 @@ import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
-import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
-import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
-import 'package:smart_personal_coach/screens/signup_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/signup_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 /// Sign-In Screen

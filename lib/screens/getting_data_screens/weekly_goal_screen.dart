@@ -6,7 +6,7 @@ import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
 
 /// Screen to get data on how many days per week the user can dedicate to one workout plan
 class WeeklyGoalScreen extends StatefulWidget {
