@@ -50,22 +50,19 @@ class ExerciseCard extends StatelessWidget {
               primary: false,
               children: [
                 /// Animation image
-                SizedBox(
-                  height: 300,
-                  child: CachedNetworkImage(
-                    imageUrl: data['animationImage'],
-                    placeholder: (context, url) => const Center(
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircularProgressIndicator(),
-                          Text("Loading animation...")
-                        ],
-                      ),
+                CachedNetworkImage(
+                  imageUrl: data['animationImage'],
+                  placeholder: (context, url) => const Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        CircularProgressIndicator(),
+                        Text("Loading animation...")
+                      ],
                     ),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
                   ),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  height: 300,
                 ),
 
                 /// Name of the exercise
@@ -181,22 +178,20 @@ class ExerciseCard extends StatelessWidget {
                     ),
 
                     // Image
-                    SizedBox(
-                      height: 280.0,
-                      child: CachedNetworkImage(
-                        imageUrl: data['musclesWorkedImage'],
-                        placeholder: (context, url) => const Center(
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              CircularProgressIndicator(),
-                              Text("Loading image...")
-                            ],
-                          ),
+                    CachedNetworkImage(
+                      imageUrl: data['musclesWorkedImage'],
+                      placeholder: (context, url) => const Center(
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircularProgressIndicator(),
+                            Text("Loading image...")
+                          ],
                         ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
                       ),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                      height: 280,
                     ),
                   ],
                 ),

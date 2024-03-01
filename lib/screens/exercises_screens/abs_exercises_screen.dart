@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/exercise_card.dart';
+import 'package:smart_personal_coach/components/exercises_list_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class AbsExercisesScreen extends StatefulWidget {
@@ -49,27 +49,11 @@ class _AbsExercisesScreenState extends State<AbsExercisesScreen> {
             itemBuilder: (context, index) {
               DocumentSnapshot document = snapshot.data!.docs[index];
               return Padding(
+                // Adding space between two exercises list cards
                 padding: const EdgeInsets.only(bottom: kPadding8),
-                child: ListTile(
-                  tileColor: kAppThemeColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(kRadius16)),
-                  title: Text(
-                    document["name"],
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: kWhiteThemeColor),
-                  ),
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return ExerciseCard(
-                          collectionName: _collectionName,
-                          documentName: document["docName"],
-                        );
-                      },
-                    );
-                  },
+                child: ExercisesListCard(
+                  collectionName: _collectionName,
+                  document: document,
                 ),
               );
             },

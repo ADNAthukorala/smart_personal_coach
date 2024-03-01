@@ -62,8 +62,6 @@ class ExercisesListCard extends StatelessWidget {
             CachedNetworkImage(
               imageUrl: document["animationImage"],
               imageBuilder: (context, imageProvider) => Container(
-                height: 100,
-                width: 100,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: imageProvider,
@@ -82,6 +80,8 @@ class ExercisesListCard extends StatelessWidget {
                 ),
               ),
               errorWidget: (context, url, error) => const Icon(Icons.error),
+              height: 100,
+              width: 100,
             ),
           ],
         ),
