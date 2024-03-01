@@ -267,15 +267,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(child: Text("Something went wrong"));
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading...");
+            return const Center(child: Text("Loading profile..."));
           }
 
           if (!snapshot.hasData) {
-            return const Text('No data available');
+            return const Center(child: Text("No data available"));
           }
 
           // Access the data from the snapshot
