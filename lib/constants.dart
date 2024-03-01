@@ -149,6 +149,13 @@ const kProfileTitleTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
+/// Text style for exercises list card
+const kExercisesListCardTextStyle = TextStyle(
+  color: kWhiteThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
