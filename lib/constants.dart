@@ -91,7 +91,7 @@ const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
 const kWelcomeTextStyle = TextStyle(
   height: 1.15,
   fontSize: 36,
-  fontWeight: FontWeight.w900,
+  fontWeight: FontWeight.bold,
   color: kBlackThemeColor,
 );
 
