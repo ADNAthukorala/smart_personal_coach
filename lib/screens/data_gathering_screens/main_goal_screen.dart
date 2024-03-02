@@ -5,7 +5,7 @@ import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/checking_pushups_capacity.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/checking_pushups_capacity.dart';
 
 /// Screen to get the user's main goal
 class MainGoalScreen extends StatefulWidget {

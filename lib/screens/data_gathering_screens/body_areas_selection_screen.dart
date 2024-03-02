@@ -5,7 +5,7 @@ import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/main_goal_screen.dart';
 
 /// Getting the user's preferred body areas to focus on
 class BodyAreasSelectionScreen extends StatefulWidget {

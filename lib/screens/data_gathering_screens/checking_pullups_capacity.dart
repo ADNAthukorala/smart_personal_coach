@@ -7,7 +7,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/weekly_goal_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/weekly_goal_screen.dart';
 
 /// Screen to get the user's pull ups capacity
 class CheckingPullUpsCapacity extends StatefulWidget {
