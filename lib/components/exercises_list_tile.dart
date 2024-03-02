@@ -53,7 +53,7 @@ class ExercisesListTile extends StatelessWidget {
                 padding: const EdgeInsets.all(kPadding8),
                 child: Text(
                   document["name"],
-                  style: kExercisesListCardTextStyle,
+                  style: kExercisesListTileTextStyle,
                 ),
               ),
             ),

@@ -150,7 +150,7 @@ const kProfileTitleTextStyle = TextStyle(
 );
 
 /// Text style for exercises list tile
-const kExercisesListCardTextStyle = TextStyle(
+const kExercisesListTileTextStyle = TextStyle(
   color: kWhiteThemeColor,
   fontSize: 16,
   fontWeight: FontWeight.w500,
