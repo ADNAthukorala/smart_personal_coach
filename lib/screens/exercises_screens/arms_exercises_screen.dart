@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/exercises_list_card.dart';
+import 'package:smart_personal_coach/components/exercises_list_tile.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class ArmsExercisesScreen extends StatefulWidget {
@@ -51,7 +51,7 @@ class _ArmsExercisesScreenState extends State<ArmsExercisesScreen> {
               return Padding(
                 // Adding space between two exercises list cards
                 padding: const EdgeInsets.only(bottom: kPadding8),
-                child: ExercisesListCard(
+                child: ExercisesListTile(
                   collectionName: _collectionName,
                   document: document,
                 ),

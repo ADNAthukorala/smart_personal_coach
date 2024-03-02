@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-class ExercisesListCard extends StatelessWidget {
-  const ExercisesListCard({
+class ExercisesListTile extends StatelessWidget {
+  const ExercisesListTile({
     super.key,
     required this.collectionName,
     required this.document,
@@ -21,7 +21,7 @@ class ExercisesListCard extends StatelessWidget {
         showDialog(
           context: context,
           builder: (context) {
-            // When clicked on the exercises list card, return an exercise card
+            // When clicked on the exercises list tile, return an exercise card
             return ExerciseCard(
               collectionName: collectionName,
               docName: document["docName"],
@@ -29,7 +29,7 @@ class ExercisesListCard extends StatelessWidget {
           },
         );
       },
-      // Adding border and color to the exercises list card
+      // Adding border and color to the exercises list tile
       child: Container(
         decoration: BoxDecoration(
             color: kAppThemeColor,
