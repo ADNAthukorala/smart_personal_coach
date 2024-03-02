@@ -10,6 +10,14 @@ const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 // Main theme color
 const kAppThemeColor = kBlueThemeColor;
+const kColorizeColors = [
+  kBlackThemeColor,
+  kAppThemeColor,
+  kPinkThemeColor,
+  kWhiteThemeColor,
+  kGreyThemeColor,
+  kGreyThemeColor02,
+];
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
 const kPadding8 = 8.0;

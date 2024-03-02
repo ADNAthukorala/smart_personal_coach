@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomeScreen extends StatefulWidget {
   const WelcomeScreen({super.key});
@@ -23,29 +24,39 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
 
           /// The Title and the description holder
-          const SizedBox(
+          SizedBox(
             child: Padding(
               // Add padding around the title and description holder
-              padding: EdgeInsets.all(kPadding16),
+              padding: const EdgeInsets.all(kPadding16),
               child: Column(
                 children: [
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       /// Welcome text
-                      Text(
-                        'Welcome',
-                        style: kWelcomeTextStyle,
+                      AnimatedTextKit(
+                        animatedTexts: [
+                          ColorizeAnimatedText(
+                            'Welcome',
+                            textStyle: kWelcomeTextStyle,
+                            colors: kColorizeColors,
+                          ),
+                        ],
                       ),
 
                       /// Name of the application
-                      Text(
-                        'Smart Personal Coach',
-                        style: kWelcomeTextStyle,
+                      AnimatedTextKit(
+                        animatedTexts: [
+                          ColorizeAnimatedText(
+                            'Smart Personal Coach',
+                            textStyle: kWelcomeTextStyle,
+                            colors: kColorizeColors,
+                          ),
+                        ],
                       ),
 
                       /// Description
-                      Text(
+                      const Text(
                         'Welcome to Smart Personal Coach! Join us on your journey to wellness.',
                         style: kSmallGreyColorDescriptionTextStyle,
                         textAlign: TextAlign.center,
