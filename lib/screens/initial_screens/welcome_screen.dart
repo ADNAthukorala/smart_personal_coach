@@ -34,22 +34,26 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       /// Welcome text
-                      AnimatedTextKit(
-                        repeatForever: true,
-                        animatedTexts: [
-                          ColorizeAnimatedText(
-                            'WELCOME',
-                            textAlign: TextAlign.center,
-                            textStyle: kWelcomeTextStyle,
-                            colors: kColorizeColors,
-                          ),
-                          ColorizeAnimatedText(
-                            'SMART PERSONAL COACH',
-                            textAlign: TextAlign.center,
-                            textStyle: kWelcomeTextStyle,
-                            colors: kColorizeColors,
-                          ),
-                        ],
+                      Container(
+                        height: 100,
+                        alignment: Alignment.center,
+                        child: AnimatedTextKit(
+                          repeatForever: true,
+                          animatedTexts: [
+                            ColorizeAnimatedText(
+                              'WELCOME',
+                              textAlign: TextAlign.center,
+                              textStyle: kWelcomeTextStyle,
+                              colors: kColorizeColors,
+                            ),
+                            ColorizeAnimatedText(
+                              'SMART PERSONAL COACH',
+                              textAlign: TextAlign.center,
+                              textStyle: kWelcomeTextStyle,
+                              colors: kColorizeColors,
+                            ),
+                          ],
+                        ),
                       ),
 
                       /// Description
