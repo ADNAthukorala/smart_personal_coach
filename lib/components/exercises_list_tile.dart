@@ -80,7 +80,9 @@ class ExercisesListTile extends StatelessWidget {
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircularProgressIndicator(),
+                    CircularProgressIndicator(
+                      strokeAlign: -2,
+                    ),
                     Text(
                       "Loading animation...",
                       style: TextStyle(fontSize: 12.0),
