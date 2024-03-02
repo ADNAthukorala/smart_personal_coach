@@ -72,6 +72,7 @@ class ExercisesListTile extends StatelessWidget {
                 ),
               ),
               placeholder: (context, url) => Container(
+                alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   color: kWhiteThemeColor,
                   borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
@@ -89,6 +90,7 @@ class ExercisesListTile extends StatelessWidget {
                 ),
               ),
               errorWidget: (context, url, error) => Container(
+                alignment: Alignment.center,
                 decoration: const BoxDecoration(
                   color: kWhiteThemeColor,
                   borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
