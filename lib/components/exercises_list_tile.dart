@@ -63,6 +63,7 @@ class ExercisesListTile extends StatelessWidget {
               imageUrl: document["animationImage"],
               imageBuilder: (context, imageProvider) => Container(
                 decoration: BoxDecoration(
+                  color: kWhiteThemeColor,
                   image: DecorationImage(
                     image: imageProvider,
                   ),
@@ -71,8 +72,10 @@ class ExercisesListTile extends StatelessWidget {
                 ),
               ),
               placeholder: (context, url) => Container(
-                alignment: Alignment.center,
-                color: kWhiteThemeColor,
+                decoration: const BoxDecoration(
+                  color: kWhiteThemeColor,
+                  borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
+                ),
                 child: const Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -85,7 +88,13 @@ class ExercisesListTile extends StatelessWidget {
                   ],
                 ),
               ),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
+              errorWidget: (context, url, error) => Container(
+                decoration: const BoxDecoration(
+                  color: kWhiteThemeColor,
+                  borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
+                ),
+                child: const Icon(Icons.error),
+              ),
               height: 100,
               width: 100,
             ),
