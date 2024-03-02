@@ -14,10 +14,8 @@ const kAppThemeColor = kBlueThemeColor;
 const kWelcomeTextColorizeColors = [
   kBlackThemeColor,
   kAppThemeColor,
-  kPinkThemeColor,
   kWhiteThemeColor,
-  kGreyThemeColor,
-  kGreyThemeColor02,
+  kBlackThemeColor,
 ];
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
