@@ -10,7 +10,8 @@ const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
 // Main theme color
 const kAppThemeColor = kBlueThemeColor;
-const kColorizeColors = [
+// Welcome text colorize colors
+const kWelcomeTextColorizeColors = [
   kBlackThemeColor,
   kAppThemeColor,
   kPinkThemeColor,
