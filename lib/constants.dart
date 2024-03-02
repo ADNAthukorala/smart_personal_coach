@@ -90,9 +90,8 @@ const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
 
 /// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
-  height: 1.15,
-  fontSize: 32,
-  fontWeight: FontWeight.w700,
+  fontSize: 26,
+  fontWeight: FontWeight.w800,
   color: kBlackThemeColor,
 );
 

@@ -35,20 +35,17 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                     children: [
                       /// Welcome text
                       AnimatedTextKit(
+                        repeatForever: true,
                         animatedTexts: [
                           ColorizeAnimatedText(
-                            'Welcome',
+                            'WELCOME',
+                            textAlign: TextAlign.center,
                             textStyle: kWelcomeTextStyle,
                             colors: kColorizeColors,
                           ),
-                        ],
-                      ),
-
-                      /// Name of the application
-                      AnimatedTextKit(
-                        animatedTexts: [
                           ColorizeAnimatedText(
-                            'Smart Personal Coach',
+                            'SMART PERSONAL COACH',
+                            textAlign: TextAlign.center,
                             textStyle: kWelcomeTextStyle,
                             colors: kColorizeColors,
                           ),
@@ -57,7 +54,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                       /// Description
                       const Text(
-                        'Welcome to Smart Personal Coach! Join us on your journey to wellness.',
+                        'Join us on your journey to wellness!',
                         style: kSmallGreyColorDescriptionTextStyle,
                         textAlign: TextAlign.center,
                       ),
