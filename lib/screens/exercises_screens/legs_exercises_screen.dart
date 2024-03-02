@@ -49,7 +49,7 @@ class _LegsExercisesScreenState extends State<LegsExercisesScreen> {
             itemBuilder: (context, index) {
               DocumentSnapshot document = snapshot.data!.docs[index];
               return Padding(
-                // Adding space between two exercises list cards
+                // Adding space between two exercises list tiles
                 padding: const EdgeInsets.only(bottom: kPadding8),
                 child: ExercisesListTile(
                   collectionName: _collectionName,
