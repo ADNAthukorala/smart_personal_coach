@@ -58,12 +58,12 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
 
                       /// Description
                       AnimatedTextKit(
-                        repeatForever: true,
+                        isRepeatingAnimation: false,
                         animatedTexts: [
                           ColorizeAnimatedText(
                             "Join us on your journey to wellness!",
                             textAlign: TextAlign.center,
-                            speed: const Duration(milliseconds: 75),
+                            speed: const Duration(milliseconds: 200),
                             textStyle: kSmallGreyColorDescriptionTextStyle,
                             colors: kGreyTextColorizeColors,
                           ),

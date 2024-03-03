@@ -31,10 +31,11 @@ class InitialScreensTitleAndDescriptionHolder extends StatelessWidget {
         description == ''
             ? const SizedBox(height: 0)
             : AnimatedTextKit(
-                repeatForever: true,
+                isRepeatingAnimation: false,
                 animatedTexts: [
                   ColorizeAnimatedText(
                     description,
+                    speed: const Duration(milliseconds: 200),
                     textAlign: TextAlign.center,
                     textStyle: kSmallGreyColorDescriptionTextStyle,
                     colors: kGreyTextColorizeColors,
