@@ -63,7 +63,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           ColorizeAnimatedText(
                             "Join us on your journey to wellness!",
                             textAlign: TextAlign.center,
-                            speed: const Duration(milliseconds: 200),
+                            speed: const Duration(milliseconds: 400),
                             textStyle: kSmallGreyColorDescriptionTextStyle,
                             colors: kGreyTextColorizeColors,
                           ),
