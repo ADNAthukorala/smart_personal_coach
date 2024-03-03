@@ -93,7 +93,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'What are your main goals?',
                 description: 'Why do you use this application?',
               ),

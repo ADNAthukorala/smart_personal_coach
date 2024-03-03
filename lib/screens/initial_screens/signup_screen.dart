@@ -188,9 +188,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Column(
                         children: [
                           /// The Title and the description holder
-                          const TitleAndDescriptionHolder(
-                            title: 'Sign Up',
-                            description: 'Create your account here',
+                          const InitialScreensTitleAndDescriptionHolder(
+                            title: "Sign Up",
+                            description: "Create your account here",
                           ),
 
                           /// Add space

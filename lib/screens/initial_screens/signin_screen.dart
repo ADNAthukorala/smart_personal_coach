@@ -257,10 +257,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Column(
                           children: [
                             /// The Title and the description holder
-                            const TitleAndDescriptionHolder(
-                              title: 'Sign In',
+                            const InitialScreensTitleAndDescriptionHolder(
+                              title: "Sign In",
                               description:
-                                  'Please enter email and password to login',
+                                  "Please enter email and password to login",
                             ),
 
                             /// Add space

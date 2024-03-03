@@ -153,7 +153,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 padding: EdgeInsets.only(
                   bottom: kPadding16,
                 ),
-                child: TitleAndDescriptionHolder(
+                child: InitialScreensTitleAndDescriptionHolder(
                   title: 'Set your weekly goal',
                   description:
                       'How many days per week can you dedicate to one workout plan?',

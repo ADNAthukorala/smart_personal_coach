@@ -120,7 +120,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'How many pull-ups can you do at one time?',
                 description: '',
               ),

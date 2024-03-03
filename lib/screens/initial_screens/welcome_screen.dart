@@ -41,26 +41,33 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           repeatForever: true,
                           animatedTexts: [
                             ColorizeAnimatedText(
-                              'WELCOME',
+                              "WELCOME",
                               textAlign: TextAlign.center,
                               textStyle: kWelcomeTextStyle,
-                              colors: kWelcomeTextColorizeColors,
+                              colors: kBlackTextColorizeColors,
                             ),
                             ColorizeAnimatedText(
-                              'SMART PERSONAL COACH',
+                              "SMART PERSONAL COACH",
                               textAlign: TextAlign.center,
                               textStyle: kWelcomeTextStyle,
-                              colors: kWelcomeTextColorizeColors,
+                              colors: kBlackTextColorizeColors,
                             ),
                           ],
                         ),
                       ),
 
                       /// Description
-                      const Text(
-                        'Join us on your journey to wellness!',
-                        style: kSmallGreyColorDescriptionTextStyle,
-                        textAlign: TextAlign.center,
+                      AnimatedTextKit(
+                        repeatForever: true,
+                        animatedTexts: [
+                          ColorizeAnimatedText(
+                            "Join us on your journey to wellness!",
+                            textAlign: TextAlign.center,
+                            speed: const Duration(milliseconds: 75),
+                            textStyle: kSmallGreyColorDescriptionTextStyle,
+                            colors: kGreyTextColorizeColors,
+                          ),
+                        ],
                       ),
                     ],
                   ),

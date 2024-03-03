@@ -101,7 +101,7 @@ class _BirthDayHeightWeightScreenState
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'Let us known you better',
                 description:
                     'Let us know you better to help boost your workout results',

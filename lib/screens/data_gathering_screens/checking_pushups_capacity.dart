@@ -96,7 +96,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'How many push-ups can you do at one time?',
                 description: '',
               ),

@@ -156,7 +156,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                 padding: EdgeInsets.only(
                   bottom: kPadding16,
                 ),
-                child: TitleAndDescriptionHolder(
+                child: InitialScreensTitleAndDescriptionHolder(
                   title: "What's your gender?",
                   description: '',
                 ),

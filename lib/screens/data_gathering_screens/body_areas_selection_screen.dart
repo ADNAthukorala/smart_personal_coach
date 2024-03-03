@@ -91,7 +91,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'Please select your focus area/areas',
                 description: '',
               ),

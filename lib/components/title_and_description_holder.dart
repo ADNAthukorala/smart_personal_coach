@@ -1,9 +1,10 @@
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 /// Title and description holder
-class TitleAndDescriptionHolder extends StatelessWidget {
-  const TitleAndDescriptionHolder({
+class InitialScreensTitleAndDescriptionHolder extends StatelessWidget {
+  const InitialScreensTitleAndDescriptionHolder({
     super.key,
     required this.title,
     required this.description,
@@ -16,18 +17,30 @@ class TitleAndDescriptionHolder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          title,
-          style: kLargeBlackTitleTextStyle,
-          textAlign: TextAlign.center,
+        AnimatedTextKit(
+          repeatForever: true,
+          animatedTexts: [
+            ColorizeAnimatedText(
+              title,
+              textAlign: TextAlign.center,
+              textStyle: kLargeBlackTitleTextStyle,
+              colors: kBlackTextColorizeColors,
+            ),
+          ],
         ),
         description == ''
             ? const SizedBox(height: 0)
-            : Text(
-          description,
-          style: kSmallGreyColorDescriptionTextStyle,
-          textAlign: TextAlign.center,
-        ),
+            : AnimatedTextKit(
+                repeatForever: true,
+                animatedTexts: [
+                  ColorizeAnimatedText(
+                    description,
+                    textAlign: TextAlign.center,
+                    textStyle: kSmallGreyColorDescriptionTextStyle,
+                    colors: kGreyTextColorizeColors,
+                  ),
+                ],
+              ),
       ],
     );
   }
