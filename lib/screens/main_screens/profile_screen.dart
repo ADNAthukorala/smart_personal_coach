@@ -399,6 +399,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     placeholder: (context, url) =>
                         const CircularProgressIndicator(),
                     errorWidget: (context, url, error) => Container(
+                      alignment: Alignment.center,
                       decoration: const BoxDecoration(
                         color: kGreyThemeColor02,
                         shape: BoxShape.circle,
@@ -406,7 +407,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                       child: const Icon(
                         Icons.person_rounded,
                         size: 100,
-                        color: kAppThemeColor,
+                        color: kWhiteThemeColor,
                       ),
                     ),
                     width: 200.0,
