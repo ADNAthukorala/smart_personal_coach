@@ -88,7 +88,7 @@ class ExercisesListTile extends StatelessWidget {
                   color: kWhiteThemeColor,
                   borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
                 ),
-                child: const Icon(Icons.error),
+                child: const Icon(Icons.error_rounded),
               ),
               height: 100,
               width: 100,
