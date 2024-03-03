@@ -77,18 +77,9 @@ class ExercisesListTile extends StatelessWidget {
                   color: kWhiteThemeColor,
                   borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
                 ),
-                child: const Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(
-                      strokeAlign: -2,
-                    ),
-                    Text(
-                      "Loading animation...",
-                      style: TextStyle(fontSize: 12.0),
-                      textAlign: TextAlign.center,
-                    )
-                  ],
+                child: const CircularProgressIndicator(
+                  strokeAlign: -6,
+                  strokeWidth: 2,
                 ),
               ),
               errorWidget: (context, url, error) => Container(
