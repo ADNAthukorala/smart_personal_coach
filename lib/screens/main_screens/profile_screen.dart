@@ -560,6 +560,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   fontWeight: FontWeight.w400,
                 ),
                 onTap: () {
+                  // Changing the birth day
                   _selectUserBirthDay(context, userBirthDay.toDate());
                 },
               ),
@@ -580,7 +581,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      // Changing the username
+                      // Changing the height
                       return AlertDialog(
                         title: const Text("Enter your height"),
                         content: TextFormField(
@@ -632,7 +633,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      // Changing the username
+                      // Changing the weight
                       return AlertDialog(
                         title: const Text("Enter your weight"),
                         content: TextFormField(
@@ -680,6 +681,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      // Changing the username
+                      return AlertDialog(
+                        title: const Text("Enter your weight"),
+                        content: TextFormField(
+                          controller: userWeightController,
+                          decoration: const InputDecoration(
+                            hintText: "Enter your weight",
+                          ),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: [
+                            FilteringTextInputFormatter.digitsOnly,
+                          ],
+                        ),
+                        actions: [
+                          ElevatedButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Cancel")),
+                          ElevatedButton(
+                              onPressed: () {
+                                updateWeight(
+                                    userWeightController.text.trim().isNotEmpty
+                                        ? int.parse(
+                                        userWeightController.text.trim())
+                                        : data['weight']);
+                                Navigator.pop(context);
+                              },
+                              child: const Text("Save")),
+                        ],
+                      );
+                    },
+                  );
+                },
               ),
 
               /// Level

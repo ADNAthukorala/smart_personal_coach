@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 /// Theme colors and font family
 const kBlueThemeColor = Color(0xFF006685);
-// const kBlueThemeColor02 = Color(0xFF2596BE);
 const kPinkThemeColor = Color(0xFFBA1E8B);
+const kRedThemeColor = Color(0xFF850000);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF757575);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
