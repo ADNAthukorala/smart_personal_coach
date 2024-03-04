@@ -286,7 +286,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   /// Update weekly goal
-  Future<void> updateWeeklyGoal(String updatedWeeklyGoal) async {
+  Future<void> updateWeeklyGoal(int updatedWeeklyGoal) async {
     try {
       // Get a reference to the document
       DocumentReference documentRef = FirebaseFirestore.instance
@@ -803,6 +803,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return buildAlertDialogChangeWeeklyGoal(context, data);
+                    },
+                  );
+                },
               ),
 
               /// Focused body areas
@@ -962,6 +970,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 },
               );
+              _mainGoalEmailController.clear();
             } else {
               showDialog(
                 context: context,
@@ -1046,45 +1055,45 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 01
                         ElevatedButton(
                           onPressed: data["level"] ==
-                              Level.beginner.toString().split(".").last
+                                  Level.beginner.toString().split(".").last
                               ? null
                               : () {
-                            updateLevel(Level.beginner
-                                .toString()
-                                .split(".")
-                                .last);
-                            Navigator.pop(context);
-                          },
+                                  updateLevel(Level.beginner
+                                      .toString()
+                                      .split(".")
+                                      .last);
+                                  Navigator.pop(context);
+                                },
                           child: const Text("Beginner"),
                         ),
 
                         /// Option 02
                         ElevatedButton(
                           onPressed: data["level"] ==
-                              Level.intermediate.toString().split(".").last
+                                  Level.intermediate.toString().split(".").last
                               ? null
                               : () {
-                            updateLevel(Level.intermediate
-                                .toString()
-                                .split(".")
-                                .last);
-                            Navigator.pop(context);
-                          },
+                                  updateLevel(Level.intermediate
+                                      .toString()
+                                      .split(".")
+                                      .last);
+                                  Navigator.pop(context);
+                                },
                           child: const Text("Intermediate"),
                         ),
 
                         /// Option 03
                         ElevatedButton(
                           onPressed: data["level"] ==
-                              Level.advanced.toString().split(".").last
+                                  Level.advanced.toString().split(".").last
                               ? null
                               : () {
-                            updateLevel(Level.advanced
-                                .toString()
-                                .split(".")
-                                .last);
-                            Navigator.pop(context);
-                          },
+                                  updateLevel(Level.advanced
+                                      .toString()
+                                      .split(".")
+                                      .last);
+                                  Navigator.pop(context);
+                                },
                           child: const Text("Advanced"),
                         ),
                       ],
@@ -1100,6 +1109,178 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   );
                 },
               );
+              _levelEmailController.clear();
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("Wrong email!"),
+                    actions: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Try again"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+          },
+          child: const Text(
+            "Continue",
+            style: TextStyle(color: kRedThemeColor),
+          ),
+        ),
+      ],
+    );
+  }
+
+  /// Change the weekly goal
+  AlertDialog buildAlertDialogChangeWeeklyGoal(
+      BuildContext context, Map<String, dynamic> data) {
+    return AlertDialog(
+      backgroundColor: kRedThemeColor,
+      icon: const Icon(
+        Icons.warning_rounded,
+        color: kWhiteThemeColor,
+      ),
+      title: const Text(
+        "Are you sure?",
+        style: TextStyle(color: kWhiteThemeColor),
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Text(
+            "If you change your weekly goal, your workout plan will re-generate! If you want to continue, enter your email to continue!",
+            style: TextStyle(color: kWhiteThemeColor),
+          ),
+          TextFormField(
+            controller: _weeklyGoalEmailController,
+            style: const TextStyle(color: kWhiteThemeColor),
+            cursorColor: kWhiteThemeColor,
+            decoration: kMlwfTextFormFieldDecorations,
+          ),
+        ],
+      ),
+      actions: [
+        /// Cancel button
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text(
+            "Cancel",
+            style: TextStyle(color: kRedThemeColor),
+          ),
+        ),
+
+        /// Ok button
+        ElevatedButton(
+          onPressed: () {
+            if (_weeklyGoalEmailController.text.trim() == loggedInUser.email) {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("Select your Weekly Goal"),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        /// Option 01
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 1
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(1);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("1 Day"),
+                        ),
+
+                        /// Option 02
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 2
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(2);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("2 Days"),
+                        ),
+
+                        /// Option 03
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 3
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(3);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("3 Days"),
+                        ),
+
+                        /// Option 04
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 4
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(4);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("4 Days"),
+                        ),
+
+                        /// Option 05
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 5
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(5);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("5 Days"),
+                        ),
+
+                        /// Option 06
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 6
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(6);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("6 Days"),
+                        ),
+
+                        /// Option 07
+                        ElevatedButton(
+                          onPressed: data["weeklyGoal"] == 7
+                              ? null
+                              : () {
+                                  updateWeeklyGoal(7);
+                                  Navigator.pop(context);
+                                },
+                          child: const Text("7 Days"),
+                        ),
+                      ],
+                    ),
+                    actions: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Cancel"),
+                      ),
+                    ],
+                  );
+                },
+              );
+              _weeklyGoalEmailController.clear();
             } else {
               showDialog(
                 context: context,
@@ -1128,4 +1309,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-
