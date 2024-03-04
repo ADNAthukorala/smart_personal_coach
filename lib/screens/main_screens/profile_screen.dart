@@ -6,6 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -24,6 +25,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
+
+  // Creating text controllers
+  final _mainGoalEmailController = TextEditingController();
+  final _levelEmailController = TextEditingController();
+  final _weeklyGoalEmailController = TextEditingController();
+  final _focusedBodyAreaEmailController = TextEditingController();
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -98,117 +105,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  /// Update username
-  Future<void> updateUserName(String userName) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'userName': userName,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update gender
-  Future<void> updateGender(String updatedGender) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'gender': updatedGender,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update height
-  Future<void> updateHeight(int height) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'height': height,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update weight
-  Future<void> updateWeight(int weight) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'weight': weight,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update birth day
-  Future<void> updateBirthDay(DateTime userBirthDay) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'birthDay': userBirthDay,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Getting and updating user birthday
-  Future<void> _selectUserBirthDay(
-      BuildContext context, DateTime userBirthDay) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: userBirthDay,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != userBirthDay) {
-      userBirthDay = picked;
-      updateBirthDay(userBirthDay);
-    }
-  }
-
-  /// Updating profile picture
+  /// Update profile picture
   File? _imageFile;
   final picker = ImagePicker();
 
@@ -240,10 +137,148 @@ class _ProfileScreenState extends State<ProfileScreen> {
     });
   }
 
+  /// Update username
+  Future<void> updateUserName(String updatedUserName) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the user name field
+      await documentRef.update({
+        'userName': updatedUserName,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update gender
+  Future<void> updateGender(String updatedGender) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the gender
+      await documentRef.update({
+        'gender': updatedGender,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update birth day
+  Future<void> updateBirthDay(DateTime updatedUserBirthDay) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the birth day
+      await documentRef.update({
+        'birthDay': updatedUserBirthDay,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Getting and updating user birthday
+  Future<void> _selectUserBirthDay(
+      BuildContext context, DateTime userBirthDay) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: userBirthDay,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != userBirthDay) {
+      userBirthDay = picked;
+      updateBirthDay(userBirthDay);
+    }
+  }
+
+  /// Update height
+  Future<void> updateHeight(int updatedHeight) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the height
+      await documentRef.update({
+        'height': updatedHeight,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update weight
+  Future<void> updateWeight(int updatedWeight) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the weight
+      await documentRef.update({
+        'weight': updatedWeight,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update main goal
+  Future<void> updateMainGoal(String mainGoal) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the main goal
+      await documentRef.update({
+        'mainGoal': mainGoal,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
   @override
   void initState() {
     getLoggedIntUser();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _mainGoalEmailController.dispose();
+    _levelEmailController.dispose();
+    _weeklyGoalEmailController.dispose();
+    _focusedBodyAreaEmailController.dispose();
+    super.dispose();
   }
 
   @override
@@ -285,10 +320,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           // Declaring a variable to store the user's birth day
           Timestamp userBirthDay = data['birthDay'];
 
-          // Create text controllers for the user name text field and the height and weight text fields
+          // Creating text controllers
           final userNameController = TextEditingController();
           final userWeightController = TextEditingController();
           final userHeightController = TextEditingController();
+          // Assign initial values to text controllers (username, height, weight)
           userHeightController.text = data['height'].toString();
           userNameController.text = data['userName'];
           userWeightController.text = data['weight'].toString();
@@ -685,36 +721,44 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      // Changing the username
-                      return AlertDialog(
-                        title: const Text("Enter your weight"),
-                        content: TextFormField(
-                          controller: userWeightController,
-                          decoration: const InputDecoration(
-                            hintText: "Enter your weight",
-                          ),
-                          keyboardType: TextInputType.number,
-                          inputFormatters: [
-                            FilteringTextInputFormatter.digitsOnly,
-                          ],
-                        ),
-                        actions: [
-                          ElevatedButton(
-                              onPressed: () {
+                      // Changing the main goal
+                      return ChangeMLW(
+                        title: "Main Goal",
+                        controller: _mainGoalEmailController,
+                        loggedInUser: loggedInUser,
+                        option1: "Loose Weight",
+                        option2: "Build Muscles",
+                        option3: "Keep Fit",
+                        onPressesOption1: data["mainGoal"] ==
+                                MainGoal.loseWeight.toString().split(".").last
+                            ? null
+                            : () {
+                                updateMainGoal(MainGoal.loseWeight
+                                    .toString()
+                                    .split(".")
+                                    .last);
                                 Navigator.pop(context);
                               },
-                              child: const Text("Cancel")),
-                          ElevatedButton(
-                              onPressed: () {
-                                updateWeight(
-                                    userWeightController.text.trim().isNotEmpty
-                                        ? int.parse(
-                                        userWeightController.text.trim())
-                                        : data['weight']);
+                        onPressesOption2: data["mainGoal"] ==
+                                MainGoal.buildMuscles.toString().split(".").last
+                            ? null
+                            : () {
+                                updateMainGoal(MainGoal.buildMuscles
+                                    .toString()
+                                    .split(".")
+                                    .last);
                                 Navigator.pop(context);
                               },
-                              child: const Text("Save")),
-                        ],
+                        onPressesOption3: data["mainGoal"] ==
+                                MainGoal.keepFit.toString().split(".").last
+                            ? null
+                            : () {
+                                updateMainGoal(MainGoal.keepFit
+                                    .toString()
+                                    .split(".")
+                                    .last);
+                                Navigator.pop(context);
+                              },
                       );
                     },
                   );
@@ -792,6 +836,142 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         },
       ),
+    );
+  }
+}
+
+/// Main goal, level, weekly goal changer
+class ChangeMLW extends StatelessWidget {
+  const ChangeMLW({
+    super.key,
+    required this.controller,
+    required this.loggedInUser,
+    required this.title,
+    required this.option1,
+    required this.option2,
+    required this.option3,
+    this.onPressesOption1,
+    this.onPressesOption2,
+    this.onPressesOption3,
+  });
+
+  final TextEditingController controller;
+  final User loggedInUser;
+  final String title;
+  final String option1;
+  final String option2;
+  final String option3;
+  final void Function()? onPressesOption1;
+  final void Function()? onPressesOption2;
+  final void Function()? onPressesOption3;
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: kRedThemeColor,
+      icon: const Icon(
+        Icons.warning_rounded,
+        color: kWhiteThemeColor,
+      ),
+      title: const Text(
+        "Are you sure?",
+        style: TextStyle(color: kWhiteThemeColor),
+      ),
+      content: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            "If you change your $title, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+            style: const TextStyle(color: kWhiteThemeColor),
+          ),
+          TextFormField(
+            controller: controller,
+            style: const TextStyle(color: kWhiteThemeColor),
+            cursorColor: kWhiteThemeColor,
+            decoration: kMlwfTextFormFieldDecorations,
+          ),
+        ],
+      ),
+      actions: [
+        /// Cancel button
+        ElevatedButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          child: const Text(
+            "Cancel",
+            style: TextStyle(color: kRedThemeColor),
+          ),
+        ),
+
+        /// Ok button
+        ElevatedButton(
+          onPressed: () {
+            if (controller.text.trim() == loggedInUser.email) {
+              Navigator.pop(context);
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: Text("Select your $title"),
+                    content: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        /// Option 01
+                        ElevatedButton(
+                          onPressed: onPressesOption1,
+                          child: Text(option1),
+                        ),
+
+                        /// Option 02
+                        ElevatedButton(
+                          onPressed: onPressesOption2,
+                          child: Text(option2),
+                        ),
+
+                        /// Option 03
+                        ElevatedButton(
+                          onPressed: onPressesOption3,
+                          child: Text(option3),
+                        ),
+                      ],
+                    ),
+                    actions: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Cancel"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            } else {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text("Wrong email!"),
+                    actions: [
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                        child: const Text("Try again"),
+                      ),
+                    ],
+                  );
+                },
+              );
+            }
+          },
+          child: const Text(
+            "Ok",
+            style: TextStyle(color: kRedThemeColor),
+          ),
+        ),
+      ],
     );
   }
 }

@@ -287,3 +287,14 @@ const kSignInSignUpTextFormFieldDecorations = InputDecoration(
   ),
   contentPadding: EdgeInsets.zero,
 );
+
+///Input decorations for change main goal, level, weekly goal and focused body areas text form fields
+const kMlwfTextFormFieldDecorations = InputDecoration(
+  hintText: "Enter your email",
+  hintStyle: TextStyle(color: kWhiteThemeColor),
+  border: UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
+  focusedBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
+  enabledBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
+);
