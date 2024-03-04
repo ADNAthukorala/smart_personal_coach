@@ -722,43 +722,152 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context: context,
                     builder: (context) {
                       // Changing the main goal
-                      return ChangeMLW(
-                        title: "Main Goal",
-                        controller: _mainGoalEmailController,
-                        loggedInUser: loggedInUser,
-                        option1: "Loose Weight",
-                        option2: "Build Muscles",
-                        option3: "Keep Fit",
-                        onPressesOption1: data["mainGoal"] ==
-                                MainGoal.loseWeight.toString().split(".").last
-                            ? null
-                            : () {
-                                updateMainGoal(MainGoal.loseWeight
-                                    .toString()
-                                    .split(".")
-                                    .last);
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your mail goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _mainGoalEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Ok button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_mainGoalEmailController.text.trim() ==
+                                  loggedInUser.email) {
                                 Navigator.pop(context);
-                              },
-                        onPressesOption2: data["mainGoal"] ==
-                                MainGoal.buildMuscles.toString().split(".").last
-                            ? null
-                            : () {
-                                updateMainGoal(MainGoal.buildMuscles
-                                    .toString()
-                                    .split(".")
-                                    .last);
-                                Navigator.pop(context);
-                              },
-                        onPressesOption3: data["mainGoal"] ==
-                                MainGoal.keepFit.toString().split(".").last
-                            ? null
-                            : () {
-                                updateMainGoal(MainGoal.keepFit
-                                    .toString()
-                                    .split(".")
-                                    .last);
-                                Navigator.pop(context);
-                              },
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title:
+                                          const Text("Select your Main Goal"),
+                                      content: Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          /// Option 01
+                                          ElevatedButton(
+                                            onPressed: data["mainGoal"] ==
+                                                    MainGoal.loseWeight
+                                                        .toString()
+                                                        .split(".")
+                                                        .last
+                                                ? null
+                                                : () {
+                                                    updateMainGoal(MainGoal
+                                                        .loseWeight
+                                                        .toString()
+                                                        .split(".")
+                                                        .last);
+                                                    Navigator.pop(context);
+                                                  },
+                                            child: const Text("Loose Weight"),
+                                          ),
+
+                                          /// Option 02
+                                          ElevatedButton(
+                                            onPressed: data["mainGoal"] ==
+                                                    MainGoal.buildMuscles
+                                                        .toString()
+                                                        .split(".")
+                                                        .last
+                                                ? null
+                                                : () {
+                                                    updateMainGoal(MainGoal
+                                                        .buildMuscles
+                                                        .toString()
+                                                        .split(".")
+                                                        .last);
+                                                    Navigator.pop(context);
+                                                  },
+                                            child: const Text("Build Muscles"),
+                                          ),
+
+                                          /// Option 03
+                                          ElevatedButton(
+                                            onPressed: data["mainGoal"] ==
+                                                    MainGoal.keepFit
+                                                        .toString()
+                                                        .split(".")
+                                                        .last
+                                                ? null
+                                                : () {
+                                                    updateMainGoal(MainGoal
+                                                        .keepFit
+                                                        .toString()
+                                                        .split(".")
+                                                        .last);
+                                                    Navigator.pop(context);
+                                                  },
+                                            child: const Text("Keep Fit"),
+                                          ),
+                                        ],
+                                      ),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Cancel"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Ok",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
                       );
                     },
                   );
@@ -841,137 +950,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
 }
 
 /// Main goal, level, weekly goal changer
-class ChangeMLW extends StatelessWidget {
-  const ChangeMLW({
-    super.key,
-    required this.controller,
-    required this.loggedInUser,
-    required this.title,
-    required this.option1,
-    required this.option2,
-    required this.option3,
-    this.onPressesOption1,
-    this.onPressesOption2,
-    this.onPressesOption3,
-  });
-
-  final TextEditingController controller;
-  final User loggedInUser;
-  final String title;
-  final String option1;
-  final String option2;
-  final String option3;
-  final void Function()? onPressesOption1;
-  final void Function()? onPressesOption2;
-  final void Function()? onPressesOption3;
-
-  @override
-  Widget build(BuildContext context) {
-    return AlertDialog(
-      backgroundColor: kRedThemeColor,
-      icon: const Icon(
-        Icons.warning_rounded,
-        color: kWhiteThemeColor,
-      ),
-      title: const Text(
-        "Are you sure?",
-        style: TextStyle(color: kWhiteThemeColor),
-      ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Text(
-            "If you change your $title, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
-            style: const TextStyle(color: kWhiteThemeColor),
-          ),
-          TextFormField(
-            controller: controller,
-            style: const TextStyle(color: kWhiteThemeColor),
-            cursorColor: kWhiteThemeColor,
-            decoration: kMlwfTextFormFieldDecorations,
-          ),
-        ],
-      ),
-      actions: [
-        /// Cancel button
-        ElevatedButton(
-          onPressed: () {
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "Cancel",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-
-        /// Ok button
-        ElevatedButton(
-          onPressed: () {
-            if (controller.text.trim() == loggedInUser.email) {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: Text("Select your $title"),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        /// Option 01
-                        ElevatedButton(
-                          onPressed: onPressesOption1,
-                          child: Text(option1),
-                        ),
-
-                        /// Option 02
-                        ElevatedButton(
-                          onPressed: onPressesOption2,
-                          child: Text(option2),
-                        ),
-
-                        /// Option 03
-                        ElevatedButton(
-                          onPressed: onPressesOption3,
-                          child: Text(option3),
-                        ),
-                      ],
-                    ),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Cancel"),
-                      ),
-                    ],
-                  );
-                },
-              );
-            } else {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Wrong email!"),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Try again"),
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
-          },
-          child: const Text(
-            "Ok",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-      ],
-    );
-  }
-}
