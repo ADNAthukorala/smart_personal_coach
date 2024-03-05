@@ -11,6 +11,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_body_areas_selection_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -30,7 +31,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final _mainGoalEmailController = TextEditingController();
   final _levelEmailController = TextEditingController();
   final _weeklyGoalEmailController = TextEditingController();
-  final _focusedBodyAreaEmailController = TextEditingController();
+  final _focusedBodyAreasEmailController = TextEditingController();
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -315,7 +316,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     _mainGoalEmailController.dispose();
     _levelEmailController.dispose();
     _weeklyGoalEmailController.dispose();
-    _focusedBodyAreaEmailController.dispose();
+    _focusedBodyAreasEmailController.dispose();
     super.dispose();
   }
 
@@ -831,7 +832,97 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
-                onTap: () {},
+                onTap: () {
+                  setState(() {
+                    showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          backgroundColor: kRedThemeColor,
+                          icon: const Icon(
+                            Icons.warning_rounded,
+                            color: kWhiteThemeColor,
+                          ),
+                          title: const Text(
+                            "Are you sure?",
+                            style: TextStyle(color: kWhiteThemeColor),
+                          ),
+                          content: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Text(
+                                "If you change your focused body areas, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                                style: TextStyle(color: kWhiteThemeColor),
+                              ),
+                              TextFormField(
+                                controller: _focusedBodyAreasEmailController,
+                                style: const TextStyle(color: kWhiteThemeColor),
+                                cursorColor: kWhiteThemeColor,
+                                decoration: kMlwfTextFormFieldDecorations,
+                              ),
+                            ],
+                          ),
+                          actions: [
+                            /// Cancel button
+                            ElevatedButton(
+                              onPressed: () {
+                                _focusedBodyAreasEmailController.clear();
+                                Navigator.pop(context);
+                              },
+                              child: const Text(
+                                "Cancel",
+                                style: TextStyle(color: kRedThemeColor),
+                              ),
+                            ),
+
+                            /// Ok button
+                            ElevatedButton(
+                              onPressed: () {
+                                if (_focusedBodyAreasEmailController.text
+                                        .trim() ==
+                                    loggedInUser.email) {
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                             const UpdateBodyAreasSelectionScreen(
+                                              userSelectedBodyAreas: [],
+                                            ),
+                                      ));
+                                  _focusedBodyAreasEmailController.clear();
+                                } else {
+                                  showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return AlertDialog(
+                                        title: const Text("Wrong email!"),
+                                        content: const Text(
+                                            "The email entered doesn't match with your email address. Check back and try again!"),
+                                        actions: [
+                                          ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            child: const Text("Try again"),
+                                          ),
+                                        ],
+                                      );
+                                    },
+                                  );
+                                }
+                              },
+                              child: const Text(
+                                "Continue",
+                                style: TextStyle(color: kRedThemeColor),
+                              ),
+                            ),
+                          ],
+                        );
+                      },
+                    );
+                  });
+                },
               ),
 
               /// Adding space

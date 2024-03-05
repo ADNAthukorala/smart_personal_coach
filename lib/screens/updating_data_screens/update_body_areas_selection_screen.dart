@@ -1,0 +1,319 @@
+import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/components/app_bar_title.dart';
+import 'package:smart_personal_coach/components/enums.dart';
+import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/components/next_button.dart';
+import 'package:smart_personal_coach/components/title_and_description_holder.dart';
+
+/// Updating the user's preferred body areas to focus on
+class UpdateBodyAreasSelectionScreen extends StatefulWidget {
+  const UpdateBodyAreasSelectionScreen({
+    super.key,
+    required this.userSelectedBodyAreas,
+  });
+
+  final List<BodyArea> userSelectedBodyAreas;
+
+  @override
+  State<UpdateBodyAreasSelectionScreen> createState() =>
+      _UpdateBodyAreasSelectionScreenState();
+}
+
+class _UpdateBodyAreasSelectionScreenState
+    extends State<UpdateBodyAreasSelectionScreen> {
+  // Declare a list to store user selected body areas.
+  late final List<BodyArea> _userSelectedBodyAreas;
+
+  @override
+  void initState() {
+    _userSelectedBodyAreas = widget.userSelectedBodyAreas;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      /// App Bar
+      appBar: AppBar(
+        backgroundColor: kWhiteThemeColor,
+        scrolledUnderElevation: 0,
+        elevation: 0,
+        shadowColor: kWhiteThemeColor,
+        centerTitle: true,
+
+        /// Show which screen the user is on
+        title: const AppBarTitle(
+          screenId: 3,
+        ),
+      ),
+
+      /// Body of the screen
+      body: Padding(
+        // Add padding around the body of the screen
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
+        ),
+        // The main column
+        child: Column(
+          children: [
+            /// Top of the screen
+            /// The title and the description
+            const Padding(
+              padding: EdgeInsets.only(
+                bottom: kPadding16,
+              ),
+              child: InitialScreensTitleAndDescriptionHolder(
+                title: 'Please select your focus area/areas',
+                description: '',
+              ),
+            ),
+
+            /// Middle of the screen
+            /// Body area selection container
+            Expanded(
+              child: ListView(
+                padding: const EdgeInsets.only(
+                  top: kPadding16,
+                  bottom: kPadding16,
+                ),
+                primary: false,
+                children: [
+                  /// Selection container
+                  SizedBox(
+                    // Add a fixed height to the container
+                    height: 496.0,
+
+                    /// Button bar and the body image holder
+                    child: Row(
+                      // Center button bar and image inside the holder
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ///  The Button bar
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              /// Select the full body button
+                              SelectBodyAreaButton(
+                                array: _userSelectedBodyAreas,
+                                selectedBodyArea: BodyArea.bFullBody,
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array length >= 5
+                                    if (_userSelectedBodyAreas.length >= 5) {
+                                      // If it is true, the bodyAreas array should be empty when this button is clicked
+                                      _userSelectedBodyAreas.clear();
+                                    } else {
+                                      // If it false, these body areas should be added to the array
+                                      _userSelectedBodyAreas.clear();
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bArms);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bBack);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bChest);
+                                      _userSelectedBodyAreas.add(BodyArea.bAbs);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bLegs);
+                                    }
+                                    // print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                buttonLabel: 'Full Body',
+                              ),
+
+                              /// Select arms button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains arms
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.bArms)) {
+                                      // If it is true, remove arms from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.bArms);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bArms);
+                                    }
+                                    // print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Arms',
+                                selectedBodyArea: BodyArea.bArms,
+                              ),
+
+                              /// Select back button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains back
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.bBack)) {
+                                      // If it is true, remove back from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.bBack);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bBack);
+                                    }
+                                    // print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Back',
+                                selectedBodyArea: BodyArea.bBack,
+                              ),
+
+                              /// Select chest button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains chest
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.bChest)) {
+                                      // If it is true, remove chest from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.bChest);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bChest);
+                                    }
+                                    // print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Chest',
+                                selectedBodyArea: BodyArea.bChest,
+                              ),
+
+                              /// Select abs button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains abs
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.bAbs)) {
+                                      // If it is true, remove abs from the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.bAbs);
+                                    } else {
+                                      // If it false, add arms to the array when this button is clicked
+                                      _userSelectedBodyAreas.add(BodyArea.bAbs);
+                                    }
+                                    // print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Abs',
+                                selectedBodyArea: BodyArea.bAbs,
+                              ),
+
+                              /// Select legs button
+                              SelectBodyAreaButton(
+                                onPressed: () {
+                                  setState(() {
+                                    // Check whether bodyAreas array contains legs
+                                    if (_userSelectedBodyAreas
+                                        .contains(BodyArea.bLegs)) {
+                                      // If it is true, remove legs from array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .remove(BodyArea.bLegs);
+                                    } else {
+                                      // If it false, add legs to the array when this button is clicked
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bLegs);
+                                    }
+                                    // print(_userSelectedBodyAreas);
+                                  });
+                                },
+                                array: _userSelectedBodyAreas,
+                                buttonLabel: 'Legs',
+                                selectedBodyArea: BodyArea.bLegs,
+                              ),
+                            ],
+                          ),
+                        ),
+
+                        /// Full body image
+                        Image.asset(
+                          'images/full-body-image.png',
+                          height: 496, // Fixed height to the image
+                          width: 243, // Fixed width to the image
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
+
+            /// Bottom of the screen
+            /// Next button
+            Padding(
+              padding: const EdgeInsets.only(
+                top: kPadding16,
+              ),
+              child: NextButton(
+                // If the bodyAreas array is empty, this button should be disabled
+                onPressed: _userSelectedBodyAreas.isEmpty
+                    ? null
+                    : () {
+                        // When the button is clicked, navigate to the profile screen
+                      },
+                style: kNextButtonStyle.copyWith(
+                    // If the bodyAreas array is empty, the background color of this button should be grey
+                    backgroundColor: MaterialStatePropertyAll(
+                        _userSelectedBodyAreas.isEmpty
+                            ? kGreyThemeColor02
+                            : kAppThemeColor)),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+/// Button to select body areas
+class SelectBodyAreaButton extends StatelessWidget {
+  const SelectBodyAreaButton({
+    super.key,
+    required this.array,
+    required this.selectedBodyArea,
+    required this.onPressed,
+    required this.buttonLabel,
+  });
+
+  final List<BodyArea> array;
+  final BodyArea selectedBodyArea;
+  final String buttonLabel;
+  final void Function()? onPressed;
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: kSelectBodyAreaButtonStyle.copyWith(
+        backgroundColor: array.contains(selectedBodyArea) || array.length == 5
+            ? const MaterialStatePropertyAll(kAppThemeColor)
+            : const MaterialStatePropertyAll(kWhiteThemeColor),
+      ),
+      child: Text(
+        buttonLabel,
+        style: kSelectBodyAreaButtonTextStyle.copyWith(
+          color: array.contains(selectedBodyArea) || array.length == 5
+              ? kWhiteThemeColor
+              : kAppThemeColor,
+        ),
+      ),
+    );
+  }
+}
