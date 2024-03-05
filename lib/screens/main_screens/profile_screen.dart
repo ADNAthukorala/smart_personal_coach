@@ -860,13 +860,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             onPressed: () {
                               _levelEmailController.clear();
                               Navigator.pop(context);
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => UpdateLevelScreen(
-                                            level: data["level"],
-                                            loggedInUser: loggedInUser,
-                                          )));
                             },
                             child: const Text(
                               "Cancel",
@@ -874,9 +867,41 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
 
-                          /// Ok button
+                          /// Continue button
                           ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (_levelEmailController.text.trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UpdateLevelScreen(
+                                              level: data["level"],
+                                              loggedInUser: loggedInUser,
+                                            )));
+                                _levelEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
                             child: const Text(
                               "Continue",
                               style: TextStyle(color: kRedThemeColor),
