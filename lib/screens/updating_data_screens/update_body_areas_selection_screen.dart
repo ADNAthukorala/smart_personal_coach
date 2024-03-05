@@ -5,7 +5,7 @@ import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 
-/// Getting the user's preferred body areas to focus on
+/// Updating the user's preferred body areas to focus on
 class UpdateBodyAreasSelectionScreen extends StatefulWidget {
   const UpdateBodyAreasSelectionScreen({
     super.key,
@@ -24,7 +24,7 @@ class UpdateBodyAreasSelectionScreen extends StatefulWidget {
 class _UpdateBodyAreasSelectionScreenState
     extends State<UpdateBodyAreasSelectionScreen> {
   // Declare a list to store user selected body areas.
-  late final List<String> _userSelectedBodyAreas;
+  late final List<String> _updatedUserSelectedBodyAreas;
 
   /// Update focused body areas
   Future<void> updateFocusedBodyAreas(
@@ -48,7 +48,7 @@ class _UpdateBodyAreasSelectionScreenState
 
   @override
   void initState() {
-    _userSelectedBodyAreas = widget.userSelectedBodyAreas;
+    _updatedUserSelectedBodyAreas = widget.userSelectedBodyAreas;
     super.initState();
   }
 
@@ -119,22 +119,24 @@ class _UpdateBodyAreasSelectionScreenState
                             children: [
                               /// Select the full body button
                               SelectBodyAreaButton(
-                                array: _userSelectedBodyAreas,
+                                array: _updatedUserSelectedBodyAreas,
                                 selectedBodyArea: "Full Body",
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array length >= 5
-                                    if (_userSelectedBodyAreas.length >= 5) {
+                                    if (_updatedUserSelectedBodyAreas.length >=
+                                        5) {
                                       // If it is true, the bodyAreas array should be empty when this button is clicked
-                                      _userSelectedBodyAreas.clear();
+                                      _updatedUserSelectedBodyAreas.clear();
                                     } else {
                                       // If it false, these body areas should be added to the array
-                                      _userSelectedBodyAreas.clear();
-                                      _userSelectedBodyAreas.add("Arms");
-                                      _userSelectedBodyAreas.add("Back");
-                                      _userSelectedBodyAreas.add("Chest");
-                                      _userSelectedBodyAreas.add("Abs");
-                                      _userSelectedBodyAreas.add("Legs");
+                                      _updatedUserSelectedBodyAreas.clear();
+                                      _updatedUserSelectedBodyAreas.add("Arms");
+                                      _updatedUserSelectedBodyAreas.add("Back");
+                                      _updatedUserSelectedBodyAreas
+                                          .add("Chest");
+                                      _updatedUserSelectedBodyAreas.add("Abs");
+                                      _updatedUserSelectedBodyAreas.add("Legs");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
@@ -147,18 +149,19 @@ class _UpdateBodyAreasSelectionScreenState
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array contains arms
-                                    if (_userSelectedBodyAreas
+                                    if (_updatedUserSelectedBodyAreas
                                         .contains("Arms")) {
                                       // If it is true, remove arms from the array when this button is clicked
-                                      _userSelectedBodyAreas.remove("Arms");
+                                      _updatedUserSelectedBodyAreas
+                                          .remove("Arms");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add("Arms");
+                                      _updatedUserSelectedBodyAreas.add("Arms");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
-                                array: _userSelectedBodyAreas,
+                                array: _updatedUserSelectedBodyAreas,
                                 buttonLabel: "Arms",
                                 selectedBodyArea: "Arms",
                               ),
@@ -168,18 +171,19 @@ class _UpdateBodyAreasSelectionScreenState
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array contains back
-                                    if (_userSelectedBodyAreas
+                                    if (_updatedUserSelectedBodyAreas
                                         .contains("Back")) {
                                       // If it is true, remove back from the array when this button is clicked
-                                      _userSelectedBodyAreas.remove("Back");
+                                      _updatedUserSelectedBodyAreas
+                                          .remove("Back");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add("Back");
+                                      _updatedUserSelectedBodyAreas.add("Back");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
-                                array: _userSelectedBodyAreas,
+                                array: _updatedUserSelectedBodyAreas,
                                 buttonLabel: "Back",
                                 selectedBodyArea: "Back",
                               ),
@@ -189,18 +193,20 @@ class _UpdateBodyAreasSelectionScreenState
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array contains chest
-                                    if (_userSelectedBodyAreas
+                                    if (_updatedUserSelectedBodyAreas
                                         .contains("Chest")) {
                                       // If it is true, remove chest from the array when this button is clicked
-                                      _userSelectedBodyAreas.remove("Chest");
+                                      _updatedUserSelectedBodyAreas
+                                          .remove("Chest");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add("Chest");
+                                      _updatedUserSelectedBodyAreas
+                                          .add("Chest");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
-                                array: _userSelectedBodyAreas,
+                                array: _updatedUserSelectedBodyAreas,
                                 buttonLabel: "Chest",
                                 selectedBodyArea: "Chest",
                               ),
@@ -210,18 +216,19 @@ class _UpdateBodyAreasSelectionScreenState
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array contains abs
-                                    if (_userSelectedBodyAreas
+                                    if (_updatedUserSelectedBodyAreas
                                         .contains("Abs")) {
                                       // If it is true, remove abs from the array when this button is clicked
-                                      _userSelectedBodyAreas.remove("Abs");
+                                      _updatedUserSelectedBodyAreas
+                                          .remove("Abs");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add("Abs");
+                                      _updatedUserSelectedBodyAreas.add("Abs");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
-                                array: _userSelectedBodyAreas,
+                                array: _updatedUserSelectedBodyAreas,
                                 buttonLabel: "Abs",
                                 selectedBodyArea: "Abs",
                               ),
@@ -231,18 +238,19 @@ class _UpdateBodyAreasSelectionScreenState
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array contains legs
-                                    if (_userSelectedBodyAreas
+                                    if (_updatedUserSelectedBodyAreas
                                         .contains("Legs")) {
                                       // If it is true, remove legs from array when this button is clicked
-                                      _userSelectedBodyAreas.remove("Legs");
+                                      _updatedUserSelectedBodyAreas
+                                          .remove("Legs");
                                     } else {
                                       // If it false, add legs to the array when this button is clicked
-                                      _userSelectedBodyAreas.add("Legs");
+                                      _updatedUserSelectedBodyAreas.add("Legs");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
-                                array: _userSelectedBodyAreas,
+                                array: _updatedUserSelectedBodyAreas,
                                 buttonLabel: "Legs",
                                 selectedBodyArea: "Legs",
                               ),
@@ -271,16 +279,16 @@ class _UpdateBodyAreasSelectionScreenState
               ),
               child: ElevatedButton(
                 // If the bodyAreas array is empty, this button should be disabled
-                onPressed: _userSelectedBodyAreas.isEmpty
+                onPressed: _updatedUserSelectedBodyAreas.isEmpty
                     ? null
                     : () {
-                        updateFocusedBodyAreas(_userSelectedBodyAreas);
+                        updateFocusedBodyAreas(_updatedUserSelectedBodyAreas);
                         Navigator.pop(context);
                       },
                 style: kNextButtonStyle.copyWith(
                     // If the bodyAreas array is empty, the background color of this button should be grey
                     backgroundColor: MaterialStatePropertyAll(
-                        _userSelectedBodyAreas.isEmpty
+                        _updatedUserSelectedBodyAreas.isEmpty
                             ? kGreyThemeColor02
                             : kAppThemeColor)),
                 child: const Text(

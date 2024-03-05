@@ -11,6 +11,7 @@ import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart'
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_main_goal_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -239,25 +240,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // Update the weight
       await documentRef.update({
         'weight': updatedWeight,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update main goal
-  Future<void> updateMainGoal(String updatedMainGoal) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the main goal
-      await documentRef.update({
-        'mainGoal': updatedMainGoal,
       });
 
       print('Document updated successfully.');
@@ -762,7 +744,87 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context: context,
                     builder: (context) {
                       // Changing the main goal
-                      return buildAlertDialogChangeMainGoal(context, data);
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your main goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _mainGoalEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _mainGoalEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_mainGoalEmailController.text.trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UpdateMainGoalScreen(
+                                              userMainGoal: data["mainGoal"],
+                                              loggedInUser: loggedInUser,
+                                            )));
+                                _mainGoalEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
                     },
                   );
                 },
@@ -832,6 +894,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
+                      // Changing the focused body areas
                       return AlertDialog(
                         backgroundColor: kRedThemeColor,
                         icon: const Icon(
@@ -870,7 +933,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ),
 
-                          /// Ok button
+                          /// Continue button
                           ElevatedButton(
                             onPressed: () {
                               if (_focusedBodyAreasEmailController.text
@@ -945,59 +1008,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         },
       ),
-    );
-  }
-
-  /// Change the main goal
-  AlertDialog buildAlertDialogChangeMainGoal(
-      BuildContext context, Map<String, dynamic> data) {
-    return AlertDialog(
-      backgroundColor: kRedThemeColor,
-      icon: const Icon(
-        Icons.warning_rounded,
-        color: kWhiteThemeColor,
-      ),
-      title: const Text(
-        "Are you sure?",
-        style: TextStyle(color: kWhiteThemeColor),
-      ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            "If you change your main goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
-            style: TextStyle(color: kWhiteThemeColor),
-          ),
-          TextFormField(
-            controller: _mainGoalEmailController,
-            style: const TextStyle(color: kWhiteThemeColor),
-            cursorColor: kWhiteThemeColor,
-            decoration: kMlwfTextFormFieldDecorations,
-          ),
-        ],
-      ),
-      actions: [
-        /// Cancel button
-        ElevatedButton(
-          onPressed: () {
-            _mainGoalEmailController.clear();
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "Cancel",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-
-        /// Ok button
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text(
-            "Continue",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-      ],
     );
   }
 
