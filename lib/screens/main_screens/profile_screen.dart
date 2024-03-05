@@ -13,6 +13,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_body_areas_selection_screen.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_level_screen.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_main_goal_screen.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_weekly_goal_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -241,25 +242,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // Update the weight
       await documentRef.update({
         'weight': updatedWeight,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update weekly goal
-  Future<void> updateWeeklyGoal(int updatedWeeklyGoal) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the main goal
-      await documentRef.update({
-        'weeklyGoal': updatedWeeklyGoal,
       });
 
       print('Document updated successfully.');
@@ -933,7 +915,88 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context: context,
                     builder: (context) {
                       // Changing the weekly goal
-                      return buildAlertDialogChangeWeeklyGoal(context, data);
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your weekly goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _weeklyGoalEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _weeklyGoalEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_weeklyGoalEmailController.text.trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UpdateWeeklyGoalScreen(
+                                              userWeeklyGoal:
+                                                  data["weeklyGoal"],
+                                              loggedInUser: loggedInUser,
+                                            )));
+                                _weeklyGoalEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
                     },
                   );
                 },
@@ -1069,180 +1132,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         },
       ),
-    );
-  }
-
-  /// Change the weekly goal
-  AlertDialog buildAlertDialogChangeWeeklyGoal(
-      BuildContext context, Map<String, dynamic> data) {
-    return AlertDialog(
-      backgroundColor: kRedThemeColor,
-      icon: const Icon(
-        Icons.warning_rounded,
-        color: kWhiteThemeColor,
-      ),
-      title: const Text(
-        "Are you sure?",
-        style: TextStyle(color: kWhiteThemeColor),
-      ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            "If you change your weekly goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
-            style: TextStyle(color: kWhiteThemeColor),
-          ),
-          TextFormField(
-            controller: _weeklyGoalEmailController,
-            style: const TextStyle(color: kWhiteThemeColor),
-            cursorColor: kWhiteThemeColor,
-            decoration: kMlwfTextFormFieldDecorations,
-          ),
-        ],
-      ),
-      actions: [
-        /// Cancel button
-        ElevatedButton(
-          onPressed: () {
-            _weeklyGoalEmailController.clear();
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "Cancel",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-
-        /// Ok button
-        ElevatedButton(
-          onPressed: () {
-            if (_weeklyGoalEmailController.text.trim() == loggedInUser.email) {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Select your Weekly Goal"),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        /// Option 01
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 1
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(1);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("1 Day"),
-                        ),
-
-                        /// Option 02
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 2
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(2);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("2 Days"),
-                        ),
-
-                        /// Option 03
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 3
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(3);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("3 Days"),
-                        ),
-
-                        /// Option 04
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 4
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(4);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("4 Days"),
-                        ),
-
-                        /// Option 05
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 5
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(5);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("5 Days"),
-                        ),
-
-                        /// Option 06
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 6
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(6);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("6 Days"),
-                        ),
-
-                        /// Option 07
-                        ElevatedButton(
-                          onPressed: data["weeklyGoal"] == 7
-                              ? null
-                              : () {
-                                  updateWeeklyGoal(7);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("7 Days"),
-                        ),
-                      ],
-                    ),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Cancel"),
-                      ),
-                    ],
-                  );
-                },
-              );
-              _weeklyGoalEmailController.clear();
-            } else {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Wrong email!"),
-                    content: const Text(
-                        "The email entered doesn't match with your email address. Check back and try again!"),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Try again"),
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
-          },
-          child: const Text(
-            "Continue",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-      ],
     );
   }
 }
