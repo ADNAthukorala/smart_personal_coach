@@ -913,12 +913,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 01
                         ElevatedButton(
                           onPressed: data["mainGoal"] ==
-                                  MainGoal.loseWeight.toString().split(".").last
+                                  MainGoal.mLoseWeight.toString().split(".m").last
                               ? null
                               : () {
-                                  updateMainGoal(MainGoal.loseWeight
+                                  updateMainGoal(MainGoal.mLoseWeight
                                       .toString()
-                                      .split(".")
+                                      .split(".m")
                                       .last);
                                   Navigator.pop(context);
                                 },
@@ -928,15 +928,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 02
                         ElevatedButton(
                           onPressed: data["mainGoal"] ==
-                                  MainGoal.buildMuscles
+                                  MainGoal.mBuildMuscles
                                       .toString()
-                                      .split(".")
+                                      .split(".m")
                                       .last
                               ? null
                               : () {
-                                  updateMainGoal(MainGoal.buildMuscles
+                                  updateMainGoal(MainGoal.mBuildMuscles
                                       .toString()
-                                      .split(".")
+                                      .split(".m")
                                       .last);
                                   Navigator.pop(context);
                                 },
@@ -946,12 +946,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 03
                         ElevatedButton(
                           onPressed: data["mainGoal"] ==
-                                  MainGoal.keepFit.toString().split(".").last
+                                  MainGoal.mKeepFit.toString().split(".m").last
                               ? null
                               : () {
-                                  updateMainGoal(MainGoal.keepFit
+                                  updateMainGoal(MainGoal.mKeepFit
                                       .toString()
-                                      .split(".")
+                                      .split(".m")
                                       .last);
                                   Navigator.pop(context);
                                 },
@@ -1055,12 +1055,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 01
                         ElevatedButton(
                           onPressed: data["level"] ==
-                                  Level.beginner.toString().split(".").last
+                                  Level.lBeginner.toString().split(".l").last
                               ? null
                               : () {
-                                  updateLevel(Level.beginner
+                                  updateLevel(Level.lBeginner
                                       .toString()
-                                      .split(".")
+                                      .split(".l")
                                       .last);
                                   Navigator.pop(context);
                                 },
@@ -1070,12 +1070,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 02
                         ElevatedButton(
                           onPressed: data["level"] ==
-                                  Level.intermediate.toString().split(".").last
+                                  Level.lIntermediate.toString().split(".l").last
                               ? null
                               : () {
-                                  updateLevel(Level.intermediate
+                                  updateLevel(Level.lIntermediate
                                       .toString()
-                                      .split(".")
+                                      .split(".l")
                                       .last);
                                   Navigator.pop(context);
                                 },
@@ -1085,12 +1085,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 03
                         ElevatedButton(
                           onPressed: data["level"] ==
-                                  Level.advanced.toString().split(".").last
+                                  Level.lAdvanced.toString().split(".l").last
                               ? null
                               : () {
-                                  updateLevel(Level.advanced
+                                  updateLevel(Level.lAdvanced
                                       .toString()
-                                      .split(".")
+                                      .split(".l")
                                       .last);
                                   Navigator.pop(context);
                                 },
