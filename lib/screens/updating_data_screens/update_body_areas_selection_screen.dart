@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 
@@ -62,11 +61,6 @@ class _UpdateBodyAreasSelectionScreenState
         elevation: 0,
         shadowColor: kWhiteThemeColor,
         centerTitle: true,
-
-        /// Show which screen the user is on
-        title: const AppBarTitle(
-          screenId: 3,
-        ),
       ),
 
       /// Body of the screen

@@ -5,26 +5,26 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 
 /// Screen to update the user's main goal
-class UpdateMainGoalScreen extends StatefulWidget {
-  const UpdateMainGoalScreen({
+class UpdateLevelScreen extends StatefulWidget {
+  const UpdateLevelScreen({
     super.key,
-    required this.userMainGoal,
+    required this.level,
     required this.loggedInUser,
   });
 
-  final String userMainGoal;
+  final String level;
   final User loggedInUser;
 
   @override
-  State<UpdateMainGoalScreen> createState() => _UpdateMainGoalScreenState();
+  State<UpdateLevelScreen> createState() => _UpdateLevelScreenState();
 }
 
-class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
-  // Declare a variable to store the user's main goal
-  late String _updatedUserMainGoal;
+class _UpdateLevelScreenState extends State<UpdateLevelScreen> {
+  // Declare a variable to store the user's level
+  late String _updatedLevel;
 
-  /// Update main goal
-  Future<void> updateMainGoal(String updatedMainGoal) async {
+  /// Update level
+  Future<void> updateLevel(String updatedLevel) async {
     try {
       // Get a reference to the document
       DocumentReference documentRef = FirebaseFirestore.instance
@@ -33,7 +33,7 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
 
       // Update the main goal
       await documentRef.update({
-        'mainGoal': updatedMainGoal,
+        'level': updatedLevel,
       });
 
       print('Document updated successfully.');
@@ -44,7 +44,7 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
 
   @override
   void initState() {
-    _updatedUserMainGoal = widget.userMainGoal;
+    _updatedLevel = widget.level;
     super.initState();
   }
 
@@ -79,8 +79,8 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
                 bottom: kPadding16,
               ),
               child: InitialScreensTitleAndDescriptionHolder(
-                title: 'What are your main goals?',
-                description: 'Why do you use this application?',
+                title: 'What is your level?',
+                description: '',
               ),
             ),
 
@@ -94,52 +94,49 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
                 ),
                 primary: false,
                 children: [
-                  /// Lose weight button
-                  SelectMainGoalButton(
+                  /// Beginner button
+                  SelectLevelButton(
                     onPressed: () {
                       setState(() {
-                        // If the button is clicked, the user's main goal should be to lose weight.
-                        _updatedUserMainGoal = "Lose Weight";
+                        _updatedLevel = "Beginner";
                       });
                       // print(_userMainGoal);
                     },
-                    userMainGoal: _updatedUserMainGoal,
-                    selectedMainGoal: "Lose Weight",
-                    buttonLabel: "Lose Weight",
+                    level: _updatedLevel,
+                    selectedLevel: "Beginner",
+                    buttonLabel: "Beginner",
                   ),
 
                   /// Add space between buttons
                   const SizedBox(height: 20.0),
 
-                  /// Build muscles button
-                  SelectMainGoalButton(
+                  /// Intermediate button
+                  SelectLevelButton(
                     onPressed: () {
                       setState(() {
-                        // If the button is clicked, the user's main goal should be to build muscles.
-                        _updatedUserMainGoal = "Build Muscles";
+                        _updatedLevel = "Intermediate";
                       });
                       // print(_userMainGoal);
                     },
-                    userMainGoal: _updatedUserMainGoal,
-                    selectedMainGoal: "Build Muscles",
-                    buttonLabel: "Build Muscles",
+                    level: _updatedLevel,
+                    selectedLevel: "Intermediate",
+                    buttonLabel: "Intermediate",
                   ),
 
                   /// Add space between buttons
                   const SizedBox(height: 20.0),
 
-                  /// Keep fit button
-                  SelectMainGoalButton(
+                  /// Advanced button
+                  SelectLevelButton(
                     onPressed: () {
                       setState(() {
-                        // If the button is clicked, the user's main goal should be to keep fit.
-                        _updatedUserMainGoal = "Keep Fit";
+                        _updatedLevel = "Advanced";
                       });
                       // print(_userMainGoal);
                     },
-                    userMainGoal: _updatedUserMainGoal,
-                    selectedMainGoal: "Keep Fit",
-                    buttonLabel: "Keep Fit",
+                    level: _updatedLevel,
+                    selectedLevel: "Advanced",
+                    buttonLabel: "Advanced",
                   ),
                 ],
               ),
@@ -153,7 +150,7 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
               ),
               child: ElevatedButton(
                 onPressed: () {
-                  updateMainGoal(_updatedUserMainGoal);
+                  updateLevel(_updatedLevel);
                   Navigator.pop(context);
                 },
                 style: kNextButtonStyle,
@@ -170,18 +167,18 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
   }
 }
 
-/// Create a button to select the user's main goal
-class SelectMainGoalButton extends StatelessWidget {
-  const SelectMainGoalButton({
+/// Create a button to select the user's level
+class SelectLevelButton extends StatelessWidget {
+  const SelectLevelButton({
     super.key,
-    required this.userMainGoal,
-    required this.selectedMainGoal,
+    required this.level,
+    required this.selectedLevel,
     this.onPressed,
     required this.buttonLabel,
   });
 
-  final String userMainGoal;
-  final String selectedMainGoal;
+  final String level;
+  final String selectedLevel;
   final void Function()? onPressed;
   final String buttonLabel;
 
@@ -190,18 +187,14 @@ class SelectMainGoalButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: kSelectCapacityButtonStyle.copyWith(
-        // If the selected main goal is equal to the user's main goal, the button color should be blue, otherwise white
-        backgroundColor: selectedMainGoal == userMainGoal
+        backgroundColor: selectedLevel == level
             ? const MaterialStatePropertyAll(kAppThemeColor)
             : const MaterialStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
         buttonLabel,
         style: kSelectCapacityButtonTextStyle.copyWith(
-          // If the selected main goal is equal to the user's main goal, the button text color should be white, otherwise blue
-          color: selectedMainGoal == userMainGoal
-              ? kWhiteThemeColor
-              : kAppThemeColor,
+          color: selectedLevel == level ? kWhiteThemeColor : kAppThemeColor,
         ),
       ),
     );

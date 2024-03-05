@@ -11,6 +11,7 @@ import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart'
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_level_screen.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_main_goal_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -240,25 +241,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // Update the weight
       await documentRef.update({
         'weight': updatedWeight,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update level
-  Future<void> updateLevel(String updatedLevel) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the main goal
-      await documentRef.update({
-        'level': updatedLevel,
       });
 
       print('Document updated successfully.');
@@ -847,7 +829,61 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     context: context,
                     builder: (context) {
                       // Changing the level
-                      return buildAlertDialogChangeLevel(context, data);
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your level, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _levelEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _levelEmailController.clear();
+                              Navigator.pop(context);
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => UpdateLevelScreen(
+                                            level: data["level"],
+                                            loggedInUser: loggedInUser,
+                                          )));
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Ok button
+                          ElevatedButton(
+                            onPressed: () {},
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
                     },
                   );
                 },
@@ -1008,59 +1044,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
           );
         },
       ),
-    );
-  }
-
-  /// Change the level
-  AlertDialog buildAlertDialogChangeLevel(
-      BuildContext context, Map<String, dynamic> data) {
-    return AlertDialog(
-      backgroundColor: kRedThemeColor,
-      icon: const Icon(
-        Icons.warning_rounded,
-        color: kWhiteThemeColor,
-      ),
-      title: const Text(
-        "Are you sure?",
-        style: TextStyle(color: kWhiteThemeColor),
-      ),
-      content: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const Text(
-            "If you change your level, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
-            style: TextStyle(color: kWhiteThemeColor),
-          ),
-          TextFormField(
-            controller: _levelEmailController,
-            style: const TextStyle(color: kWhiteThemeColor),
-            cursorColor: kWhiteThemeColor,
-            decoration: kMlwfTextFormFieldDecorations,
-          ),
-        ],
-      ),
-      actions: [
-        /// Cancel button
-        ElevatedButton(
-          onPressed: () {
-            _levelEmailController.clear();
-            Navigator.pop(context);
-          },
-          child: const Text(
-            "Cancel",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-
-        /// Ok button
-        ElevatedButton(
-          onPressed: () {},
-          child: const Text(
-            "Continue",
-            style: TextStyle(color: kRedThemeColor),
-          ),
-        ),
-      ],
     );
   }
 
