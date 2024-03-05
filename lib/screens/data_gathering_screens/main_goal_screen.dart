@@ -35,7 +35,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
   late User loggedInUser;
 
   // Declare a variable to store the user's main goal
-  MainGoal _userMainGoal = MainGoal.loseWeight;
+  MainGoal _userMainGoal = MainGoal.mLoseWeight;
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -114,12 +114,12 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     onPressed: () {
                       setState(() {
                         // If the button is clicked, the user's main goal should be to lose weight.
-                        _userMainGoal = MainGoal.loseWeight;
+                        _userMainGoal = MainGoal.mLoseWeight;
                       });
                       // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
-                    selectedMainGoal: MainGoal.loseWeight,
+                    selectedMainGoal: MainGoal.mLoseWeight,
                     buttonLabel: 'Lose Weight',
                   ),
 
@@ -131,12 +131,12 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     onPressed: () {
                       setState(() {
                         // If the button is clicked, the user's main goal should be to build muscles.
-                        _userMainGoal = MainGoal.buildMuscles;
+                        _userMainGoal = MainGoal.mBuildMuscles;
                       });
                       // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
-                    selectedMainGoal: MainGoal.buildMuscles,
+                    selectedMainGoal: MainGoal.mBuildMuscles,
                     buttonLabel: 'Build Muscles',
                   ),
 
@@ -148,12 +148,12 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     onPressed: () {
                       setState(() {
                         // If the button is clicked, the user's main goal should be to keep fit.
-                        _userMainGoal = MainGoal.keepFit;
+                        _userMainGoal = MainGoal.mKeepFit;
                       });
                       // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
-                    selectedMainGoal: MainGoal.keepFit,
+                    selectedMainGoal: MainGoal.mKeepFit,
                     buttonLabel: 'Keep Fit',
                   ),
                 ],

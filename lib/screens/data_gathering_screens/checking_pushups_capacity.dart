@@ -40,7 +40,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's push ups capacity
-  Capacity _userPushUpsCapacity = Capacity.beginner;
+  Capacity _userPushUpsCapacity = Capacity.cBeginner;
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -116,12 +116,12 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.beginner;
+                        _userPushUpsCapacity = Capacity.cBeginner;
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.beginner,
+                    selectedCapacity: Capacity.cBeginner,
                     title: 'Beginner',
                     description: '0 - 5  Push-ups',
                   ),
@@ -133,12 +133,12 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.intermediate;
+                        _userPushUpsCapacity = Capacity.cIntermediate;
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.intermediate,
+                    selectedCapacity: Capacity.cIntermediate,
                     title: 'Intermediate',
                     description: '6 - 10  Push-ups',
                   ),
@@ -150,12 +150,12 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.advanced;
+                        _userPushUpsCapacity = Capacity.cAdvanced;
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.advanced,
+                    selectedCapacity: Capacity.cAdvanced,
                     title: 'Advanced',
                     description: 'More than 10  Push-ups',
                   ),

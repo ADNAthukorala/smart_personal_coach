@@ -42,26 +42,26 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's pull ups capacity
-  Capacity _userPullUpsCapacity = Capacity.beginner;
+  Capacity _userPullUpsCapacity = Capacity.cBeginner;
 
   // User level
   late Level _userLevel;
 
   /// Checking the user's level (Beginner, Intermediate or Advanced)
   void checkingUserLevel() {
-    if (_userPullUpsCapacity == Capacity.beginner &&
-        widget.userPushUpsCapacity == Capacity.beginner) {
+    if (_userPullUpsCapacity == Capacity.cBeginner &&
+        widget.userPushUpsCapacity == Capacity.cBeginner) {
       setState(() {
-        _userLevel = Level.beginner;
+        _userLevel = Level.lBeginner;
       });
-    } else if (_userPullUpsCapacity == Capacity.advanced &&
-        widget.userPushUpsCapacity == Capacity.advanced) {
+    } else if (_userPullUpsCapacity == Capacity.cAdvanced &&
+        widget.userPushUpsCapacity == Capacity.cAdvanced) {
       setState(() {
-        _userLevel = Level.advanced;
+        _userLevel = Level.lAdvanced;
       });
     } else {
       setState(() {
-        _userLevel = Level.intermediate;
+        _userLevel = Level.lIntermediate;
       });
     }
   }
@@ -140,12 +140,12 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.beginner;
+                        _userPullUpsCapacity = Capacity.cBeginner;
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.beginner,
+                    selectedCapacity: Capacity.cBeginner,
                     title: 'Beginner',
                     description: '0 - 5  Pull-ups',
                   ),
@@ -157,12 +157,12 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.intermediate;
+                        _userPullUpsCapacity = Capacity.cIntermediate;
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.intermediate,
+                    selectedCapacity: Capacity.cIntermediate,
                     title: 'Intermediate',
                     description: '6 - 10  Pull-ups',
                   ),
@@ -174,12 +174,12 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.advanced;
+                        _userPullUpsCapacity = Capacity.cAdvanced;
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.advanced,
+                    selectedCapacity: Capacity.cAdvanced,
                     title: 'Advanced',
                     description: 'More than 10  Pull-ups',
                   ),

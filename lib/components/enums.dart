@@ -1,11 +1,11 @@
 /// Enum for body areas
-enum BodyArea { arms, back, chest, abs, legs, fullBody }
+enum BodyArea { bArms, bBack, bChest, bAbs, bLegs, bFullBody }
 
 /// Enum for capacity
-enum Capacity { beginner, intermediate, advanced }
+enum Capacity { cBeginner, cIntermediate, cAdvanced }
 
 /// Enum for user level
-enum Level { beginner, intermediate, advanced }
+enum Level { lBeginner, lIntermediate, lAdvanced }
 
 /// Enum for main goal
-enum MainGoal { loseWeight, buildMuscles, keepFit }
+enum MainGoal { mLoseWeight, mBuildMuscles, mKeepFit }
