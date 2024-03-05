@@ -807,6 +807,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   showDialog(
                     context: context,
                     builder: (context) {
+                      // Changing the weekly goal
                       return buildAlertDialogChangeWeeklyGoal(context, data);
                     },
                   );
@@ -830,6 +831,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
+                onTap: () {},
               ),
 
               /// Adding space
@@ -874,7 +876,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text(
-            "If you change your mail goal, your workout plan will re-generate! If you want to continue, enter your email to continue!",
+            "If you change your main goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
             style: TextStyle(color: kWhiteThemeColor),
           ),
           TextFormField(
@@ -889,6 +891,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         /// Cancel button
         ElevatedButton(
           onPressed: () {
+            _mainGoalEmailController.clear();
             Navigator.pop(context);
           },
           child: const Text(
@@ -913,7 +916,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 01
                         ElevatedButton(
                           onPressed: data["mainGoal"] ==
-                                  MainGoal.mLoseWeight.toString().split(".m").last
+                                  MainGoal.mLoseWeight
+                                      .toString()
+                                      .split(".m")
+                                      .last
                               ? null
                               : () {
                                   updateMainGoal(MainGoal.mLoseWeight
@@ -977,6 +983,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 builder: (context) {
                   return AlertDialog(
                     title: const Text("Wrong email!"),
+                    content: const Text(
+                        "The email entered doesn't match with your email address. Check back and try again!"),
                     actions: [
                       ElevatedButton(
                         onPressed: () {
@@ -1016,7 +1024,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text(
-            "If you change your level, your workout plan will re-generate! If you want to continue, enter your email to continue!",
+            "If you change your level, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
             style: TextStyle(color: kWhiteThemeColor),
           ),
           TextFormField(
@@ -1031,6 +1039,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         /// Cancel button
         ElevatedButton(
           onPressed: () {
+            _levelEmailController.clear();
             Navigator.pop(context);
           },
           child: const Text(
@@ -1070,7 +1079,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         /// Option 02
                         ElevatedButton(
                           onPressed: data["level"] ==
-                                  Level.lIntermediate.toString().split(".l").last
+                                  Level.lIntermediate
+                                      .toString()
+                                      .split(".l")
+                                      .last
                               ? null
                               : () {
                                   updateLevel(Level.lIntermediate
@@ -1116,6 +1128,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 builder: (context) {
                   return AlertDialog(
                     title: const Text("Wrong email!"),
+                    content: const Text(
+                        "The email entered doesn't match with your email address. Check back and try again!"),
                     actions: [
                       ElevatedButton(
                         onPressed: () {
@@ -1155,7 +1169,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         mainAxisSize: MainAxisSize.min,
         children: [
           const Text(
-            "If you change your weekly goal, your workout plan will re-generate! If you want to continue, enter your email to continue!",
+            "If you change your weekly goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
             style: TextStyle(color: kWhiteThemeColor),
           ),
           TextFormField(
@@ -1170,6 +1184,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         /// Cancel button
         ElevatedButton(
           onPressed: () {
+            _weeklyGoalEmailController.clear();
             Navigator.pop(context);
           },
           child: const Text(
@@ -1287,6 +1302,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 builder: (context) {
                   return AlertDialog(
                     title: const Text("Wrong email!"),
+                    content: const Text(
+                        "The email entered doesn't match with your email address. Check back and try again!"),
                     actions: [
                       ElevatedButton(
                         onPressed: () {
