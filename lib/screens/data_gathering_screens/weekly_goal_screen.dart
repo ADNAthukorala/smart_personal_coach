@@ -68,10 +68,10 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
           'height': widget.userHeight,
           'weight': widget.userWeight,
           'focusedBodyAreas': widget.userSelectedBodyAreas
-              .map((e) => e.toString().split('.').last)
+              .map((e) => e.toString().split('.b').last)
               .toList(),
-          'mainGoal': widget.userMainGoal.toString().split('.').last,
-          'level': widget.userLevel.toString().split('.').last,
+          'mainGoal': widget.userMainGoal.toString().split('.m').last,
+          'level': widget.userLevel.toString().split('.l').last,
           'weeklyGoal': _userSelectedDays,
         },
       );
