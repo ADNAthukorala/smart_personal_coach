@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
@@ -25,9 +24,9 @@ class CheckingPullUpsCapacity extends StatefulWidget {
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
-  final MainGoal userMainGoal;
-  final Capacity userPushUpsCapacity;
+  final List<String> userSelectedBodyAreas;
+  final String userMainGoal;
+  final String userPushUpsCapacity;
 
   @override
   State<CheckingPullUpsCapacity> createState() =>
@@ -42,26 +41,26 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's pull ups capacity
-  Capacity _userPullUpsCapacity = Capacity.cBeginner;
+  String _userPullUpsCapacity = "Beginner";
 
   // User level
-  late Level _userLevel;
+  late String _userLevel;
 
   /// Checking the user's level (Beginner, Intermediate or Advanced)
   void checkingUserLevel() {
-    if (_userPullUpsCapacity == Capacity.cBeginner &&
-        widget.userPushUpsCapacity == Capacity.cBeginner) {
+    if (_userPullUpsCapacity == "Beginner" &&
+        widget.userPushUpsCapacity == "Beginner") {
       setState(() {
-        _userLevel = Level.lBeginner;
+        _userLevel = "Beginner";
       });
-    } else if (_userPullUpsCapacity == Capacity.cAdvanced &&
-        widget.userPushUpsCapacity == Capacity.cAdvanced) {
+    } else if (_userPullUpsCapacity == "Advanced" &&
+        widget.userPushUpsCapacity == "Advanced") {
       setState(() {
-        _userLevel = Level.lAdvanced;
+        _userLevel = "Advanced";
       });
     } else {
       setState(() {
-        _userLevel = Level.lIntermediate;
+        _userLevel = "Intermediate";
       });
     }
   }
@@ -140,13 +139,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.cBeginner;
+                        _userPullUpsCapacity = "Beginner";
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.cBeginner,
-                    title: 'Beginner',
+                    selectedCapacity: "Beginner",
+                    title: "Beginner",
                     description: '0 - 5  Pull-ups',
                   ),
 
@@ -157,13 +156,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.cIntermediate;
+                        _userPullUpsCapacity = "Intermediate";
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.cIntermediate,
-                    title: 'Intermediate',
+                    selectedCapacity: "Intermediate",
+                    title: "Intermediate",
                     description: '6 - 10  Pull-ups',
                   ),
 
@@ -174,13 +173,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.cAdvanced;
+                        _userPullUpsCapacity = "Advanced";
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.cAdvanced,
-                    title: 'Advanced',
+                    selectedCapacity: "Advanced",
+                    title: "Advanced",
                     description: 'More than 10  Pull-ups',
                   ),
 

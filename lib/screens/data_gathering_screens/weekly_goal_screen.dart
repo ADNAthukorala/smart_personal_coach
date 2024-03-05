@@ -3,7 +3,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
@@ -24,9 +23,9 @@ class WeeklyGoalScreen extends StatefulWidget {
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
-  final MainGoal userMainGoal;
-  final Level userLevel;
+  final List<String> userSelectedBodyAreas;
+  final String userMainGoal;
+  final String userLevel;
 
   @override
   State<WeeklyGoalScreen> createState() => _WeeklyGoalScreenState();
@@ -67,11 +66,9 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
           'birthDay': widget.userBirthDay,
           'height': widget.userHeight,
           'weight': widget.userWeight,
-          'focusedBodyAreas': widget.userSelectedBodyAreas
-              .map((e) => e.toString().split('.b').last)
-              .toList(),
-          'mainGoal': widget.userMainGoal.toString().split('.m').last,
-          'level': widget.userLevel.toString().split('.l').last,
+          'focusedBodyAreas': widget.userSelectedBodyAreas,
+          'mainGoal': widget.userMainGoal,
+          'level': widget.userLevel,
           'weeklyGoal': _userSelectedDays,
         },
       );

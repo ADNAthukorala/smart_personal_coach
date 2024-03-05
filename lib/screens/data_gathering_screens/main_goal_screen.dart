@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
@@ -21,7 +20,7 @@ class MainGoalScreen extends StatefulWidget {
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
+  final List<String> userSelectedBodyAreas;
 
   @override
   State<MainGoalScreen> createState() => _MainGoalScreenState();
@@ -35,7 +34,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
   late User loggedInUser;
 
   // Declare a variable to store the user's main goal
-  MainGoal _userMainGoal = MainGoal.mLoseWeight;
+  String _userMainGoal = "Loose Weight";
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -114,13 +113,13 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     onPressed: () {
                       setState(() {
                         // If the button is clicked, the user's main goal should be to lose weight.
-                        _userMainGoal = MainGoal.mLoseWeight;
+                        _userMainGoal = "Lose Weight";
                       });
                       // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
-                    selectedMainGoal: MainGoal.mLoseWeight,
-                    buttonLabel: 'Lose Weight',
+                    selectedMainGoal: "Lose Weight",
+                    buttonLabel: "Lose Weight",
                   ),
 
                   /// Add space between buttons
@@ -131,13 +130,13 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     onPressed: () {
                       setState(() {
                         // If the button is clicked, the user's main goal should be to build muscles.
-                        _userMainGoal = MainGoal.mBuildMuscles;
+                        _userMainGoal = "Build Muscles";
                       });
                       // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
-                    selectedMainGoal: MainGoal.mBuildMuscles,
-                    buttonLabel: 'Build Muscles',
+                    selectedMainGoal: "Build Muscles",
+                    buttonLabel: "Build Muscles",
                   ),
 
                   /// Add space between buttons
@@ -148,13 +147,13 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
                     onPressed: () {
                       setState(() {
                         // If the button is clicked, the user's main goal should be to keep fit.
-                        _userMainGoal = MainGoal.mKeepFit;
+                        _userMainGoal = "Keep Fit";
                       });
                       // print(_userMainGoal);
                     },
                     userMainGoal: _userMainGoal,
-                    selectedMainGoal: MainGoal.mKeepFit,
-                    buttonLabel: 'Keep Fit',
+                    selectedMainGoal: "Keep Fit",
+                    buttonLabel: "Keep Fit",
                   ),
                 ],
               ),
@@ -203,8 +202,8 @@ class SelectMainGoalButton extends StatelessWidget {
     required this.buttonLabel,
   });
 
-  final MainGoal userMainGoal;
-  final MainGoal selectedMainGoal;
+  final String userMainGoal;
+  final String selectedMainGoal;
   final void Function()? onPressed;
   final String buttonLabel;
 

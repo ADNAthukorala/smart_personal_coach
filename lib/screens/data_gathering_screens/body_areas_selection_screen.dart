@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
@@ -34,7 +33,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
   late User loggedInUser;
 
   // Declare a list to store user selected body areas.
-  final List<BodyArea> _userSelectedBodyAreas = [];
+  final List<String> _userSelectedBodyAreas = [];
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -125,7 +124,7 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                               /// Select the full body button
                               SelectBodyAreaButton(
                                 array: _userSelectedBodyAreas,
-                                selectedBodyArea: BodyArea.bFullBody,
+                                selectedBodyArea: "Full Body",
                                 onPressed: () {
                                   setState(() {
                                     // Check whether bodyAreas array length >= 5
@@ -135,20 +134,16 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                     } else {
                                       // If it false, these body areas should be added to the array
                                       _userSelectedBodyAreas.clear();
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bArms);
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bBack);
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bChest);
-                                      _userSelectedBodyAreas.add(BodyArea.bAbs);
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bLegs);
+                                      _userSelectedBodyAreas.add("Arms");
+                                      _userSelectedBodyAreas.add("Back");
+                                      _userSelectedBodyAreas.add("Chest");
+                                      _userSelectedBodyAreas.add("Abs");
+                                      _userSelectedBodyAreas.add("Legs");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
-                                buttonLabel: 'Full Body',
+                                buttonLabel: "Full Body",
                               ),
 
                               /// Select arms button
@@ -157,21 +152,19 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                   setState(() {
                                     // Check whether bodyAreas array contains arms
                                     if (_userSelectedBodyAreas
-                                        .contains(BodyArea.bArms)) {
+                                        .contains("Arms")) {
                                       // If it is true, remove arms from the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .remove(BodyArea.bArms);
+                                      _userSelectedBodyAreas.remove("Arms");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bArms);
+                                      _userSelectedBodyAreas.add("Arms");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
-                                buttonLabel: 'Arms',
-                                selectedBodyArea: BodyArea.bArms,
+                                buttonLabel: "Arms",
+                                selectedBodyArea: "Arms",
                               ),
 
                               /// Select back button
@@ -180,21 +173,19 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                   setState(() {
                                     // Check whether bodyAreas array contains back
                                     if (_userSelectedBodyAreas
-                                        .contains(BodyArea.bBack)) {
+                                        .contains("Back")) {
                                       // If it is true, remove back from the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .remove(BodyArea.bBack);
+                                      _userSelectedBodyAreas.remove("Back");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bBack);
+                                      _userSelectedBodyAreas.add("Back");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
-                                buttonLabel: 'Back',
-                                selectedBodyArea: BodyArea.bBack,
+                                buttonLabel: "Back",
+                                selectedBodyArea: "Back",
                               ),
 
                               /// Select chest button
@@ -203,21 +194,19 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                   setState(() {
                                     // Check whether bodyAreas array contains chest
                                     if (_userSelectedBodyAreas
-                                        .contains(BodyArea.bChest)) {
+                                        .contains("Chest")) {
                                       // If it is true, remove chest from the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .remove(BodyArea.bChest);
+                                      _userSelectedBodyAreas.remove("Chest");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bChest);
+                                      _userSelectedBodyAreas.add("Chest");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
-                                buttonLabel: 'Chest',
-                                selectedBodyArea: BodyArea.bChest,
+                                buttonLabel: "Chest",
+                                selectedBodyArea: "Chest",
                               ),
 
                               /// Select abs button
@@ -226,20 +215,19 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                   setState(() {
                                     // Check whether bodyAreas array contains abs
                                     if (_userSelectedBodyAreas
-                                        .contains(BodyArea.bAbs)) {
+                                        .contains("Abs")) {
                                       // If it is true, remove abs from the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .remove(BodyArea.bAbs);
+                                      _userSelectedBodyAreas.remove("Abs");
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add(BodyArea.bAbs);
+                                      _userSelectedBodyAreas.add("Abs");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
-                                buttonLabel: 'Abs',
-                                selectedBodyArea: BodyArea.bAbs,
+                                buttonLabel: "Abs",
+                                selectedBodyArea: "Abs",
                               ),
 
                               /// Select legs button
@@ -248,21 +236,19 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                   setState(() {
                                     // Check whether bodyAreas array contains legs
                                     if (_userSelectedBodyAreas
-                                        .contains(BodyArea.bLegs)) {
+                                        .contains("Legs")) {
                                       // If it is true, remove legs from array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .remove(BodyArea.bLegs);
+                                      _userSelectedBodyAreas.remove("Legs");
                                     } else {
                                       // If it false, add legs to the array when this button is clicked
-                                      _userSelectedBodyAreas
-                                          .add(BodyArea.bLegs);
+                                      _userSelectedBodyAreas.add("Legs");
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
                                 },
                                 array: _userSelectedBodyAreas,
-                                buttonLabel: 'Legs',
-                                selectedBodyArea: BodyArea.bLegs,
+                                buttonLabel: "Legs",
+                                selectedBodyArea: "Legs",
                               ),
                             ],
                           ),
@@ -331,8 +317,8 @@ class SelectBodyAreaButton extends StatelessWidget {
     required this.buttonLabel,
   });
 
-  final List<BodyArea> array;
-  final BodyArea selectedBodyArea;
+  final List<String> array;
+  final String selectedBodyArea;
   final String buttonLabel;
   final void Function()? onPressed;
 

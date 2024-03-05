@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
@@ -24,8 +23,8 @@ class CheckingPushUpsCapacity extends StatefulWidget {
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
-  final MainGoal userMainGoal;
+  final List<String> userSelectedBodyAreas;
+  final String userMainGoal;
 
   @override
   State<CheckingPushUpsCapacity> createState() =>
@@ -40,7 +39,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's push ups capacity
-  Capacity _userPushUpsCapacity = Capacity.cBeginner;
+  String _userPushUpsCapacity = "Beginner";
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -116,13 +115,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.cBeginner;
+                        _userPushUpsCapacity = "Beginner";
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.cBeginner,
-                    title: 'Beginner',
+                    selectedCapacity: "Beginner",
+                    title: "Beginner",
                     description: '0 - 5  Push-ups',
                   ),
 
@@ -133,13 +132,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.cIntermediate;
+                        _userPushUpsCapacity = "Intermediate";
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.cIntermediate,
-                    title: 'Intermediate',
+                    selectedCapacity: "Intermediate",
+                    title: "Intermediate",
                     description: '6 - 10  Push-ups',
                   ),
 
@@ -150,13 +149,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.cAdvanced;
+                        _userPushUpsCapacity = "Advanced";
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.cAdvanced,
-                    title: 'Advanced',
+                    selectedCapacity: "Advanced",
+                    title: "Advanced",
                     description: 'More than 10  Push-ups',
                   ),
 

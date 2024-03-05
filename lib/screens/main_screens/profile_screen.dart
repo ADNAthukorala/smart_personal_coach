@@ -6,7 +6,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -369,6 +368,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
           userWeightController.text = data['weight'].toString();
 
           String imageUrl = data['profilePicture'];
+
+          List<dynamic> fBA = data["focusedBodyAreas"];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -822,106 +823,103 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: kBlackThemeColor,
                 ),
                 title: const Text("Focused Body Areas"),
-                subtitle: Text(data['focusedBodyAreas']
-                    .toString()
-                    .split("[")
-                    .last
-                    .split("]")
-                    .first),
+                subtitle: Text(fBA.toString().split("[").last.split("]").first),
                 titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
                 ),
                 onTap: () {
-                  setState(() {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          backgroundColor: kRedThemeColor,
-                          icon: const Icon(
-                            Icons.warning_rounded,
-                            color: kWhiteThemeColor,
-                          ),
-                          title: const Text(
-                            "Are you sure?",
-                            style: TextStyle(color: kWhiteThemeColor),
-                          ),
-                          content: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Text(
-                                "If you change your focused body areas, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
-                                style: TextStyle(color: kWhiteThemeColor),
-                              ),
-                              TextFormField(
-                                controller: _focusedBodyAreasEmailController,
-                                style: const TextStyle(color: kWhiteThemeColor),
-                                cursorColor: kWhiteThemeColor,
-                                decoration: kMlwfTextFormFieldDecorations,
-                              ),
-                            ],
-                          ),
-                          actions: [
-                            /// Cancel button
-                            ElevatedButton(
-                              onPressed: () {
-                                _focusedBodyAreasEmailController.clear();
-                                Navigator.pop(context);
-                              },
-                              child: const Text(
-                                "Cancel",
-                                style: TextStyle(color: kRedThemeColor),
-                              ),
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your focused body areas, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
                             ),
-
-                            /// Ok button
-                            ElevatedButton(
-                              onPressed: () {
-                                if (_focusedBodyAreasEmailController.text
-                                        .trim() ==
-                                    loggedInUser.email) {
-                                  Navigator.pop(context);
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) =>
-                                             const UpdateBodyAreasSelectionScreen(
-                                              userSelectedBodyAreas: [],
-                                            ),
-                                      ));
-                                  _focusedBodyAreasEmailController.clear();
-                                } else {
-                                  showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return AlertDialog(
-                                        title: const Text("Wrong email!"),
-                                        content: const Text(
-                                            "The email entered doesn't match with your email address. Check back and try again!"),
-                                        actions: [
-                                          ElevatedButton(
-                                            onPressed: () {
-                                              Navigator.pop(context);
-                                            },
-                                            child: const Text("Try again"),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                }
-                              },
-                              child: const Text(
-                                "Continue",
-                                style: TextStyle(color: kRedThemeColor),
-                              ),
+                            TextFormField(
+                              controller: _focusedBodyAreasEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
                             ),
                           ],
-                        );
-                      },
-                    );
-                  });
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _focusedBodyAreasEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Ok button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_focusedBodyAreasEmailController.text
+                                      .trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          UpdateBodyAreasSelectionScreen(
+                                        loggedInUser: loggedInUser,
+                                        userSelectedBodyAreas: fBA
+                                            .map(
+                                                (element) => element.toString())
+                                            .toList(),
+                                      ),
+                                    ));
+                                _focusedBodyAreasEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 },
               ),
 
@@ -993,102 +991,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         /// Ok button
         ElevatedButton(
-          onPressed: () {
-            if (_mainGoalEmailController.text.trim() == loggedInUser.email) {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Select your Main Goal"),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        /// Option 01
-                        ElevatedButton(
-                          onPressed: data["mainGoal"] ==
-                                  MainGoal.mLoseWeight
-                                      .toString()
-                                      .split(".m")
-                                      .last
-                              ? null
-                              : () {
-                                  updateMainGoal(MainGoal.mLoseWeight
-                                      .toString()
-                                      .split(".m")
-                                      .last);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("Loose Weight"),
-                        ),
-
-                        /// Option 02
-                        ElevatedButton(
-                          onPressed: data["mainGoal"] ==
-                                  MainGoal.mBuildMuscles
-                                      .toString()
-                                      .split(".m")
-                                      .last
-                              ? null
-                              : () {
-                                  updateMainGoal(MainGoal.mBuildMuscles
-                                      .toString()
-                                      .split(".m")
-                                      .last);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("Build Muscles"),
-                        ),
-
-                        /// Option 03
-                        ElevatedButton(
-                          onPressed: data["mainGoal"] ==
-                                  MainGoal.mKeepFit.toString().split(".m").last
-                              ? null
-                              : () {
-                                  updateMainGoal(MainGoal.mKeepFit
-                                      .toString()
-                                      .split(".m")
-                                      .last);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("Keep Fit"),
-                        ),
-                      ],
-                    ),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Cancel"),
-                      ),
-                    ],
-                  );
-                },
-              );
-              _mainGoalEmailController.clear();
-            } else {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Wrong email!"),
-                    content: const Text(
-                        "The email entered doesn't match with your email address. Check back and try again!"),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Try again"),
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
-          },
+          onPressed: () {},
           child: const Text(
             "Continue",
             style: TextStyle(color: kRedThemeColor),
@@ -1141,99 +1044,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
         /// Ok button
         ElevatedButton(
-          onPressed: () {
-            if (_levelEmailController.text.trim() == loggedInUser.email) {
-              Navigator.pop(context);
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Select your Level"),
-                    content: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        /// Option 01
-                        ElevatedButton(
-                          onPressed: data["level"] ==
-                                  Level.lBeginner.toString().split(".l").last
-                              ? null
-                              : () {
-                                  updateLevel(Level.lBeginner
-                                      .toString()
-                                      .split(".l")
-                                      .last);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("Beginner"),
-                        ),
-
-                        /// Option 02
-                        ElevatedButton(
-                          onPressed: data["level"] ==
-                                  Level.lIntermediate
-                                      .toString()
-                                      .split(".l")
-                                      .last
-                              ? null
-                              : () {
-                                  updateLevel(Level.lIntermediate
-                                      .toString()
-                                      .split(".l")
-                                      .last);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("Intermediate"),
-                        ),
-
-                        /// Option 03
-                        ElevatedButton(
-                          onPressed: data["level"] ==
-                                  Level.lAdvanced.toString().split(".l").last
-                              ? null
-                              : () {
-                                  updateLevel(Level.lAdvanced
-                                      .toString()
-                                      .split(".l")
-                                      .last);
-                                  Navigator.pop(context);
-                                },
-                          child: const Text("Advanced"),
-                        ),
-                      ],
-                    ),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Cancel"),
-                      ),
-                    ],
-                  );
-                },
-              );
-              _levelEmailController.clear();
-            } else {
-              showDialog(
-                context: context,
-                builder: (context) {
-                  return AlertDialog(
-                    title: const Text("Wrong email!"),
-                    content: const Text(
-                        "The email entered doesn't match with your email address. Check back and try again!"),
-                    actions: [
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text("Try again"),
-                      ),
-                    ],
-                  );
-                },
-              );
-            }
-          },
+          onPressed: () {},
           child: const Text(
             "Continue",
             style: TextStyle(color: kRedThemeColor),

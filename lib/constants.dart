@@ -293,8 +293,8 @@ const kMlwfTextFormFieldDecorations = InputDecoration(
   hintText: "Enter your email",
   hintStyle: TextStyle(color: kWhiteThemeColor),
   border: UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
-  focusedBorder:
-      UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
+  focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: kWhiteThemeColor, width: 2.0)),
   enabledBorder:
       UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
 );

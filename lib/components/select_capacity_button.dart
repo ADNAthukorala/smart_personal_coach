@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/enums.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 /// Select Capacity Button
@@ -13,9 +12,9 @@ class SelectCapacityButton extends StatelessWidget {
     required this.onPressed,
   });
 
-  final Capacity
+  final String
       actualCapacity; // Declare a variable to store the actual capacity
-  final Capacity
+  final String
       selectedCapacity; // Declare a variable to store the button capacity
   final String title; // Declare variable to hold the button label
   final String description;
@@ -52,7 +51,6 @@ class SelectCapacityButton extends StatelessWidget {
               color: actualCapacity == selectedCapacity
                   ? kGreyThemeColor02
                   : kGreyThemeColor,
-              fontWeight: FontWeight.w700,
             ),
           ),
         ],
