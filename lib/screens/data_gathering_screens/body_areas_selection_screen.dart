@@ -135,12 +135,15 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                     } else {
                                       // If it false, these body areas should be added to the array
                                       _userSelectedBodyAreas.clear();
-                                      _userSelectedBodyAreas.add(BodyArea.bArms);
-                                      _userSelectedBodyAreas.add(BodyArea.bBack);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bArms);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bBack);
                                       _userSelectedBodyAreas
                                           .add(BodyArea.bChest);
                                       _userSelectedBodyAreas.add(BodyArea.bAbs);
-                                      _userSelectedBodyAreas.add(BodyArea.bLegs);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bLegs);
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
@@ -160,7 +163,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                           .remove(BodyArea.bArms);
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add(BodyArea.bArms);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bArms);
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
@@ -182,7 +186,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                           .remove(BodyArea.bBack);
                                     } else {
                                       // If it false, add arms to the array when this button is clicked
-                                      _userSelectedBodyAreas.add(BodyArea.bBack);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bBack);
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
@@ -249,7 +254,8 @@ class _BodyAreasSelectionScreenState extends State<BodyAreasSelectionScreen> {
                                           .remove(BodyArea.bLegs);
                                     } else {
                                       // If it false, add legs to the array when this button is clicked
-                                      _userSelectedBodyAreas.add(BodyArea.bLegs);
+                                      _userSelectedBodyAreas
+                                          .add(BodyArea.bLegs);
                                     }
                                     // print(_userSelectedBodyAreas);
                                   });
