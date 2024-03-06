@@ -34,7 +34,7 @@ class _MainGoalScreenState extends State<MainGoalScreen> {
   late User loggedInUser;
 
   // Declare a variable to store the user's main goal
-  String _userMainGoal = "Loose Weight";
+  String _userMainGoal = "Lose Weight";
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
