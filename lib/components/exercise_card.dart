@@ -1,6 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class ExerciseCard extends StatelessWidget {
@@ -88,6 +90,90 @@ class ExerciseCard extends StatelessWidget {
                     Text(
                       data['introduction'],
                       style: kExerciseCardDescriptionTextStyle,
+                    ),
+                  ],
+                ),
+
+                /// Adding space
+                const SizedBox(height: 12.0),
+
+                /// Difficulty
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Title
+                    const Text(
+                      "Difficulty",
+                      style: kExerciseCardSubtitleTextStyle,
+                    ),
+                    SizedBox(
+                      height: 50.0,
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: kBlackThemeColor),
+                                color: data["difficulty"] == "Easy"
+                                    ? kAppThemeColor
+                                    : kWhiteThemeColor,
+                              ),
+                              child: Text(
+                                "Easy",
+                                style:
+                                    kExerciseCardDescriptionTextStyle.copyWith(
+                                  color: data["difficulty"] == "Easy"
+                                      ? kWhiteThemeColor
+                                      : kGreyThemeColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: const Border.symmetric(
+                                    horizontal:
+                                        BorderSide(color: kBlackThemeColor)),
+                                color: data["difficulty"] == "Moderate"
+                                    ? kAppThemeColor
+                                    : kWhiteThemeColor,
+                              ),
+                              child: Text(
+                                "Moderate",
+                                style:
+                                    kExerciseCardDescriptionTextStyle.copyWith(
+                                  color: data["difficulty"] == "Moderate"
+                                      ? kWhiteThemeColor
+                                      : kGreyThemeColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                          Expanded(
+                            child: Container(
+                              alignment: Alignment.center,
+                              decoration: BoxDecoration(
+                                border: Border.all(color: kBlackThemeColor),
+                                color: data["difficulty"] == "Challenging"
+                                    ? kAppThemeColor
+                                    : kWhiteThemeColor,
+                              ),
+                              child: Text(
+                                "Challenging",
+                                style:
+                                    kExerciseCardDescriptionTextStyle.copyWith(
+                                  color: data["difficulty"] == "Challenging"
+                                      ? kWhiteThemeColor
+                                      : kGreyThemeColor,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ],
                 ),
