@@ -6,15 +6,15 @@ import 'package:smart_personal_coach/screens/exercises_screens/back_exercises_sc
 import 'package:smart_personal_coach/screens/exercises_screens/chest_exercises_screen.dart';
 import 'package:smart_personal_coach/screens/exercises_screens/legs_exercises_screen.dart';
 
-/// Exercises screen
-class ExercisesScreen extends StatefulWidget {
-  const ExercisesScreen({super.key});
+/// Explore exercises screen
+class ExploreExercisesScreen extends StatefulWidget {
+  const ExploreExercisesScreen({super.key});
 
   @override
-  State<ExercisesScreen> createState() => _ExercisesScreenState();
+  State<ExploreExercisesScreen> createState() => _ExploreExercisesScreenState();
 }
 
-class _ExercisesScreenState extends State<ExercisesScreen> {
+class _ExploreExercisesScreenState extends State<ExploreExercisesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

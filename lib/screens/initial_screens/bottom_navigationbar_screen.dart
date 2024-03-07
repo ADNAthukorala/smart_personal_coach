@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
-import 'package:smart_personal_coach/screens/main_screens/exercises_screen.dart';
+import 'package:smart_personal_coach/screens/main_screens/explore_exercises_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/global_chat_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/profile_screen.dart';
@@ -46,7 +46,7 @@ class _BottomNavigationBarScreenScreenState
   /// List of screens to navigate between
   final List<Widget> _screens = [
     const HomeScreen(),
-    const ExercisesScreen(),
+    const ExploreExercisesScreen(),
     const GlobalChatScreen(),
     const UserReportScreen(),
     const ProfileScreen(),
@@ -158,42 +158,42 @@ class _BottomNavigationBarScreenScreenState
               ),
             ),
 
-            /// Exercises button
+            /// Explore button
             NavigationDestination(
               // If the buttons is clicked, index = 1
               icon: Icon(
                 Icons.fitness_center_rounded,
                 color: kBlackThemeColor,
               ),
-              label: 'Exercises',
+              label: 'Explore',
               selectedIcon: Icon(
                 Icons.fitness_center_rounded,
                 color: kWhiteThemeColor,
               ),
             ),
 
-            /// Global Chat button
+            /// Community button
             NavigationDestination(
               // If the buttons is clicked, index = 2
               icon: Icon(
                 Icons.group_rounded,
                 color: kBlackThemeColor,
               ),
-              label: 'Global Chat',
+              label: 'Community',
               selectedIcon: Icon(
                 Icons.group_rounded,
                 color: kWhiteThemeColor,
               ),
             ),
 
-            /// User Report button
+            /// Report button
             NavigationDestination(
               // If the buttons is clicked, index = 3
               icon: Icon(
                 Icons.bar_chart_rounded,
                 color: kBlackThemeColor,
               ),
-              label: 'User Report',
+              label: 'Report',
               selectedIcon: Icon(
                 Icons.bar_chart_rounded,
                 color: kWhiteThemeColor,
