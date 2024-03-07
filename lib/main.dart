@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       "images/back.jpg",
       "images/chest.jpg",
       "images/legs.jpg",
-      "images/meditation.jpg",
       "images/signin-screen-image.jpg",
       "images/signup-screen-image.jpg",
       "images/theme-image.jpg",
