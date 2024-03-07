@@ -252,6 +252,7 @@ const kTextButtonStyle = ButtonStyle(
 
 /// Button styles for exercises screen buttons
 const kExercisesScreenButton = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size.fromHeight(150.0)),
   padding: MaterialStatePropertyAll(EdgeInsets.zero),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(

@@ -5,7 +5,6 @@ import 'package:smart_personal_coach/screens/exercises_screens/arms_exercises_sc
 import 'package:smart_personal_coach/screens/exercises_screens/back_exercises_screen.dart';
 import 'package:smart_personal_coach/screens/exercises_screens/chest_exercises_screen.dart';
 import 'package:smart_personal_coach/screens/exercises_screens/legs_exercises_screen.dart';
-import 'package:smart_personal_coach/screens/exercises_screens/meditation_exercises_screen.dart';
 
 /// Exercises screen
 class ExercisesScreen extends StatefulWidget {
@@ -29,11 +28,8 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
       ),
 
       /// Body of the screen
-      body: GridView.count(
+      body: ListView(
         padding: const EdgeInsets.all(kPadding16),
-        crossAxisCount: 2,
-        mainAxisSpacing: 10.0,
-        crossAxisSpacing: 10.0,
         primary: false,
         children: [
           /// Abs button
@@ -50,6 +46,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             },
           ),
 
+          /// Adding space
+          const SizedBox(height: 10.0),
+
           /// Arms button
           ButtonWithBackgroundImageAndText(
             image: "images/arms.jpg",
@@ -63,6 +62,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
               );
             },
           ),
+
+          /// Adding space
+          const SizedBox(height: 10.0),
 
           /// Back button
           ButtonWithBackgroundImageAndText(
@@ -78,6 +80,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             },
           ),
 
+          /// Adding space
+          const SizedBox(height: 10.0),
+
           /// Chest button
           ButtonWithBackgroundImageAndText(
             image: "images/chest.jpg",
@@ -92,6 +97,9 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
             },
           ),
 
+          /// Adding space
+          const SizedBox(height: 10.0),
+
           /// Legs button
           ButtonWithBackgroundImageAndText(
             image: "images/legs.jpg",
@@ -101,20 +109,6 @@ class _ExercisesScreenState extends State<ExercisesScreen> {
                 context,
                 MaterialPageRoute(
                   builder: (context) => const LegsExercisesScreen(),
-                ),
-              );
-            },
-          ),
-
-          /// Meditation button
-          ButtonWithBackgroundImageAndText(
-            image: "images/meditation.jpg",
-            text: "MED",
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => const MeditationExercisesScreen(),
                 ),
               );
             },
@@ -143,7 +137,6 @@ class ButtonWithBackgroundImageAndText extends StatelessWidget {
       style: kExercisesScreenButton,
       onPressed: onPressed,
       child: Stack(
-        alignment: Alignment.center,
         children: [
           Container(
             decoration: BoxDecoration(
@@ -154,9 +147,15 @@ class ButtonWithBackgroundImageAndText extends StatelessWidget {
               borderRadius: BorderRadius.circular(kRadius16),
             ),
           ),
-          Text(
-            text,
-            style: kExercisesScreenButtonTextStyle,
+          Padding(
+            padding: const EdgeInsets.only(left: kPadding8),
+            child: Container(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                text,
+                style: kExercisesScreenButtonTextStyle,
+              ),
+            ),
           ),
         ],
       ),
