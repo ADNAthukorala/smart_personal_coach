@@ -6,22 +6,22 @@ import 'package:smart_personal_coach/screens/exercises_screens/back_exercises_sc
 import 'package:smart_personal_coach/screens/exercises_screens/chest_exercises_screen.dart';
 import 'package:smart_personal_coach/screens/exercises_screens/legs_exercises_screen.dart';
 
-/// Explore exercises screen
-class ExploreExercisesScreen extends StatefulWidget {
-  const ExploreExercisesScreen({super.key});
+/// Explore screen
+class ExploreScreen extends StatefulWidget {
+  const ExploreScreen({super.key});
 
   @override
-  State<ExploreExercisesScreen> createState() => _ExploreExercisesScreenState();
+  State<ExploreScreen> createState() => _ExploreScreenState();
 }
 
-class _ExploreExercisesScreenState extends State<ExploreExercisesScreen> {
+class _ExploreScreenState extends State<ExploreScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       /// Appbar
       appBar: AppBar(
         title: const Text(
-          'EXERCISES',
+          'EXPLORE',
           style: kAppBarTextStyle,
         ),
         automaticallyImplyLeading: false,
@@ -153,7 +153,7 @@ class ButtonWithBackgroundImageAndText extends StatelessWidget {
               alignment: Alignment.centerLeft,
               child: Text(
                 text,
-                style: kExercisesScreenButtonTextStyle,
+                style: kExploreScreenButtonTextStyle,
               ),
             ),
           ),

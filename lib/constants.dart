@@ -148,8 +148,8 @@ const kDayButtonTextStyle = TextStyle(
   color: kAppThemeColor,
 );
 
-/// Text styles for exercises screen buttons
-const kExercisesScreenButtonTextStyle = TextStyle(
+/// Text styles for explore screen buttons
+const kExploreScreenButtonTextStyle = TextStyle(
   fontSize: 36,
   fontWeight: FontWeight.w900,
   color: kWhiteThemeColor,

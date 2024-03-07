@@ -1,26 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-class UserReportScreen extends StatefulWidget {
-  const UserReportScreen({super.key});
+class ReportScreen extends StatefulWidget {
+  const ReportScreen({super.key});
 
   @override
-  State<UserReportScreen> createState() => _UserReportScreenState();
+  State<ReportScreen> createState() => _ReportScreenState();
 }
 
-class _UserReportScreenState extends State<UserReportScreen> {
+class _ReportScreenState extends State<ReportScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'USER REPORT',
+          'REPORT',
           style: kAppBarTextStyle,
         ),
         automaticallyImplyLeading: false,
       ),
       body: const Center(
-        child: Text('User Report'),
+        child: Text('Report'),
       ),
     );
   }
