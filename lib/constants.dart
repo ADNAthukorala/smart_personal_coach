@@ -250,8 +250,8 @@ const kTextButtonStyle = ButtonStyle(
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
 );
 
-/// Button styles for exercises screen buttons
-const kExercisesScreenButton = ButtonStyle(
+/// Button styles for explore screen buttons
+const kExploreScreenButton = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size.fromHeight(150.0)),
   padding: MaterialStatePropertyAll(EdgeInsets.zero),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
