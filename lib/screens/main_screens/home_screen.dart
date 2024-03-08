@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/app_brain/workout_plan_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -84,36 +83,12 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisSpacing: 16,
             primary: false,
             crossAxisCount: 1,
-            children: const [
-              WorkoutPlanCard(
-                collectionName: "arms_exercises",
-                title: "Arms Exercises",
-                randomExercise1: 4,
-                randomExercise2: 6,
-              ),
-              WorkoutPlanCard(
-                collectionName: "abs_exercises",
-                title: "Abs Exercises",
-                randomExercise1: 4,
-                randomExercise2: 6,
-              ),
-              WorkoutPlanCard(
-                collectionName: "back_exercises",
-                title: "Back Exercises",
-                randomExercise1: 4,
-                randomExercise2: 6,
-              ),
-              WorkoutPlanCard(
-                collectionName: "chest_exercises",
-                title: "Chest Exercises",
-                randomExercise1: 4,
-                randomExercise2: 6,
-              ),
-              WorkoutPlanCard(
-                collectionName: "legs_exercises",
-                title: "Legs Exercises",
-                randomExercise1: 4,
-                randomExercise2: 6,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+
+                },
+                child: const Text("Click me"),
               ),
             ],
           );
