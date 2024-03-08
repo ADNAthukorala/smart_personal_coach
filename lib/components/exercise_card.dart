@@ -59,7 +59,7 @@ class ExerciseCard extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircularProgressIndicator(),
-                        SizedBox(height: 4.0),
+                        SizedBox(height: 8.0),
                         Text("Loading animation...")
                       ],
                     ),
@@ -273,7 +273,7 @@ class ExerciseCard extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             CircularProgressIndicator(),
-                            SizedBox(height: 4.0),
+                            SizedBox(height: 8.0),
                             Text("Loading image...")
                           ],
                         ),
