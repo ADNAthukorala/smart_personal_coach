@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/app_brain/app_brain.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -86,7 +87,11 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-
+                  getRandomExercises(
+                    loggedInUserEmail: loggedInUser.email,
+                    collectionName: "abs_exercises",
+                    typeOfExercise: "absExercises",
+                  );
                 },
                 child: const Text("Click me"),
               ),
