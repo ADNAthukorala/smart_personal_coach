@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:smart_personal_coach/app_brain/app_brain.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
@@ -72,6 +73,48 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
           'weeklyGoal': _userSelectedDays,
         },
       );
+
+      /// Generate the workout plan
+      if (widget.userSelectedBodyAreas.contains("Abs")) {
+        getRandomExercises(
+          loggedInUserEmail: loggedInUser.email,
+          collectionName: "abs_exercises",
+          typeOfExercise: "absExercises",
+        );
+      }
+
+      if (widget.userSelectedBodyAreas.contains("Arms")) {
+        getRandomExercises(
+          loggedInUserEmail: loggedInUser.email,
+          collectionName: "arms_exercises",
+          typeOfExercise: "armsExercises",
+        );
+      }
+
+      if (widget.userSelectedBodyAreas.contains("Back")) {
+        getRandomExercises(
+          loggedInUserEmail: loggedInUser.email,
+          collectionName: "back_exercises",
+          typeOfExercise: "backExercises",
+        );
+      }
+
+      if (widget.userSelectedBodyAreas.contains("Chest")) {
+        getRandomExercises(
+          loggedInUserEmail: loggedInUser.email,
+          collectionName: "chest_exercises",
+          typeOfExercise: "chestExercises",
+        );
+      }
+
+      if (widget.userSelectedBodyAreas.contains("Legs")) {
+        getRandomExercises(
+          loggedInUserEmail: loggedInUser.email,
+          collectionName: "legs_exercises",
+          typeOfExercise: "legsExercises",
+        );
+      }
+
       if (!mounted) return;
       Navigator.push(
         context,
