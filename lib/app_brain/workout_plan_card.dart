@@ -1,21 +1,21 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/exercises_list_tile.dart';
+import 'package:smart_personal_coach/app_brain/workout_plan_card_list_tile.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class WorkoutPlanCard extends StatelessWidget {
   const WorkoutPlanCard({
     super.key,
-    required this.randomExercise1,
-    required this.randomExercise2,
     required this.collectionName,
     required this.title,
+    required this.exercise1,
+    required this.exercise2,
   });
 
   final String collectionName;
+  final String exercise1;
+  final String exercise2;
   final String title;
-  final int randomExercise1;
-  final int randomExercise2;
 
   @override
   Widget build(BuildContext context) {
@@ -33,9 +33,6 @@ class WorkoutPlanCard extends StatelessWidget {
         if (!snapshot.hasData) {
           return const Center(child: Text("No data available"));
         }
-
-        DocumentSnapshot document1 = snapshot.data!.docs[randomExercise1];
-        DocumentSnapshot document2 = snapshot.data!.docs[randomExercise2];
 
         return SizedBox(
           height: 200.0,
@@ -68,14 +65,14 @@ class WorkoutPlanCard extends StatelessWidget {
                     padding: const EdgeInsets.all(kPadding8),
                     primary: false,
                     children: [
-                      ExercisesListTile(
+                      WorkoutPlanCardListTile(
                         collectionName: collectionName,
-                        document: document1,
+                        docName: exercise1,
                       ),
                       const SizedBox(height: 8.0),
-                      ExercisesListTile(
+                      WorkoutPlanCardListTile(
                         collectionName: collectionName,
-                        document: document2,
+                        docName: exercise2,
                       ),
                     ],
                   ),
