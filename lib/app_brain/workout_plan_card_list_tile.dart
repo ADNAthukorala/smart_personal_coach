@@ -8,94 +8,122 @@ class WorkoutPlanCardListTile extends StatelessWidget {
   const WorkoutPlanCardListTile({
     super.key,
     required this.collectionName,
-    required this.document,
+    required this.docName,
   });
 
   final String collectionName;
-  final DocumentSnapshot<Object?> document;
+  final String docName;
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        showDialog(
-          context: context,
-          builder: (context) {
-            // When clicked on the workout plan card list tile, return an exercise card
-            return ExerciseCard(
-              collectionName: collectionName,
-              docName: document["docName"],
-            );
-          },
-        );
-      },
-      // Adding border and color to the workout plan card list tile
-      child: Container(
-        decoration: BoxDecoration(
-            color: kAppThemeColor,
-            borderRadius: BorderRadius.circular(kRadius16),
-            border: Border.all(color: kAppThemeColor, width: 2.0)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            /// Name of the exercise
-            Expanded(
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: kAppThemeColor,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(kRadius16),
-                    bottomLeft: Radius.circular(kRadius16),
-                  ),
-                ),
-                height: 100,
-                alignment: Alignment.centerLeft,
-                padding: const EdgeInsets.all(kPadding8),
-                child: Text(
-                  document["name"],
-                  style: kExercisesListTileTextStyle,
-                ),
-              ),
-            ),
+    return StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection(collectionName)
+            .doc(docName)
+            .snapshots(),
+        builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
+          if (snapshot.hasError) {
+            return const Text('Something went wrong');
+          }
 
-            /// Animation container
-            CachedNetworkImage(
-              imageUrl: document["animationImage"],
-              imageBuilder: (context, imageProvider) => Container(
-                decoration: BoxDecoration(
-                  color: kWhiteThemeColor,
-                  image: DecorationImage(
-                    image: imageProvider,
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const Text(
+              "Loading...",
+              style: TextStyle(color: kAppThemeColor),
+            );
+          }
+
+          if (!snapshot.hasData) {
+            return const Text('No data available');
+          }
+
+          // Access the data from the snapshot
+          Map<String, dynamic> data =
+              snapshot.data!.data() as Map<String, dynamic>;
+
+          return GestureDetector(
+            onTap: () {
+              showDialog(
+                context: context,
+                builder: (context) {
+                  // When clicked on the workout plan card list tile, return an exercise card
+                  return ExerciseCard(
+                    collectionName: collectionName,
+                    docName: data["docName"],
+                  );
+                },
+              );
+            },
+            // Adding border and color to the workout plan card list tile
+            child: Container(
+              decoration: BoxDecoration(
+                  color: kAppThemeColor,
+                  borderRadius: BorderRadius.circular(kRadius16),
+                  border: Border.all(color: kAppThemeColor, width: 2.0)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  /// Name of the exercise
+                  Expanded(
+                    child: Container(
+                      decoration: const BoxDecoration(
+                        color: kAppThemeColor,
+                        borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(kRadius16),
+                          bottomLeft: Radius.circular(kRadius16),
+                        ),
+                      ),
+                      height: 100,
+                      alignment: Alignment.centerLeft,
+                      padding: const EdgeInsets.all(kPadding8),
+                      child: Text(
+                        data["name"],
+                        style: kExercisesListTileTextStyle,
+                      ),
+                    ),
                   ),
-                  borderRadius:
-                      const BorderRadius.all(Radius.circular(kRadius16)),
-                ),
+
+                  /// Animation container
+                  CachedNetworkImage(
+                    imageUrl: data["animationImage"],
+                    imageBuilder: (context, imageProvider) => Container(
+                      decoration: BoxDecoration(
+                        color: kWhiteThemeColor,
+                        image: DecorationImage(
+                          image: imageProvider,
+                        ),
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(kRadius16)),
+                      ),
+                    ),
+                    placeholder: (context, url) => Container(
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: kWhiteThemeColor,
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(kRadius16)),
+                      ),
+                      child: const CircularProgressIndicator(
+                        strokeAlign: -6,
+                        strokeWidth: 2,
+                      ),
+                    ),
+                    errorWidget: (context, url, error) => Container(
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: kWhiteThemeColor,
+                        borderRadius:
+                            BorderRadius.all(Radius.circular(kRadius16)),
+                      ),
+                      child: const Icon(Icons.error_rounded),
+                    ),
+                    height: 100,
+                    width: 100,
+                  ),
+                ],
               ),
-              placeholder: (context, url) => Container(
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: kWhiteThemeColor,
-                  borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-                ),
-                child: const CircularProgressIndicator(
-                  strokeAlign: -6,
-                  strokeWidth: 2,
-                ),
-              ),
-              errorWidget: (context, url, error) => Container(
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: kWhiteThemeColor,
-                  borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-                ),
-                child: const Icon(Icons.error_rounded),
-              ),
-              height: 100,
-              width: 100,
             ),
-          ],
-        ),
-      ),
-    );
+          );
+        });
   }
 }
