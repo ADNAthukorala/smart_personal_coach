@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/app_brain/app_brain.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -79,19 +78,13 @@ class _HomeScreenState extends State<HomeScreen> {
           int weeklyGoal = data["weeklyGoal"];
           List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
 
-          return GridView.count(
+          return ListView(
             padding: const EdgeInsets.all(kPadding16),
-            mainAxisSpacing: 16,
             primary: false,
-            crossAxisCount: 1,
             children: [
               ElevatedButton(
                 onPressed: () {
-                  getRandomExercises(
-                    loggedInUserEmail: loggedInUser.email,
-                    collectionName: "abs_exercises",
-                    typeOfExercise: "absExercises",
-                  );
+
                 },
                 child: const Text("Click me"),
               ),

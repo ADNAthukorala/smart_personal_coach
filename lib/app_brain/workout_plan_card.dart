@@ -37,48 +37,51 @@ class WorkoutPlanCard extends StatelessWidget {
         DocumentSnapshot document1 = snapshot.data!.docs[randomExercise1];
         DocumentSnapshot document2 = snapshot.data!.docs[randomExercise2];
 
-        return Card(
-          shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
-          child: Column(
-            children: [
-              Container(
-                alignment: Alignment.center,
-                decoration: const BoxDecoration(
-                  color: kAppThemeColor,
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(kRadius16),
-                      topRight: Radius.circular(kRadius16)),
-                ),
-                width: double.maxFinite,
-                height: 50.0,
-                child: Text(
-                  title,
-                  style: const TextStyle(
-                    color: kWhiteThemeColor,
-                    fontSize: 16,
-                    fontWeight: FontWeight.w700,
+        return SizedBox(
+          height: 200.0,
+          child: Card(
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+            child: Column(
+              children: [
+                Container(
+                  alignment: Alignment.center,
+                  decoration: const BoxDecoration(
+                    color: kAppThemeColor,
+                    borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(kRadius16),
+                        topRight: Radius.circular(kRadius16)),
+                  ),
+                  width: double.maxFinite,
+                  height: 50.0,
+                  child: Text(
+                    title,
+                    style: const TextStyle(
+                      color: kWhiteThemeColor,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
                   ),
                 ),
-              ),
-              Expanded(
-                child: ListView(
-                  padding: const EdgeInsets.all(kPadding8),
-                  primary: false,
-                  children: [
-                    ExercisesListTile(
-                      collectionName: collectionName,
-                      document: document1,
-                    ),
-                    const SizedBox(height: 8.0),
-                    ExercisesListTile(
-                      collectionName: collectionName,
-                      document: document2,
-                    ),
-                  ],
+                Expanded(
+                  child: ListView(
+                    padding: const EdgeInsets.all(kPadding8),
+                    primary: false,
+                    children: [
+                      ExercisesListTile(
+                        collectionName: collectionName,
+                        document: document1,
+                      ),
+                      const SizedBox(height: 8.0),
+                      ExercisesListTile(
+                        collectionName: collectionName,
+                        document: document2,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         );
       },
