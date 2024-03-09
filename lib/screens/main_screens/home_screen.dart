@@ -82,12 +82,7 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(kPadding16),
             primary: false,
             children: [
-              ElevatedButton(
-                onPressed: () {
 
-                },
-                child: const Text("Click me"),
-              ),
             ],
           );
         },
