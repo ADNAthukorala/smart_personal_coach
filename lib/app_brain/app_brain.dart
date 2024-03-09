@@ -43,3 +43,47 @@ Future<void> getRandomExercises(
     print(e);
   }
 }
+
+Future<void> generatingTheWorkoutPlan(
+    {required String? loggedInUserEmail,
+    required List<String> userSelectedBodyAreas}) async {
+  if (userSelectedBodyAreas.contains("Abs")) {
+    await getRandomExercises(
+      loggedInUserEmail: loggedInUserEmail,
+      collectionName: "abs_exercises",
+      typeOfExercise: "absExercises",
+    );
+  }
+
+  if (userSelectedBodyAreas.contains("Arms")) {
+    await getRandomExercises(
+      loggedInUserEmail: loggedInUserEmail,
+      collectionName: "arms_exercises",
+      typeOfExercise: "armsExercises",
+    );
+  }
+
+  if (userSelectedBodyAreas.contains("Back")) {
+    await getRandomExercises(
+      loggedInUserEmail: loggedInUserEmail,
+      collectionName: "back_exercises",
+      typeOfExercise: "backExercises",
+    );
+  }
+
+  if (userSelectedBodyAreas.contains("Chest")) {
+    await getRandomExercises(
+      loggedInUserEmail: loggedInUserEmail,
+      collectionName: "chest_exercises",
+      typeOfExercise: "chestExercises",
+    );
+  }
+
+  if (userSelectedBodyAreas.contains("Legs")) {
+    await getRandomExercises(
+      loggedInUserEmail: loggedInUserEmail,
+      collectionName: "legs_exercises",
+      typeOfExercise: "legsExercises",
+    );
+  }
+}

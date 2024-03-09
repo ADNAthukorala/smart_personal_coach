@@ -75,45 +75,9 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       );
 
       /// Generate the workout plan
-      if (widget.userSelectedBodyAreas.contains("Abs")) {
-        getRandomExercises(
+      await generatingTheWorkoutPlan(
           loggedInUserEmail: loggedInUser.email,
-          collectionName: "abs_exercises",
-          typeOfExercise: "absExercises",
-        );
-      }
-
-      if (widget.userSelectedBodyAreas.contains("Arms")) {
-        getRandomExercises(
-          loggedInUserEmail: loggedInUser.email,
-          collectionName: "arms_exercises",
-          typeOfExercise: "armsExercises",
-        );
-      }
-
-      if (widget.userSelectedBodyAreas.contains("Back")) {
-        getRandomExercises(
-          loggedInUserEmail: loggedInUser.email,
-          collectionName: "back_exercises",
-          typeOfExercise: "backExercises",
-        );
-      }
-
-      if (widget.userSelectedBodyAreas.contains("Chest")) {
-        getRandomExercises(
-          loggedInUserEmail: loggedInUser.email,
-          collectionName: "chest_exercises",
-          typeOfExercise: "chestExercises",
-        );
-      }
-
-      if (widget.userSelectedBodyAreas.contains("Legs")) {
-        getRandomExercises(
-          loggedInUserEmail: loggedInUser.email,
-          collectionName: "legs_exercises",
-          typeOfExercise: "legsExercises",
-        );
-      }
+          userSelectedBodyAreas: widget.userSelectedBodyAreas);
 
       if (!mounted) return;
       Navigator.push(
