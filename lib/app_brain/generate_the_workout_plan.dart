@@ -3,32 +3,35 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Select exercises for Beginners
 Future<void> selectExercisesForBeginners(
-    {required String collectionName,
+    {required String nameOfTheExercisesCollection,
     required String? loggedInUserEmail,
-    required String typeOfExercise}) async {
+    required String typeOfExercises}) async {
   final firestore = FirebaseFirestore.instance;
-  final collection = firestore.collection(collectionName);
-  final targetCollection = firestore.collection("users");
+  final collection = firestore.collection(nameOfTheExercisesCollection);
+  final usersCollection = firestore.collection("users");
 
   // List to store selected exercises
   List<String> selectedExercisesList = [];
 
   try {
     QuerySnapshot querySnapshot = await collection.get();
+    // List to store all the exercises in the collection
     List<DocumentSnapshot> allExercises = querySnapshot.docs;
 
+    // If the total of all exercises is greater than or equal to 2, do the following task
     if (allExercises.length >= 2) {
-      // Shuffle the documents to get a random order
+      // Shuffle the all exercises list to get a random order
       allExercises.shuffle();
 
+      // Grab two random exercises from the All Exercises list and add them to the Selected Exercises list
       for (DocumentSnapshot randomExercise in allExercises) {
         // Check if the random exercise meets the condition
         if (randomExercise["difficulty"] == "Easy") {
           if (!selectedExercisesList.contains(randomExercise.id)) {
-            // Add the random exercise to the selected exercises list
+            // Add the random exercise to the Selected Exercises list
             selectedExercisesList.add(randomExercise.id);
           }
-          // If the selected exercises length is 2, stop the loop
+          // If the Selected Exercises length is 2, stop the loop
           if (selectedExercisesList.length == 2) {
             break;
           }
@@ -36,9 +39,9 @@ Future<void> selectExercisesForBeginners(
       }
 
       // Add the selected exercises list to the workout plan
-      await targetCollection.doc(loggedInUserEmail).set(
+      await usersCollection.doc(loggedInUserEmail).set(
         {
-          typeOfExercise: selectedExercisesList,
+          typeOfExercises: selectedExercisesList,
         },
         SetOptions(merge: true),
       );
@@ -158,8 +161,8 @@ Future<void> generateBeginnerWorkoutPlan(
   if (focusedBodyAreas.contains("Abs")) {
     await selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "abs_exercises",
-      typeOfExercise: "absExercises",
+      nameOfTheExercisesCollection: "abs_exercises",
+      typeOfExercises: "absExercises",
     );
   }
 
@@ -167,8 +170,8 @@ Future<void> generateBeginnerWorkoutPlan(
   if (focusedBodyAreas.contains("Arms")) {
     await selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "arms_exercises",
-      typeOfExercise: "armsExercises",
+      nameOfTheExercisesCollection: "arms_exercises",
+      typeOfExercises: "armsExercises",
     );
   }
 
@@ -176,8 +179,8 @@ Future<void> generateBeginnerWorkoutPlan(
   if (focusedBodyAreas.contains("Back")) {
     await selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "back_exercises",
-      typeOfExercise: "backExercises",
+      nameOfTheExercisesCollection: "back_exercises",
+      typeOfExercises: "backExercises",
     );
   }
 
@@ -185,8 +188,8 @@ Future<void> generateBeginnerWorkoutPlan(
   if (focusedBodyAreas.contains("Chest")) {
     await selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "chest_exercises",
-      typeOfExercise: "chestExercises",
+      nameOfTheExercisesCollection: "chest_exercises",
+      typeOfExercises: "chestExercises",
     );
   }
 
@@ -194,8 +197,8 @@ Future<void> generateBeginnerWorkoutPlan(
   if (focusedBodyAreas.contains("Legs")) {
     await selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "legs_exercises",
-      typeOfExercise: "legsExercises",
+      nameOfTheExercisesCollection: "legs_exercises",
+      typeOfExercises: "legsExercises",
     );
   }
 }
