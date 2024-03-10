@@ -277,28 +277,81 @@ Future<void> generateAdvancedWorkoutPlan(
   }
 }
 
+Future<void> deleteExercisesFromWorkoutPlan(
+    {required String? loggedInUserEmail,
+    required String typeOfExercise}) async {
+  try {
+    // Get reference to the document
+    DocumentReference docRef =
+        FirebaseFirestore.instance.collection("users").doc(loggedInUserEmail);
+
+    // Update the document
+    await docRef.update({
+      typeOfExercise: FieldValue.delete(),
+    });
+
+    print(
+        'Field $typeOfExercise deleted successfully from document $loggedInUserEmail');
+  } catch (e) {
+    print('Error deleting field: $e');
+  }
+}
+
 Future<void> generateTheWorkoutPlan(
     {required String userLevel,
     required String? loggedInUserEmail,
     required List<String> focusedBodyAreas}) async {
-  if (userLevel == "Beginner") {
-    await generateBeginnerWorkoutPlan(
-      loggedInUserEmail: loggedInUserEmail,
-      focusedBodyAreas: focusedBodyAreas,
-    );
-  }
+  try {
+    if (userLevel == "Beginner") {
+      await generateBeginnerWorkoutPlan(
+        loggedInUserEmail: loggedInUserEmail,
+        focusedBodyAreas: focusedBodyAreas,
+      );
+    }
 
-  if (userLevel == "Intermediate") {
-    await generateIntermediateWorkoutPlan(
-      loggedInUserEmail: loggedInUserEmail,
-      focusedBodyAreas: focusedBodyAreas,
-    );
-  }
+    if (userLevel == "Intermediate") {
+      await generateIntermediateWorkoutPlan(
+        loggedInUserEmail: loggedInUserEmail,
+        focusedBodyAreas: focusedBodyAreas,
+      );
+    }
 
-  if (userLevel == "Advanced") {
-    await generateAdvancedWorkoutPlan(
-      loggedInUserEmail: loggedInUserEmail,
-      focusedBodyAreas: focusedBodyAreas,
-    );
+    if (userLevel == "Advanced") {
+      await generateAdvancedWorkoutPlan(
+        loggedInUserEmail: loggedInUserEmail,
+        focusedBodyAreas: focusedBodyAreas,
+      );
+    }
+
+    if (!focusedBodyAreas.contains("Abs")) {
+      await deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail, typeOfExercise: "absExercises");
+    }
+
+    if (!focusedBodyAreas.contains("Arms")) {
+      await deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail,
+          typeOfExercise: "armsExercises");
+    }
+
+    if (!focusedBodyAreas.contains("Back")) {
+      await deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail,
+          typeOfExercise: "backExercises");
+    }
+
+    if (!focusedBodyAreas.contains("Chest")) {
+      await deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail,
+          typeOfExercise: "chestExercises");
+    }
+
+    if (!focusedBodyAreas.contains("Legs")) {
+      await deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail,
+          typeOfExercise: "legsExercises");
+    }
+  } catch (e) {
+    print("An error has occurred");
   }
 }
