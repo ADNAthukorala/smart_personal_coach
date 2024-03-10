@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -82,7 +83,17 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(kPadding16),
             primary: false,
             children: [
-
+              ElevatedButton(
+                onPressed: () {
+                  getExercises(
+                    collectionName: "chest_exercises",
+                    typeOfExercise: "chestExercises",
+                    loggedInUserEmail: loggedInUser.email,
+                    difficulty: "Challenging",
+                  );
+                },
+                child: const Text("Click me"),
+              )
             ],
           );
         },
