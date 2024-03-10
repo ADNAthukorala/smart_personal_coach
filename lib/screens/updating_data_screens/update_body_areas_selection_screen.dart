@@ -277,12 +277,14 @@ class _UpdateBodyAreasSelectionScreenState
                 // If the bodyAreas array is empty, this button should be disabled
                 onPressed: _updatedUserSelectedBodyAreas.isEmpty
                     ? null
-                    : () {
-                        updateFocusedBodyAreas(_updatedUserSelectedBodyAreas);
-                        generateTheWorkoutPlan(
+                    : () async {
+                        await updateFocusedBodyAreas(
+                            _updatedUserSelectedBodyAreas);
+                        await generateTheWorkoutPlan(
                             userLevel: widget.userLevel,
                             loggedInUserEmail: widget.loggedInUserEmail,
                             focusedBodyAreas: _updatedUserSelectedBodyAreas);
+                        if (!context.mounted) return;
                         Navigator.pop(context);
                       },
                 style: kNextButtonStyle.copyWith(

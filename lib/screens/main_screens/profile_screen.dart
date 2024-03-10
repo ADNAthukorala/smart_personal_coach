@@ -859,8 +859,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) => UpdateLevelScreen(
-                                              level: data["level"],
-                                              loggedInUser: loggedInUser,
+                                          loggedInUserEmail: loggedInUser.email,
+                                              userLevel: data["level"],
+                                              userSelectedBodyAreas:
+                                                  focusedBodyAreas
+                                                      .map((element) =>
+                                                          element.toString())
+                                                      .toList(),
                                             )));
                                 _levelEmailController.clear();
                               } else {

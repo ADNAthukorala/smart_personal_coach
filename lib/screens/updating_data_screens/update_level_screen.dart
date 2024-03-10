@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 
@@ -8,12 +8,14 @@ import 'package:smart_personal_coach/components/title_and_description_holder.dar
 class UpdateLevelScreen extends StatefulWidget {
   const UpdateLevelScreen({
     super.key,
-    required this.level,
-    required this.loggedInUser,
+    required this.userLevel,
+    required this.loggedInUserEmail,
+    required this.userSelectedBodyAreas,
   });
 
-  final String level;
-  final User loggedInUser;
+  final String userLevel;
+  final String? loggedInUserEmail;
+  final List<String> userSelectedBodyAreas;
 
   @override
   State<UpdateLevelScreen> createState() => _UpdateLevelScreenState();
@@ -29,7 +31,7 @@ class _UpdateLevelScreenState extends State<UpdateLevelScreen> {
       // Get a reference to the document
       DocumentReference documentRef = FirebaseFirestore.instance
           .collection('users')
-          .doc(widget.loggedInUser.email);
+          .doc(widget.loggedInUserEmail);
 
       // Update the main goal
       await documentRef.update({
@@ -44,7 +46,7 @@ class _UpdateLevelScreenState extends State<UpdateLevelScreen> {
 
   @override
   void initState() {
-    _updatedLevel = widget.level;
+    _updatedLevel = widget.userLevel;
     super.initState();
   }
 
@@ -149,8 +151,13 @@ class _UpdateLevelScreenState extends State<UpdateLevelScreen> {
                 top: kPadding16,
               ),
               child: ElevatedButton(
-                onPressed: () {
-                  updateLevel(_updatedLevel);
+                onPressed: () async {
+                  await updateLevel(_updatedLevel);
+                  await generateTheWorkoutPlan(
+                      userLevel: _updatedLevel,
+                      loggedInUserEmail: widget.loggedInUserEmail,
+                      focusedBodyAreas: widget.userSelectedBodyAreas);
+                  if (!context.mounted) return;
                   Navigator.pop(context);
                 },
                 style: kNextButtonStyle,
