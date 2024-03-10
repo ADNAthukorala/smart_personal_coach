@@ -315,7 +315,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
           String imageUrl = data['profilePicture'];
 
-          List<dynamic> fBA = data["focusedBodyAreas"];
+          List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -1009,7 +1009,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   color: kBlackThemeColor,
                 ),
                 title: const Text("Focused Body Areas"),
-                subtitle: Text(fBA.toString().split("[").last.split("]").first),
+                subtitle: Text(focusedBodyAreas
+                    .toString()
+                    .split("[")
+                    .last
+                    .split("]")
+                    .first),
                 titleTextStyle: kProfileTitleTextStyle,
                 subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
                   fontWeight: FontWeight.w400,
@@ -1069,8 +1074,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     MaterialPageRoute(
                                       builder: (context) =>
                                           UpdateBodyAreasSelectionScreen(
-                                        loggedInUser: loggedInUser,
-                                        userSelectedBodyAreas: fBA
+                                        loggedInUserEmail: loggedInUser.email,
+                                        userLevel: data["level"],
+                                        userSelectedBodyAreas: focusedBodyAreas
                                             .map(
                                                 (element) => element.toString())
                                             .toList(),

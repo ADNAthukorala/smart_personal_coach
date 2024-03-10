@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 
@@ -9,11 +9,13 @@ class UpdateBodyAreasSelectionScreen extends StatefulWidget {
   const UpdateBodyAreasSelectionScreen({
     super.key,
     required this.userSelectedBodyAreas,
-    required this.loggedInUser,
+    required this.loggedInUserEmail,
+    required this.userLevel,
   });
 
   final List<String> userSelectedBodyAreas;
-  final User loggedInUser;
+  final String? loggedInUserEmail;
+  final String userLevel;
 
   @override
   State<UpdateBodyAreasSelectionScreen> createState() =>
@@ -32,7 +34,7 @@ class _UpdateBodyAreasSelectionScreenState
       // Get a reference to the document
       DocumentReference documentRef = FirebaseFirestore.instance
           .collection('users')
-          .doc(widget.loggedInUser.email);
+          .doc(widget.loggedInUserEmail);
 
       // Update the main goal
       await documentRef.update({
@@ -277,6 +279,10 @@ class _UpdateBodyAreasSelectionScreenState
                     ? null
                     : () {
                         updateFocusedBodyAreas(_updatedUserSelectedBodyAreas);
+                        generateTheWorkoutPlan(
+                            userLevel: widget.userLevel,
+                            loggedInUserEmail: widget.loggedInUserEmail,
+                            focusedBodyAreas: _updatedUserSelectedBodyAreas);
                         Navigator.pop(context);
                       },
                 style: kNextButtonStyle.copyWith(
