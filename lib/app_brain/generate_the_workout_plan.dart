@@ -50,8 +50,8 @@ Future<void> getBeginnerExercises(
 
 Future<void> getIntermediateExercises(
     {required String collectionName,
-      required String? loggedInUserEmail,
-      required String typeOfExercise}) async {
+    required String? loggedInUserEmail,
+    required String typeOfExercise}) async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final CollectionReference collection = firestore.collection(collectionName);
   final CollectionReference targetCollection = firestore.collection("users");
@@ -68,7 +68,8 @@ Future<void> getIntermediateExercises(
 
       for (DocumentSnapshot document in documents) {
         // Check if the document meets your condition
-        if (document.get("difficulty") == "Easy" || document.get("difficulty") == "Moderate") {
+        if (document.get("difficulty") == "Easy" ||
+            document.get("difficulty") == "Moderate") {
           if (!selectedExercisesList.contains(document.id)) {
             selectedExercisesList.add(document.id);
           }
@@ -97,8 +98,8 @@ Future<void> getIntermediateExercises(
 
 Future<void> getAdvancedExercises(
     {required String collectionName,
-      required String? loggedInUserEmail,
-      required String typeOfExercise}) async {
+    required String? loggedInUserEmail,
+    required String typeOfExercise}) async {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
   final CollectionReference collection = firestore.collection(collectionName);
   final CollectionReference targetCollection = firestore.collection("users");
@@ -115,7 +116,9 @@ Future<void> getAdvancedExercises(
 
       for (DocumentSnapshot document in documents) {
         // Check if the document meets your condition
-        if (document.get("difficulty") == "Easy" || document.get("difficulty") == "Moderate" || document.get("difficulty") == "Challenging") {
+        if (document.get("difficulty") == "Easy" ||
+            document.get("difficulty") == "Moderate" ||
+            document.get("difficulty") == "Challenging") {
           if (!selectedExercisesList.contains(document.id)) {
             selectedExercisesList.add(document.id);
           }
@@ -144,8 +147,8 @@ Future<void> getAdvancedExercises(
 
 Future<void> generateBeginnerWorkoutPlan(
     {required String? loggedInUserEmail,
-    required List<String> userSelectedBodyAreas}) async {
-  if (userSelectedBodyAreas.contains("Abs")) {
+    required List<String> focusedBodyAreas}) async {
+  if (focusedBodyAreas.contains("Abs")) {
     await getBeginnerExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "abs_exercises",
@@ -153,7 +156,7 @@ Future<void> generateBeginnerWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Arms")) {
+  if (focusedBodyAreas.contains("Arms")) {
     await getBeginnerExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "arms_exercises",
@@ -161,7 +164,7 @@ Future<void> generateBeginnerWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Back")) {
+  if (focusedBodyAreas.contains("Back")) {
     await getBeginnerExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "back_exercises",
@@ -169,7 +172,7 @@ Future<void> generateBeginnerWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Chest")) {
+  if (focusedBodyAreas.contains("Chest")) {
     await getBeginnerExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "chest_exercises",
@@ -177,7 +180,7 @@ Future<void> generateBeginnerWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Legs")) {
+  if (focusedBodyAreas.contains("Legs")) {
     await getBeginnerExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "legs_exercises",
@@ -188,8 +191,8 @@ Future<void> generateBeginnerWorkoutPlan(
 
 Future<void> generateIntermediateWorkoutPlan(
     {required String? loggedInUserEmail,
-      required List<String> userSelectedBodyAreas}) async {
-  if (userSelectedBodyAreas.contains("Abs")) {
+    required List<String> focusedBodyAreas}) async {
+  if (focusedBodyAreas.contains("Abs")) {
     await getIntermediateExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "abs_exercises",
@@ -197,7 +200,7 @@ Future<void> generateIntermediateWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Arms")) {
+  if (focusedBodyAreas.contains("Arms")) {
     await getIntermediateExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "arms_exercises",
@@ -205,7 +208,7 @@ Future<void> generateIntermediateWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Back")) {
+  if (focusedBodyAreas.contains("Back")) {
     await getIntermediateExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "back_exercises",
@@ -213,7 +216,7 @@ Future<void> generateIntermediateWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Chest")) {
+  if (focusedBodyAreas.contains("Chest")) {
     await getIntermediateExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "chest_exercises",
@@ -221,7 +224,7 @@ Future<void> generateIntermediateWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Legs")) {
+  if (focusedBodyAreas.contains("Legs")) {
     await getIntermediateExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "legs_exercises",
@@ -232,8 +235,8 @@ Future<void> generateIntermediateWorkoutPlan(
 
 Future<void> generateAdvancedWorkoutPlan(
     {required String? loggedInUserEmail,
-      required List<String> userSelectedBodyAreas}) async {
-  if (userSelectedBodyAreas.contains("Abs")) {
+    required List<String> focusedBodyAreas}) async {
+  if (focusedBodyAreas.contains("Abs")) {
     await getAdvancedExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "abs_exercises",
@@ -241,7 +244,7 @@ Future<void> generateAdvancedWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Arms")) {
+  if (focusedBodyAreas.contains("Arms")) {
     await getAdvancedExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "arms_exercises",
@@ -249,7 +252,7 @@ Future<void> generateAdvancedWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Back")) {
+  if (focusedBodyAreas.contains("Back")) {
     await getAdvancedExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "back_exercises",
@@ -257,7 +260,7 @@ Future<void> generateAdvancedWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Chest")) {
+  if (focusedBodyAreas.contains("Chest")) {
     await getAdvancedExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "chest_exercises",
@@ -265,11 +268,37 @@ Future<void> generateAdvancedWorkoutPlan(
     );
   }
 
-  if (userSelectedBodyAreas.contains("Legs")) {
+  if (focusedBodyAreas.contains("Legs")) {
     await getAdvancedExercises(
       loggedInUserEmail: loggedInUserEmail,
       collectionName: "legs_exercises",
       typeOfExercise: "legsExercises",
+    );
+  }
+}
+
+Future<void> generateTheWorkoutPlan(
+    {required String userLevel,
+    required String? loggedInUserEmail,
+    required List<String> focusedBodyAreas}) async {
+  if (userLevel == "Beginner") {
+    await generateBeginnerWorkoutPlan(
+      loggedInUserEmail: loggedInUserEmail,
+      focusedBodyAreas: focusedBodyAreas,
+    );
+  }
+
+  if (userLevel == "Intermediate") {
+    await generateIntermediateWorkoutPlan(
+      loggedInUserEmail: loggedInUserEmail,
+      focusedBodyAreas: focusedBodyAreas,
+    );
+  }
+
+  if (userLevel == "Advanced") {
+    await generateAdvancedWorkoutPlan(
+      loggedInUserEmail: loggedInUserEmail,
+      focusedBodyAreas: focusedBodyAreas,
     );
   }
 }

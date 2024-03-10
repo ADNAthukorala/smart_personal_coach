@@ -85,15 +85,16 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  getExercises(
-                    collectionName: "chest_exercises",
-                    typeOfExercise: "chestExercises",
+                  generateTheWorkoutPlan(
+                    userLevel: level,
                     loggedInUserEmail: loggedInUser.email,
-                    difficulty: "Challenging",
+                    focusedBodyAreas: focusedBodyAreas
+                        .map((dynamic item) => item.toString())
+                        .toList(),
                   );
                 },
                 child: const Text("Click me"),
-              )
+              ),
             ],
           );
         },
