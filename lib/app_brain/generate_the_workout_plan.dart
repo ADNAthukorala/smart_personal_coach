@@ -1,6 +1,40 @@
 import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+/// Body areas
+String abs = "Abs";
+String arms = "Arms";
+String back = "Back";
+String chest = "Chest";
+String legs = "Legs";
+
+/// Names of exercises collections
+String absExercisesCollection = "abs_exercises";
+String armsExercisesCollection = "arms_exercises";
+String backExercisesCollection = "back_exercises";
+String chestExercisesCollection = "chest_exercises";
+String legsExercisesCollection = "legs_exercises";
+
+/// Types of exercises
+String absExercises = "workoutPlanAbsExercises";
+String armsExercises = "workoutPlanArmsExercises";
+String backExercises = "workoutPlanBackExercises";
+String chestExercises = "workoutPlanChestExercises";
+String legsExercises = "workoutPlanLegsExercises";
+
+/// The Difficulty of the exercise
+String easy = "Easy";
+String moderate = "Moderate";
+String challenging = "Challenging";
+
+/// Field name
+String difficulty = "difficulty";
+
+/// User levels
+String beginner = "Beginner";
+String intermediate = "Intermediate";
+String advanced = "Advanced";
+
 /// Select exercises for Beginners
 Future<void> selectExercisesForBeginners(
     {required String nameOfTheExercisesCollection,
@@ -26,7 +60,7 @@ Future<void> selectExercisesForBeginners(
       // Grab two random exercises from the All Exercises list and add them to the Selected Exercises list
       for (DocumentSnapshot randomExercise in allExercises) {
         // Check if the random exercise meets the condition
-        if (randomExercise["difficulty"] == "Easy") {
+        if (randomExercise[difficulty] == easy) {
           if (!selectedExercisesList.contains(randomExercise.id)) {
             // Add the random exercise to the Selected Exercises list
             selectedExercisesList.add(randomExercise.id);
@@ -54,48 +88,53 @@ Future<void> selectExercisesForBeginners(
   }
 }
 
-/// Getting exercises for Intermediate
-Future<void> gettingExercisesForIntermediate(
-    {required String collectionName,
+/// Select exercises for Intermediate
+Future<void> selectExercisesForIntermediate(
+    {required String nameOfTheExercisesCollection,
     required String? loggedInUserEmail,
-    required String typeOfExercise}) async {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final CollectionReference collection = firestore.collection(collectionName);
-  final CollectionReference targetCollection = firestore.collection("users");
+    required String typeOfExercises}) async {
+  final firestore = FirebaseFirestore.instance;
+  final collection = firestore.collection(nameOfTheExercisesCollection);
+  final usersCollection = firestore.collection("users");
 
+  // List to store selected exercises
   List<String> selectedExercisesList = [];
 
   try {
     QuerySnapshot querySnapshot = await collection.get();
-    List<DocumentSnapshot> documents = querySnapshot.docs;
+    // List to store all the exercises in the collection
+    List<DocumentSnapshot> allExercises = querySnapshot.docs;
 
-    if (documents.length >= 2) {
-      // Shuffle the documents to get a random order
-      documents.shuffle();
+    // If the total of all exercises is greater than or equal to 2, do the following task
+    if (allExercises.length >= 2) {
+      // Shuffle the all exercises list to get a random order
+      allExercises.shuffle();
 
-      for (DocumentSnapshot document in documents) {
-        // Check if the document meets your condition
-        if (document.get("difficulty") == "Easy" ||
-            document.get("difficulty") == "Moderate") {
-          if (!selectedExercisesList.contains(document.id)) {
-            selectedExercisesList.add(document.id);
+      // Grab two random exercises from the All Exercises list and add them to the Selected Exercises list
+      for (DocumentSnapshot randomExercise in allExercises) {
+        // Check if the random exercise meets the condition
+        if (randomExercise[difficulty] == easy ||
+            randomExercise[difficulty] == moderate) {
+          if (!selectedExercisesList.contains(randomExercise.id)) {
+            // Add the random exercise to the Selected Exercises list
+            selectedExercisesList.add(randomExercise.id);
           }
-          // If the list length is 2, stop the loop
+          // If the Selected Exercises length is 2, stop the loop
           if (selectedExercisesList.length == 2) {
             break;
           }
         }
       }
 
-      // Add the string list to the target collection
-      await targetCollection.doc(loggedInUserEmail).set(
+      // Add the selected exercises list to the workout plan
+      await usersCollection.doc(loggedInUserEmail).set(
         {
-          typeOfExercise: selectedExercisesList,
+          typeOfExercises: selectedExercisesList,
         },
         SetOptions(merge: true),
       );
     } else {
-      // Handle the case when there are less than two exercises in the collection
+      // When there are less than two exercises in the collection, show the error message
       print('There are less than two documents in the collection.');
     }
   } catch (e) {
@@ -103,49 +142,54 @@ Future<void> gettingExercisesForIntermediate(
   }
 }
 
-/// Getting exercises for Advanced
-Future<void> gettingExercisesForAdvanced(
-    {required String collectionName,
+/// Select exercises for Advanced
+Future<void> selectExercisesForAdvanced(
+    {required String nameOfTheExercisesCollection,
     required String? loggedInUserEmail,
-    required String typeOfExercise}) async {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
-  final CollectionReference collection = firestore.collection(collectionName);
-  final CollectionReference targetCollection = firestore.collection("users");
+    required String typeOfExercises}) async {
+  final firestore = FirebaseFirestore.instance;
+  final collection = firestore.collection(nameOfTheExercisesCollection);
+  final usersCollection = firestore.collection("users");
 
+  // List to store selected exercises
   List<String> selectedExercisesList = [];
 
   try {
     QuerySnapshot querySnapshot = await collection.get();
-    List<DocumentSnapshot> documents = querySnapshot.docs;
+    // List to store all the exercises in the collection
+    List<DocumentSnapshot> allExercises = querySnapshot.docs;
 
-    if (documents.length >= 2) {
-      // Shuffle the documents to get a random order
-      documents.shuffle();
+    // If the total of all exercises is greater than or equal to 2, do the following task
+    if (allExercises.length >= 2) {
+      // Shuffle the all exercises list to get a random order
+      allExercises.shuffle();
 
-      for (DocumentSnapshot document in documents) {
-        // Check if the document meets your condition
-        if (document.get("difficulty") == "Easy" ||
-            document.get("difficulty") == "Moderate" ||
-            document.get("difficulty") == "Challenging") {
-          if (!selectedExercisesList.contains(document.id)) {
-            selectedExercisesList.add(document.id);
+      // Grab two random exercises from the All Exercises list and add them to the Selected Exercises list
+      for (DocumentSnapshot randomExercise in allExercises) {
+        // Check if the random exercise meets the condition
+        if (randomExercise[difficulty] == easy ||
+            randomExercise[difficulty] == moderate ||
+            randomExercise[difficulty] == challenging) {
+          if (!selectedExercisesList.contains(randomExercise.id)) {
+            // Add the random exercise to the Selected Exercises list
+            selectedExercisesList.add(randomExercise.id);
           }
-          // If the list length is 2, stop the loop
+          // If the Selected Exercises length is 2, stop the loop
           if (selectedExercisesList.length == 2) {
             break;
           }
         }
       }
 
-      // Add the string list to the target collection
-      await targetCollection.doc(loggedInUserEmail).set(
+      // Add the selected exercises list to the workout plan
+      await usersCollection.doc(loggedInUserEmail).set(
         {
-          typeOfExercise: selectedExercisesList,
+          typeOfExercises: selectedExercisesList,
         },
         SetOptions(merge: true),
       );
     } else {
-      // Handle the case when there are less than two exercises in the collection
+      // When there are less than two exercises in the collection, show the error message
       print('There are less than two documents in the collection.');
     }
   } catch (e) {
@@ -153,152 +197,152 @@ Future<void> gettingExercisesForAdvanced(
   }
 }
 
-/// Generate workout plans for Beginner users
+/// Generate a workout plan for a Beginner user
 Future<void> generateBeginnerWorkoutPlan(
     {required String? loggedInUserEmail,
     required List<String> focusedBodyAreas}) async {
   // If the user focuses on abs, he/she will get abs exercises.
-  if (focusedBodyAreas.contains("Abs")) {
-    await selectExercisesForBeginners(
+  if (focusedBodyAreas.contains(abs)) {
+    selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      nameOfTheExercisesCollection: "abs_exercises",
-      typeOfExercises: "absExercises",
+      nameOfTheExercisesCollection: absExercisesCollection,
+      typeOfExercises: absExercises,
     );
   }
 
   // If the user focuses on arms, he/she will get arms exercises.
-  if (focusedBodyAreas.contains("Arms")) {
-    await selectExercisesForBeginners(
+  if (focusedBodyAreas.contains(arms)) {
+    selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      nameOfTheExercisesCollection: "arms_exercises",
-      typeOfExercises: "armsExercises",
+      nameOfTheExercisesCollection: armsExercisesCollection,
+      typeOfExercises: armsExercises,
     );
   }
 
   // If the user focuses on back, he/she will get back exercises.
-  if (focusedBodyAreas.contains("Back")) {
-    await selectExercisesForBeginners(
+  if (focusedBodyAreas.contains(back)) {
+    selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      nameOfTheExercisesCollection: "back_exercises",
-      typeOfExercises: "backExercises",
+      nameOfTheExercisesCollection: backExercisesCollection,
+      typeOfExercises: backExercises,
     );
   }
 
   // If the user focuses on chest, he/she will get chest exercises.
-  if (focusedBodyAreas.contains("Chest")) {
-    await selectExercisesForBeginners(
+  if (focusedBodyAreas.contains(chest)) {
+    selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      nameOfTheExercisesCollection: "chest_exercises",
-      typeOfExercises: "chestExercises",
+      nameOfTheExercisesCollection: chestExercisesCollection,
+      typeOfExercises: chestExercises,
     );
   }
 
   // If the user focuses on legs, he/she will get legs exercises.
-  if (focusedBodyAreas.contains("Legs")) {
-    await selectExercisesForBeginners(
+  if (focusedBodyAreas.contains(legs)) {
+    selectExercisesForBeginners(
       loggedInUserEmail: loggedInUserEmail,
-      nameOfTheExercisesCollection: "legs_exercises",
-      typeOfExercises: "legsExercises",
+      nameOfTheExercisesCollection: legsExercisesCollection,
+      typeOfExercises: legsExercises,
     );
   }
 }
 
-/// Generate workout plans for Intermediate users
+/// Generate a workout plan for an Intermediate user
 Future<void> generateIntermediateWorkoutPlan(
     {required String? loggedInUserEmail,
     required List<String> focusedBodyAreas}) async {
   // If the user focuses on abs, he/she will get abs exercises.
-  if (focusedBodyAreas.contains("Abs")) {
-    await gettingExercisesForIntermediate(
+  if (focusedBodyAreas.contains(abs)) {
+    selectExercisesForIntermediate(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "abs_exercises",
-      typeOfExercise: "absExercises",
+      nameOfTheExercisesCollection: absExercisesCollection,
+      typeOfExercises: absExercises,
     );
   }
 
   // If the user focuses on arms, he/she will get arms exercises.
-  if (focusedBodyAreas.contains("Arms")) {
-    await gettingExercisesForIntermediate(
+  if (focusedBodyAreas.contains(arms)) {
+    selectExercisesForIntermediate(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "arms_exercises",
-      typeOfExercise: "armsExercises",
+      nameOfTheExercisesCollection: armsExercisesCollection,
+      typeOfExercises: armsExercises,
     );
   }
 
   // If the user focuses on back, he/she will get back exercises.
-  if (focusedBodyAreas.contains("Back")) {
-    await gettingExercisesForIntermediate(
+  if (focusedBodyAreas.contains(back)) {
+    selectExercisesForIntermediate(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "back_exercises",
-      typeOfExercise: "backExercises",
+      nameOfTheExercisesCollection: backExercisesCollection,
+      typeOfExercises: backExercises,
     );
   }
 
   // If the user focuses on chest, he/she will get chest exercises.
-  if (focusedBodyAreas.contains("Chest")) {
-    await gettingExercisesForIntermediate(
+  if (focusedBodyAreas.contains(chest)) {
+    selectExercisesForIntermediate(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "chest_exercises",
-      typeOfExercise: "chestExercises",
+      nameOfTheExercisesCollection: chestExercisesCollection,
+      typeOfExercises: chestExercises,
     );
   }
 
   // If the user focuses on legs, he/she will get legs exercises.
-  if (focusedBodyAreas.contains("Legs")) {
-    await gettingExercisesForIntermediate(
+  if (focusedBodyAreas.contains(legs)) {
+    selectExercisesForIntermediate(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "legs_exercises",
-      typeOfExercise: "legsExercises",
+      nameOfTheExercisesCollection: legsExercisesCollection,
+      typeOfExercises: legsExercises,
     );
   }
 }
 
-/// Generate workout plans for Advanced users
+/// Generate a workout plan for an Advanced user
 Future<void> generateAdvancedWorkoutPlan(
     {required String? loggedInUserEmail,
     required List<String> focusedBodyAreas}) async {
   // If the user focuses on abs, he/she will get abs exercises.
-  if (focusedBodyAreas.contains("Abs")) {
-    await gettingExercisesForAdvanced(
+  if (focusedBodyAreas.contains(abs)) {
+    selectExercisesForAdvanced(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "abs_exercises",
-      typeOfExercise: "absExercises",
+      nameOfTheExercisesCollection: absExercisesCollection,
+      typeOfExercises: absExercises,
     );
   }
 
   // If the user focuses on arms, he/she will get arms exercises.
-  if (focusedBodyAreas.contains("Arms")) {
-    await gettingExercisesForAdvanced(
+  if (focusedBodyAreas.contains(arms)) {
+    selectExercisesForAdvanced(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "arms_exercises",
-      typeOfExercise: "armsExercises",
+      nameOfTheExercisesCollection: armsExercisesCollection,
+      typeOfExercises: armsExercises,
     );
   }
 
   // If the user focuses on back, he/she will get back exercises.
-  if (focusedBodyAreas.contains("Back")) {
-    await gettingExercisesForAdvanced(
+  if (focusedBodyAreas.contains(back)) {
+    selectExercisesForAdvanced(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "back_exercises",
-      typeOfExercise: "backExercises",
+      nameOfTheExercisesCollection: backExercisesCollection,
+      typeOfExercises: backExercises,
     );
   }
 
   // If the user focuses on chest, he/she will get chest exercises.
-  if (focusedBodyAreas.contains("Chest")) {
-    await gettingExercisesForAdvanced(
+  if (focusedBodyAreas.contains(chest)) {
+    selectExercisesForAdvanced(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "chest_exercises",
-      typeOfExercise: "chestExercises",
+      nameOfTheExercisesCollection: chestExercisesCollection,
+      typeOfExercises: chestExercises,
     );
   }
 
   // If the user focuses on legs, he/she will get legs exercises.
-  if (focusedBodyAreas.contains("Legs")) {
-    await gettingExercisesForAdvanced(
+  if (focusedBodyAreas.contains(legs)) {
+    selectExercisesForAdvanced(
       loggedInUserEmail: loggedInUserEmail,
-      collectionName: "legs_exercises",
-      typeOfExercise: "legsExercises",
+      nameOfTheExercisesCollection: legsExercisesCollection,
+      typeOfExercises: legsExercises,
     );
   }
 }
@@ -306,7 +350,7 @@ Future<void> generateAdvancedWorkoutPlan(
 /// Delete exercises that the user does not care about
 Future<void> deleteExercisesFromWorkoutPlan(
     {required String? loggedInUserEmail,
-    required String typeOfExercise}) async {
+    required String typeOfExercises}) async {
   try {
     // Get reference to the document
     DocumentReference docRef =
@@ -314,10 +358,10 @@ Future<void> deleteExercisesFromWorkoutPlan(
 
     // Delete exercises from the workout plan
     await docRef.update({
-      typeOfExercise: FieldValue.delete(),
+      typeOfExercises: FieldValue.delete(),
     });
 
-    print("$typeOfExercise deleted successfully from workout plan");
+    print("$typeOfExercises deleted successfully from workout plan");
   } catch (e) {
     print("Error deleting exercise: $e");
   }
@@ -330,61 +374,58 @@ Future<void> generateTheWorkoutPlan(
     required List<String> focusedBodyAreas}) async {
   try {
     // If the user is a beginner, he/she will get a beginner workout plan
-    if (userLevel == "Beginner") {
-      await generateBeginnerWorkoutPlan(
+    if (userLevel == beginner) {
+      generateBeginnerWorkoutPlan(
         loggedInUserEmail: loggedInUserEmail,
         focusedBodyAreas: focusedBodyAreas,
       );
     }
 
     // If the user is an intermediate, he/she will get an intermediate workout plan
-    if (userLevel == "Intermediate") {
-      await generateIntermediateWorkoutPlan(
+    if (userLevel == intermediate) {
+      generateIntermediateWorkoutPlan(
         loggedInUserEmail: loggedInUserEmail,
         focusedBodyAreas: focusedBodyAreas,
       );
     }
 
     // If the user is an advanced, he/she will get an advanced workout plan
-    if (userLevel == "Advanced") {
-      await generateAdvancedWorkoutPlan(
+    if (userLevel == advanced) {
+      generateAdvancedWorkoutPlan(
         loggedInUserEmail: loggedInUserEmail,
         focusedBodyAreas: focusedBodyAreas,
       );
     }
 
     // If the user doesn't care about abs, delete abs exercises from the workout plan
-    if (!focusedBodyAreas.contains("Abs")) {
-      await deleteExercisesFromWorkoutPlan(
-          loggedInUserEmail: loggedInUserEmail, typeOfExercise: "absExercises");
+    if (!focusedBodyAreas.contains(abs)) {
+      deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail, typeOfExercises: absExercises);
     }
 
     // If the user doesn't care about arms, delete arms exercises from the workout plan
-    if (!focusedBodyAreas.contains("Arms")) {
-      await deleteExercisesFromWorkoutPlan(
-          loggedInUserEmail: loggedInUserEmail,
-          typeOfExercise: "armsExercises");
+    if (!focusedBodyAreas.contains(arms)) {
+      deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail, typeOfExercises: armsExercises);
     }
 
     // If the user doesn't care about back, delete back exercises from the workout plan
-    if (!focusedBodyAreas.contains("Back")) {
-      await deleteExercisesFromWorkoutPlan(
-          loggedInUserEmail: loggedInUserEmail,
-          typeOfExercise: "backExercises");
+    if (!focusedBodyAreas.contains(back)) {
+      deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail, typeOfExercises: backExercises);
     }
 
     // If the user doesn't care about chest, delete chest exercises from the workout plan
-    if (!focusedBodyAreas.contains("Chest")) {
-      await deleteExercisesFromWorkoutPlan(
+    if (!focusedBodyAreas.contains(chest)) {
+      deleteExercisesFromWorkoutPlan(
           loggedInUserEmail: loggedInUserEmail,
-          typeOfExercise: "chestExercises");
+          typeOfExercises: chestExercises);
     }
 
     // If the user doesn't care about legs, delete legs exercises from the workout plan
-    if (!focusedBodyAreas.contains("Legs")) {
-      await deleteExercisesFromWorkoutPlan(
-          loggedInUserEmail: loggedInUserEmail,
-          typeOfExercise: "legsExercises");
+    if (!focusedBodyAreas.contains(legs)) {
+      deleteExercisesFromWorkoutPlan(
+          loggedInUserEmail: loggedInUserEmail, typeOfExercises: legsExercises);
     }
   } catch (e) {
     print("An error has occurred");
