@@ -49,6 +49,7 @@ class WorkoutPlanCard extends StatelessWidget {
           child: SizedBox(
             height: 400.0,
             child: Card(
+              margin: EdgeInsets.zero,
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
                   side: BorderSide(color: kBlackThemeColor)),
