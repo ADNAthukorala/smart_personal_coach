@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
 import 'package:smart_personal_coach/app_brain/workout_plan_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
@@ -80,15 +81,62 @@ class _HomeScreenState extends State<HomeScreen> {
           List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
 
           return ListView(
-            padding: const EdgeInsets.all(kPadding16),
+            padding: const EdgeInsets.only(
+              left: kPadding16,
+              top: kPadding16,
+              right: kPadding16,
+            ),
             primary: false,
             children: [
-              WorkoutPlanCard(
-                title: "Abs Exercises",
-                collectionName: "abs_exercises",
-                loggedInUserEmail: loggedInUser.email,
-                workoutPlanExampleExercises: "workoutPlanAbsExercises",
-              ),
+              /// Abs Exercises workout plan card
+              focusedBodyAreas.contains(abs)
+                  ? WorkoutPlanCard(
+                      loggedInUserEmail: loggedInUser.email,
+                      title: "Abs Exercises",
+                      collectionName: absExercisesCollection,
+                      workoutPlanExampleExercises: absExercises,
+                    )
+                  : const SizedBox(),
+
+              /// Arms Exercises workout plan card
+              focusedBodyAreas.contains(arms)
+                  ? WorkoutPlanCard(
+                      loggedInUserEmail: loggedInUser.email,
+                      title: "Arms Exercises",
+                      collectionName: armsExercisesCollection,
+                      workoutPlanExampleExercises: armsExercises,
+                    )
+                  : const SizedBox(),
+
+              /// Back Exercises workout plan card
+              focusedBodyAreas.contains(back)
+                  ? WorkoutPlanCard(
+                      loggedInUserEmail: loggedInUser.email,
+                      title: "Back Exercises",
+                      collectionName: backExercisesCollection,
+                      workoutPlanExampleExercises: backExercises,
+                    )
+                  : const SizedBox(),
+
+              /// Chest Exercises workout plan card
+              focusedBodyAreas.contains(chest)
+                  ? WorkoutPlanCard(
+                      loggedInUserEmail: loggedInUser.email,
+                      title: "Chest Exercises",
+                      collectionName: chestExercisesCollection,
+                      workoutPlanExampleExercises: chestExercises,
+                    )
+                  : const SizedBox(),
+
+              /// Legs Exercises workout plan card
+              focusedBodyAreas.contains(legs)
+                  ? WorkoutPlanCard(
+                      loggedInUserEmail: loggedInUser.email,
+                      title: "Legs Exercises",
+                      collectionName: legsExercisesCollection,
+                      workoutPlanExampleExercises: legsExercises,
+                    )
+                  : const SizedBox(),
             ],
           );
         },

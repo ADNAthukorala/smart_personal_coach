@@ -44,71 +44,74 @@ class WorkoutPlanCard extends StatelessWidget {
 
         List<dynamic> workoutPlanExercises = data[workoutPlanExampleExercises];
 
-        return SizedBox(
-          height: 400.0,
-          child: Card(
-            shape: const RoundedRectangleBorder(
-                borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-                side: BorderSide(color: kAppThemeColor)),
-            child: Column(
-              children: [
-                Container(
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    color: kAppThemeColor,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(kRadius16),
-                        topRight: Radius.circular(kRadius16)),
-                  ),
-                  width: double.maxFinite,
-                  height: 50.0,
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      color: kWhiteThemeColor,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w700,
+        return Padding(
+          padding: const EdgeInsets.only(bottom: kPadding16),
+          child: SizedBox(
+            height: 400.0,
+            child: Card(
+              shape: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
+                  side: BorderSide(color: kBlackThemeColor, width: 2)),
+              child: Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      color: kAppThemeColor,
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(kRadius16),
+                          topRight: Radius.circular(kRadius16)),
+                    ),
+                    width: double.maxFinite,
+                    height: 50.0,
+                    child: Text(
+                      title,
+                      style: const TextStyle(
+                        color: kWhiteThemeColor,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-                ),
-                Expanded(
-                  child: ListView.builder(
-                    padding: const EdgeInsets.only(
-                      left: kPadding8,
-                      top: kPadding8,
-                      right: kPadding8,
+                  Expanded(
+                    child: ListView.builder(
+                      padding: const EdgeInsets.only(
+                        left: kPadding8,
+                        top: kPadding8,
+                        right: kPadding8,
+                      ),
+                      primary: false,
+                      itemCount: workoutPlanExercises.length,
+                      itemBuilder: (context, index) {
+                        String exercise = workoutPlanExercises.elementAt(index);
+                        return Padding(
+                          // Adding space between two exercises list tiles
+                          padding: const EdgeInsets.only(bottom: kPadding8),
+                          child: WorkoutPlanCardListTile(
+                            collectionName: collectionName,
+                            docName: exercise,
+                          ),
+                        );
+                      },
                     ),
-                    primary: false,
-                    itemCount: workoutPlanExercises.length,
-                    itemBuilder: (context, index) {
-                      String exercise = workoutPlanExercises.elementAt(index);
-                      return Padding(
-                        // Adding space between two exercises list tiles
-                        padding: const EdgeInsets.only(bottom: kPadding8),
-                        child: WorkoutPlanCardListTile(
-                          collectionName: collectionName,
-                          docName: exercise,
-                        ),
-                      );
-                    },
                   ),
-                ),
-                Container(
-                  alignment: Alignment.center,
-                  decoration: const BoxDecoration(
-                    color: kAppThemeColor,
-                    borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(kRadius16),
-                        bottomRight: Radius.circular(kRadius16)),
+                  Container(
+                    alignment: Alignment.center,
+                    decoration: const BoxDecoration(
+                      color: kAppThemeColor,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(kRadius16),
+                          bottomRight: Radius.circular(kRadius16)),
+                    ),
+                    width: double.maxFinite,
+                    height: 50.0,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      child: const Text("Start"),
+                    ),
                   ),
-                  width: double.maxFinite,
-                  height: 50.0,
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    child: const Text("Start"),
-                  ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         );
