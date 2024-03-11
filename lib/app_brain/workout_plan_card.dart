@@ -44,10 +44,21 @@ class WorkoutPlanCard extends StatelessWidget {
 
         List<dynamic> workoutPlanExercises = data[workoutPlanExampleExercises];
 
+        double cardHeight() {
+          String level = data["level"];
+          if (level == "Beginner") {
+            return 332.0;
+          } else if (level == "Intermediate") {
+            return 444.0;
+          } else {
+            return 556.0;
+          }
+        }
+
         return Padding(
           padding: const EdgeInsets.only(bottom: kPadding16),
           child: SizedBox(
-            height: 556.0,
+            height: cardHeight(),
             child: Card(
               margin: EdgeInsets.zero,
               shape: const RoundedRectangleBorder(
@@ -99,16 +110,24 @@ class WorkoutPlanCard extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                      color: kAppThemeColor,
+                      color: kGreyThemeColor02,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(kRadius16),
                           bottomRight: Radius.circular(kRadius16)),
                     ),
                     width: double.maxFinite,
                     height: 50.0,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      child: const Text("Start"),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.only(left: 8.0),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text("Start"),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
