@@ -34,6 +34,17 @@ class _HomeScreenState extends State<HomeScreen> {
     }
   }
 
+  String greeting() {
+    var hour = DateTime.now().hour;
+    if (hour < 12) {
+      return 'Good Morning';
+    }
+    if (hour < 17) {
+      return 'Good Afternoon';
+    }
+    return 'Good Evening';
+  }
+
   @override
   void initState() {
     getLoggedIntUser();
@@ -75,6 +86,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
 
+          String userName = data["userName"];
           String mainGoal = data["mainGoal"];
           String level = data["level"];
           int weeklyGoal = data["weeklyGoal"];
@@ -102,7 +114,17 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             primary: false,
             children: [
-              /// Title
+              /// Welcome message
+              Text(
+                "${greeting()} $userName!",
+                style:
+                    kLargeBlackTitleTextStyle.copyWith(color: kAppThemeColor),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 12.0),
+
+              /// Title Workout Plan
               Container(
                 alignment: Alignment.center,
                 child: const Text(
