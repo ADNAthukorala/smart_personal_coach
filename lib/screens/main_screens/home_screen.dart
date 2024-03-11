@@ -117,8 +117,10 @@ class _HomeScreenState extends State<HomeScreen> {
               /// Welcome message
               Text(
                 "${greeting()} $userName!",
-                style:
-                    kLargeBlackTitleTextStyle.copyWith(color: kAppThemeColor),
+                style: kLargeBlackTitleTextStyle.copyWith(
+                  color: kAppThemeColor,
+                  height: 1,
+                ),
               ),
 
               /// Adding space
