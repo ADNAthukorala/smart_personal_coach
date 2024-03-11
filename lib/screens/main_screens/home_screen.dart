@@ -121,9 +121,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text(
                 "Your main goal is $mainGoal. So you should do $sets sets of $reps repetitions of each exercise.",
-                style: kSmallGreyColorDescriptionTextStyle.copyWith(
-                  fontWeight: FontWeight.w400,
-                ),
+                style: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Adding space
@@ -135,10 +133,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: kProfileTitleTextStyle,
               ),
               Text(
-                "Your weekly goal is $weeklyGoal days. So you should perform each exercise list within any $weeklyGoal days of the week.",
-                style: kSmallGreyColorDescriptionTextStyle.copyWith(
-                  fontWeight: FontWeight.w400,
-                ),
+                "Your weekly goal is $weeklyGoal days. So you should perform all the exercises list within $weeklyGoal days of the week.",
+                style: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Adding space
@@ -151,9 +147,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Text(
                 focusedBodyAreas.toString().split("[").last.split("]").first,
-                style: kSmallGreyColorDescriptionTextStyle.copyWith(
-                  fontWeight: FontWeight.w400,
-                ),
+                style: kSmallGreyColorDescriptionTextStyle,
               ),
 
               /// Adding space
