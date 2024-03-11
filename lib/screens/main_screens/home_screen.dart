@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
+import 'package:smart_personal_coach/app_brain/workout_plan_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -83,17 +84,11 @@ class _HomeScreenState extends State<HomeScreen> {
             padding: const EdgeInsets.all(kPadding16),
             primary: false,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  generateTheWorkoutPlan(
-                    userLevel: level,
-                    loggedInUserEmail: loggedInUser.email,
-                    focusedBodyAreas: focusedBodyAreas
-                        .map((dynamic item) => item.toString())
-                        .toList(),
-                  );
-                },
-                child: const Text("Click me"),
+              WorkoutPlanCard(
+                title: "Abs Exercises",
+                collectionName: "abs_exercises",
+                loggedInUserEmail: loggedInUser.email,
+                workoutPlanExampleExercises: "workoutPlanAbsExercises",
               ),
             ],
           );
