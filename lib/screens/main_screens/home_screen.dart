@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: kProfileTitleTextStyle,
               ),
               Text(
-                "Your main goal is $mainGoal. So you should do $sets sets of $reps repetitions of each exercise.",
+                "Your main goal is to $mainGoal, so aim for $sets sets of 6-12 $reps per exercise.",
                 style: kSmallGreyColorDescriptionTextStyle,
               ),
 
@@ -133,7 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: kProfileTitleTextStyle,
               ),
               Text(
-                "Your weekly goal is $weeklyGoal days. So you should perform all the exercises list within $weeklyGoal days of the week.",
+                "Your weekly goal is to perform all the exercises listed within $weeklyGoal days of the week.",
                 style: kSmallGreyColorDescriptionTextStyle,
               ),
 
