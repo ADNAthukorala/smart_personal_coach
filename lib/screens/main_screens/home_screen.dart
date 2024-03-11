@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
 import 'package:smart_personal_coach/app_brain/workout_plan_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
@@ -64,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: Text("Loading profile..."));
+            return const Center(child: Text("Loading workout plan..."));
           }
 
           if (!snapshot.hasData) {
