@@ -23,20 +23,16 @@ class WorkoutPlanCardListTile extends StatelessWidget {
             .snapshots(),
         builder: (context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(child: Text("Something went wrong"));
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text(
-              "Loading...",
-              style: TextStyle(color: kAppThemeColor),
-            );
+            return const Center(child: Text("Loading exercise..."));
           }
 
           if (!snapshot.hasData) {
-            return const Text('No data available');
+            return const Center(child: Text("No data available"));
           }
-
           // Access the data from the snapshot
           Map<String, dynamic> data =
               snapshot.data!.data() as Map<String, dynamic>;
