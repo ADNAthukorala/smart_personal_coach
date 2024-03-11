@@ -146,7 +146,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               /// Focused body areas
               const Text(
-                "Focused body areas",
+                "Focused Body Areas",
                 style: kProfileTitleTextStyle,
               ),
               Text(
@@ -161,7 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
               /// Exercises
               Text(
-                "Exercises - $level level",
+                "Exercises - $level Level",
                 style: kProfileTitleTextStyle,
               ),
 
