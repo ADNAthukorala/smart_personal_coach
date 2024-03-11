@@ -120,7 +120,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: kProfileTitleTextStyle,
               ),
               Text(
-                "Your main goal is to $mainGoal, so aim for $sets sets of 6-12 $reps per exercise.",
+                "Your main goal is to $mainGoal, so aim for $sets sets of $reps reps per exercise.",
                 style: kSmallGreyColorDescriptionTextStyle,
               ),
 

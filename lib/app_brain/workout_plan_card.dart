@@ -47,7 +47,7 @@ class WorkoutPlanCard extends StatelessWidget {
         return Padding(
           padding: const EdgeInsets.only(bottom: kPadding16),
           child: SizedBox(
-            height: 400.0,
+            height: 556.0,
             child: Card(
               margin: EdgeInsets.zero,
               shape: const RoundedRectangleBorder(
