@@ -183,6 +183,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 style: kProfileTitleTextStyle,
               ),
 
+              /// Adding space
+              const SizedBox(height: 4.0),
+
               /// Abs Exercises workout plan card
               focusedBodyAreas.contains(abs)
                   ? WorkoutPlanCard(
