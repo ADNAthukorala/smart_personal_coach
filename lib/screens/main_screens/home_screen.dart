@@ -80,6 +80,20 @@ class _HomeScreenState extends State<HomeScreen> {
           int weeklyGoal = data["weeklyGoal"];
           List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
 
+          String reps = "";
+          String sets = "";
+
+          if (mainGoal == "Loose Weight") {
+            reps = "12-20";
+            sets = "2 - 3";
+          } else if (mainGoal == "Build Muscles") {
+            reps = "6-12";
+            sets = "3-4";
+          } else {
+            reps = "6-20";
+            sets = "2-4";
+          }
+
           return ListView(
             padding: const EdgeInsets.only(
               left: kPadding16,
@@ -88,6 +102,69 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             primary: false,
             children: [
+              /// Title
+              Container(
+                alignment: Alignment.center,
+                child: const Text(
+                  "Workout Plan",
+                  style: kLargeBlackTitleTextStyle,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 12.0),
+
+              /// Main Goal
+              const Text(
+                "Main Goal",
+                style: kProfileTitleTextStyle,
+              ),
+              Text(
+                "Your main goal is $mainGoal. So you should do $sets sets of $reps repetitions of each exercise.",
+                style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Weekly goal
+              const Text(
+                "Weekly Goal",
+                style: kProfileTitleTextStyle,
+              ),
+              Text(
+                "Your weekly goal is $weeklyGoal days. So you should perform each exercise list within any $weeklyGoal days of the week.",
+                style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Focused body areas
+              const Text(
+                "Focused body areas",
+                style: kProfileTitleTextStyle,
+              ),
+              Text(
+                focusedBodyAreas.toString().split("[").last.split("]").first,
+                style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Exercises
+              Text(
+                "Exercises - $level level",
+                style: kProfileTitleTextStyle,
+              ),
+
               /// Abs Exercises workout plan card
               focusedBodyAreas.contains(abs)
                   ? WorkoutPlanCard(

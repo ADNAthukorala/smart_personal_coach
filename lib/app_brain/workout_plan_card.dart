@@ -51,13 +51,15 @@ class WorkoutPlanCard extends StatelessWidget {
             child: Card(
               shape: const RoundedRectangleBorder(
                   borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
-                  side: BorderSide(color: kBlackThemeColor, width: 2)),
+                  side: BorderSide(color: kBlackThemeColor)),
               child: Column(
                 children: [
                   Container(
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
                       color: kAppThemeColor,
+                      border:
+                          Border(bottom: BorderSide(color: kBlackThemeColor)),
                       borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(kRadius16),
                           topRight: Radius.circular(kRadius16)),
