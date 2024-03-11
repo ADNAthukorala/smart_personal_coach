@@ -105,8 +105,8 @@ Future<void> selectExercisesForIntermediate(
     // List to store all the exercises in the collection
     List<DocumentSnapshot> allExercises = querySnapshot.docs;
 
-    // If the total of all exercises is greater than or equal to 2, do the following task
-    if (allExercises.length >= 2) {
+    // If the total of all exercises is greater than or equal to 3, do the following task
+    if (allExercises.length >= 3) {
       // Shuffle the all exercises list to get a random order
       allExercises.shuffle();
 
@@ -119,8 +119,8 @@ Future<void> selectExercisesForIntermediate(
             // Add the random exercise to the Selected Exercises list
             selectedExercisesList.add(randomExercise.id);
           }
-          // If the Selected Exercises length is 2, stop the loop
-          if (selectedExercisesList.length == 2) {
+          // If the Selected Exercises length is 3, stop the loop
+          if (selectedExercisesList.length == 3) {
             break;
           }
         }
@@ -159,8 +159,8 @@ Future<void> selectExercisesForAdvanced(
     // List to store all the exercises in the collection
     List<DocumentSnapshot> allExercises = querySnapshot.docs;
 
-    // If the total of all exercises is greater than or equal to 2, do the following task
-    if (allExercises.length >= 2) {
+    // If the total of all exercises is greater than or equal to 4, do the following task
+    if (allExercises.length >= 4) {
       // Shuffle the all exercises list to get a random order
       allExercises.shuffle();
 
@@ -174,8 +174,8 @@ Future<void> selectExercisesForAdvanced(
             // Add the random exercise to the Selected Exercises list
             selectedExercisesList.add(randomExercise.id);
           }
-          // If the Selected Exercises length is 2, stop the loop
-          if (selectedExercisesList.length == 2) {
+          // If the Selected Exercises length is 4, stop the loop
+          if (selectedExercisesList.length == 4) {
             break;
           }
         }
