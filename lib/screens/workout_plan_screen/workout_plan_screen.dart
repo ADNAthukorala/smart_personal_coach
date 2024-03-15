@@ -27,11 +27,7 @@ class _WorkoutPlanScreenScreenState extends State<WorkoutPlanScreenScreen> {
         automaticallyImplyLeading: false,
       ),
       body: ListView(
-        padding: const EdgeInsets.only(
-          left: kPadding16,
-          top: kPadding16,
-          right: kPadding16,
-        ),
+        padding: const EdgeInsets.all(kPadding16),
         primary: false,
         children: [
           /// Abs Exercises workout plan card
