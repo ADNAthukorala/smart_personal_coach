@@ -47,7 +47,9 @@ class CommunityMessageBubble extends StatelessWidget {
                     ? const TextStyle(
                         color: kWhiteThemeColor,
                       )
-                    : const TextStyle(color: kBlackThemeColor),
+                    : const TextStyle(
+                        color: kBlackThemeColor,
+                      ),
               ),
             ),
           ),
