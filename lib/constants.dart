@@ -299,3 +299,12 @@ const kMlwfTextFormFieldDecorations = InputDecoration(
   enabledBorder:
       UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
 );
+
+///Input decorations for community message text form field
+const kCommunityMessageTextFormFieldDecoration = InputDecoration(
+  hintText: "Type your message here...",
+  contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+  ),
+);
