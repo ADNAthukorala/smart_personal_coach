@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:smart_personal_coach/components/community_message_bubble.dart';
+import 'package:smart_personal_coach/constants.dart';
 
 class CommunityMessageStream extends StatelessWidget {
   const CommunityMessageStream(
-      {super.key, required this.communityMessageStream, required this.loggedInUser});
+      {super.key,
+      required this.communityMessageStream,
+      required this.loggedInUser});
 
   final Stream<QuerySnapshot> communityMessageStream;
   final String? loggedInUser;
@@ -35,7 +38,8 @@ class CommunityMessageStream extends StatelessWidget {
         // Populate community messages list with community messages
         for (var communityMessage in communityMessages) {
           final messageSender = communityMessage.get("sender");
-          final communityMessageText = communityMessage.get("community_message");
+          final communityMessageText =
+              communityMessage.get("community_message");
 
           final communityMessageBubble = CommunityMessageBubble(
             sender: messageSender,
@@ -49,8 +53,8 @@ class CommunityMessageStream extends StatelessWidget {
         return Expanded(
           child: ListView(
             reverse: true,
-            padding:
-                const EdgeInsets.symmetric(vertical: 20.0, horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(
+                vertical: kPadding16, horizontal: kPadding8),
             children: communityMessageBubbles,
           ),
         );
