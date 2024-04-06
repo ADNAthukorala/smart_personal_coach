@@ -52,9 +52,12 @@ class CommunityMessageStream extends StatelessWidget {
         }
         return Expanded(
           child: ListView(
+            primary: false,
             reverse: true,
             padding: const EdgeInsets.symmetric(
-                vertical: kPadding16, horizontal: kPadding8),
+              vertical: kPadding16,
+              horizontal: kPadding8,
+            ),
             children: communityMessageBubbles,
           ),
         );

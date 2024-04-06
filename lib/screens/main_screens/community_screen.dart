@@ -74,7 +74,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
         automaticallyImplyLeading: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(kPadding16),
+        padding: const EdgeInsets.only(
+          left: kPadding16,
+          right: kPadding16,
+          bottom: kPadding16,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -83,6 +87,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
             CommunityMessageStream(
                 communityMessageStream: _communityMessageStream,
                 loggedInUser: loggedInUser.email),
+
+            /// Add space between community messages and send button
+            const SizedBox(height: 8.0),
 
             /// Send a community message
             Row(
