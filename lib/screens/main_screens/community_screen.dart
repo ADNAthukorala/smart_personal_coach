@@ -99,6 +99,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   child: TextFormField(
                     controller: _communityMessageTextController,
                     decoration: kCommunityMessageTextFormFieldDecoration,
+                    textCapitalization: TextCapitalization.sentences,
                     onChanged: (value) {
                       communityMessageText = value;
                       setState(() {
