@@ -96,7 +96,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
-                  child: TextField(
+                  child: TextFormField(
                     controller: _communityMessageTextController,
                     decoration: kCommunityMessageTextFormFieldDecoration,
                     onChanged: (value) {

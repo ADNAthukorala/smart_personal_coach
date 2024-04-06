@@ -22,7 +22,7 @@ class CommunityMessageBubble extends StatelessWidget {
         children: [
           /// Show sender's email address
           Text(
-            sender,
+            isMe ? "You" : sender,
             style: kSmallGreyColorDescriptionTextStyle,
           ),
 

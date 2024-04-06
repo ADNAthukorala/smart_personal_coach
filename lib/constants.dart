@@ -304,7 +304,9 @@ const kMlwfTextFormFieldDecorations = InputDecoration(
 ///Input decorations for community message text form field
 const kCommunityMessageTextFormFieldDecoration = InputDecoration(
   hintText: "Type your message here...",
-  hintStyle: kSmallGreyColorDescriptionTextStyle,
+  hintStyle: TextStyle(
+    color: kGreyThemeColor,
+  ),
   contentPadding:
       EdgeInsets.symmetric(vertical: kPadding16, horizontal: kPadding16),
   focusedBorder: OutlineInputBorder(
