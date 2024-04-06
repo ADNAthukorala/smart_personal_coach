@@ -31,6 +31,7 @@ const kGreyTextColorizeColors = [
 ///
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
+const kRadius30 = 30.0;
 const kPadding8 = 8.0;
 const kPadding16 = 16.0;
 const kAppBarRoundedIconSize = 15.0;
@@ -303,8 +304,18 @@ const kMlwfTextFormFieldDecorations = InputDecoration(
 ///Input decorations for community message text form field
 const kCommunityMessageTextFormFieldDecoration = InputDecoration(
   hintText: "Type your message here...",
-  contentPadding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+  hintStyle: kSmallGreyColorDescriptionTextStyle,
+  contentPadding:
+      EdgeInsets.symmetric(vertical: kPadding16, horizontal: kPadding16),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(kRadius30),
+    ),
+    borderSide: BorderSide(color: kAppThemeColor, width: 2),
+  ),
   border: OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(32.0)),
+    borderRadius: BorderRadius.all(
+      Radius.circular(kRadius30),
+    ),
   ),
 );
