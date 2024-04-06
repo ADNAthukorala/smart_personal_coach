@@ -12,8 +12,13 @@ class CommunityMessageSendButton extends StatelessWidget {
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
         backgroundColor: kAppThemeColor,
+        shape: const CircleBorder(),
+        padding: const EdgeInsets.all(kPadding16),
       ),
-      child: const Icon(Icons.send_rounded),
+      child: const Icon(
+        Icons.send_rounded,
+        color: kWhiteThemeColor,
+      ),
     );
   }
 }
