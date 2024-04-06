@@ -23,10 +23,7 @@ class CommunityMessageBubble extends StatelessWidget {
           /// Show sender's email address
           Text(
             sender,
-            style: const TextStyle(
-              color: kBlackThemeColor,
-              fontSize: 12.0,
-            ),
+            style: kSmallGreyColorDescriptionTextStyle,
           ),
 
           /// The message
@@ -35,15 +32,15 @@ class CommunityMessageBubble extends StatelessWidget {
             color: isMe ? kAppThemeColor : kWhiteThemeColor,
             borderRadius: isMe
                 ? const BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0),
-                    bottomRight: Radius.circular(20.0))
+                    topLeft: Radius.circular(kRadius16),
+                    bottomLeft: Radius.circular(kRadius16),
+                    bottomRight: Radius.circular(kRadius16))
                 : const BorderRadius.only(
-                    topRight: Radius.circular(20.0),
-                    bottomLeft: Radius.circular(20.0),
-                    bottomRight: Radius.circular(20.0)),
+                    topRight: Radius.circular(kRadius16),
+                    bottomLeft: Radius.circular(kRadius16),
+                    bottomRight: Radius.circular(kRadius16)),
             child: Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(kPadding8),
               child: Text(
                 message,
                 style: isMe
