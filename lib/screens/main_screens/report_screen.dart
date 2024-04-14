@@ -178,6 +178,34 @@ class _ReportScreenState extends State<ReportScreen> {
                 ],
               ),
 
+              /// User height
+              Row(
+                children: [
+                  const Text(
+                    "Height:- ",
+                    style: kUserReportTitleTextStyle,
+                  ),
+                  Text(
+                    "${userHeight.toString()} cm",
+                    style: kUserReportInformationTitleTextStyle,
+                  ),
+                ],
+              ),
+
+              /// User weight
+              Row(
+                children: [
+                  const Text(
+                    "Weight:- ",
+                    style: kUserReportTitleTextStyle,
+                  ),
+                  Text(
+                    "${userWeight.toString()} kg",
+                    style: kUserReportInformationTitleTextStyle,
+                  ),
+                ],
+              ),
+
               /// User level
               Row(
                 children: [
