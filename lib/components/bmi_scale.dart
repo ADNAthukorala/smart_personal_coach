@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-class BMIScale extends StatelessWidget {
-  const BMIScale(
+class BMIScaleCard extends StatelessWidget {
+  const BMIScaleCard(
       {super.key,
       required this.text1,
       required this.value,

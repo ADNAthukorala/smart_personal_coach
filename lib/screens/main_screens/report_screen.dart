@@ -210,7 +210,7 @@ class _ReportScreenState extends State<ReportScreen> {
               const SizedBox(height: 8.0),
 
               /// User BMI
-              BMIScale(
+              BMIScaleCard(
                 text1: userBMI.toString(),
                 value: userBMI,
                 bmiColor: bmiColor,
