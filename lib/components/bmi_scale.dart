@@ -40,7 +40,7 @@ class BMIScaleCard extends StatelessWidget {
                     child: const Text(
                       "Body Mass Index (BMI)",
                       style: TextStyle(
-                        fontSize: 30,
+                        fontSize: 28,
                         fontWeight: FontWeight.w700,
                         color: kAppThemeColor,
                       ),
