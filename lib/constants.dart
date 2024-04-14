@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 const kBlueThemeColor = Color(0xFF006685);
 const kPinkThemeColor = Color(0xFFBA1E8B);
 const kRedThemeColor = Color(0xFFDD3300);
+const kGreenThemeColor = Color(0xFF006600);
+const kYellowThemeColor = Color(0xFFFFD400);
+const kOrangeThemeColor = Color(0xFFFF7800);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF757575);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
@@ -176,6 +179,20 @@ const kExercisesListTileTextStyle = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
+/// Text style for user report titles
+const kUserReportTitleTextStyle = TextStyle(
+  color: kBlackThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
+/// Text style for user report information
+const kUserReportInformationTitleTextStyle = TextStyle(
+  color: kBlackThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
@@ -262,7 +279,7 @@ const kExploreScreenButton = ButtonStyle(
 );
 
 ///STYLES FOR SLIDERS
-///Slider style
+/// Slider style
 const kSliderStyle = SliderThemeData(
   activeTrackColor: kWhiteThemeColor,
   inactiveTrackColor: kBlackThemeColor,
@@ -270,6 +287,16 @@ const kSliderStyle = SliderThemeData(
   overlayColor: Color(0x1FFFFFFF),
   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
   overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
+);
+
+/// BMI slider style
+const kBMISliderStyle = SliderThemeData(
+  activeTrackColor: kGreenThemeColor,
+  inactiveTrackColor: kBlackThemeColor,
+  thumbColor: kWhiteThemeColor,
+  overlayColor: Color(0x1FFFFFFF),
+  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0),
+  overlayShape: RoundSliderOverlayShape(overlayRadius: 16.0),
 );
 
 ///STYLES FOR TEXT FIELDS

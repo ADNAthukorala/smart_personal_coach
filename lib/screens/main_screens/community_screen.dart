@@ -73,6 +73,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
         ),
         automaticallyImplyLeading: false,
       ),
+
+      /// Body of the screen
       body: Padding(
         padding: const EdgeInsets.only(
           left: kPadding16,
