@@ -8,12 +8,16 @@ class BMIScale extends StatelessWidget {
       required this.value,
       required this.min,
       required this.max,
-      required this.onChanged});
+      required this.onChanged,
+      required this.bmiColor,
+      required this.bmiMessage});
 
   final String text1;
   final double value;
   final double min;
   final double max;
+  final Color bmiColor;
+  final String bmiMessage;
   final void Function(double)? onChanged;
 
   @override
@@ -49,35 +53,35 @@ class BMIScale extends StatelessWidget {
                     children: [
                       Text(
                         text1,
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.w700,
-                          color: kGreenThemeColor,
+                          color: bmiColor,
                         ),
                       ),
-                      const Text(
+                      Text(
                         "kg/m\u00B2",
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w700,
-                          color: kGreenThemeColor,
+                          color: bmiColor,
                         ),
                       ),
                     ],
                   ),
-                  const Text(
-                    "Normal",
+                  Text(
+                    bmiMessage,
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 28,
                       fontWeight: FontWeight.w700,
-                      color: kGreenThemeColor,
+                      color: bmiColor,
                     ),
                   ),
                 ],
               ),
             ),
             SliderTheme(
-              data: kBMISliderStyle,
+              data: kBMISliderStyle.copyWith(activeTrackColor: bmiColor),
               child: Slider(
                 value: value,
                 min: min,

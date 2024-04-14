@@ -33,6 +33,29 @@ class _ReportScreenState extends State<ReportScreen> {
     }
   }
 
+  /// Getting color and bmi message according to the user's bmi
+  Color bmiColor = kBMIGreenThemeColor;
+  String bmiMessage = "NORMAL";
+
+  void getBMIColorAndText(double bmiValue) {
+    if (bmiValue < 18.5) {
+      bmiColor = kBMIBlueThemeColor;
+      bmiMessage = "UNDER WEIGHT";
+    } else if (bmiValue >= 18.5 && bmiValue <= 24.9) {
+      bmiColor = kBMIGreenThemeColor;
+      bmiMessage = "NORMAL";
+    } else if (bmiValue >= 25 && bmiValue <= 29.9) {
+      bmiColor = kBMIYellowThemeColor;
+      bmiMessage = "OVER WEIGHT";
+    } else if (bmiValue >= 30 && bmiValue <= 34.9) {
+      bmiColor = kBMIOrangeThemeColor;
+      bmiMessage = "OBESE";
+    } else {
+      bmiColor = kBMIRedThemeColor;
+      bmiMessage = "EXTREMELY OBESE";
+    }
+  }
+
   @override
   void initState() {
     getLoggedIntUser();
@@ -92,6 +115,8 @@ class _ReportScreenState extends State<ReportScreen> {
           double userBMI = double.parse(
               (userWeight / ((userHeight * userHeight) * 0.0001))
                   .toStringAsFixed(2));
+
+          getBMIColorAndText(userBMI);
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -181,10 +206,15 @@ class _ReportScreenState extends State<ReportScreen> {
                 ],
               ),
 
+              /// Adding space
+              const SizedBox(height: 8.0),
+
               /// User BMI
               BMIScale(
                 text1: userBMI.toString(),
                 value: userBMI,
+                bmiColor: bmiColor,
+                bmiMessage: bmiMessage,
                 min: 0.0,
                 max: 60.0,
                 onChanged: (double newWeight) {

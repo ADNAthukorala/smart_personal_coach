@@ -4,13 +4,17 @@ import 'package:flutter/material.dart';
 const kBlueThemeColor = Color(0xFF006685);
 const kPinkThemeColor = Color(0xFFBA1E8B);
 const kRedThemeColor = Color(0xFFDD3300);
-const kGreenThemeColor = Color(0xFF006600);
-const kYellowThemeColor = Color(0xFFFFD400);
-const kOrangeThemeColor = Color(0xFFFF7800);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
 const kGreyThemeColor = Color(0xFF757575);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
+
+/// BMI scale colors
+const kBMIBlueThemeColor = Color(0xFF06D3B5);
+const kBMIGreenThemeColor = Color(0xFF27B707);
+const kBMIYellowThemeColor = Color(0xFFFCB004);
+const kBMIOrangeThemeColor = Color(0xFFFA6707);
+const kBMIRedThemeColor = Color(0xFFFF1700);
 
 /// Main theme color
 const kAppThemeColor = kBlueThemeColor;
@@ -291,12 +295,14 @@ const kSliderStyle = SliderThemeData(
 
 /// BMI slider style
 const kBMISliderStyle = SliderThemeData(
-  activeTrackColor: kGreenThemeColor,
-  inactiveTrackColor: kBlackThemeColor,
-  thumbColor: kWhiteThemeColor,
-  overlayColor: Color(0x1FFFFFFF),
+  activeTrackColor: kBMIGreenThemeColor,
+  inactiveTrackColor: kAppThemeColor,
+  thumbColor: Colors.transparent,
+  overlayColor: Colors.transparent,
   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0),
   overlayShape: RoundSliderOverlayShape(overlayRadius: 16.0),
+  trackHeight: 20.0,
+  allowedInteraction: SliderInteraction.slideThumb,
 );
 
 ///STYLES FOR TEXT FIELDS
