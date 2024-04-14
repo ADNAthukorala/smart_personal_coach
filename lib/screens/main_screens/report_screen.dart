@@ -217,7 +217,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 bmiMessage: bmiMessage,
                 min: 0.0,
                 max: 60.0,
-                onChanged: (double newWeight) {
+                onChanged: (double userBMI) {
                   setState(() {
                     userBMI = userBMI;
                   });

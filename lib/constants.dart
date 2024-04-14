@@ -296,7 +296,7 @@ const kSliderStyle = SliderThemeData(
 /// BMI slider style
 const kBMISliderStyle = SliderThemeData(
   activeTrackColor: kBMIGreenThemeColor,
-  inactiveTrackColor: kAppThemeColor,
+  inactiveTrackColor: kGreyThemeColor02,
   thumbColor: Colors.transparent,
   overlayColor: Colors.transparent,
   thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0),
