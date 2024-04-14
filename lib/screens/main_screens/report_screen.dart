@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:fl_chart/fl_chart.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
