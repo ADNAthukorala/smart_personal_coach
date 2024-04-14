@@ -89,8 +89,9 @@ class _ReportScreenState extends State<ReportScreen> {
           int userAge = DateTime.now().year - userBirthDay.toDate().year;
 
           // Getting the user's BMI value
-          double userBMI =
-              double.parse((userWeight / ((userHeight * userHeight) * 0.0001)).toStringAsFixed(2));
+          double userBMI = double.parse(
+              (userWeight / ((userHeight * userHeight) * 0.0001))
+                  .toStringAsFixed(2));
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
