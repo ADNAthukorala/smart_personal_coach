@@ -3,7 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:fl_chart/fl_chart.dart';
+import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
@@ -252,6 +253,8 @@ class _ReportScreenState extends State<ReportScreen> {
                   });
                 },
               ),
+
+              /// Height chart
             ],
           );
         },
