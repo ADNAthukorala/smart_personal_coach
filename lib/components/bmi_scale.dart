@@ -26,7 +26,6 @@ class BMIScaleCard extends StatelessWidget {
       margin: EdgeInsets.zero,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
-      color: kWhiteThemeColor,
       child: Padding(
         padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
         child: Column(
@@ -35,15 +34,12 @@ class BMIScaleCard extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: kPadding16),
               child: Column(
                 children: [
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: const Text(
-                      "Body Mass Index (BMI)",
-                      style: TextStyle(
-                        fontSize: 28,
-                        fontWeight: FontWeight.w700,
-                        color: kAppThemeColor,
-                      ),
+                  const Text(
+                    "Body Mass Index (BMI)",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.w700,
+                      color: kAppThemeColor,
                     ),
                   ),
                   Row(

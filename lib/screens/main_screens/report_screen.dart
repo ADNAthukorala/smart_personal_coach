@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class ReportScreen extends StatefulWidget {
   const ReportScreen({super.key});
@@ -119,6 +118,19 @@ class _ReportScreenState extends State<ReportScreen> {
                   .toStringAsFixed(2));
 
           getBMIColorAndText(userBMI);
+
+          List<_HeightData> heightData = [
+            _HeightData('2001/01/12', userHeight.toDouble()),
+            _HeightData('2001/02/12', 128),
+            _HeightData('2001/03/12', 134),
+            _HeightData('2001/04/12', 132),
+            _HeightData('2001/05/12', 140),
+            _HeightData('2001/06/12', 140),
+            _HeightData('2001/07/12', 140),
+            _HeightData('2002/05/12', 150),
+            _HeightData('2003/06/12', 160),
+            _HeightData('2004/07/12', 170),
+          ];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -254,12 +266,57 @@ class _ReportScreenState extends State<ReportScreen> {
                 },
               ),
 
-              /// Height chart
+              /// Adding space
+              const SizedBox(height: 8.0),
 
+              /// Height chart
+              Card(
+                margin: EdgeInsets.zero,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+                  child: SfCartesianChart(
+                      primaryXAxis: const CategoryAxis(),
+                      // Chart title
+                      title: const ChartTitle(
+                        text: 'Height Chart',
+                        textStyle: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.w700,
+                          color: kAppThemeColor,
+                        ),
+                      ),
+                      // Enable legend
+                      legend: const Legend(isVisible: true),
+                      // Enable tooltip
+                      tooltipBehavior: TooltipBehavior(enable: true),
+                      series: <CartesianSeries<_HeightData, String>>[
+                        LineSeries<_HeightData, String>(
+                            dataSource: heightData,
+                            color: kAppThemeColor,
+                            xValueMapper: (_HeightData height, _) =>
+                                height.year,
+                            yValueMapper: (_HeightData height, _) =>
+                                height.height,
+                            name: 'Height',
+                            // Enable data label
+                            dataLabelSettings:
+                                const DataLabelSettings(isVisible: true))
+                      ]),
+                ),
+              ),
             ],
           );
         },
       ),
     );
   }
+}
+
+class _HeightData {
+  _HeightData(this.year, this.height);
+
+  final String year;
+  final double height;
 }
