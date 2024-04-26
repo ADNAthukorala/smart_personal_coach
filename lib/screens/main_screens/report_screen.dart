@@ -848,7 +848,7 @@ class _ReportScreenState extends State<ReportScreen> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: kRedThemeColor),
                             child: const Text(
-                              "Clear weight Log",
+                              "Clear Weight Log",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                           ),
