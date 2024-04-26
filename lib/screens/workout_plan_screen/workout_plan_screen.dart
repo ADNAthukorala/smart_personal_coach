@@ -24,7 +24,7 @@ class _WorkoutPlanScreenScreenState extends State<WorkoutPlanScreenScreen> {
           "Workout Plan Exercises",
           style: kAppBarTextStyle,
         ),
-        automaticallyImplyLeading: false,
+        iconTheme: const IconThemeData(color: kWhiteThemeColor),
       ),
       body: ListView(
         padding: const EdgeInsets.all(kPadding16),
