@@ -23,6 +23,7 @@ class _ReportScreenState extends State<ReportScreen> {
 
   // Creating text controllers
   final _heightLogEmailController = TextEditingController();
+  final _weightLogEmailController = TextEditingController();
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -184,7 +185,7 @@ class _ReportScreenState extends State<ReportScreen> {
     // Add the new document to the collection
     await collectionReference.doc(yearMonthForWeight).set({
       'date': yearMonthForWeight,
-      'height': userWeight,
+      'weight': userWeight,
     });
   }
 
@@ -192,6 +193,7 @@ class _ReportScreenState extends State<ReportScreen> {
   void initState() {
     getLoggedIntUser();
     getHeightChartData();
+    getWeightChartData();
     super.initState();
   }
 
@@ -254,9 +256,13 @@ class _ReportScreenState extends State<ReportScreen> {
           final userHeightController = TextEditingController();
           userHeightController.text = userHeight.toString();
 
+          final userWeightController = TextEditingController();
+          userWeightController.text = userWeight.toString();
+
           String year = DateTime.now().year.toString();
           String month = DateTime.now().month.toString();
           String yearMonthForHeight = "$year.$month";
+          String yearMonthForWeight = "$year.$month";
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -655,7 +661,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                       userHeightController.text
                                                           .trim())
                                                   : userHeight);
-                                          getHeightChartData();
+                                          await getHeightChartData();
                                           if (!context.mounted) return;
                                           Navigator.pop(context);
                                         },
@@ -727,14 +733,14 @@ class _ReportScreenState extends State<ReportScreen> {
                         legend: const Legend(isVisible: true),
                         // Enable tooltip
                         tooltipBehavior: TooltipBehavior(enable: true),
-                        series: <CartesianSeries<_HeightChartData, String>>[
-                          LineSeries<_HeightChartData, String>(
-                              dataSource: heightChartData,
+                        series: <CartesianSeries<_WeightChartData, String>>[
+                          LineSeries<_WeightChartData, String>(
+                              dataSource: weightChartData,
                               color: kAppThemeColor,
-                              xValueMapper: (_HeightChartData height, _) =>
-                                  height.date,
-                              yValueMapper: (_HeightChartData height, _) =>
-                                  height.height,
+                              xValueMapper: (_WeightChartData weight, _) =>
+                                  weight.date,
+                              yValueMapper: (_WeightChartData weight, _) =>
+                                  weight.weight,
                               name: 'Weight (kg)',
                               // Enable data label
                               dataLabelSettings:
@@ -771,7 +777,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                               color: kWhiteThemeColor),
                                         ),
                                         TextFormField(
-                                          controller: _heightLogEmailController,
+                                          controller: _weightLogEmailController,
                                           style: const TextStyle(
                                               color: kWhiteThemeColor),
                                           cursorColor: kWhiteThemeColor,
@@ -784,7 +790,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                       /// Cancel button
                                       ElevatedButton(
                                         onPressed: () {
-                                          _heightLogEmailController.clear();
+                                          _weightLogEmailController.clear();
                                           Navigator.pop(context);
                                         },
                                         child: const Text(
@@ -797,14 +803,14 @@ class _ReportScreenState extends State<ReportScreen> {
                                       /// Continue button
                                       ElevatedButton(
                                         onPressed: () async {
-                                          if (_heightLogEmailController.text
+                                          if (_weightLogEmailController.text
                                                   .trim() ==
                                               loggedInUser.email) {
                                             Navigator.pop(context);
-                                            await addDocumentAndDeleteOthersHeight(
-                                                yearMonthForHeight, userHeight);
-                                            await getHeightChartData();
-                                            _heightLogEmailController.clear();
+                                            await addDocumentAndDeleteOthersWeight(
+                                                yearMonthForWeight, userWeight);
+                                            await getWeightChartData();
+                                            _weightLogEmailController.clear();
                                           } else {
                                             showDialog(
                                               context: context,
@@ -876,7 +882,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                   picked.year.toString();
                                               String month =
                                                   picked.month.toString();
-                                              yearMonthForHeight =
+                                              yearMonthForWeight =
                                                   "$year.$month";
                                             }
                                           },
@@ -885,9 +891,9 @@ class _ReportScreenState extends State<ReportScreen> {
                                           label: const Text("Select Date"),
                                         ),
 
-                                        /// Height picker
+                                        /// Weight picker
                                         TextFormField(
-                                          controller: userHeightController,
+                                          controller: userWeightController,
                                           decoration: const InputDecoration(
                                             hintText: "Enter your weight",
                                           ),
@@ -903,8 +909,8 @@ class _ReportScreenState extends State<ReportScreen> {
                                       /// Cancel button
                                       ElevatedButton(
                                           onPressed: () {
-                                            userHeightController.text =
-                                                userHeight.toString();
+                                            userWeightController.text =
+                                                userWeight.toString();
                                             Navigator.pop(context);
                                           },
                                           child: const Text("Cancel")),
@@ -912,16 +918,16 @@ class _ReportScreenState extends State<ReportScreen> {
                                       /// Save button
                                       ElevatedButton(
                                         onPressed: () async {
-                                          await updateHeightLog(
-                                              yearMonthForHeight,
-                                              userHeightController.text
+                                          await updateWeightLog(
+                                              yearMonthForWeight,
+                                              userWeightController.text
                                                       .trim()
                                                       .isNotEmpty
                                                   ? int.parse(
-                                                      userHeightController.text
+                                                      userWeightController.text
                                                           .trim())
-                                                  : userHeight);
-                                          getHeightChartData();
+                                                  : userWeight);
+                                          await getWeightChartData();
                                           if (!context.mounted) return;
                                           Navigator.pop(context);
                                         },
