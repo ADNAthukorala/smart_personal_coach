@@ -102,7 +102,7 @@ class _ReportScreenState extends State<ReportScreen> {
   }
 
   /// Clear height log
-  Future<void> addDocumentAndDeleteOthers(
+  Future<void> addDocumentAndDeleteOthersHeight(
       String yearMonthForHeight, int userHeight) async {
     // Get a reference to the collection
     final CollectionReference collectionReference = FirebaseFirestore.instance
@@ -122,6 +122,69 @@ class _ReportScreenState extends State<ReportScreen> {
     await collectionReference.doc(yearMonthForHeight).set({
       'date': yearMonthForHeight,
       'height': userHeight,
+    });
+  }
+
+  /// Getting weight chart data
+  List<_WeightChartData> weightChartData = [];
+
+  Future<void> getWeightChartData() async {
+    CollectionReference userWeightChartData = FirebaseFirestore.instance
+        .collection('users')
+        .doc(loggedInUser.email)
+        .collection('weight_chart_data');
+
+    QuerySnapshot querySnapshot = await userWeightChartData.get();
+
+    weightChartData.clear();
+
+    for (var doc in querySnapshot.docs) {
+      int weight = doc['weight'];
+      setState(() {
+        weightChartData.add(_WeightChartData(doc['date'], weight));
+      });
+    }
+  }
+
+  /// Weight log
+  Future<void> updateWeightLog(
+      String yearMonthForWeight, int userWeight) async {
+    try {
+      await _firestore
+          .collection("users")
+          .doc(loggedInUser.email)
+          .collection("weight_chart_data")
+          .doc(yearMonthForWeight)
+          .set({
+        'date': yearMonthForWeight,
+        'weight': userWeight,
+      });
+    } catch (e) {
+      print('Error has occurred: $e');
+    }
+  }
+
+  /// Clear weight log
+  Future<void> addDocumentAndDeleteOthersWeight(
+      String yearMonthForWeight, int userWeight) async {
+    // Get a reference to the collection
+    final CollectionReference collectionReference = FirebaseFirestore.instance
+        .collection("users")
+        .doc(loggedInUser.email)
+        .collection("weight_chart_data");
+
+    // Get all documents from the collection
+    final QuerySnapshot snapshot = await collectionReference.get();
+
+    // Delete each document in the collection
+    for (DocumentSnapshot doc in snapshot.docs) {
+      await doc.reference.delete();
+    }
+
+    // Add the new document to the collection
+    await collectionReference.doc(yearMonthForWeight).set({
+      'date': yearMonthForWeight,
+      'height': userWeight,
     });
   }
 
@@ -390,8 +453,9 @@ class _ReportScreenState extends State<ReportScreen> {
                         ],
                       ),
 
-                      /// Height chart
+                      /// Chart
                       SfCartesianChart(
+                        margin: EdgeInsets.zero,
                         primaryXAxis: const CategoryAxis(),
                         // Enable legend
                         legend: const Legend(isVisible: true),
@@ -471,7 +535,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                   .trim() ==
                                               loggedInUser.email) {
                                             Navigator.pop(context);
-                                            await addDocumentAndDeleteOthers(
+                                            await addDocumentAndDeleteOthersHeight(
                                                 yearMonthForHeight, userHeight);
                                             await getHeightChartData();
                                             _heightLogEmailController.clear();
@@ -630,7 +694,7 @@ class _ReportScreenState extends State<ReportScreen> {
                     children: [
                       /// Title
                       const Text(
-                        "Height Chart",
+                        "Weight Chart",
                         style: TextStyle(
                           fontSize: 28,
                           fontWeight: FontWeight.w700,
@@ -641,22 +705,23 @@ class _ReportScreenState extends State<ReportScreen> {
                       /// Adding space
                       const SizedBox(height: 8.0),
 
-                      /// Current user height
+                      /// Current user weight
                       Row(
                         children: [
                           const Text(
-                            "Current Height:- ",
+                            "Current Weight:- ",
                             style: kUserReportTitleTextStyle,
                           ),
                           Text(
-                            "${userHeight.toString()} cm",
+                            "${userWeight.toString()} kg",
                             style: kUserReportInformationTitleTextStyle,
                           ),
                         ],
                       ),
 
-                      /// Height chart
+                      /// Chart
                       SfCartesianChart(
+                        margin: EdgeInsets.zero,
                         primaryXAxis: const CategoryAxis(),
                         // Enable legend
                         legend: const Legend(isVisible: true),
@@ -670,7 +735,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                   height.date,
                               yValueMapper: (_HeightChartData height, _) =>
                                   height.height,
-                              name: 'Height (cm)',
+                              name: 'Weight (kg)',
                               // Enable data label
                               dataLabelSettings:
                                   const DataLabelSettings(isVisible: true))
@@ -681,7 +746,7 @@ class _ReportScreenState extends State<ReportScreen> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          /// Clear height log
+                          /// Clear weight log
                           ElevatedButton(
                             onPressed: () {
                               showDialog(
@@ -701,7 +766,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
                                         const Text(
-                                          "If you clear your height log, all height data will be deleted! If you want to continue, enter your email to confirm!",
+                                          "If you clear your weight log, all weight data will be deleted! If you want to continue, enter your email to confirm!",
                                           style: TextStyle(
                                               color: kWhiteThemeColor),
                                         ),
@@ -736,7 +801,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                                   .trim() ==
                                               loggedInUser.email) {
                                             Navigator.pop(context);
-                                            await addDocumentAndDeleteOthers(
+                                            await addDocumentAndDeleteOthersHeight(
                                                 yearMonthForHeight, userHeight);
                                             await getHeightChartData();
                                             _heightLogEmailController.clear();
@@ -777,7 +842,7 @@ class _ReportScreenState extends State<ReportScreen> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: kRedThemeColor),
                             child: const Text(
-                              "Clear Height Log",
+                              "Clear weight Log",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                           ),
@@ -792,7 +857,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    title: const Text("Add height log"),
+                                    title: const Text("Add weight log"),
                                     content: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -824,7 +889,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                         TextFormField(
                                           controller: userHeightController,
                                           decoration: const InputDecoration(
-                                            hintText: "Enter your height",
+                                            hintText: "Enter your weight",
                                           ),
                                           keyboardType: TextInputType.number,
                                           inputFormatters: [
@@ -870,7 +935,7 @@ class _ReportScreenState extends State<ReportScreen> {
                             style: ElevatedButton.styleFrom(
                                 backgroundColor: kAppThemeColor),
                             child: const Text(
-                              "Add Height Log",
+                              "Add Weight Log",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                           ),
@@ -893,4 +958,11 @@ class _HeightChartData {
 
   final String date;
   final int height;
+}
+
+class _WeightChartData {
+  _WeightChartData(this.date, this.weight);
+
+  final String date;
+  final int weight;
 }

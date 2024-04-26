@@ -88,6 +88,16 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
         'height': widget.userHeight,
       });
 
+      await _firestore
+          .collection("users")
+          .doc(loggedInUser.email)
+          .collection("weight_chart_data")
+          .doc(yearMonth)
+          .set({
+        'date': yearMonth,
+        'weight': widget.userWeight,
+      });
+
       /// Generate the workout plan
       await generateTheWorkoutPlan(
         userLevel: widget.userLevel,
