@@ -353,7 +353,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                   height.date,
                               yValueMapper: (_HeightChartData height, _) =>
                                   height.height,
-                              name: 'Height',
+                              name: 'Height (cm)',
                               // Enable data label
                               dataLabelSettings:
                                   const DataLabelSettings(isVisible: true))
