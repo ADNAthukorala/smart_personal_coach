@@ -138,7 +138,8 @@ class _BottomNavigationBarScreenScreenState
             });
           },
           animationDuration: const Duration(seconds: 1),
-          surfaceTintColor: kWhiteThemeColor,
+          elevation: 8,
+          surfaceTintColor: kGreyThemeColor,
           backgroundColor: kWhiteThemeColor,
           indicatorColor: kAppThemeColor,
           selectedIndex: _currentScreenIndex,

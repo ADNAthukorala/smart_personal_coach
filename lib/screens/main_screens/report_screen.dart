@@ -199,116 +199,138 @@ class _ReportScreenState extends State<ReportScreen> {
             padding: const EdgeInsets.all(kPadding16),
             primary: false,
             children: [
-              /// User name
-              Row(
-                children: [
-                  const Text(
-                    "Name:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    userName,
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+              Card(
+                margin: EdgeInsets.zero,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+                child: Padding(
+                  padding: const EdgeInsets.all(kPadding8),
+                  child: Column(
+                    children: [
+                      /// Title
+                      const Text(
+                        "User Information",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: kAppThemeColor,
+                        ),
+                      ),
 
-              /// User email
-              Row(
-                children: [
-                  const Text(
-                    "Email:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    userEmail,
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+                      /// User name
+                      Row(
+                        children: [
+                          const Text(
+                            "Name:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            userName,
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
 
-              /// User age
-              Row(
-                children: [
-                  const Text(
-                    "Age:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    userAge.toString(),
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+                      /// User email
+                      Row(
+                        children: [
+                          const Text(
+                            "Email:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            userEmail,
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
 
-              /// User gender
-              Row(
-                children: [
-                  const Text(
-                    "Gender:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    userGender,
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+                      /// User age
+                      Row(
+                        children: [
+                          const Text(
+                            "Age:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            userAge.toString(),
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
 
-              /// User height
-              Row(
-                children: [
-                  const Text(
-                    "Height:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    "${userHeight.toString()} cm",
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+                      /// User gender
+                      Row(
+                        children: [
+                          const Text(
+                            "Gender:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            userGender,
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
 
-              /// User weight
-              Row(
-                children: [
-                  const Text(
-                    "Weight:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    "${userWeight.toString()} kg",
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+                      /// User height
+                      Row(
+                        children: [
+                          const Text(
+                            "Height:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            "${userHeight.toString()} cm",
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
 
-              /// User level
-              Row(
-                children: [
-                  const Text(
-                    "Level:- ",
-                    style: kUserReportTitleTextStyle,
-                  ),
-                  Text(
-                    userLevel,
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
-              ),
+                      /// User weight
+                      Row(
+                        children: [
+                          const Text(
+                            "Weight:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            "${userWeight.toString()} kg",
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
 
-              /// User main goal
-              Row(
-                children: [
-                  const Text(
-                    "Main Goal:- ",
-                    style: kUserReportTitleTextStyle,
+                      /// User level
+                      Row(
+                        children: [
+                          const Text(
+                            "Level:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            userLevel,
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
+
+                      /// User main goal
+                      Row(
+                        children: [
+                          const Text(
+                            "Main Goal:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            userMainGoal,
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
-                  Text(
-                    userMainGoal,
-                    style: kUserReportInformationTitleTextStyle,
-                  ),
-                ],
+                ),
               ),
 
               /// Adding space
@@ -390,6 +412,7 @@ class _ReportScreenState extends State<ReportScreen> {
                         ],
                       ),
 
+                      /// Clear and Add buttons row
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -486,9 +509,11 @@ class _ReportScreenState extends State<ReportScreen> {
                                 },
                               );
                             },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kRedThemeColor),
                             child: const Text(
                               "Clear Height Log",
-                              style: TextStyle(color: kRedThemeColor),
+                              style: TextStyle(color: kWhiteThemeColor),
                             ),
                           ),
 
@@ -502,7 +527,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                 context: context,
                                 builder: (context) {
                                   return AlertDialog(
-                                    title: const Text("Add Height Log"),
+                                    title: const Text("Add height log"),
                                     content: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
@@ -527,7 +552,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                           },
                                           icon: const Icon(
                                               Icons.calendar_month_rounded),
-                                          label: const Text("Date"),
+                                          label: const Text("Select Date"),
                                         ),
 
                                         /// Height picker
@@ -577,7 +602,277 @@ class _ReportScreenState extends State<ReportScreen> {
                                 },
                               );
                             },
-                            child: const Text("Add Height Log"),
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kAppThemeColor),
+                            child: const Text(
+                              "Add Height Log",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 10.0),
+
+              /// Weight chart
+              Card(
+                margin: EdgeInsets.zero,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+                child: Padding(
+                  padding: const EdgeInsets.all(kPadding8),
+                  child: Column(
+                    children: [
+                      /// Title
+                      const Text(
+                        "Height Chart",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: kAppThemeColor,
+                        ),
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
+
+                      /// Current user height
+                      Row(
+                        children: [
+                          const Text(
+                            "Current Height:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            "${userHeight.toString()} cm",
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
+                      ),
+
+                      /// Height chart
+                      SfCartesianChart(
+                        primaryXAxis: const CategoryAxis(),
+                        // Enable legend
+                        legend: const Legend(isVisible: true),
+                        // Enable tooltip
+                        tooltipBehavior: TooltipBehavior(enable: true),
+                        series: <CartesianSeries<_HeightChartData, String>>[
+                          LineSeries<_HeightChartData, String>(
+                              dataSource: heightChartData,
+                              color: kAppThemeColor,
+                              xValueMapper: (_HeightChartData height, _) =>
+                                  height.date,
+                              yValueMapper: (_HeightChartData height, _) =>
+                                  height.height,
+                              name: 'Height (cm)',
+                              // Enable data label
+                              dataLabelSettings:
+                                  const DataLabelSettings(isVisible: true))
+                        ],
+                      ),
+
+                      /// Clear and Add buttons row
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          /// Clear height log
+                          ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    backgroundColor: kRedThemeColor,
+                                    icon: const Icon(
+                                      Icons.warning_rounded,
+                                      color: kWhiteThemeColor,
+                                    ),
+                                    title: const Text(
+                                      "Are you sure?",
+                                      style: TextStyle(color: kWhiteThemeColor),
+                                    ),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          "If you clear your height log, all height data will be deleted! If you want to continue, enter your email to confirm!",
+                                          style: TextStyle(
+                                              color: kWhiteThemeColor),
+                                        ),
+                                        TextFormField(
+                                          controller: _heightLogEmailController,
+                                          style: const TextStyle(
+                                              color: kWhiteThemeColor),
+                                          cursorColor: kWhiteThemeColor,
+                                          decoration:
+                                              kMlwfTextFormFieldDecorations,
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
+                                      /// Cancel button
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          _heightLogEmailController.clear();
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text(
+                                          "Cancel",
+                                          style:
+                                              TextStyle(color: kRedThemeColor),
+                                        ),
+                                      ),
+
+                                      /// Continue button
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          if (_heightLogEmailController.text
+                                                  .trim() ==
+                                              loggedInUser.email) {
+                                            Navigator.pop(context);
+                                            await addDocumentAndDeleteOthers(
+                                                yearMonthForHeight, userHeight);
+                                            await getHeightChartData();
+                                            _heightLogEmailController.clear();
+                                          } else {
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                      "Wrong email!"),
+                                                  content: const Text(
+                                                      "The email entered doesn't match with your email address. Check back and try again!"),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: const Text(
+                                                          "Try again"),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        },
+                                        child: const Text(
+                                          "Continue",
+                                          style:
+                                              TextStyle(color: kRedThemeColor),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kRedThemeColor),
+                            child: const Text(
+                              "Clear Height Log",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                          ),
+
+                          /// Adding space
+                          const SizedBox(width: 8.0),
+
+                          /// Add height log
+                          ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text("Add height log"),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        /// Date picker
+                                        ElevatedButton.icon(
+                                          onPressed: () async {
+                                            final DateTime? picked =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime.now(),
+                                            );
+                                            if (picked != null) {
+                                              String year =
+                                                  picked.year.toString();
+                                              String month =
+                                                  picked.month.toString();
+                                              yearMonthForHeight =
+                                                  "$year.$month";
+                                            }
+                                          },
+                                          icon: const Icon(
+                                              Icons.calendar_month_rounded),
+                                          label: const Text("Select Date"),
+                                        ),
+
+                                        /// Height picker
+                                        TextFormField(
+                                          controller: userHeightController,
+                                          decoration: const InputDecoration(
+                                            hintText: "Enter your height",
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter
+                                                .digitsOnly,
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
+                                      /// Cancel button
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            userHeightController.text =
+                                                userHeight.toString();
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Cancel")),
+
+                                      /// Save button
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          await updateHeightLog(
+                                              yearMonthForHeight,
+                                              userHeightController.text
+                                                      .trim()
+                                                      .isNotEmpty
+                                                  ? int.parse(
+                                                      userHeightController.text
+                                                          .trim())
+                                                  : userHeight);
+                                          getHeightChartData();
+                                          if (!context.mounted) return;
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Save"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            style: ElevatedButton.styleFrom(
+                                backgroundColor: kAppThemeColor),
+                            child: const Text(
+                              "Add Height Log",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
                           ),
                         ],
                       ),
