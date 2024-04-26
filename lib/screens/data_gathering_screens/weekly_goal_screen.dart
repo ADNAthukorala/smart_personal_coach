@@ -58,6 +58,10 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       showSpinner = true;
     });
     try {
+      String year = DateTime.now().year.toString();
+      String month = DateTime.now().month.toString();
+      String yearMonth = "$year.$month";
+
       await _firestore.collection("users").doc(loggedInUser.email).set(
         {
           'gender': widget.userGender,
@@ -73,6 +77,16 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
           'weeklyGoal': _userSelectedDays,
         },
       );
+
+      await _firestore
+          .collection("users")
+          .doc(loggedInUser.email)
+          .collection("height_chart_data")
+          .doc(yearMonth)
+          .set({
+        'date': yearMonth,
+        'height': widget.userHeight,
+      });
 
       /// Generate the workout plan
       await generateTheWorkoutPlan(

@@ -57,9 +57,26 @@ class _ReportScreenState extends State<ReportScreen> {
     }
   }
 
+  List<_HeightData> heightData = [];
+
+  Future<void> getHeightChartData() async {
+    CollectionReference userHeightChartData = FirebaseFirestore.instance
+        .collection('users')
+        .doc(loggedInUser.email)
+        .collection('height_chart_data');
+
+    QuerySnapshot querySnapshot = await userHeightChartData.get();
+
+    for (var doc in querySnapshot.docs) {
+      int height = doc['height'];
+      heightData.add(_HeightData(doc['date'], height.toDouble()));
+    }
+  }
+
   @override
   void initState() {
     getLoggedIntUser();
+    getHeightChartData();
     super.initState();
   }
 
@@ -118,19 +135,6 @@ class _ReportScreenState extends State<ReportScreen> {
                   .toStringAsFixed(2));
 
           getBMIColorAndText(userBMI);
-
-          List<_HeightData> heightData = [
-            _HeightData('2001/01/12', userHeight.toDouble()),
-            _HeightData('2001/02/12', 128),
-            _HeightData('2001/03/12', 134),
-            _HeightData('2001/04/12', 132),
-            _HeightData('2001/05/12', 140),
-            _HeightData('2001/06/12', 140),
-            _HeightData('2001/07/12', 140),
-            _HeightData('2002/05/12', 150),
-            _HeightData('2003/06/12', 160),
-            _HeightData('2004/07/12', 170),
-          ];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
