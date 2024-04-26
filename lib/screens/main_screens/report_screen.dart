@@ -279,35 +279,53 @@ class _ReportScreenState extends State<ReportScreen> {
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
                 child: Padding(
-                  padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
-                  child: SfCartesianChart(
-                      primaryXAxis: const CategoryAxis(),
-                      // Chart title
-                      title: const ChartTitle(
-                        text: 'Height Chart',
-                        textStyle: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w700,
-                          color: kAppThemeColor,
-                        ),
+                  padding: const EdgeInsets.all(kPadding8),
+                  child: Column(
+                    children: [
+                      SfCartesianChart(
+                          primaryXAxis: const CategoryAxis(),
+                          // Chart title
+                          title: const ChartTitle(
+                            text: 'Height Chart',
+                            textStyle: TextStyle(
+                              fontSize: 22,
+                              fontWeight: FontWeight.w700,
+                              color: kAppThemeColor,
+                            ),
+                          ),
+                          // Enable legend
+                          legend: const Legend(isVisible: true),
+                          // Enable tooltip
+                          tooltipBehavior: TooltipBehavior(enable: true),
+                          series: <CartesianSeries<_HeightData, String>>[
+                            LineSeries<_HeightData, String>(
+                                dataSource: heightData,
+                                color: kAppThemeColor,
+                                xValueMapper: (_HeightData height, _) =>
+                                    height.year,
+                                yValueMapper: (_HeightData height, _) =>
+                                    height.height,
+                                name: 'Height',
+                                // Enable data label
+                                dataLabelSettings:
+                                    const DataLabelSettings(isVisible: true))
+                          ]),
+
+                      /// Current user height
+                      Row(
+                        children: [
+                          const Text(
+                            "Current Height:- ",
+                            style: kUserReportTitleTextStyle,
+                          ),
+                          Text(
+                            "${userHeight.toString()} cm",
+                            style: kUserReportInformationTitleTextStyle,
+                          ),
+                        ],
                       ),
-                      // Enable legend
-                      legend: const Legend(isVisible: true),
-                      // Enable tooltip
-                      tooltipBehavior: TooltipBehavior(enable: true),
-                      series: <CartesianSeries<_HeightData, String>>[
-                        LineSeries<_HeightData, String>(
-                            dataSource: heightData,
-                            color: kAppThemeColor,
-                            xValueMapper: (_HeightData height, _) =>
-                                height.year,
-                            yValueMapper: (_HeightData height, _) =>
-                                height.height,
-                            name: 'Height',
-                            // Enable data label
-                            dataLabelSettings:
-                                const DataLabelSettings(isVisible: true))
-                      ]),
+                    ],
+                  ),
                 ),
               ),
             ],

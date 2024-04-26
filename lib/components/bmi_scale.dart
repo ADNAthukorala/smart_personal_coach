@@ -27,53 +27,46 @@ class BMIScaleCard extends StatelessWidget {
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
       child: Padding(
-        padding: const EdgeInsets.only(top: 8.0, bottom: 8.0),
+        padding: const EdgeInsets.all(kPadding8),
         child: Column(
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: kPadding16),
-              child: Column(
-                children: [
-                  const Text(
-                    "Body Mass Index (BMI)",
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      color: kAppThemeColor,
-                    ),
+            const Text(
+              "Body Mass Index (BMI)",
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+                color: kAppThemeColor,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.baseline,
+              textBaseline: TextBaseline.alphabetic,
+              children: [
+                Text(
+                  text1,
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.w700,
+                    color: bmiColor,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.baseline,
-                    textBaseline: TextBaseline.alphabetic,
-                    children: [
-                      Text(
-                        text1,
-                        style: TextStyle(
-                          fontSize: 30,
-                          fontWeight: FontWeight.w700,
-                          color: bmiColor,
-                        ),
-                      ),
-                      Text(
-                        "kg/m\u00B2",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w700,
-                          color: bmiColor,
-                        ),
-                      ),
-                    ],
+                ),
+                Text(
+                  "kg/m\u00B2",
+                  style: TextStyle(
+                    fontSize: 14,
+                    fontWeight: FontWeight.w700,
+                    color: bmiColor,
                   ),
-                  Text(
-                    bmiMessage,
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      color: bmiColor,
-                    ),
-                  ),
-                ],
+                ),
+              ],
+            ),
+            Text(
+              bmiMessage,
+              style: TextStyle(
+                fontSize: 28,
+                fontWeight: FontWeight.w700,
+                color: bmiColor,
               ),
             ),
             SliderTheme(
