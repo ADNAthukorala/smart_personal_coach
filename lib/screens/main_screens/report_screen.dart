@@ -21,6 +21,9 @@ class _ReportScreenState extends State<ReportScreen> {
   // Creating an user variable to store logged in user
   late User loggedInUser;
 
+  // Creating text controllers
+  final _heightLogEmailController = TextEditingController();
+
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
     try {
@@ -70,16 +73,19 @@ class _ReportScreenState extends State<ReportScreen> {
 
     QuerySnapshot querySnapshot = await userHeightChartData.get();
 
+    heightChartData.clear();
+
     for (var doc in querySnapshot.docs) {
       int height = doc['height'];
       setState(() {
-        heightChartData.add(_HeightChartData(doc['date'], height.toDouble()));
+        heightChartData.add(_HeightChartData(doc['date'], height));
       });
     }
   }
 
   /// Height log
-  Future<void> updateHeightLog(String yearMonthForHeight, int height) async {
+  Future<void> updateHeightLog(
+      String yearMonthForHeight, int userHeight) async {
     try {
       await _firestore
           .collection("users")
@@ -88,11 +94,35 @@ class _ReportScreenState extends State<ReportScreen> {
           .doc(yearMonthForHeight)
           .set({
         'date': yearMonthForHeight,
-        'height': height,
+        'height': userHeight,
       });
     } catch (e) {
       print('Error has occurred: $e');
     }
+  }
+
+  /// Clear height log
+  Future<void> addDocumentAndDeleteOthers(
+      String yearMonthForHeight, int userHeight) async {
+    // Get a reference to the collection
+    final CollectionReference collectionReference = FirebaseFirestore.instance
+        .collection("users")
+        .doc(loggedInUser.email)
+        .collection("height_chart_data");
+
+    // Get all documents from the collection
+    final QuerySnapshot snapshot = await collectionReference.get();
+
+    // Delete each document in the collection
+    for (DocumentSnapshot doc in snapshot.docs) {
+      await doc.reference.delete();
+    }
+
+    // Add the new document to the collection
+    await collectionReference.doc(yearMonthForHeight).set({
+      'date': yearMonthForHeight,
+      'height': userHeight,
+    });
   }
 
   @override
@@ -360,85 +390,196 @@ class _ReportScreenState extends State<ReportScreen> {
                         ],
                       ),
 
-                      /// Height log
-                      ElevatedButton(
-                        onPressed: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return AlertDialog(
-                                title: const Text("Height Log"),
-                                content: Column(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    /// Date picker
-                                    ElevatedButton.icon(
-                                      onPressed: () async {
-                                        final DateTime? picked =
-                                            await showDatePicker(
-                                          context: context,
-                                          initialDate: DateTime.now(),
-                                          firstDate: DateTime(1900),
-                                          lastDate: DateTime.now(),
-                                        );
-                                        if (picked != null) {
-                                          String year = picked.year.toString();
-                                          String month =
-                                              picked.month.toString();
-                                          yearMonthForHeight = "$year.$month";
-                                        }
-                                      },
-                                      icon: const Icon(
-                                          Icons.calendar_month_rounded),
-                                      label: const Text("Date"),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          /// Clear height log
+                          ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    backgroundColor: kRedThemeColor,
+                                    icon: const Icon(
+                                      Icons.warning_rounded,
+                                      color: kWhiteThemeColor,
                                     ),
-
-                                    /// Height picker
-                                    TextFormField(
-                                      controller: userHeightController,
-                                      decoration: const InputDecoration(
-                                        hintText: "Enter your height",
-                                      ),
-                                      keyboardType: TextInputType.number,
-                                      inputFormatters: [
-                                        FilteringTextInputFormatter.digitsOnly,
+                                    title: const Text(
+                                      "Are you sure?",
+                                      style: TextStyle(color: kWhiteThemeColor),
+                                    ),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Text(
+                                          "If you clear your height log, all height data will be deleted! If you want to continue, enter your email to confirm!",
+                                          style: TextStyle(
+                                              color: kWhiteThemeColor),
+                                        ),
+                                        TextFormField(
+                                          controller: _heightLogEmailController,
+                                          style: const TextStyle(
+                                              color: kWhiteThemeColor),
+                                          cursorColor: kWhiteThemeColor,
+                                          decoration:
+                                              kMlwfTextFormFieldDecorations,
+                                        ),
                                       ],
                                     ),
-                                  ],
-                                ),
-                                actions: [
-                                  /// Cancel button
-                                  ElevatedButton(
-                                      onPressed: () {
-                                        userHeightController.text =
-                                            userHeight.toString();
-                                        Navigator.pop(context);
-                                      },
-                                      child: const Text("Cancel")),
+                                    actions: [
+                                      /// Cancel button
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          _heightLogEmailController.clear();
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text(
+                                          "Cancel",
+                                          style:
+                                              TextStyle(color: kRedThemeColor),
+                                        ),
+                                      ),
 
-                                  /// Save button
-                                  ElevatedButton(
-                                    onPressed: () async {
-                                      await updateHeightLog(
-                                          yearMonthForHeight,
-                                          userHeightController.text
-                                                  .trim()
-                                                  .isNotEmpty
-                                              ? int.parse(userHeightController
-                                                  .text
-                                                  .trim())
-                                              : userHeight);
-                                      if (!context.mounted) return;
-                                      Navigator.pop(context);
-                                    },
-                                    child: const Text("Save"),
-                                  ),
-                                ],
+                                      /// Continue button
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          if (_heightLogEmailController.text
+                                                  .trim() ==
+                                              loggedInUser.email) {
+                                            Navigator.pop(context);
+                                            await addDocumentAndDeleteOthers(
+                                                yearMonthForHeight, userHeight);
+                                            await getHeightChartData();
+                                            _heightLogEmailController.clear();
+                                          } else {
+                                            showDialog(
+                                              context: context,
+                                              builder: (context) {
+                                                return AlertDialog(
+                                                  title: const Text(
+                                                      "Wrong email!"),
+                                                  content: const Text(
+                                                      "The email entered doesn't match with your email address. Check back and try again!"),
+                                                  actions: [
+                                                    ElevatedButton(
+                                                      onPressed: () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                      child: const Text(
+                                                          "Try again"),
+                                                    ),
+                                                  ],
+                                                );
+                                              },
+                                            );
+                                          }
+                                        },
+                                        child: const Text(
+                                          "Continue",
+                                          style:
+                                              TextStyle(color: kRedThemeColor),
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                        child: const Text("Height Log"),
+                            child: const Text(
+                              "Clear Height Log",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Adding space
+                          const SizedBox(width: 8.0),
+
+                          /// Add height log
+                          ElevatedButton(
+                            onPressed: () {
+                              showDialog(
+                                context: context,
+                                builder: (context) {
+                                  return AlertDialog(
+                                    title: const Text("Add Height Log"),
+                                    content: Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        /// Date picker
+                                        ElevatedButton.icon(
+                                          onPressed: () async {
+                                            final DateTime? picked =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: DateTime.now(),
+                                              firstDate: DateTime(1900),
+                                              lastDate: DateTime.now(),
+                                            );
+                                            if (picked != null) {
+                                              String year =
+                                                  picked.year.toString();
+                                              String month =
+                                                  picked.month.toString();
+                                              yearMonthForHeight =
+                                                  "$year.$month";
+                                            }
+                                          },
+                                          icon: const Icon(
+                                              Icons.calendar_month_rounded),
+                                          label: const Text("Date"),
+                                        ),
+
+                                        /// Height picker
+                                        TextFormField(
+                                          controller: userHeightController,
+                                          decoration: const InputDecoration(
+                                            hintText: "Enter your height",
+                                          ),
+                                          keyboardType: TextInputType.number,
+                                          inputFormatters: [
+                                            FilteringTextInputFormatter
+                                                .digitsOnly,
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                    actions: [
+                                      /// Cancel button
+                                      ElevatedButton(
+                                          onPressed: () {
+                                            userHeightController.text =
+                                                userHeight.toString();
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Cancel")),
+
+                                      /// Save button
+                                      ElevatedButton(
+                                        onPressed: () async {
+                                          await updateHeightLog(
+                                              yearMonthForHeight,
+                                              userHeightController.text
+                                                      .trim()
+                                                      .isNotEmpty
+                                                  ? int.parse(
+                                                      userHeightController.text
+                                                          .trim())
+                                                  : userHeight);
+                                          getHeightChartData();
+                                          if (!context.mounted) return;
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Save"),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            child: const Text("Add Height Log"),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -456,5 +597,5 @@ class _HeightChartData {
   _HeightChartData(this.date, this.height);
 
   final String date;
-  final double height;
+  final int height;
 }
