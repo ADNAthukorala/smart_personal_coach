@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
@@ -57,7 +58,8 @@ class _ReportScreenState extends State<ReportScreen> {
     }
   }
 
-  List<_HeightData> heightData = [];
+  /// Getting height chart data
+  List<_HeightChartData> heightChartData = [];
 
   Future<void> getHeightChartData() async {
     CollectionReference userHeightChartData = FirebaseFirestore.instance
@@ -69,7 +71,7 @@ class _ReportScreenState extends State<ReportScreen> {
 
     for (var doc in querySnapshot.docs) {
       int height = doc['height'];
-      heightData.add(_HeightData(doc['date'], height.toDouble()));
+      heightChartData.add(_HeightChartData(doc['date'], height.toDouble()));
     }
   }
 
@@ -135,6 +137,9 @@ class _ReportScreenState extends State<ReportScreen> {
                   .toStringAsFixed(2));
 
           getBMIColorAndText(userBMI);
+
+          final userHeightController = TextEditingController();
+          userHeightController.text = data['height'].toString();
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -253,7 +258,7 @@ class _ReportScreenState extends State<ReportScreen> {
               ),
 
               /// Adding space
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 10.0),
 
               /// User BMI
               BMIScaleCard(
@@ -271,7 +276,7 @@ class _ReportScreenState extends State<ReportScreen> {
               ),
 
               /// Adding space
-              const SizedBox(height: 8.0),
+              const SizedBox(height: 10.0),
 
               /// Height chart
               Card(
@@ -282,34 +287,18 @@ class _ReportScreenState extends State<ReportScreen> {
                   padding: const EdgeInsets.all(kPadding8),
                   child: Column(
                     children: [
-                      SfCartesianChart(
-                          primaryXAxis: const CategoryAxis(),
-                          // Chart title
-                          title: const ChartTitle(
-                            text: 'Height Chart',
-                            textStyle: TextStyle(
-                              fontSize: 22,
-                              fontWeight: FontWeight.w700,
-                              color: kAppThemeColor,
-                            ),
-                          ),
-                          // Enable legend
-                          legend: const Legend(isVisible: true),
-                          // Enable tooltip
-                          tooltipBehavior: TooltipBehavior(enable: true),
-                          series: <CartesianSeries<_HeightData, String>>[
-                            LineSeries<_HeightData, String>(
-                                dataSource: heightData,
-                                color: kAppThemeColor,
-                                xValueMapper: (_HeightData height, _) =>
-                                    height.year,
-                                yValueMapper: (_HeightData height, _) =>
-                                    height.height,
-                                name: 'Height',
-                                // Enable data label
-                                dataLabelSettings:
-                                    const DataLabelSettings(isVisible: true))
-                          ]),
+                      /// Title
+                      const Text(
+                        "Height Chart",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: kAppThemeColor,
+                        ),
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
 
                       /// Current user height
                       Row(
@@ -324,6 +313,70 @@ class _ReportScreenState extends State<ReportScreen> {
                           ),
                         ],
                       ),
+
+                      /// Height chart
+                      SfCartesianChart(
+                        primaryXAxis: const CategoryAxis(),
+                        // Enable legend
+                        legend: const Legend(isVisible: true),
+                        // Enable tooltip
+                        tooltipBehavior: TooltipBehavior(enable: true),
+                        series: <CartesianSeries<_HeightChartData, String>>[
+                          LineSeries<_HeightChartData, String>(
+                              dataSource: heightChartData,
+                              color: kAppThemeColor,
+                              xValueMapper: (_HeightChartData height, _) =>
+                                  height.date,
+                              yValueMapper: (_HeightChartData height, _) =>
+                                  height.height,
+                              name: 'Height',
+                              // Enable data label
+                              dataLabelSettings:
+                                  const DataLabelSettings(isVisible: true))
+                        ],
+                      ),
+
+                      /// Height log
+                      ElevatedButton(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                title: const Text("Height Log"),
+                                content: Column(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    ElevatedButton(
+                                      onPressed: () {},
+                                      child: const Text("Date"),
+                                    ),
+                                    TextFormField(
+                                      controller: userHeightController,
+                                      decoration: const InputDecoration(
+                                        hintText: "Enter your height",
+                                      ),
+                                      keyboardType: TextInputType.number,
+                                      inputFormatters: [
+                                        FilteringTextInputFormatter.digitsOnly,
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                actions: [
+                                  ElevatedButton(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    child: const Text("Save"),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        child: const Text("Height Log"),
+                      ),
                     ],
                   ),
                 ),
@@ -336,9 +389,9 @@ class _ReportScreenState extends State<ReportScreen> {
   }
 }
 
-class _HeightData {
-  _HeightData(this.year, this.height);
+class _HeightChartData {
+  _HeightChartData(this.date, this.height);
 
-  final String year;
+  final String date;
   final double height;
 }
