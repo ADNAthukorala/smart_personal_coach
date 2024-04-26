@@ -14,8 +14,9 @@ class ReportScreen extends StatefulWidget {
 }
 
 class _ReportScreenState extends State<ReportScreen> {
-  // Creating an instance of FirebaseAuth
+  // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
+  final _firestore = FirebaseFirestore.instance;
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
@@ -71,7 +72,26 @@ class _ReportScreenState extends State<ReportScreen> {
 
     for (var doc in querySnapshot.docs) {
       int height = doc['height'];
-      heightChartData.add(_HeightChartData(doc['date'], height.toDouble()));
+      setState(() {
+        heightChartData.add(_HeightChartData(doc['date'], height.toDouble()));
+      });
+    }
+  }
+
+  /// Height log
+  Future<void> updateHeightLog(String yearMonthForHeight, int height) async {
+    try {
+      await _firestore
+          .collection("users")
+          .doc(loggedInUser.email)
+          .collection("height_chart_data")
+          .doc(yearMonthForHeight)
+          .set({
+        'date': yearMonthForHeight,
+        'height': height,
+      });
+    } catch (e) {
+      print('Error has occurred: $e');
     }
   }
 
@@ -139,7 +159,11 @@ class _ReportScreenState extends State<ReportScreen> {
           getBMIColorAndText(userBMI);
 
           final userHeightController = TextEditingController();
-          userHeightController.text = data['height'].toString();
+          userHeightController.text = userHeight.toString();
+
+          String year = DateTime.now().year.toString();
+          String month = DateTime.now().month.toString();
+          String yearMonthForHeight = "$year.$month";
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -347,10 +371,29 @@ class _ReportScreenState extends State<ReportScreen> {
                                 content: Column(
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
-                                    ElevatedButton(
-                                      onPressed: () {},
-                                      child: const Text("Date"),
+                                    /// Date picker
+                                    ElevatedButton.icon(
+                                      onPressed: () async {
+                                        final DateTime? picked =
+                                            await showDatePicker(
+                                          context: context,
+                                          initialDate: DateTime.now(),
+                                          firstDate: DateTime(1900),
+                                          lastDate: DateTime.now(),
+                                        );
+                                        if (picked != null) {
+                                          String year = picked.year.toString();
+                                          String month =
+                                              picked.month.toString();
+                                          yearMonthForHeight = "$year.$month";
+                                        }
+                                      },
+                                      icon: const Icon(
+                                          Icons.calendar_month_rounded),
+                                      label: const Text("Date"),
                                     ),
+
+                                    /// Height picker
                                     TextFormField(
                                       controller: userHeightController,
                                       decoration: const InputDecoration(
@@ -364,8 +407,28 @@ class _ReportScreenState extends State<ReportScreen> {
                                   ],
                                 ),
                                 actions: [
+                                  /// Cancel button
                                   ElevatedButton(
-                                    onPressed: () {
+                                      onPressed: () {
+                                        userHeightController.text =
+                                            userHeight.toString();
+                                        Navigator.pop(context);
+                                      },
+                                      child: const Text("Cancel")),
+
+                                  /// Save button
+                                  ElevatedButton(
+                                    onPressed: () async {
+                                      await updateHeightLog(
+                                          yearMonthForHeight,
+                                          userHeightController.text
+                                                  .trim()
+                                                  .isNotEmpty
+                                              ? int.parse(userHeightController
+                                                  .text
+                                                  .trim())
+                                              : userHeight);
+                                      if (!context.mounted) return;
                                       Navigator.pop(context);
                                     },
                                     child: const Text("Save"),
