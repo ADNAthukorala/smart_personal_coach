@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/workout_plan_screens/diet_plan_screen.dart';
 import 'package:smart_personal_coach/screens/workout_plan_screens/workout_plan_exercises_screen.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -1157,7 +1158,15 @@ class _ReportScreenState extends State<ReportScreen> {
 
                                       /// Show diet plan button
                                       ElevatedButton.icon(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const DietPlanScreen(),
+                                            ),
+                                          );
+                                        },
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: kAppThemeColor),
                                         icon: const Icon(
