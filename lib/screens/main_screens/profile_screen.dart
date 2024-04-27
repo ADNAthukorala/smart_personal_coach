@@ -1132,7 +1132,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
                 style: kSignInSignUpSignOutResetPasswordButtonStyle,
                 label: const Text(
-                  "Sign out",
+                  "Sign Out",
                   style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
                 ),
                 icon: const Icon(

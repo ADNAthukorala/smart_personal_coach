@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/workout_plan_screen/workout_plan_screen.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ReportScreen extends StatefulWidget {
@@ -242,6 +243,7 @@ class _ReportScreenState extends State<ReportScreen> {
           int userHeight = data['height'];
           int userWeight = data['weight'];
           Timestamp userBirthDay = data['birthDay'];
+          List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
 
           // Getting the user's age
           int userAge = DateTime.now().year - userBirthDay.toDate().year;
@@ -268,6 +270,7 @@ class _ReportScreenState extends State<ReportScreen> {
             padding: const EdgeInsets.all(kPadding16),
             primary: false,
             children: [
+              /// User information
               Card(
                 margin: EdgeInsets.zero,
                 shape: const RoundedRectangleBorder(
@@ -285,6 +288,9 @@ class _ReportScreenState extends State<ReportScreen> {
                           color: kAppThemeColor,
                         ),
                       ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
 
                       /// User name
                       Row(
@@ -423,7 +429,7 @@ class _ReportScreenState extends State<ReportScreen> {
               /// Adding space
               const SizedBox(height: 10.0),
 
-              /// Height chart
+              /// User height chart
               Card(
                 margin: EdgeInsets.zero,
                 shape: const RoundedRectangleBorder(
@@ -689,7 +695,7 @@ class _ReportScreenState extends State<ReportScreen> {
               /// Adding space
               const SizedBox(height: 10.0),
 
-              /// Weight chart
+              /// User weight chart
               Card(
                 margin: EdgeInsets.zero,
                 shape: const RoundedRectangleBorder(
@@ -946,6 +952,38 @@ class _ReportScreenState extends State<ReportScreen> {
                             ),
                           ),
                         ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 10.0),
+
+              /// User workout plans history
+              Card(
+                margin: EdgeInsets.zero,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+                child: Padding(
+                  padding: const EdgeInsets.all(kPadding8),
+                  child: Column(
+                    children: [
+                      /// Title
+                      const Text(
+                        "Ongoing Workout Plan",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: kAppThemeColor,
+                        ),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+
+                        },
+                        child: Text("Show Workout Plan"),
                       ),
                     ],
                   ),
