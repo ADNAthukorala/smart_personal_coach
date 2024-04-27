@@ -994,6 +994,11 @@ class _ReportScreenState extends State<ReportScreen> {
                           color: kAppThemeColor,
                         ),
                       ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
+
+                      /// Show workout plan button
                       ElevatedButton(
                         onPressed: () {
                           showDialog(
@@ -1167,6 +1172,40 @@ class _ReportScreenState extends State<ReportScreen> {
                           style: kSmallGreyColorDescriptionTextStyle.copyWith(
                               color: kWhiteThemeColor),
                         ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 10.0),
+
+              /// User history
+              const Card(
+                margin: EdgeInsets.zero,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+                child: Padding(
+                  padding: EdgeInsets.all(kPadding8),
+                  child: Column(
+                    children: [
+                      /// Title
+                      Text(
+                        "History",
+                        style: TextStyle(
+                          fontSize: 28,
+                          fontWeight: FontWeight.w700,
+                          color: kAppThemeColor,
+                        ),
+                      ),
+
+                      /// Adding space
+                      SizedBox(height: 8.0),
+
+                      Text(
+                        "Not yet finished any workout plan...",
+                        style: kUserReportTitleTextStyle,
                       ),
                     ],
                   ),
