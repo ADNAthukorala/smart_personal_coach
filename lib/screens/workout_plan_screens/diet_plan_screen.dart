@@ -75,6 +75,38 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
               ),
             ),
           ),
+
+          /// Adding space
+          const SizedBox(height: 10.0),
+
+          /// Calories Required for the user for one meal
+          const Card(
+            margin: EdgeInsets.zero,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+            child: Padding(
+              padding: EdgeInsets.all(kPadding8),
+              child: Column(
+                children: [
+                  /// Title
+                  Text(
+                    "Calories Required for One Meal for You",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: kAppThemeColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text("Carbohydrates → 65 x 2gram = 130gram", style: kW500),
+                  Text("Protein → 65 x 2gram = 130gram", style: kW500),
+                  Text("Fat → 65 / 2 = 32.5gram", style: kW500),
+                  Text("Total calories for one meal → 1355 Calories",
+                      style: kW500),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );
