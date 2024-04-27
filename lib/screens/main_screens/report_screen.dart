@@ -1121,8 +1121,11 @@ class _ReportScreenState extends State<ReportScreen> {
                                         style: kProfileTitleTextStyle,
                                       ),
 
+                                      /// Adding space
+                                      const SizedBox(height: 8.0),
+
                                       /// Show exercises button
-                                      ElevatedButton(
+                                      ElevatedButton.icon(
                                         onPressed: () {
                                           Navigator.push(
                                             context,
@@ -1139,8 +1142,30 @@ class _ReportScreenState extends State<ReportScreen> {
                                         },
                                         style: ElevatedButton.styleFrom(
                                             backgroundColor: kAppThemeColor),
-                                        child: Text(
+                                        icon: const Icon(
+                                          Icons.fitness_center_rounded,
+                                          color: kWhiteThemeColor,
+                                        ),
+                                        label: Text(
                                           "Show Exercises",
+                                          style:
+                                              kSmallGreyColorDescriptionTextStyle
+                                                  .copyWith(
+                                                      color: kWhiteThemeColor),
+                                        ),
+                                      ),
+
+                                      /// Show diet plan button
+                                      ElevatedButton.icon(
+                                        onPressed: () {},
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: kAppThemeColor),
+                                        icon: const Icon(
+                                          Icons.fastfood_rounded,
+                                          color: kWhiteThemeColor,
+                                        ),
+                                        label: Text(
+                                          "Show Diet Plan",
                                           style:
                                               kSmallGreyColorDescriptionTextStyle
                                                   .copyWith(
