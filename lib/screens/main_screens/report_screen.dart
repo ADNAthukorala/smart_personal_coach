@@ -1124,7 +1124,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                       /// Adding space
                                       const SizedBox(height: 8.0),
 
-                                      /// Show exercises button
+                                      /// Show workout plan exercises button
                                       ElevatedButton.icon(
                                         onPressed: () {
                                           Navigator.push(

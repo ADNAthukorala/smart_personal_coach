@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/workout_plan_screens/diet_plan_screen.dart';
 import 'package:smart_personal_coach/screens/workout_plan_screens/workout_plan_exercises_screen.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -227,14 +228,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       /// Adding space
                       const SizedBox(height: 8.0),
 
-                      /// Show exercises button
+                      /// Show workout plan exercises button
                       ElevatedButton.icon(
                         onPressed: () {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) =>
-                                  WorkoutPlanExercisesScreen(
+                              builder: (context) => WorkoutPlanExercisesScreen(
                                 focusedBodyAreas: focusedBodyAreas,
                                 loggedInUserEmail: loggedInUser.email,
                               ),
@@ -256,7 +256,14 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       /// Show diet plan button
                       ElevatedButton.icon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const DietPlanScreen(),
+                            ),
+                          );
+                        },
                         style: ElevatedButton.styleFrom(
                             backgroundColor: kAppThemeColor),
                         icon: const Icon(
