@@ -3,20 +3,20 @@ import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
 import 'package:smart_personal_coach/app_brain/workout_plan_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-class WorkoutPlanExercisesScreenScreen extends StatefulWidget {
-  const WorkoutPlanExercisesScreenScreen(
+class WorkoutPlanExercisesScreen extends StatefulWidget {
+  const WorkoutPlanExercisesScreen(
       {super.key, required this.focusedBodyAreas, this.loggedInUserEmail});
 
   final List<dynamic> focusedBodyAreas;
   final String? loggedInUserEmail;
 
   @override
-  State<WorkoutPlanExercisesScreenScreen> createState() =>
-      _WorkoutPlanExercisesScreenScreenState();
+  State<WorkoutPlanExercisesScreen> createState() =>
+      _WorkoutPlanExercisesScreenState();
 }
 
-class _WorkoutPlanExercisesScreenScreenState
-    extends State<WorkoutPlanExercisesScreenScreen> {
+class _WorkoutPlanExercisesScreenState
+    extends State<WorkoutPlanExercisesScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

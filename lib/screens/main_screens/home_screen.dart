@@ -2,7 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/workout_plan_screen/workout_plan_exercises_screen.dart';
+import 'package:smart_personal_coach/screens/workout_plan_screens/workout_plan_exercises_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -234,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) =>
-                                  WorkoutPlanExercisesScreenScreen(
+                                  WorkoutPlanExercisesScreen(
                                 focusedBodyAreas: focusedBodyAreas,
                                 loggedInUserEmail: loggedInUser.email,
                               ),

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:smart_personal_coach/components/bmi_scale.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/workout_plan_screen/workout_plan_exercises_screen.dart';
+import 'package:smart_personal_coach/screens/workout_plan_screens/workout_plan_exercises_screen.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class ReportScreen extends StatefulWidget {
@@ -1131,7 +1131,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  WorkoutPlanExercisesScreenScreen(
+                                                  WorkoutPlanExercisesScreen(
                                                 focusedBodyAreas:
                                                     userFocusedBodyAreas,
                                                 loggedInUserEmail:
