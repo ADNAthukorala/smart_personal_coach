@@ -242,8 +242,9 @@ class _ReportScreenState extends State<ReportScreen> {
           String userMainGoal = data['mainGoal'];
           int userHeight = data['height'];
           int userWeight = data['weight'];
+          int userWeeklyGoal = data["weeklyGoal"];
           Timestamp userBirthDay = data['birthDay'];
-          List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
+          List<dynamic> userFocusedBodyAreas = data["focusedBodyAreas"];
 
           // Getting the user's age
           int userAge = DateTime.now().year - userBirthDay.toDate().year;
@@ -265,6 +266,20 @@ class _ReportScreenState extends State<ReportScreen> {
           String month = DateTime.now().month.toString();
           String yearMonthForHeight = "$year.$month";
           String yearMonthForWeight = "$year.$month";
+
+          String reps = "";
+          String sets = "";
+
+          if (userMainGoal == "Loose Weight") {
+            reps = "12-20";
+            sets = "2 - 3";
+          } else if (userMainGoal == "Build Muscles") {
+            reps = "6-12";
+            sets = "3-4";
+          } else {
+            reps = "6-20";
+            sets = "2-4";
+          }
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -961,7 +976,7 @@ class _ReportScreenState extends State<ReportScreen> {
               /// Adding space
               const SizedBox(height: 10.0),
 
-              /// User workout plans history
+              /// User ongoing Workout Plan
               Card(
                 margin: EdgeInsets.zero,
                 shape: const RoundedRectangleBorder(
@@ -981,9 +996,177 @@ class _ReportScreenState extends State<ReportScreen> {
                       ),
                       ElevatedButton(
                         onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              /// Workout plan
+                              return Card(
+                                margin: EdgeInsets.zero,
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(kRadius16))),
+                                child: Padding(
+                                  padding: const EdgeInsets.all(kPadding8),
+                                  child: Column(
+                                    children: [
+                                      /// Title Workout Plan
+                                      const Text(
+                                        "Workout Plan",
+                                        style: kLargeBlackTitleTextStyle,
+                                      ),
 
+                                      /// Adding space
+                                      const SizedBox(height: 12.0),
+
+                                      /// Instructions
+                                      const Text(
+                                        "Instructions",
+                                        style: TextStyle(
+                                            fontSize: 22.0,
+                                            fontWeight: FontWeight.w700),
+                                      ),
+
+                                      /// Adding space
+                                      const SizedBox(height: 8.0),
+
+                                      /// Main Goal
+                                      const Text(
+                                        "Main Goal",
+                                        style: kProfileTitleTextStyle,
+                                      ),
+                                      Text(
+                                        "Your main goal is to $userMainGoal, so aim for $sets sets of $reps reps per exercise.",
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            kSmallGreyColorDescriptionTextStyle
+                                                .copyWith(
+                                                    color: kBlackThemeColor,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                      ),
+
+                                      /// Adding space
+                                      const SizedBox(height: 8.0),
+
+                                      /// Weekly goal
+                                      const Text(
+                                        "Weekly Goal",
+                                        style: kProfileTitleTextStyle,
+                                      ),
+                                      Text(
+                                        "Your weekly goal is to perform all the exercises listed within $userWeeklyGoal days of the week.",
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            kSmallGreyColorDescriptionTextStyle
+                                                .copyWith(
+                                                    color: kBlackThemeColor,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                      ),
+
+                                      /// Adding space
+                                      const SizedBox(height: 8.0),
+
+                                      /// Focused body areas
+                                      const Text(
+                                        "Focused Body Areas",
+                                        style: kProfileTitleTextStyle,
+                                      ),
+                                      Text(
+                                        userFocusedBodyAreas
+                                            .toString()
+                                            .split("[")
+                                            .last
+                                            .split("]")
+                                            .first,
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            kSmallGreyColorDescriptionTextStyle
+                                                .copyWith(
+                                                    color: kBlackThemeColor,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                      ),
+
+                                      /// Adding space
+                                      const SizedBox(height: 8.0),
+
+                                      /// Equipments
+                                      const Text(
+                                        "Equipments",
+                                        style: kProfileTitleTextStyle,
+                                      ),
+                                      Text(
+                                        "For optimum results, we recommend using Kettlebells or Dumbbells for weighted exercises.",
+                                        textAlign: TextAlign.center,
+                                        style:
+                                            kSmallGreyColorDescriptionTextStyle
+                                                .copyWith(
+                                                    color: kBlackThemeColor,
+                                                    fontWeight:
+                                                        FontWeight.w400),
+                                      ),
+
+                                      /// Adding space
+                                      const SizedBox(height: 8.0),
+
+                                      /// Exercises
+                                      Text(
+                                        "Exercises - $userLevel Level",
+                                        style: kProfileTitleTextStyle,
+                                      ),
+
+                                      /// Show exercises button
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) =>
+                                                  WorkoutPlanScreenScreen(
+                                                focusedBodyAreas:
+                                                    userFocusedBodyAreas,
+                                                loggedInUserEmail:
+                                                    loggedInUser.email,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: kAppThemeColor),
+                                        child: Text(
+                                          "Show Exercises",
+                                          style:
+                                              kSmallGreyColorDescriptionTextStyle
+                                                  .copyWith(
+                                                      color: kWhiteThemeColor),
+                                        ),
+                                      ),
+
+                                      /// Adding space
+                                      const Spacer(),
+
+                                      /// Back button
+                                      ElevatedButton(
+                                        onPressed: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: const Text("Back"),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          );
                         },
-                        child: Text("Show Workout Plan"),
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: kAppThemeColor),
+                        child: Text(
+                          "Show Workout Plan",
+                          style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                              color: kWhiteThemeColor),
+                        ),
                       ),
                     ],
                   ),

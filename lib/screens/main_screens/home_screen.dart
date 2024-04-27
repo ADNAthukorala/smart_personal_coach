@@ -223,6 +223,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         "Exercises - $level Level",
                         style: kProfileTitleTextStyle,
                       ),
+
+                      /// Show exercises button
                       ElevatedButton(
                         onPressed: () {
                           Navigator.push(
