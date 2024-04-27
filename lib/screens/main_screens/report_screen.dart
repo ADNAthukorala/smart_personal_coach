@@ -856,7 +856,7 @@ class _ReportScreenState extends State<ReportScreen> {
                           /// Adding space
                           const SizedBox(width: 8.0),
 
-                          /// Add height log
+                          /// Add weight log
                           ElevatedButton(
                             onPressed: () {
                               showDialog(
