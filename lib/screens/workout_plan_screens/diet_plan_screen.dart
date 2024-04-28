@@ -9,13 +9,34 @@ const kFSFCW500 = TextStyle(
 );
 
 class DietPlanScreen extends StatefulWidget {
-  const DietPlanScreen({super.key});
+  const DietPlanScreen({super.key, required this.userWeight});
+
+  final int userWeight;
 
   @override
   State<DietPlanScreen> createState() => _DietPlanScreenState();
 }
 
 class _DietPlanScreenState extends State<DietPlanScreen> {
+  double gramsOfCarbs = 0.0;
+  double gramsOfProtein = 0.0;
+  double gramsOfFat = 0.0;
+  double totalCalories = 0.0;
+
+  void getUserGramsOfCarbsProteinFat() {
+    gramsOfCarbs = widget.userWeight * 2;
+    gramsOfProtein = widget.userWeight * 2;
+    gramsOfFat = widget.userWeight / 2;
+    totalCalories =
+        ((gramsOfCarbs * 4) + (gramsOfProtein * 4) + (gramsOfFat * 9));
+  }
+
+  @override
+  void initState() {
+    getUserGramsOfCarbsProteinFat();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,9 +88,9 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                     child: const Text("● For 1kg of body weight",
                         style: kFSFCW500),
                   ),
-                  const Text("Carbohydrates → 1.5 gram or 2 gram",
+                  const Text("Carbohydrates → 1.5 grams or 2 grams",
                       style: kW500),
-                  const Text("Protein → 1.5 gram or 2 gram", style: kW500),
+                  const Text("Protein → 1.5 grams or 2 grams", style: kW500),
                   const Text("Fat → 50% of body weight", style: kW500),
                 ],
               ),
@@ -80,16 +101,16 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
           const SizedBox(height: 10.0),
 
           /// Calories Required for the user for one meal
-          const Card(
+          Card(
             margin: EdgeInsets.zero,
-            shape: RoundedRectangleBorder(
+            shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
             child: Padding(
-              padding: EdgeInsets.all(kPadding8),
+              padding: const EdgeInsets.all(kPadding8),
               child: Column(
                 children: [
                   /// Title
-                  Text(
+                  const Text(
                     "Calories Required for One Meal for You",
                     style: TextStyle(
                       fontSize: 22,
@@ -98,10 +119,15 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                     ),
                     textAlign: TextAlign.center,
                   ),
-                  Text("Carbohydrates → 65 x 2gram = 130gram", style: kW500),
-                  Text("Protein → 65 x 2gram = 130gram", style: kW500),
-                  Text("Fat → 65 / 2 = 32.5gram", style: kW500),
-                  Text("Total calories for one meal → 1355 Calories",
+                  Text(
+                      "Carbohydrates → ${widget.userWeight} x 2 = $gramsOfCarbs grams",
+                      style: kW500),
+                  Text(
+                      "Protein → ${widget.userWeight} x 2 = $gramsOfProtein grams",
+                      style: kW500),
+                  Text("Fat → ${widget.userWeight} / 2 = $gramsOfFat grams",
+                      style: kW500),
+                  Text("Total calories for one meal → $totalCalories Calories",
                       style: kW500),
                 ],
               ),

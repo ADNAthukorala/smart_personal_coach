@@ -87,18 +87,19 @@ class _HomeScreenState extends State<HomeScreen> {
               snapshot.data!.data() as Map<String, dynamic>;
 
           String userName = data["userName"];
-          String mainGoal = data["mainGoal"];
-          String level = data["level"];
-          int weeklyGoal = data["weeklyGoal"];
-          List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
+          String userMainGoal = data["mainGoal"];
+          String userLevel = data["level"];
+          int userWeight = data['weight'];
+          int userWeeklyGoal = data["weeklyGoal"];
+          List<dynamic> userFocusedBodyAreas = data["focusedBodyAreas"];
 
           String reps = "";
           String sets = "";
 
-          if (mainGoal == "Loose Weight") {
+          if (userMainGoal == "Loose Weight") {
             reps = "12-20";
             sets = "2 - 3";
-          } else if (mainGoal == "Build Muscles") {
+          } else if (userMainGoal == "Build Muscles") {
             reps = "6-12";
             sets = "3-4";
           } else {
@@ -156,7 +157,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: kProfileTitleTextStyle,
                       ),
                       Text(
-                        "Your main goal is to $mainGoal, so aim for $sets sets of $reps reps per exercise.",
+                        "Your main goal is to $userMainGoal, so aim for $sets sets of $reps reps per exercise.",
                         textAlign: TextAlign.center,
                         style: kSmallGreyColorDescriptionTextStyle.copyWith(
                             color: kBlackThemeColor,
@@ -172,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: kProfileTitleTextStyle,
                       ),
                       Text(
-                        "Your weekly goal is to perform all the exercises listed within $weeklyGoal days of the week.",
+                        "Your weekly goal is to perform all the exercises listed within $userWeeklyGoal days of the week.",
                         textAlign: TextAlign.center,
                         style: kSmallGreyColorDescriptionTextStyle.copyWith(
                             color: kBlackThemeColor,
@@ -188,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         style: kProfileTitleTextStyle,
                       ),
                       Text(
-                        focusedBodyAreas
+                        userFocusedBodyAreas
                             .toString()
                             .split("[")
                             .last
@@ -221,7 +222,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       /// Exercises
                       Text(
-                        "Exercises - $level Level",
+                        "Exercises - $userLevel Level",
                         style: kProfileTitleTextStyle,
                       ),
 
@@ -235,7 +236,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             context,
                             MaterialPageRoute(
                               builder: (context) => WorkoutPlanExercisesScreen(
-                                focusedBodyAreas: focusedBodyAreas,
+                                focusedBodyAreas: userFocusedBodyAreas,
                                 loggedInUserEmail: loggedInUser.email,
                               ),
                             ),
@@ -260,7 +261,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const DietPlanScreen(),
+                              builder: (context) => DietPlanScreen(
+                                userWeight: userWeight,
+                              ),
                             ),
                           );
                         },

@@ -1163,7 +1163,9 @@ class _ReportScreenState extends State<ReportScreen> {
                                             context,
                                             MaterialPageRoute(
                                               builder: (context) =>
-                                                  const DietPlanScreen(),
+                                                  DietPlanScreen(
+                                                userWeight: userWeight,
+                                              ),
                                             ),
                                           );
                                         },
