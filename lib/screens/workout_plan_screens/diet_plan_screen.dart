@@ -80,9 +80,10 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                     child: const Text("● Calories in each ingredient",
                         style: kFSFCW500),
                   ),
-                  const Text("Carbohydrates(1gram) → 4 Calories", style: kW500),
-                  const Text("Protein(1gram) → 4 Calories", style: kW500),
-                  const Text("Fat(1gram) → 9 Calories", style: kW500),
+                  const Text("Carbohydrates (1 gram) → 4 calories",
+                      style: kW500),
+                  const Text("Protein (1 gram) → 4 calories", style: kW500),
+                  const Text("Fat (1 gram) → 9 calories", style: kW500),
                   Container(
                     alignment: Alignment.centerLeft,
                     child: const Text("● For 1kg of body weight",
@@ -120,6 +121,15 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                     textAlign: TextAlign.center,
                   ),
                   Text(
+                    "Your Body Weight = ${widget.userWeight} kg",
+                    style: const TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: kBlackThemeColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Text(
                       "Carbohydrates → ${widget.userWeight} x 2 = $gramsOfCarbs grams",
                       style: kW500),
                   Text(
@@ -127,8 +137,176 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                       style: kW500),
                   Text("Fat → ${widget.userWeight} / 2 = $gramsOfFat grams",
                       style: kW500),
-                  Text("Total calories for one meal → $totalCalories Calories",
+                  Text("Total calories for one meal → $totalCalories calories",
                       style: kW500),
+                ],
+              ),
+            ),
+          ),
+
+          /// Adding space
+          // const SizedBox(height: 10.0),
+
+          /// Foods
+          // Card(
+          //   margin: EdgeInsets.zero,
+          //   shape: const RoundedRectangleBorder(
+          //       borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+          //   child: Padding(
+          //     padding: const EdgeInsets.all(kPadding8),
+          //     child: Column(
+          //       children: [
+          //         /// Title
+          //         const Text(
+          //           "Foods",
+          //           style: TextStyle(
+          //             fontSize: 22,
+          //             fontWeight: FontWeight.w700,
+          //             color: kAppThemeColor,
+          //           ),
+          //           textAlign: TextAlign.center,
+          //         ),
+          //         Container(
+          //           alignment: Alignment.centerLeft,
+          //           child: const Text("● Carbohydrates", style: kFSFCW500),
+          //         ),
+          //         Container(
+          //           alignment: Alignment.centerLeft,
+          //           child: const Row(
+          //             children: [
+          //               SizedBox(width: 30.0),
+          //               Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.start,
+          //                 children: [
+          //                   Text("Rice", style: kW500),
+          //                   Text("Oats", style: kW500),
+          //                   Text("Potato", style: kW500),
+          //                   Text("Whole grain foods", style: kW500),
+          //                   Text("Whole grain breads", style: kW500),
+          //                 ],
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //         Container(
+          //           alignment: Alignment.centerLeft,
+          //           child: const Text("● Protein", style: kFSFCW500),
+          //         ),
+          //         Container(
+          //           alignment: Alignment.centerLeft,
+          //           child: const Row(
+          //             children: [
+          //               SizedBox(width: 30.0),
+          //               Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.start,
+          //                 children: [
+          //                   Text("Chicken breast", style: kW500),
+          //                   Text("Eggs", style: kW500),
+          //                   Text("Beef", style: kW500),
+          //                   Text("Turkey breast", style: kW500),
+          //                   Text("Fish (Tuna fish)", style: kW500),
+          //                 ],
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //         Container(
+          //           alignment: Alignment.centerLeft,
+          //           child: const Text("● Fat", style: kFSFCW500),
+          //         ),
+          //         Container(
+          //           alignment: Alignment.centerLeft,
+          //           child: const Row(
+          //             children: [
+          //               SizedBox(width: 30.0),
+          //               Column(
+          //                 crossAxisAlignment: CrossAxisAlignment.start,
+          //                 children: [
+          //                   Text("Avocado", style: kW500),
+          //                   Text("Almond seeds/oil", style: kW500),
+          //                   Text("Dry nuts", style: kW500),
+          //                   Text("Olive oil", style: kW500),
+          //                   Text("Coconut oil", style: kW500),
+          //                 ],
+          //               ),
+          //             ],
+          //           ),
+          //         ),
+          //       ],
+          //     ),
+          //   ),
+          // ),
+
+          /// Adding space
+          const SizedBox(height: 10.0),
+
+          /// User's diet plan
+          Card(
+            margin: EdgeInsets.zero,
+            shape: const RoundedRectangleBorder(
+                borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
+            child: Padding(
+              padding: const EdgeInsets.all(kPadding8),
+              child: Column(
+                children: [
+                  /// Title
+                  const Text(
+                    "Your Diet Plan",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.w700,
+                      color: kAppThemeColor,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: const Text("● Breakfast (Morning Meal) - 8.00 AM",
+                        style: kFSFCW500),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 30.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("6 white eggs with one whole egg",
+                                style: kW500),
+                            Text("Dry oats - 80 grams", style: kW500),
+                            Text("Peanut butter - 2 tablespoon", style: kW500),
+                            Text("Almond seeds - 10 seeds", style: kW500),
+                            Text("Strawberry / Banana", style: kW500),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: const Text("● Mid mor (Morning Meal) - 8.00 AM",
+                        style: kFSFCW500),
+                  ),
+                  Container(
+                    alignment: Alignment.centerLeft,
+                    child: const Row(
+                      children: [
+                        SizedBox(width: 30.0),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text("6 white eggs with one whole egg",
+                                style: kW500),
+                            Text("Dry oats - 80 grams", style: kW500),
+                            Text("Peanut butter - 2 tablespoon", style: kW500),
+                            Text("Almond seeds - 10 seeds", style: kW500),
+                            Text("Strawberry / Banana", style: kW500),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
