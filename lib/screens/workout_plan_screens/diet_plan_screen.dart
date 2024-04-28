@@ -301,7 +301,7 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
           /// Adding space
           const SizedBox(height: 10.0),
 
-          /// Example Foods
+          /// Foods
           Card(
             margin: EdgeInsets.zero,
             shape: const RoundedRectangleBorder(
@@ -312,7 +312,7 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                 children: [
                   /// Title
                   const Text(
-                    "Example Foods",
+                    "Foods",
                     style: TextStyle(
                       fontSize: 22,
                       fontWeight: FontWeight.w700,
