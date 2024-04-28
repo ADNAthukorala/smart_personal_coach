@@ -1165,6 +1165,7 @@ class _ReportScreenState extends State<ReportScreen> {
                                               builder: (context) =>
                                                   DietPlanScreen(
                                                 userWeight: userWeight,
+                                                userMainGoal: userMainGoal,
                                               ),
                                             ),
                                           );

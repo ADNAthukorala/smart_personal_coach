@@ -9,9 +9,11 @@ const kFSFCW500 = TextStyle(
 );
 
 class DietPlanScreen extends StatefulWidget {
-  const DietPlanScreen({super.key, required this.userWeight});
+  const DietPlanScreen(
+      {super.key, required this.userWeight, required this.userMainGoal});
 
   final int userWeight;
+  final String userMainGoal;
 
   @override
   State<DietPlanScreen> createState() => _DietPlanScreenState();
@@ -267,32 +269,40 @@ class _DietPlanScreenState extends State<DietPlanScreen> {
                     ),
                   ),
 
-                  /// Adding space
-                  const SizedBox(height: 8.0),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: const Text("● Dinner (5th Meal) - 8.30 PM",
-                        style: kFSFCW500),
-                  ),
-                  Container(
-                    alignment: Alignment.centerLeft,
-                    child: const Row(
-                      children: [
-                        SizedBox(width: 30.0),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                  /// 5th meal
+                  widget.userMainGoal == "Lose Weight"
+                      ? Container()
+                      : Column(
                           children: [
-                            Text("Beef/Fish/Eggs/Chicken - 150 grams",
-                                style: kW500),
-                            Text("Sweet Potato / Rice - 100 grams",
-                                style: kW500),
-                            Text("Green salad / Boiled vegetables",
-                                style: kW500),
+                            /// Adding space
+                            const SizedBox(height: 8.0),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Text("● Dinner (5th Meal) - 8.30 PM",
+                                  style: kFSFCW500),
+                            ),
+                            Container(
+                              alignment: Alignment.centerLeft,
+                              child: const Row(
+                                children: [
+                                  SizedBox(width: 30.0),
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text("Beef/Fish/Eggs/Chicken - 150 grams",
+                                          style: kW500),
+                                      Text("Sweet Potato / Rice - 100 grams",
+                                          style: kW500),
+                                      Text("Green salad / Boiled vegetables",
+                                          style: kW500),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ],
                         ),
-                      ],
-                    ),
-                  ),
                 ],
               ),
             ),
