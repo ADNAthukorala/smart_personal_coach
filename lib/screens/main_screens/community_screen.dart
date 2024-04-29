@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/community_message_send_button.dart';
 import 'package:smart_personal_coach/components/community_message_stream.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:profanity_filter/profanity_filter.dart';
 
 class CommunityScreen extends StatefulWidget {
   const CommunityScreen({super.key});
@@ -22,6 +23,9 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
   // Community message
   late String? communityMessageText;
+
+  // Create an instance of profanity
+  final filter = ProfanityFilter();
 
   // Text controller for community message text field
   final _communityMessageTextController = TextEditingController();
@@ -49,6 +53,29 @@ class _CommunityScreenState extends State<CommunityScreen> {
         const SnackBar(content: Text('An error has occurred!')),
       );
     }
+  }
+
+  /// Checking profanity
+  bool checkingProfanity(String communityMessage) {
+    bool hasProfanity = filter.hasProfanity(communityMessage);
+    return hasProfanity;
+  }
+
+  /// Send community message
+  void sendCommunityMessage() {
+    final messagesRef = _firestore.collection("community_messages");
+    messagesRef.add({
+      "sender": loggedInUser.email,
+      "community_message": communityMessageText,
+      "time": FieldValue.serverTimestamp(),
+    });
+  }
+
+  /// Filter community message
+  void filterCommunityMessage(String communityMessage) {
+    checkingProfanity(communityMessage)
+        ? _communityMessageTextController.clear()
+        : sendCommunityMessage();
   }
 
   @override
@@ -119,13 +146,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   onPressed: isButtonDisabled
                       ? null
                       : () {
-                          final messagesRef =
-                              _firestore.collection("community_messages");
-                          messagesRef.add({
-                            "sender": loggedInUser.email,
-                            "community_message": communityMessageText,
-                            "time": FieldValue.serverTimestamp(),
-                          });
+                          filterCommunityMessage(communityMessageText!);
                           _communityMessageTextController.clear();
                           setState(() {
                             isButtonDisabled = true;
