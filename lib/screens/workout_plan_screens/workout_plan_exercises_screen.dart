@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/app_brain/generate_the_workout_plan.dart';
-import 'package:smart_personal_coach/app_brain/workout_plan_card.dart';
+import 'package:smart_personal_coach/generate_workout_plan_exercises/generate_the_workout_plan_exercises.dart';
+import 'package:smart_personal_coach/generate_workout_plan_exercises/workout_plan_exercises_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class WorkoutPlanExercisesScreen extends StatefulWidget {
@@ -33,7 +33,7 @@ class _WorkoutPlanExercisesScreenState
         children: [
           /// Abs Exercises workout plan card
           widget.focusedBodyAreas.contains(abs)
-              ? WorkoutPlanCard(
+              ? WorkoutPlanExercisesCard(
                   loggedInUserEmail: widget.loggedInUserEmail,
                   title: "Abs Exercises",
                   collectionName: absExercisesCollection,
@@ -43,7 +43,7 @@ class _WorkoutPlanExercisesScreenState
 
           /// Arms Exercises workout plan card
           widget.focusedBodyAreas.contains(arms)
-              ? WorkoutPlanCard(
+              ? WorkoutPlanExercisesCard(
                   loggedInUserEmail: widget.loggedInUserEmail,
                   title: "Arms Exercises",
                   collectionName: armsExercisesCollection,
@@ -53,7 +53,7 @@ class _WorkoutPlanExercisesScreenState
 
           /// Back Exercises workout plan card
           widget.focusedBodyAreas.contains(back)
-              ? WorkoutPlanCard(
+              ? WorkoutPlanExercisesCard(
                   loggedInUserEmail: widget.loggedInUserEmail,
                   title: "Back Exercises",
                   collectionName: backExercisesCollection,
@@ -63,7 +63,7 @@ class _WorkoutPlanExercisesScreenState
 
           /// Chest Exercises workout plan card
           widget.focusedBodyAreas.contains(chest)
-              ? WorkoutPlanCard(
+              ? WorkoutPlanExercisesCard(
                   loggedInUserEmail: widget.loggedInUserEmail,
                   title: "Chest Exercises",
                   collectionName: chestExercisesCollection,
@@ -73,7 +73,7 @@ class _WorkoutPlanExercisesScreenState
 
           /// Legs Exercises workout plan card
           widget.focusedBodyAreas.contains(legs)
-              ? WorkoutPlanCard(
+              ? WorkoutPlanExercisesCard(
                   loggedInUserEmail: widget.loggedInUserEmail,
                   title: "Legs Exercises",
                   collectionName: legsExercisesCollection,

@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 
-class WorkoutPlanCardListTile extends StatelessWidget {
-  const WorkoutPlanCardListTile({
+class WorkoutPlanExercisesCardListTile extends StatelessWidget {
+  const WorkoutPlanExercisesCardListTile({
     super.key,
     required this.collectionName,
     required this.docName,

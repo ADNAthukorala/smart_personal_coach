@@ -50,6 +50,7 @@ dependencies:
   camera: ^0.10.5+9
   google_mlkit_commons: ^0.7.1
   profanity_filter: ^2.0.0
+  flutter_local_notifications: ^17.1.1
 
 dev_dependencies:
   flutter_test:

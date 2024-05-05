@@ -1,11 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/app_brain/workout_plan_card_list_tile.dart';
+import 'package:smart_personal_coach/generate_workout_plan_exercises/workout_plan_exercises_card_list_tile.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/pose_detection/pose_detector.dart';
 
-class WorkoutPlanCard extends StatelessWidget {
-  const WorkoutPlanCard({
+class WorkoutPlanExercisesCard extends StatelessWidget {
+  const WorkoutPlanExercisesCard({
     super.key,
     required this.collectionName,
     required this.title,
@@ -100,7 +100,7 @@ class WorkoutPlanCard extends StatelessWidget {
                         return Padding(
                           // Adding space between two exercises list tiles
                           padding: const EdgeInsets.only(bottom: kPadding8),
-                          child: WorkoutPlanCardListTile(
+                          child: WorkoutPlanExercisesCardListTile(
                             collectionName: collectionName,
                             docName: exercise,
                           ),
