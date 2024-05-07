@@ -34,6 +34,7 @@ class _UpdateMainGoalScreenState extends State<UpdateMainGoalScreen> {
       // Update the main goal
       await documentRef.update({
         'mainGoal': updatedMainGoal,
+        'finishedDaysOfCurrentWorkoutPlan': 0,
       });
 
       print('Document updated successfully.');

@@ -36,6 +36,7 @@ class _UpdateLevelScreenState extends State<UpdateLevelScreen> {
       // Update the main goal
       await documentRef.update({
         'level': updatedLevel,
+        'finishedDaysOfCurrentWorkoutPlan': 0,
       });
 
       print('Document updated successfully.');
