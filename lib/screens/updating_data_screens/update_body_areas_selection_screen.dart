@@ -39,6 +39,7 @@ class _UpdateBodyAreasSelectionScreenState
       // Update the main goal
       await documentRef.update({
         'focusedBodyAreas': updatedFocusedBodyAreas,
+        'finishedDaysOfCurrentWorkoutPlan': 0,
       });
 
       print('Document updated successfully.');

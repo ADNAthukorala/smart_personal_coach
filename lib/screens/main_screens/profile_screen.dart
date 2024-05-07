@@ -722,7 +722,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Text(
-                              "If you change your main goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              "If you change your main goal, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                             TextFormField(
@@ -825,7 +825,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Text(
-                              "If you change your level, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              "If you change your level, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                             TextFormField(
@@ -935,7 +935,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Text(
-                              "If you change your weekly goal, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              "If you change your weekly goal, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                             TextFormField(
@@ -1044,7 +1044,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             const Text(
-                              "If you change your focused body areas, your workout plan will re-generate! If you want to continue, enter your email to confirm!",
+                              "If you change your focused body areas, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
                               style: TextStyle(color: kWhiteThemeColor),
                             ),
                             TextFormField(
