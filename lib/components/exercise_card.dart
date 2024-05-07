@@ -287,44 +287,45 @@ class ExerciseCard extends StatelessWidget {
                 /// Adding space
                 const SizedBox(height: 12.0),
 
-                /// Show pose button
-                ListTile(
-                  title: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: kAppThemeColor),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => PoseDetectorView(
-                                    exerciseAnimationImageUrl:
-                                        data['animationImage'],
-                                  )));
-                    },
-                    child: const Text(
-                      "Show Pose",
-                      style: TextStyle(
-                        color: kWhiteThemeColor,
-                        fontWeight: FontWeight.bold,
+                /// Bottom buttons row
+                Row(
+                  children: [
+                    /// Show pose button
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: kAppThemeColor),
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PoseDetectorView(
+                                      exerciseAnimationImageUrl:
+                                          data['animationImage'],
+                                    )));
+                      },
+                      child: const Text(
+                        "Show Pose",
+                        style: TextStyle(
+                          color: kWhiteThemeColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
-                ),
 
-                /// Close button
-                ListTile(
-                  title: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        backgroundColor: kAppThemeColor),
-                    onPressed: () => Navigator.pop(context),
-                    child: const Text(
-                      "Close",
-                      style: TextStyle(
-                        color: kWhiteThemeColor,
-                        fontWeight: FontWeight.bold,
+                    /// Close button
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: kAppThemeColor),
+                      onPressed: () => Navigator.pop(context),
+                      child: const Text(
+                        "Close",
+                        style: TextStyle(
+                          color: kWhiteThemeColor,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
-                  ),
+                  ],
                 ),
               ],
             ),
