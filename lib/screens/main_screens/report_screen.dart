@@ -1219,32 +1219,72 @@ class _ReportScreenState extends State<ReportScreen> {
               const SizedBox(height: 10.0),
 
               /// User history
-              const Card(
-                margin: EdgeInsets.zero,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
-                child: Padding(
-                  padding: EdgeInsets.all(kPadding8),
-                  child: Column(
-                    children: [
-                      /// Title
-                      Text(
-                        "History",
-                        style: TextStyle(
-                          fontSize: 28,
-                          fontWeight: FontWeight.w700,
-                          color: kAppThemeColor,
+              SizedBox(
+                height: 300.0,
+                child: Card(
+                  margin: EdgeInsets.zero,
+                  shape: const RoundedRectangleBorder(
+                      borderRadius:
+                          BorderRadius.all(Radius.circular(kRadius16))),
+                  child: Padding(
+                    padding: const EdgeInsets.all(kPadding8),
+                    child: Column(
+                      children: [
+                        /// Title
+                        const Text(
+                          "History",
+                          style: TextStyle(
+                            fontSize: 28,
+                            fontWeight: FontWeight.w700,
+                            color: kAppThemeColor,
+                          ),
                         ),
-                      ),
 
-                      /// Adding space
-                      SizedBox(height: 8.0),
+                        /// Adding space
+                        const SizedBox(height: 8.0),
 
-                      Text(
-                        "Not yet finished any workout plan...",
-                        style: kUserReportTitleTextStyle,
-                      ),
-                    ],
+                        Expanded(
+                          child: StreamBuilder(
+                            stream: FirebaseFirestore.instance
+                                .collection('users')
+                                .doc(loggedInUser.email)
+                                .collection('finished_workout_plans')
+                                .snapshots(),
+                            builder: (context,
+                                AsyncSnapshot<QuerySnapshot> snapshot) {
+                              if (snapshot.hasError) {
+                                return const Center(
+                                    child: Text("Something went wrong"));
+                              }
+
+                              if (snapshot.connectionState ==
+                                  ConnectionState.waiting) {
+                                return const Center(
+                                    child: Text("Loading exercises..."));
+                              }
+
+                              if (!snapshot.hasData) {
+                                return const Center(
+                                    child: Text("No data available"));
+                              }
+
+                              return ListView.builder(
+                                primary: false,
+                                itemCount: snapshot.data!.docs.length,
+                                itemBuilder: (context, index) {
+                                  DocumentSnapshot document =
+                                      snapshot.data!.docs[index];
+                                  return Text(
+                                    document.id,
+                                    style: kProfileTitleTextStyle,
+                                  );
+                                },
+                              );
+                            },
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),
