@@ -186,6 +186,20 @@ class _HomeScreenState extends State<HomeScreen> {
                       /// Adding space
                       const SizedBox(height: 12.0),
 
+                      /// Current day
+                      Text(
+                        userFinishedDaysOfCurrentWorkoutPlan < 100
+                            ? "Day ${userFinishedDaysOfCurrentWorkoutPlan + 1}"
+                            : "All Days are Completed",
+                        style: userFinishedDaysOfCurrentWorkoutPlan < 100
+                            ? kLargeBlackTitleTextStyle
+                            : kLargeBlackTitleTextStyle.copyWith(
+                                color: kBMIGreenThemeColor),
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 12.0),
+
                       /// Progress
                       const Text(
                         "Progress",
@@ -367,10 +381,17 @@ class _HomeScreenState extends State<HomeScreen> {
                             context: context,
                             builder: (context) {
                               return AlertDialog(
-                                backgroundColor: kRedThemeColor,
-                                title: const Text(
-                                  "Did you finish the day 1 of your workout plan?",
-                                  style: TextStyle(color: kWhiteThemeColor),
+                                backgroundColor:
+                                    userFinishedDaysOfCurrentWorkoutPlan < 100
+                                        ? kRedThemeColor
+                                        : kBMIGreenThemeColor,
+                                title: Text(
+                                  userFinishedDaysOfCurrentWorkoutPlan < 100
+                                      ? "Did you finish the day ${userFinishedDaysOfCurrentWorkoutPlan + 1} of your workout plan?"
+                                      : "Congratulations! You have finished"
+                                          " your workout plan successfully. Do you want to generate a new workout plan?",
+                                  style:
+                                      const TextStyle(color: kWhiteThemeColor),
                                 ),
                                 icon: const Icon(
                                   Icons.warning_rounded,
@@ -423,7 +444,10 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: kWhiteThemeColor,
                         ),
                         label: Text(
-                          "Finished Day 1",
+                          userFinishedDaysOfCurrentWorkoutPlan < 100
+                              ? "Finished Day ${userFinishedDaysOfCurrentWorkoutPlan + 1}"
+                              : "Completed all days of the current workout plan. Generate a new one!",
+                          textAlign: TextAlign.center,
                           style: kSmallGreyColorDescriptionTextStyle.copyWith(
                               color: kWhiteThemeColor),
                         ),
