@@ -20,7 +20,7 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
   bool _canProcess = true;
   bool _isBusy = false;
   CustomPaint? _customPaint;
-  var _cameraLensDirection = CameraLensDirection.back;
+  var _cameraLensDirection = CameraLensDirection.front;
 
   @override
   void dispose() async {
