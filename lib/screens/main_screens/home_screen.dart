@@ -50,12 +50,12 @@ class _HomeScreenState extends State<HomeScreen> {
   /// Finished a day of workout plan
   Future<void> finishedADayOfWorkoutPlan(int initialDays, String userLevel,
       String? loggedInUserEmail, List<String> focusedBodyAreas) async {
-    int finishedDaysOfWorkoutPlan = initialDays;
+    int finishedDaysOfCurrentWorkoutPlan = initialDays;
 
-    if (finishedDaysOfWorkoutPlan < 100) {
-      finishedDaysOfWorkoutPlan++;
+    if (finishedDaysOfCurrentWorkoutPlan < 100) {
+      finishedDaysOfCurrentWorkoutPlan++;
     } else {
-      finishedDaysOfWorkoutPlan = 0;
+      finishedDaysOfCurrentWorkoutPlan = 0;
       await generateTheWorkoutPlan(
           userLevel: userLevel,
           loggedInUserEmail: loggedInUserEmail,
@@ -74,9 +74,8 @@ class _HomeScreenState extends State<HomeScreen> {
       DocumentReference documentRef =
           FirebaseFirestore.instance.collection('users').doc(loggedInUserEmail);
 
-      // Update the user name field
       await documentRef.update({
-        'finishedDaysOfWorkoutPlan': finishedDaysOfWorkoutPlan,
+        'finishedDaysOfCurrentWorkoutPlan': finishedDaysOfCurrentWorkoutPlan,
       });
 
       print('Document updated successfully.');
@@ -131,7 +130,8 @@ class _HomeScreenState extends State<HomeScreen> {
           String userLevel = data["level"];
           int userWeight = data['weight'];
           int userWeeklyGoal = data["weeklyGoal"];
-          int userFinishedDaysOfWorkoutPlan = data["finishedDaysOfWorkoutPlan"];
+          int userFinishedDaysOfCurrentWorkoutPlan =
+              data["finishedDaysOfCurrentWorkoutPlan"];
           List<dynamic> userFocusedBodyAreas = data["focusedBodyAreas"];
 
           String reps = "";
@@ -150,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           /// Percentage of the workout plan progress
           double percentageOfTheWorkoutPlanProgress =
-              userFinishedDaysOfWorkoutPlan / 100;
+              userFinishedDaysOfCurrentWorkoutPlan / 100;
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -203,13 +203,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         lineWidth: 8.0,
                         percent: percentageOfTheWorkoutPlanProgress,
                         center: Text(
-                          "$userFinishedDaysOfWorkoutPlan%",
+                          "$userFinishedDaysOfCurrentWorkoutPlan%",
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         progressColor: kBMIGreenThemeColor,
                         animationDuration: 1000,
                         footer: Text(
-                            "You have finished $userFinishedDaysOfWorkoutPlan days out of 100 days of your workout plan",
+                            "You have finished $userFinishedDaysOfCurrentWorkoutPlan days out of 100 days of your workout plan",
                             textAlign: TextAlign.center,
                             style: kProfileTitleTextStyle),
                       ),
@@ -382,7 +382,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                         backgroundColor: kWhiteThemeColor),
                                     onPressed: () {
                                       finishedADayOfWorkoutPlan(
-                                        userFinishedDaysOfWorkoutPlan,
+                                        userFinishedDaysOfCurrentWorkoutPlan,
                                         userLevel,
                                         loggedInUser.email,
                                         userFocusedBodyAreas
