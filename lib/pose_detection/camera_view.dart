@@ -13,7 +13,7 @@ class CameraView extends StatefulWidget {
       required this.onImage,
       this.onCameraFeedReady,
       this.onCameraLensDirectionChanged,
-      this.initialCameraLensDirection = CameraLensDirection.back,
+      this.initialCameraLensDirection = CameraLensDirection.front,
       required this.exerciseAnimationImageUrl});
 
   final CustomPaint? customPaint; // Need
