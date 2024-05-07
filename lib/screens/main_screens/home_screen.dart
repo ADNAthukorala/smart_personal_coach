@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/generate_workout_plan_exercises/generate_the_workout_plan_exercises.dart';
 import 'package:smart_personal_coach/screens/workout_plan_screens/diet_plan_screen.dart';
 import 'package:smart_personal_coach/screens/workout_plan_screens/workout_plan_exercises_screen.dart';
 import 'package:percent_indicator/percent_indicator.dart';
@@ -44,6 +45,44 @@ class _HomeScreenState extends State<HomeScreen> {
       return 'Good Afternoon';
     }
     return 'Good Evening';
+  }
+
+  /// Finished a day of workout plan
+  Future<void> finishedADayOfWorkoutPlan(int initialDays, String userLevel,
+      String? loggedInUserEmail, List<String> focusedBodyAreas) async {
+    int finishedDaysOfWorkoutPlan = initialDays;
+
+    if (finishedDaysOfWorkoutPlan < 100) {
+      finishedDaysOfWorkoutPlan++;
+    } else {
+      finishedDaysOfWorkoutPlan = 0;
+      await generateTheWorkoutPlan(
+          userLevel: userLevel,
+          loggedInUserEmail: loggedInUserEmail,
+          focusedBodyAreas: focusedBodyAreas);
+      if (!mounted) return;
+      // Show snack bar with  message
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+            content: Text(
+                'Congratulations! You have finished your workout plan successfully and now you have a new workout plan.')),
+      );
+    }
+
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef =
+          FirebaseFirestore.instance.collection('users').doc(loggedInUserEmail);
+
+      // Update the user name field
+      await documentRef.update({
+        'finishedDaysOfWorkoutPlan': finishedDaysOfWorkoutPlan,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
   }
 
   @override
@@ -92,6 +131,7 @@ class _HomeScreenState extends State<HomeScreen> {
           String userLevel = data["level"];
           int userWeight = data['weight'];
           int userWeeklyGoal = data["weeklyGoal"];
+          int userFinishedDaysOfWorkoutPlan = data["finishedDaysOfWorkoutPlan"];
           List<dynamic> userFocusedBodyAreas = data["focusedBodyAreas"];
 
           String reps = "";
@@ -107,6 +147,10 @@ class _HomeScreenState extends State<HomeScreen> {
             reps = "6-20";
             sets = "2-4";
           }
+
+          /// Percentage of the workout plan progress
+          double percentageOfTheWorkoutPlanProgress =
+              userFinishedDaysOfWorkoutPlan / 100;
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -137,6 +181,37 @@ class _HomeScreenState extends State<HomeScreen> {
                       const Text(
                         "Workout Plan",
                         style: kLargeBlackTitleTextStyle,
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 12.0),
+
+                      /// Progress
+                      const Text(
+                        "Progress",
+                        style: TextStyle(
+                            fontSize: 22.0, fontWeight: FontWeight.w700),
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
+
+                      /// Progress of the workout plan
+                      CircularPercentIndicator(
+                        animation: true,
+                        radius: 35.0,
+                        lineWidth: 8.0,
+                        percent: percentageOfTheWorkoutPlanProgress,
+                        center: Text(
+                          "$userFinishedDaysOfWorkoutPlan%",
+                          style: const TextStyle(fontWeight: FontWeight.w500),
+                        ),
+                        progressColor: kBMIGreenThemeColor,
+                        animationDuration: 1000,
+                        footer: Text(
+                            "You have finished $userFinishedDaysOfWorkoutPlan days out of 100 days of your workout plan",
+                            textAlign: TextAlign.center,
+                            style: kProfileTitleTextStyle),
                       ),
 
                       /// Adding space
@@ -285,18 +360,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       /// Adding space
                       const SizedBox(height: 8.0),
 
-                      /// Progress of the workout plan
-                      CircularPercentIndicator(
-                        radius: 35.0,
-                        lineWidth: 8.0,
-                        percent: 0.9,
-                        center: const Text("90%"),
-                        progressColor: kBMIGreenThemeColor,
-                      ),
-
-                      /// Adding space
-                      const SizedBox(height: 8.0),
-
                       /// Finished workout plan button
                       ElevatedButton.icon(
                         onPressed: () {
@@ -317,7 +380,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: kWhiteThemeColor),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      finishedADayOfWorkoutPlan(
+                                        userFinishedDaysOfWorkoutPlan,
+                                        userLevel,
+                                        loggedInUser.email,
+                                        userFocusedBodyAreas
+                                            .map(
+                                                (element) => element.toString())
+                                            .toList(),
+                                      );
+                                      Navigator.pop(context);
+                                    },
                                     child: const Text(
                                       "Yes",
                                       style:
@@ -327,7 +401,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   ElevatedButton(
                                     style: ElevatedButton.styleFrom(
                                         backgroundColor: kWhiteThemeColor),
-                                    onPressed: () {},
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
                                     child: const Text(
                                       "No",
                                       style:
