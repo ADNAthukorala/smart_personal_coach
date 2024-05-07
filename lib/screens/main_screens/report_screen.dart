@@ -1269,9 +1269,11 @@ class _ReportScreenState extends State<ReportScreen> {
                               }
 
                               return snapshot.data!.docs.isEmpty
-                                  ? const Text(
-                                      "Not yet finished any workout plan",
-                                      style: kUserReportTitleTextStyle,
+                                  ? const Center(
+                                      child: Text(
+                                        "Not yet finished any workout plan",
+                                        style: kUserReportTitleTextStyle,
+                                      ),
                                     )
                                   : ListView.builder(
                                       primary: false,
@@ -1279,10 +1281,18 @@ class _ReportScreenState extends State<ReportScreen> {
                                       itemBuilder: (context, index) {
                                         DocumentSnapshot document =
                                             snapshot.data!.docs[index];
-                                        return Text(
-                                          document.id,
-                                          textAlign: TextAlign.center,
-                                          style: kUserReportTitleTextStyle,
+                                        return Column(
+                                          children: [
+                                            const Divider(),
+                                            ListTile(
+                                              title: Text(
+                                                document.id,
+                                                textAlign: TextAlign.center,
+                                                style:
+                                                    kUserReportTitleTextStyle,
+                                              ),
+                                            ),
+                                          ],
                                         );
                                       },
                                     );
