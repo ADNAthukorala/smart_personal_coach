@@ -117,17 +117,13 @@ class WorkoutPlanExercisesCard extends StatelessWidget {
                     ),
                     width: double.maxFinite,
                     height: 50.0,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(left: 8.0),
-                          child: ElevatedButton(
-                            onPressed: () {},
-                            child: const Text("Finished"),
-                          ),
-                        ),
-                      ],
+                    child: const Text(
+                      "You are Stronger Than You Think!",
+                      style: TextStyle(
+                        fontSize: 18.0,
+                        fontWeight: FontWeight.w600,
+                        color: kAppThemeColor,
+                      ),
                     ),
                   ),
                 ],
