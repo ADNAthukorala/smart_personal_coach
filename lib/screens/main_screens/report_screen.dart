@@ -1268,18 +1268,24 @@ class _ReportScreenState extends State<ReportScreen> {
                                     child: Text("No data available"));
                               }
 
-                              return ListView.builder(
-                                primary: false,
-                                itemCount: snapshot.data!.docs.length,
-                                itemBuilder: (context, index) {
-                                  DocumentSnapshot document =
-                                      snapshot.data!.docs[index];
-                                  return Text(
-                                    document.id,
-                                    style: kProfileTitleTextStyle,
-                                  );
-                                },
-                              );
+                              return snapshot.data!.docs.isEmpty
+                                  ? const Text(
+                                      "Not yet finished any workout plan",
+                                      style: kUserReportTitleTextStyle,
+                                    )
+                                  : ListView.builder(
+                                      primary: false,
+                                      itemCount: snapshot.data!.docs.length,
+                                      itemBuilder: (context, index) {
+                                        DocumentSnapshot document =
+                                            snapshot.data!.docs[index];
+                                        return Text(
+                                          document.id,
+                                          textAlign: TextAlign.center,
+                                          style: kUserReportTitleTextStyle,
+                                        );
+                                      },
+                                    );
                             },
                           ),
                         ),

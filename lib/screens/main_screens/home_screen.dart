@@ -48,34 +48,54 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   /// Finished a day of workout plan
-  Future<void> finishedADayOfWorkoutPlan(int initialDays, String userLevel,
-      String? loggedInUserEmail, List<String> focusedBodyAreas) async {
-    int finishedDaysOfCurrentWorkoutPlan = initialDays;
-
-    if (finishedDaysOfCurrentWorkoutPlan < 100) {
-      finishedDaysOfCurrentWorkoutPlan++;
-    } else {
-      finishedDaysOfCurrentWorkoutPlan = 0;
-      await generateTheWorkoutPlan(
-          userLevel: userLevel,
-          loggedInUserEmail: loggedInUserEmail,
-          focusedBodyAreas: focusedBodyAreas);
-      if (!mounted) return;
-      // Show snack bar with  message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content: Text(
-                'Congratulations! You have finished your workout plan successfully and now you have a new workout plan.')),
-      );
-    }
-
+  Future<void> finishedADayOfWorkoutPlan(
+      int initialFinishedDaysOfCurrentWorkoutPlan,
+      int initialFinishedWorkoutPlans,
+      String userLevel,
+      String? loggedInUserEmail,
+      List<String> focusedBodyAreas) async {
     try {
+      String year = DateTime.now().year.toString();
+      String month = DateTime.now().month.toString();
+      String day = DateTime.now().day.toString();
+      String yearMonthDay = "$year-$month-$day";
+
+      int finishedDaysOfCurrentWorkoutPlan =
+          initialFinishedDaysOfCurrentWorkoutPlan;
+      int finishedWorkoutPlans = initialFinishedWorkoutPlans;
+
+      if (finishedDaysOfCurrentWorkoutPlan < 100) {
+        finishedDaysOfCurrentWorkoutPlan++;
+      } else {
+        finishedDaysOfCurrentWorkoutPlan = 0;
+        await generateTheWorkoutPlan(
+            userLevel: userLevel,
+            loggedInUserEmail: loggedInUserEmail,
+            focusedBodyAreas: focusedBodyAreas);
+        await FirebaseFirestore.instance
+            .collection("users")
+            .doc(loggedInUser.email)
+            .collection("finished_workout_plans")
+            .doc(
+                "You have finished your ${finishedWorkoutPlans + 1} workout plan on $yearMonthDay")
+            .set({});
+        finishedWorkoutPlans++;
+        if (!mounted) return;
+        // Show snack bar with  message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text(
+                  'Congratulations! You have finished your workout plan successfully and now you have a new workout plan.')),
+        );
+      }
+
       // Get a reference to the document
       DocumentReference documentRef =
           FirebaseFirestore.instance.collection('users').doc(loggedInUserEmail);
 
       await documentRef.update({
         'finishedDaysOfCurrentWorkoutPlan': finishedDaysOfCurrentWorkoutPlan,
+        'finishedWorkoutPlans': finishedWorkoutPlans,
       });
 
       print('Document updated successfully.');
@@ -132,6 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
           int userWeeklyGoal = data["weeklyGoal"];
           int userFinishedDaysOfCurrentWorkoutPlan =
               data["finishedDaysOfCurrentWorkoutPlan"];
+          int userFinishedWorkoutPlans = data["finishedWorkoutPlans"];
           List<dynamic> userFocusedBodyAreas = data["focusedBodyAreas"];
 
           String reps = "";
@@ -404,6 +425,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     onPressed: () {
                                       finishedADayOfWorkoutPlan(
                                         userFinishedDaysOfCurrentWorkoutPlan,
+                                        userFinishedWorkoutPlans,
                                         userLevel,
                                         loggedInUser.email,
                                         userFocusedBodyAreas

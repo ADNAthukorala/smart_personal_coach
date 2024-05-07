@@ -76,6 +76,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
           'level': widget.userLevel,
           'weeklyGoal': _userSelectedDays,
           'finishedDaysOfCurrentWorkoutPlan': 0,
+          'finishedWorkoutPlans': 0,
         },
       );
 
@@ -98,13 +99,6 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
         'date': yearMonth,
         'weight': widget.userWeight,
       });
-
-      await _firestore
-          .collection("users")
-          .doc(loggedInUser.email)
-          .collection("finished_workout_plans")
-          .doc("Not yet finished any workout plan")
-          .set({});
 
       /// Generate the workout plan
       await generateTheWorkoutPlan(
