@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/screens/workout_plan_screens/diet_plan_screen.dart';
 import 'package:smart_personal_coach/screens/workout_plan_screens/workout_plan_exercises_screen.dart';
+import 'package:percent_indicator/percent_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -276,6 +277,77 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                         label: Text(
                           "Show Diet Plan",
+                          style: kSmallGreyColorDescriptionTextStyle.copyWith(
+                              color: kWhiteThemeColor),
+                        ),
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
+
+                      /// Progress of the workout plan
+                      CircularPercentIndicator(
+                        radius: 35.0,
+                        lineWidth: 8.0,
+                        percent: 0.9,
+                        center: const Text("90%"),
+                        progressColor: kBMIGreenThemeColor,
+                      ),
+
+                      /// Adding space
+                      const SizedBox(height: 8.0),
+
+                      /// Finished workout plan button
+                      ElevatedButton.icon(
+                        onPressed: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return AlertDialog(
+                                backgroundColor: kRedThemeColor,
+                                title: const Text(
+                                  "Did you finish the day 1 of your workout plan?",
+                                  style: TextStyle(color: kWhiteThemeColor),
+                                ),
+                                icon: const Icon(
+                                  Icons.warning_rounded,
+                                  color: kWhiteThemeColor,
+                                ),
+                                actions: [
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: kWhiteThemeColor),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      "Yes",
+                                      style:
+                                          TextStyle(color: kBMIGreenThemeColor),
+                                    ),
+                                  ),
+                                  ElevatedButton(
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: kWhiteThemeColor),
+                                    onPressed: () {},
+                                    child: const Text(
+                                      "No",
+                                      style:
+                                          TextStyle(color: kBMIRedThemeColor),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                            backgroundColor: kBMIGreenThemeColor,
+                            fixedSize: const Size.fromWidth(double.maxFinite)),
+                        icon: const Icon(
+                          Icons.done_all_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        label: Text(
+                          "Finished Day 1",
                           style: kSmallGreyColorDescriptionTextStyle.copyWith(
                               color: kWhiteThemeColor),
                         ),
