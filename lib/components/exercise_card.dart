@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/pose_detection/pose_detector.dart';
 
 class ExerciseCard extends StatelessWidget {
   const ExerciseCard({
@@ -285,6 +286,30 @@ class ExerciseCard extends StatelessWidget {
 
                 /// Adding space
                 const SizedBox(height: 12.0),
+
+                /// Show pose button
+                ListTile(
+                  title: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: kAppThemeColor),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PoseDetectorView(
+                                    exerciseAnimationImageUrl:
+                                        data['animationImage'],
+                                  )));
+                    },
+                    child: const Text(
+                      "Show Pose",
+                      style: TextStyle(
+                        color: kWhiteThemeColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
 
                 /// Close button
                 ListTile(

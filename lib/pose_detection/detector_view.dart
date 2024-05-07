@@ -15,6 +15,7 @@ class DetectorView extends StatefulWidget {
     this.initialCameraLensDirection = CameraLensDirection.back,
     this.onCameraFeedReady,
     this.onCameraLensDirectionChanged,
+    required this.exerciseAnimationImageUrl,
   });
 
   final CustomPaint? customPaint; // Need
@@ -24,6 +25,7 @@ class DetectorView extends StatefulWidget {
   final Function(CameraLensDirection direction)?
       onCameraLensDirectionChanged; // Need
   final CameraLensDirection initialCameraLensDirection; // Need
+  final String exerciseAnimationImageUrl;
 
   @override
   State<DetectorView> createState() => _DetectorViewState();
@@ -38,6 +40,7 @@ class _DetectorViewState extends State<DetectorView> {
       onCameraFeedReady: widget.onCameraFeedReady,
       initialCameraLensDirection: widget.initialCameraLensDirection,
       onCameraLensDirectionChanged: widget.onCameraLensDirectionChanged,
+      exerciseAnimationImageUrl: widget.exerciseAnimationImageUrl,
     );
   }
 }

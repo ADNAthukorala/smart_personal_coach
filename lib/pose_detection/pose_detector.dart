@@ -6,7 +6,9 @@ import 'package:smart_personal_coach/pose_detection/detector_view.dart';
 import 'package:smart_personal_coach/pose_detection/painters/pose_painters.dart';
 
 class PoseDetectorView extends StatefulWidget {
-  const PoseDetectorView({super.key});
+  const PoseDetectorView({super.key, required this.exerciseAnimationImageUrl});
+
+  final String exerciseAnimationImageUrl;
 
   @override
   State<StatefulWidget> createState() => _PoseDetectorViewState();
@@ -34,6 +36,7 @@ class _PoseDetectorViewState extends State<PoseDetectorView> {
       onImage: _processImage,
       initialCameraLensDirection: _cameraLensDirection,
       onCameraLensDirectionChanged: (value) => _cameraLensDirection = value,
+      exerciseAnimationImageUrl: widget.exerciseAnimationImageUrl,
     );
   }
 

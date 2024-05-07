@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
@@ -12,7 +13,8 @@ class CameraView extends StatefulWidget {
       required this.onImage,
       this.onCameraFeedReady,
       this.onCameraLensDirectionChanged,
-      this.initialCameraLensDirection = CameraLensDirection.back});
+      this.initialCameraLensDirection = CameraLensDirection.back,
+      required this.exerciseAnimationImageUrl});
 
   final CustomPaint? customPaint; // Need
   final Function(InputImage inputImage) onImage; // Need
@@ -20,6 +22,7 @@ class CameraView extends StatefulWidget {
   final Function(CameraLensDirection direction)?
       onCameraLensDirectionChanged; // Need
   final CameraLensDirection initialCameraLensDirection; // Need
+  final String exerciseAnimationImageUrl;
 
   @override
   State<CameraView> createState() => _CameraViewState();
@@ -90,6 +93,7 @@ class _CameraViewState extends State<CameraView> {
                   ),
           ),
           _backButton(),
+          _exerciseAnimationImage(),
           _switchLiveCameraToggle(),
           _zoomControl(),
           _exposureControl(),
@@ -97,6 +101,26 @@ class _CameraViewState extends State<CameraView> {
       ),
     );
   }
+
+  Widget _exerciseAnimationImage() => Positioned(
+        top: 100,
+        left: 8,
+        child: CachedNetworkImage(
+          imageUrl: widget.exerciseAnimationImageUrl,
+          placeholder: (context, url) => const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                CircularProgressIndicator(),
+                SizedBox(height: 8.0),
+                Text("Loading animation...")
+              ],
+            ),
+          ),
+          errorWidget: (context, url, error) => const Icon(Icons.error_rounded),
+          height: 100,
+        ),
+      );
 
   Widget _backButton() => Positioned(
         top: 40,

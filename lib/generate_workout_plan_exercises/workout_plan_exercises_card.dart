@@ -2,7 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/generate_workout_plan_exercises/workout_plan_exercises_card_list_tile.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/pose_detection/pose_detector.dart';
 
 class WorkoutPlanExercisesCard extends StatelessWidget {
   const WorkoutPlanExercisesCard({
@@ -124,14 +123,8 @@ class WorkoutPlanExercisesCard extends StatelessWidget {
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: ElevatedButton(
-                            onPressed: () {
-                              Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const PoseDetectorView()));
-                            },
-                            child: const Text("Start"),
+                            onPressed: () {},
+                            child: const Text("Finished"),
                           ),
                         ),
                       ],
