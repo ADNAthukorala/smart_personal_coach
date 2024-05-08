@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:flutter/services.dart';
 import 'package:google_mlkit_commons/google_mlkit_commons.dart';
+import 'package:smart_personal_coach/constants.dart';
 
 class CameraView extends StatefulWidget {
   const CameraView(
@@ -14,7 +15,8 @@ class CameraView extends StatefulWidget {
       this.onCameraFeedReady,
       this.onCameraLensDirectionChanged,
       this.initialCameraLensDirection = CameraLensDirection.front,
-      required this.exerciseAnimationImageUrl});
+      required this.exerciseAnimationImageUrl,
+      required this.titleOfTheExercise});
 
   final CustomPaint? customPaint; // Need
   final Function(InputImage inputImage) onImage; // Need
@@ -23,6 +25,7 @@ class CameraView extends StatefulWidget {
       onCameraLensDirectionChanged; // Need
   final CameraLensDirection initialCameraLensDirection; // Need
   final String exerciseAnimationImageUrl;
+  final String titleOfTheExercise;
 
   @override
   State<CameraView> createState() => _CameraViewState();
@@ -78,14 +81,17 @@ class _CameraViewState extends State<CameraView> {
     if (_controller == null) return Container();
     if (_controller?.value.isInitialized == false) return Container();
     return ColoredBox(
-      color: Colors.blue,
+      color: kAppThemeColor,
       child: Stack(
         fit: StackFit.expand,
-        children: <Widget>[
+        children: [
           Center(
             child: _changingCameraLens
                 ? const Center(
-                    child: Text('Changing camera lens'),
+                    child: Text(
+                      'Changing camera lens...',
+                      style: TextStyle(color: kWhiteThemeColor),
+                    ),
                   )
                 : CameraPreview(
                     _controller!,
@@ -93,6 +99,7 @@ class _CameraViewState extends State<CameraView> {
                   ),
           ),
           _backButton(),
+          _titleOfTheExercise(),
           _exerciseAnimationImage(),
           _switchLiveCameraToggle(),
           _zoomControl(),
@@ -101,6 +108,24 @@ class _CameraViewState extends State<CameraView> {
       ),
     );
   }
+
+  Widget _titleOfTheExercise() => Positioned(
+        top: 40,
+        left: 80,
+        child: Container(
+          width: 250.0,
+          alignment: Alignment.center,
+          child: Text(
+            widget.titleOfTheExercise,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              fontSize: 18.0,
+              fontWeight: FontWeight.w600,
+              color: kWhiteThemeColor,
+            ),
+          ),
+        ),
+      );
 
   Widget _exerciseAnimationImage() => Positioned(
         top: 100,

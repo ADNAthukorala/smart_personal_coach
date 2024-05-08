@@ -302,6 +302,7 @@ class ExerciseCard extends StatelessWidget {
                                 builder: (context) => PoseDetectorView(
                                       exerciseAnimationImageUrl:
                                           data['animationImage'],
+                                      titleOfTheExercise: data['name'],
                                     )));
                       },
                       icon: const Icon(
