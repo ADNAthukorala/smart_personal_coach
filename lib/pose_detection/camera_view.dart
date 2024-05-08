@@ -128,7 +128,7 @@ class _CameraViewState extends State<CameraView> {
       );
 
   Widget _exerciseAnimationImage() => Positioned(
-        top: 100,
+        top: 77,
         left: 8,
         child: CachedNetworkImage(
           imageUrl: widget.exerciseAnimationImageUrl,
@@ -148,7 +148,7 @@ class _CameraViewState extends State<CameraView> {
       );
 
   Widget _backButton() => Positioned(
-        top: 40,
+        bottom: 8,
         left: 8,
         child: SizedBox(
           height: 50.0,
@@ -158,7 +158,7 @@ class _CameraViewState extends State<CameraView> {
             onPressed: () => Navigator.of(context).pop(),
             backgroundColor: Colors.white,
             child: const Icon(
-              Icons.arrow_back_outlined,
+              Icons.arrow_back_rounded,
               size: 20,
             ),
           ),
@@ -176,7 +176,7 @@ class _CameraViewState extends State<CameraView> {
             onPressed: _switchLiveCamera,
             backgroundColor: Colors.white,
             child: const Icon(
-              Icons.flip_camera_android_outlined,
+              Icons.flip_camera_android_rounded,
               size: 25,
             ),
           ),
