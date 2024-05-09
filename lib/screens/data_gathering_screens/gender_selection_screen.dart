@@ -217,8 +217,18 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                   onPressed: _userGender == "Not Selected"
                       ? null // Disable the next button
                       : () {
-                          // Send email verification to signed in user' email
-                          _sendEmailVerification();
+                          if (loggedInUser.emailVerified) {
+                          } else {
+                            // Send email verification to signed in user' email
+                            _sendEmailVerification();
+                            // Show snack bar with message
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                  content: Text("Sent an email verification."
+                                      " Please check your email inbox and verify the email to proceed!")),
+                            );
+                          }
+
                           // When the button is clicked, navigate to the age, height, weight screen
                           Navigator.push(
                             context,

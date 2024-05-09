@@ -314,18 +314,8 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 ),
                 child: ElevatedButton(
                   onPressed: () {
-                    if (loggedInUser.emailVerified) {
-                      // Calling the setData method to add data to the database
-                      _setData();
-                    } else {
-                      // Show snack bar with message
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        const SnackBar(
-                            content: Text(
-                                "It appears that you haven't verified your email address yet."
-                                " To proceed, please verify your email.")),
-                      );
-                    }
+                    // Calling the setData method to add data to the database
+                    _setData();
                   },
                   style: kNextButtonStyle,
                   child: const Text(
