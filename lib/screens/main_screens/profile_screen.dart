@@ -34,6 +34,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
   final _levelEmailController = TextEditingController();
   final _weeklyGoalEmailController = TextEditingController();
   final _focusedBodyAreasEmailController = TextEditingController();
+  final _deleteTheUserAccountPermanentlyEmailController =
+      TextEditingController();
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -247,6 +249,84 @@ class _ProfileScreenState extends State<ProfileScreen> {
       print('Document updated successfully.');
     } catch (e) {
       print('Error updating document: $e');
+    }
+  }
+
+  /// Delete the user account
+  Future<void> _deleteTheUserAccount() async {
+    try {
+      // Get reference to the directory
+      final Reference imageRef = FirebaseStorage.instance
+          .ref()
+          .child('profile_pictures/${loggedInUser.email}/profile-picture.jpg');
+
+      // Get a reference to the user document
+      final DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Get a reference to the user finished workout plans
+      final CollectionReference finishedWorkoutPlansRef = FirebaseFirestore
+          .instance
+          .collection('users')
+          .doc(loggedInUser.email)
+          .collection('finished_workout_plans');
+
+      // Get a reference to the user height chart data
+      final CollectionReference heightChartDataRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email)
+          .collection('height_chart_data');
+
+      // Get a reference to the user weight chart data
+      final CollectionReference weightChartDataRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email)
+          .collection('weight_chart_data');
+
+      // Get all documents in the user finished workout plans
+      QuerySnapshot finishedWorkoutPlansQuerySnapshot =
+          await finishedWorkoutPlansRef.get();
+
+      // Get all documents in the user height chart data
+      QuerySnapshot heightChartDataQuerySnapshot =
+          await heightChartDataRef.get();
+
+      // Get all documents in the user weight chart data
+      QuerySnapshot weightChartDataQuerySnapshot =
+          await weightChartDataRef.get();
+
+      // Get the current user
+      final User? user = FirebaseAuth.instance.currentUser;
+
+      // Delete user finished workout plans one by one
+      for (DocumentSnapshot docSnapshot
+          in finishedWorkoutPlansQuerySnapshot.docs) {
+        await docSnapshot.reference.delete();
+      }
+
+      // Delete user finished workout plans one by one
+      for (DocumentSnapshot docSnapshot in heightChartDataQuerySnapshot.docs) {
+        await docSnapshot.reference.delete();
+      }
+
+      // Delete user finished workout plans one by one
+      for (DocumentSnapshot docSnapshot in weightChartDataQuerySnapshot.docs) {
+        await docSnapshot.reference.delete();
+      }
+
+      // Delete the profile picture
+      await imageRef.delete();
+      // Delete the user document
+      await documentRef.delete();
+      // Delete the current user
+      await user!.delete();
+    } catch (e) {
+      if (!mounted) return;
+      // Show snack bar with  message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
     }
   }
 
@@ -1137,6 +1217,122 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 icon: const Icon(
                   Icons.logout_rounded,
+                  color: kWhiteThemeColor,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Delete user account button
+              ElevatedButton.icon(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you delete your account permanently, all the data will be deleted and you can't restore them!"
+                              " If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller:
+                                  _deleteTheUserAccountPermanentlyEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _deleteTheUserAccountPermanentlyEmailController
+                                  .clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_deleteTheUserAccountPermanentlyEmailController
+                                      .text
+                                      .trim() ==
+                                  loggedInUser.email) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignInScreen(),
+                                  ),
+                                );
+                                _deleteTheUserAccount();
+                                _deleteTheUserAccountPermanentlyEmailController
+                                    .clear();
+                                // Show snack bar with  message
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'The account has been successfully deleted!')),
+                                );
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                style: kSignInSignUpSignOutResetPasswordButtonStyle.copyWith(
+                    backgroundColor:
+                        const MaterialStatePropertyAll(kRedThemeColor)),
+                label: const Text(
+                  "Delete Account Permanently",
+                  style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
+                ),
+                icon: const Icon(
+                  Icons.delete_rounded,
                   color: kWhiteThemeColor,
                 ),
               ),
