@@ -313,7 +313,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                   top: kPadding16,
                 ),
                 child: ElevatedButton(
-                  onPressed: () async {
+                  onPressed: () {
                     if (loggedInUser.emailVerified) {
                       // Calling the setData method to add data to the database
                       _setData();
