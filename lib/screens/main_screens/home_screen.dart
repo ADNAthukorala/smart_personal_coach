@@ -64,7 +64,7 @@ class _HomeScreenState extends State<HomeScreen> {
           initialFinishedDaysOfCurrentWorkoutPlan;
       int finishedWorkoutPlans = initialFinishedWorkoutPlans;
 
-      if (finishedDaysOfCurrentWorkoutPlan < 100) {
+      if (finishedDaysOfCurrentWorkoutPlan < 30) {
         finishedDaysOfCurrentWorkoutPlan++;
       } else {
         finishedDaysOfCurrentWorkoutPlan = 0;
@@ -171,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
           /// Percentage of the workout plan progress
           double percentageOfTheWorkoutPlanProgress =
-              userFinishedDaysOfCurrentWorkoutPlan / 100;
+              userFinishedDaysOfCurrentWorkoutPlan / 30;
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -209,10 +209,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
                       /// Current day
                       Text(
-                        userFinishedDaysOfCurrentWorkoutPlan < 100
+                        userFinishedDaysOfCurrentWorkoutPlan < 30
                             ? "Day ${userFinishedDaysOfCurrentWorkoutPlan + 1}"
                             : "All Days are Completed",
-                        style: userFinishedDaysOfCurrentWorkoutPlan < 100
+                        style: userFinishedDaysOfCurrentWorkoutPlan < 30
                             ? kLargeBlackTitleTextStyle
                             : kLargeBlackTitleTextStyle.copyWith(
                                 color: kBMIGreenThemeColor),
@@ -238,13 +238,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         lineWidth: 8.0,
                         percent: percentageOfTheWorkoutPlanProgress,
                         center: Text(
-                          "$userFinishedDaysOfCurrentWorkoutPlan%",
+                          "${((userFinishedDaysOfCurrentWorkoutPlan * 10) / 3).round()}%",
                           style: const TextStyle(fontWeight: FontWeight.w500),
                         ),
                         progressColor: kBMIGreenThemeColor,
                         animationDuration: 1000,
                         footer: Text(
-                            "You have finished $userFinishedDaysOfCurrentWorkoutPlan days out of 100 days of your workout plan",
+                            "You have finished $userFinishedDaysOfCurrentWorkoutPlan days out of 30 days of your workout plan",
                             textAlign: TextAlign.center,
                             style: kProfileTitleTextStyle),
                       ),
@@ -403,11 +403,11 @@ class _HomeScreenState extends State<HomeScreen> {
                             builder: (context) {
                               return AlertDialog(
                                 backgroundColor:
-                                    userFinishedDaysOfCurrentWorkoutPlan < 100
+                                    userFinishedDaysOfCurrentWorkoutPlan < 30
                                         ? kRedThemeColor
                                         : kBMIGreenThemeColor,
                                 title: Text(
-                                  userFinishedDaysOfCurrentWorkoutPlan < 100
+                                  userFinishedDaysOfCurrentWorkoutPlan < 30
                                       ? "Did you finish the day ${userFinishedDaysOfCurrentWorkoutPlan + 1} of your workout plan?"
                                       : "Congratulations! You have finished"
                                           " your workout plan successfully. Do you want to generate a new workout plan?",
@@ -466,7 +466,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           color: kWhiteThemeColor,
                         ),
                         label: Text(
-                          userFinishedDaysOfCurrentWorkoutPlan < 100
+                          userFinishedDaysOfCurrentWorkoutPlan < 30
                               ? "Finished Day ${userFinishedDaysOfCurrentWorkoutPlan + 1}"
                               : "Completed all days of the current workout plan. Generate a new one!",
                           textAlign: TextAlign.center,
