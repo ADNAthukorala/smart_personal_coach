@@ -474,6 +474,14 @@ class _HomeScreenState extends State<HomeScreen> {
                               color: kWhiteThemeColor),
                         ),
                       ),
+
+                      /// Note
+                      const Text(
+                        'Note:- Once you complete your daily exercises and follow the diet plan,'
+                        ' make sure to click the "Finished Day" button to save your progress.',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(fontSize: 8.8),
+                      ),
                     ],
                   ),
                 ),
