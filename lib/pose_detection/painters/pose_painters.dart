@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:camera/camera.dart';
 import 'package:google_mlkit_pose_detection/google_mlkit_pose_detection.dart';
+import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/pose_detection/painters/coordinates_translator.dart';
 
 class PosePainter extends CustomPainter {
@@ -21,17 +22,17 @@ class PosePainter extends CustomPainter {
     final paint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4.0
-      ..color = Colors.green;
+      ..color = kBMIBlueThemeColor;
 
     final leftPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.0
-      ..color = Colors.yellow;
+      ..color = kBMIGreenThemeColor;
 
     final rightPaint = Paint()
       ..style = PaintingStyle.stroke
       ..strokeWidth = 3.0
-      ..color = Colors.blueAccent;
+      ..color = kAppThemeColor;
 
     for (final pose in poses) {
       pose.landmarks.forEach((_, landmark) {
