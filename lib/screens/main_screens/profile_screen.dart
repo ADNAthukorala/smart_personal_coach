@@ -252,14 +252,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
     }
   }
 
-  /// Delete the user account
-  Future<void> _deleteTheUserAccount() async {
-    try {
-      // Get reference to the directory
-      final Reference imageRef = FirebaseStorage.instance
-          .ref()
-          .child('profile_pictures/${loggedInUser.email}/profile-picture.jpg');
+  // Default profile picture url
+  final String defaultProfilePicture =
+      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Ftheme-image.jpg?alt=media&token=777d29fb-0bcc-4bbb-bddd-b65d6c1f4eea";
 
+  /// Delete the user account
+  Future<void> _deleteTheUserAccount(String profilePictureURL) async {
+    try {
       // Get a reference to the user document
       final DocumentReference documentRef = FirebaseFirestore.instance
           .collection('users')
@@ -299,28 +298,57 @@ class _ProfileScreenState extends State<ProfileScreen> {
       // Get the current user
       final User? user = FirebaseAuth.instance.currentUser;
 
-      // Delete user finished workout plans one by one
-      for (DocumentSnapshot docSnapshot
-          in finishedWorkoutPlansQuerySnapshot.docs) {
-        await docSnapshot.reference.delete();
-      }
+      if (profilePictureURL != defaultProfilePicture) {
+        // Get reference to the directory
+        final Reference imageRef = FirebaseStorage.instance.ref().child(
+            'profile_pictures/${loggedInUser.email}/profile-picture.jpg');
 
-      // Delete user finished workout plans one by one
-      for (DocumentSnapshot docSnapshot in heightChartDataQuerySnapshot.docs) {
-        await docSnapshot.reference.delete();
-      }
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in finishedWorkoutPlansQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
 
-      // Delete user finished workout plans one by one
-      for (DocumentSnapshot docSnapshot in weightChartDataQuerySnapshot.docs) {
-        await docSnapshot.reference.delete();
-      }
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in heightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
 
-      // Delete the profile picture
-      await imageRef.delete();
-      // Delete the user document
-      await documentRef.delete();
-      // Delete the current user
-      await user!.delete();
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in weightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+        // Delete the profile picture
+        await imageRef.delete();
+        // Delete the user document
+        await documentRef.delete();
+        // Delete the current user
+        await user!.delete();
+      } else {
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in finishedWorkoutPlansQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in heightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in weightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+        // Delete the user document
+        await documentRef.delete();
+        // Delete the current user
+        await user!.delete();
+      }
       _signOut();
     } catch (e) {
       if (!mounted) return;
@@ -397,6 +425,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           String imageUrl = data['profilePicture'];
 
           List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
+          String currentProfilePictureURL = data['profilePicture'];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -1285,7 +1314,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     builder: (context) => const SignInScreen(),
                                   ),
                                 );
-                                _deleteTheUserAccount();
+                                _deleteTheUserAccount(currentProfilePictureURL);
                                 _deleteTheUserAccountPermanentlyEmailController
                                     .clear();
                                 // Show snack bar with  message
