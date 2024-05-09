@@ -14,6 +14,7 @@ import 'package:smart_personal_coach/screens/updating_data_screens/update_body_a
 import 'package:smart_personal_coach/screens/updating_data_screens/update_level_screen.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_main_goal_screen.dart';
 import 'package:smart_personal_coach/screens/updating_data_screens/update_weekly_goal_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -356,6 +357,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(e.toString())),
       );
+    }
+  }
+
+  /// The feedback url
+  final Uri _url = Uri.parse('https://forms.gle/pE6C2CRtPZCkhiRk6');
+
+  /// Launch the feedback url
+  Future<void> _launchFeedbackURL() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
     }
   }
 
@@ -1364,6 +1375,24 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 icon: const Icon(
                   Icons.delete_rounded,
                   color: kWhiteThemeColor,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Feedback button
+              Container(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    _launchFeedbackURL();
+                  },
+                  style: kTextButtonStyle,
+                  child: const Text(
+                    'Click To Send Feedback',
+                    style: kTextButtonTextStyle,
+                  ),
                 ),
               ),
             ],
