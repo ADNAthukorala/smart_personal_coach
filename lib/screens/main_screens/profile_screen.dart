@@ -321,6 +321,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       await documentRef.delete();
       // Delete the current user
       await user!.delete();
+      _signOut();
     } catch (e) {
       if (!mounted) return;
       // Show snack bar with  message
