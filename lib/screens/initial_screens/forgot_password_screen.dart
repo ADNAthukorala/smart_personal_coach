@@ -34,7 +34,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
               style: TextStyle(color: kWhiteThemeColor),
             ),
             content: const Text(
-              'Password reset link sent! Check your email',
+              'Password reset link sent! Check your email inbox.',
               style: TextStyle(color: kWhiteThemeColor),
             ),
             actions: [
