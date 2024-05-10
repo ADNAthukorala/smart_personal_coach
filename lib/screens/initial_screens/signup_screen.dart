@@ -5,8 +5,6 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
-// import 'package:smart_personal_coach/screens/terms_and_conditions_screen.dart';
 
 /// Sign-Up Screen
 class SignUpScreen extends StatefulWidget {
@@ -209,7 +207,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             /// Top of the screen (Top image)
             MediaQuery.of(context).viewInsets.bottom == 0
                 ? const Expanded(
-                    flex: 2,
+                    flex: 4,
                     child: TopImage(imageUrl: 'images/signup-screen-image.jpg'),
                   )
                 : const SizedBox(),
@@ -262,7 +260,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
 
                           /// Add space
-                          const SizedBox(height: 12.0),
+                          const SizedBox(height: 8.0),
 
                           /// Get the user's password
                           TextFormField(
@@ -338,44 +336,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           /// Add space
                           const SizedBox(height: 8.0),
 
-                          /// Check whether agree with the terms and conditions
-                          // Row(
-                          //   children: [
-                          //     Checkbox(
-                          //       value: _isTermsAndConditionsChecked,
-                          //       onChanged: (value) {
-                          //         setState(() {
-                          //           _isTermsAndConditionsChecked = value;
-                          //         });
-                          //       },
-                          //       materialTapTargetSize:
-                          //           MaterialTapTargetSize.shrinkWrap,
-                          //       activeColor: kBlueThemeColor,
-                          //       checkColor: kWhiteThemeColor,
-                          //     ),
-                          //     TextButton(
-                          //       onPressed: () {
-                          //         // When the button is clicked, navigate to the terms and conditions screen
-                          //         Navigator.push(
-                          //           context,
-                          //           MaterialPageRoute(
-                          //             builder: (context) =>
-                          //                 const TermsAndConditionsScreen(),
-                          //           ),
-                          //         );
-                          //       },
-                          //       style: kTextButtonStyle,
-                          //       child: const Text(
-                          //         'I agree Terms & Conditions',
-                          //         style: kTextButtonTextStyle,
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-
-                          /// Add space
-                          const SizedBox(height: 8.0),
-
                           /// Sign up button
                           SignInSignUpButton(
                             onPressed: () {
@@ -390,47 +350,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
 
-                    /// Bottom of the screen (Sign-in button, social media buttons)
-                    MediaQuery.of(context).viewInsets.bottom == 0
-                        ? Column(
-                            children: [
-                              /// Social media buttons container
-                              SocialMediaButtonsContainer(
-                                onPressedGoogle: () {},
-                                onPressedFacebook: () {},
-                              ),
+                    /// Adding space
+                    const SizedBox(height: 12.0),
 
-                              /// Add space
-                              const SizedBox(
-                                height: 12.0,
-                              ),
+                    /// Sign in text button container
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Already have an account?",
+                          style: kSmallGreyColorDescriptionTextStyle,
+                        ),
 
-                              /// Sign in text button container
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    "Already have an account?",
-                                    style: kSmallGreyColorDescriptionTextStyle,
-                                  ),
-
-                                  /// Sign In text button
-                                  TextButton(
-                                    onPressed: () {
-                                      // Navigate to the sign-in screen
-                                      Navigator.pop(context);
-                                    },
-                                    style: kTextButtonStyle,
-                                    child: const Text(
-                                      'Sign In',
-                                      style: kTextButtonTextStyle,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        : const SizedBox(),
+                        /// Sign In text button
+                        TextButton(
+                          onPressed: () {
+                            // Navigate to the sign-in screen
+                            Navigator.pop(context);
+                          },
+                          style: kTextButtonStyle,
+                          child: const Text(
+                            'Sign In',
+                            style: kTextButtonTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

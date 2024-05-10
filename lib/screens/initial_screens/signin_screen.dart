@@ -6,7 +6,6 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
 import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
 import 'package:smart_personal_coach/screens/initial_screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/data_gathering_screens/gender_selection_screen.dart';
@@ -238,7 +237,7 @@ class _SignInScreenState extends State<SignInScreen> {
               /// Top of the screen (Top image)
               MediaQuery.of(context).viewInsets.bottom == 0
                   ? const Expanded(
-                      flex: 2,
+                      flex: 4,
                       child:
                           TopImage(imageUrl: 'images/signin-screen-image.jpg'),
                     )
@@ -371,54 +370,37 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
 
-                      /// Bottom of the screen (Sign-up button, social media buttons)
-                      MediaQuery.of(context).viewInsets.bottom == 0
-                          ? Column(
-                              children: [
-                                /// Social media buttons container
-                                SocialMediaButtonsContainer(
-                                  onPressedGoogle: () {},
-                                  onPressedFacebook: () {},
-                                ),
+                      /// Adding space
+                      const SizedBox(height: 8.0),
 
-                                /// Add space
-                                const SizedBox(
-                                  height: 12.0,
-                                ),
+                      /// Sign up text button container
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Don’t have an account?",
+                            style: kSmallGreyColorDescriptionTextStyle,
+                          ),
 
-                                /// Sign up text button container
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Don’t have an account?",
-                                      style:
-                                          kSmallGreyColorDescriptionTextStyle,
-                                    ),
-
-                                    /// Sign up text button
-                                    TextButton(
-                                      onPressed: () {
-                                        // Navigate to the sign-up screen
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SignUpScreen(),
-                                          ),
-                                        );
-                                      },
-                                      style: kTextButtonStyle,
-                                      child: const Text(
-                                        'Sign Up',
-                                        style: kTextButtonTextStyle,
-                                      ),
-                                    ),
-                                  ],
+                          /// Sign up text button
+                          TextButton(
+                            onPressed: () {
+                              // Navigate to the sign-up screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen(),
                                 ),
-                              ],
-                            )
-                          : const SizedBox(),
+                              );
+                            },
+                            style: kTextButtonStyle,
+                            child: const Text(
+                              'Sign Up',
+                              style: kTextButtonTextStyle,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
