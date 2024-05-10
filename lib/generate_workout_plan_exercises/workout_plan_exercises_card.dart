@@ -10,12 +10,14 @@ class WorkoutPlanExercisesCard extends StatelessWidget {
     required this.title,
     required this.loggedInUserEmail,
     required this.workoutPlanExampleExercises,
+    required this.motivationalQuote,
   });
 
   final String collectionName;
   final String title;
   final String? loggedInUserEmail;
   final String workoutPlanExampleExercises;
+  final String motivationalQuote;
 
   @override
   Widget build(BuildContext context) {
@@ -110,19 +112,23 @@ class WorkoutPlanExercisesCard extends StatelessWidget {
                   Container(
                     alignment: Alignment.center,
                     decoration: const BoxDecoration(
-                      color: kGreyThemeColor02,
                       borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(kRadius16),
                           bottomRight: Radius.circular(kRadius16)),
                     ),
                     width: double.maxFinite,
                     height: 50.0,
-                    child: const Text(
-                      "You are Stronger Than You Think!",
-                      style: TextStyle(
-                        fontSize: 18.0,
-                        fontWeight: FontWeight.w600,
-                        color: kAppThemeColor,
+                    child: Padding(
+                      padding:
+                          const EdgeInsets.symmetric(horizontal: kPadding8),
+                      child: Text(
+                        motivationalQuote,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 10.0,
+                          fontWeight: FontWeight.w600,
+                          color: kBlackThemeColor,
+                        ),
                       ),
                     ),
                   ),

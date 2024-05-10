@@ -38,6 +38,8 @@ class _WorkoutPlanExercisesScreenState
                   title: "Abs Exercises",
                   collectionName: absExercisesCollection,
                   workoutPlanExampleExercises: absExercises,
+                  motivationalQuote:
+                      "Champions aren’t made in the gyms. Champions are made from something they have deep inside them-a desire, a dream, a vision!",
                 )
               : const SizedBox(),
 
@@ -48,6 +50,8 @@ class _WorkoutPlanExercisesScreenState
                   title: "Arms Exercises",
                   collectionName: armsExercisesCollection,
                   workoutPlanExampleExercises: armsExercises,
+                  motivationalQuote:
+                      "Success isn’t always about greatness. It’s about consistency. Consistent hard work gains success. Greatness will come!",
                 )
               : const SizedBox(),
 
@@ -58,6 +62,8 @@ class _WorkoutPlanExercisesScreenState
                   title: "Back Exercises",
                   collectionName: backExercisesCollection,
                   workoutPlanExampleExercises: backExercises,
+                  motivationalQuote:
+                      "Just believe in yourself. Even if you don’t, just pretend that you do and at some point, you will!",
                 )
               : const SizedBox(),
 
@@ -68,6 +74,8 @@ class _WorkoutPlanExercisesScreenState
                   title: "Chest Exercises",
                   collectionName: chestExercisesCollection,
                   workoutPlanExampleExercises: chestExercises,
+                  motivationalQuote:
+                      "The harder you work and the more prepared you are for something, you’re going to be able to persevere through anything!",
                 )
               : const SizedBox(),
 
@@ -78,6 +86,8 @@ class _WorkoutPlanExercisesScreenState
                   title: "Legs Exercises",
                   collectionName: legsExercisesCollection,
                   workoutPlanExampleExercises: legsExercises,
+                  motivationalQuote:
+                      "Fitness is not about being better than someone else. It’s about being better than you used to be!",
                 )
               : const SizedBox(),
         ],

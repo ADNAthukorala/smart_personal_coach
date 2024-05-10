@@ -55,10 +55,10 @@ class _HomeScreenState extends State<HomeScreen> {
       String? loggedInUserEmail,
       List<String> focusedBodyAreas) async {
     try {
-      String year = DateTime.now().year.toString();
-      String month = DateTime.now().month.toString();
       String day = DateTime.now().day.toString();
-      String yearMonthDay = "$year-$month-$day";
+      String month = DateTime.now().month.toString();
+      String year = DateTime.now().year.toString();
+      String dayMonthYear = "$day-$month-$year";
 
       int finishedDaysOfCurrentWorkoutPlan =
           initialFinishedDaysOfCurrentWorkoutPlan;
@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
             .doc(loggedInUser.email)
             .collection("finished_workout_plans")
             .doc(
-                "You have finished your ${finishedWorkoutPlans + 1} workout plan on $yearMonthDay")
+                "You have finished your ${finishedWorkoutPlans + 1} workout plan on $dayMonthYear")
             .set({});
         finishedWorkoutPlans++;
         if (!mounted) return;
@@ -211,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       Text(
                         userFinishedDaysOfCurrentWorkoutPlan < 30
                             ? "Day ${userFinishedDaysOfCurrentWorkoutPlan + 1}"
-                            : "All Days are Completed",
+                            : "All Days Are Completed",
                         style: userFinishedDaysOfCurrentWorkoutPlan < 30
                             ? kLargeBlackTitleTextStyle
                             : kLargeBlackTitleTextStyle.copyWith(
