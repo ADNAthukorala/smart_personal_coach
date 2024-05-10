@@ -110,15 +110,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed Up!')),
+      );
       // Back to the sign in page and show snack bar with 'Signed Up' message
       await _signIn();
       await _sendEmailVerification();
       await _signOut();
       if (!mounted) return;
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed up!')),
-      );
     } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e);

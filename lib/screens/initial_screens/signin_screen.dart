@@ -178,7 +178,7 @@ class _SignInScreenState extends State<SignInScreen> {
         checkDocumentIsEmpty();
         // Show snack bar with 'Signed in' message
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Signed in!')),
+          const SnackBar(content: Text('Signed In!')),
         );
       } else {
         // Show snack bar with 'Signed in' message
