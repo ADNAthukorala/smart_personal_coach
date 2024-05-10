@@ -35,7 +35,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKeySignIn = GlobalKey<FormState>();
 
   /// Checking if document exists
-  Future<void> checkFieldIsEmpty() async {
+  Future<void> checkDocumentIsEmpty() async {
     DocumentSnapshot snapshot = await _firestore
         .collection('users')
         .doc(_emailController.text.trim())
@@ -171,8 +171,8 @@ class _SignInScreenState extends State<SignInScreen> {
         password: _passwordController.text.trim(),
       );
       if (!mounted) return;
-      // Go to the gender selection screen
-      checkFieldIsEmpty();
+      // Go to the gender selection screen or home screen
+      checkDocumentIsEmpty();
       // Show snack bar with 'Signed in' message
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Signed in!')),
