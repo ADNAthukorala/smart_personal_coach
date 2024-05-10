@@ -328,24 +328,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               autofocus: false,
                             ),
 
-                            /// Add space
-                            const SizedBox(height: 12.0),
-
-                            /// Sign in button
-                            SignInSignUpButton(
-                              onPressed: () {
-                                // Validate returns true if the form is valid, or false otherwise.
-                                if (_formKeySignIn.currentState!.validate()) {
-                                  _signIn();
-                                }
-                              },
-                              buttonText: 'Sign In',
-                            ),
-
-                            /// Add space
-                            const SizedBox(height: 12.0),
-
-                            /// Forget password button
+                            /// Forgot password button
                             Container(
                               alignment: Alignment.centerRight,
                               child: TextButton(
@@ -365,6 +348,20 @@ class _SignInScreenState extends State<SignInScreen> {
                                   style: kTextButtonTextStyle,
                                 ),
                               ),
+                            ),
+
+                            /// Add space
+                            const SizedBox(height: 12.0),
+
+                            /// Sign in button
+                            SignInSignUpButton(
+                              onPressed: () {
+                                // Validate returns true if the form is valid, or false otherwise.
+                                if (_formKeySignIn.currentState!.validate()) {
+                                  _signIn();
+                                }
+                              },
+                              buttonText: 'Sign In',
                             ),
                           ],
                         ),
