@@ -63,7 +63,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       if (!mounted) return;
       // Show snack bar with 'Signed out' message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed out!')),
+        const SnackBar(content: Text('Signed Out!')),
       );
     } catch (e) {
       print("Error signing out: $e");
