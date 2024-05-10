@@ -7,7 +7,6 @@ import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/screens/data_gathering_screens/body_areas_selection_screen.dart';
-import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 
 /// Screen to get the user age, height, weight
 class BirthDayHeightWeightScreen extends StatefulWidget {
@@ -60,20 +59,6 @@ class _BirthDayHeightWeightScreenState
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('An error has occurred!')),
       );
-    }
-  }
-
-  /// Sign out method
-  Future<void> _signOut() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      if (!mounted) return;
-      // Show snack bar with 'Signed out' message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed out!')),
-      );
-    } catch (e) {
-      print("Error signing out: $e");
     }
   }
 
@@ -189,35 +174,18 @@ class _BirthDayHeightWeightScreenState
               ),
               child: NextButton(
                 onPressed: () {
-                  if (loggedInUser.emailVerified) {
-                    // When the button is clicked, navigate to the body areas selection screen
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => BodyAreasSelectionScreen(
-                          userGender: widget.userGender,
-                          userBirthDay: _userBirthDay,
-                          userHeight: _userHeight,
-                          userWeight: _userWeight,
-                        ),
+                  // When the button is clicked, navigate to the body areas selection screen
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => BodyAreasSelectionScreen(
+                        userGender: widget.userGender,
+                        userBirthDay: _userBirthDay,
+                        userHeight: _userHeight,
+                        userWeight: _userWeight,
                       ),
-                    );
-                  } else {
-                    _signOut();
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SignInScreen(),
-                      ),
-                    );
-                    // Show snack bar with message
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                          content: Text(
-                              "It appears that you haven't verified your email address yet."
-                              " To proceed, please verify your email.")),
-                    );
-                  }
+                    ),
+                  );
                 },
                 style: kNextButtonStyle,
               ),
