@@ -260,7 +260,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
 
                           /// Add space
-                          const SizedBox(height: 8.0),
+                          const SizedBox(height: 12.0),
 
                           /// Get the user's password
                           TextFormField(
@@ -334,7 +334,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
 
                           /// Add space
-                          const SizedBox(height: 8.0),
+                          const SizedBox(height: 12.0),
 
                           /// Sign up button
                           SignInSignUpButton(

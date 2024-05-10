@@ -331,6 +331,20 @@ class _SignInScreenState extends State<SignInScreen> {
                             /// Add space
                             const SizedBox(height: 12.0),
 
+                            /// Sign in button
+                            SignInSignUpButton(
+                              onPressed: () {
+                                // Validate returns true if the form is valid, or false otherwise.
+                                if (_formKeySignIn.currentState!.validate()) {
+                                  _signIn();
+                                }
+                              },
+                              buttonText: 'Sign In',
+                            ),
+
+                            /// Add space
+                            const SizedBox(height: 12.0),
+
                             /// Forget password button
                             Container(
                               alignment: Alignment.centerRight,
@@ -352,26 +366,12 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                               ),
                             ),
-
-                            /// Add space
-                            const SizedBox(height: 12.0),
-
-                            /// Sign in button
-                            SignInSignUpButton(
-                              onPressed: () {
-                                // Validate returns true if the form is valid, or false otherwise.
-                                if (_formKeySignIn.currentState!.validate()) {
-                                  _signIn();
-                                }
-                              },
-                              buttonText: 'Sign In',
-                            ),
                           ],
                         ),
                       ),
 
                       /// Adding space
-                      const SizedBox(height: 8.0),
+                      const SizedBox(height: 12.0),
 
                       /// Sign up text button container
                       Row(
