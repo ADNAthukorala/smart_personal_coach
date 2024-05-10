@@ -111,6 +111,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
         password: _passwordController.text.trim(),
       );
       // Back to the sign in page and show snack bar with 'Signed Up' message
+      await _signIn();
+      await _sendEmailVerification();
+      await _signOut();
       if (!mounted) return;
       Navigator.pop(context);
       ScaffoldMessenger.of(context).showSnackBar(
@@ -134,6 +137,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       showSpinner = false;
     });
+  }
+
+  /// Sign in existing user
+  Future<void> _signIn() async {
+    try {
+      // Sign in a user with an email address and password
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      if (!mounted) return;
+      // ignore: avoid_print
+      print("Signed In");
+    } on FirebaseAuthException catch (e) {
+      // ignore: avoid_print
+      print(e.message);
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+    }
+  }
+
+  /// Sign out method
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (!mounted) return;
+      // ignore: avoid_print
+      print("Signed Out");
+    } catch (e) {
+      // ignore: avoid_print
+      print("Error signing out: $e");
+    }
+  }
+
+  /// Send verification email to the user's email
+  Future<void> _sendEmailVerification() async {
+    final user = FirebaseAuth.instance.currentUser;
+    await user?.sendEmailVerification();
+    if (!mounted) return;
+    // Show snack bar with message
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+          content: Text("Sent an email verification."
+              " Please check your email inbox and verify the email to proceed!")),
+    );
   }
 
   @override

@@ -171,12 +171,23 @@ class _SignInScreenState extends State<SignInScreen> {
         password: _passwordController.text.trim(),
       );
       if (!mounted) return;
-      // Go to the gender selection screen or home screen
-      checkDocumentIsEmpty();
-      // Show snack bar with 'Signed in' message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed in!')),
-      );
+
+      // Checking whether the email is verified or not
+      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+        // Go to the gender selection screen or home screen
+        checkDocumentIsEmpty();
+        // Show snack bar with 'Signed in' message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Signed in!')),
+        );
+      } else {
+        // Show snack bar with 'Signed in' message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text(
+                  "You haven't verified your email yet. To proceed, please verify your email address.")),
+        );
+      }
     } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e);
