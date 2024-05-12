@@ -344,7 +344,7 @@ class _ReportScreenState extends State<ReportScreen> {
                             style: kUserReportTitleTextStyle,
                           ),
                           Text(
-                            userAge.toString(),
+                            "$userAge years",
                             style: kUserReportInformationTitleTextStyle,
                           ),
                         ],
