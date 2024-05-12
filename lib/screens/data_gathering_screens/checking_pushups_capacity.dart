@@ -1,15 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/checking_pullups_capacity.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/checking_pullups_capacity.dart';
 
 /// Screen to get the user's push ups capacity
 class CheckingPushUpsCapacity extends StatefulWidget {
@@ -26,8 +23,8 @@ class CheckingPushUpsCapacity extends StatefulWidget {
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
-  final MainGoal userMainGoal;
+  final List<String> userSelectedBodyAreas;
+  final String userMainGoal;
 
   @override
   State<CheckingPushUpsCapacity> createState() =>
@@ -42,7 +39,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's push ups capacity
-  Capacity _userPushUpsCapacity = Capacity.beginner;
+  String _userPushUpsCapacity = "Beginner";
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -98,7 +95,7 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'How many push-ups can you do at one time?',
                 description: '',
               ),
@@ -118,13 +115,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.beginner;
+                        _userPushUpsCapacity = "Beginner";
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.beginner,
-                    title: 'Beginner',
+                    selectedCapacity: "Beginner",
+                    title: "Beginner",
                     description: '0 - 5  Push-ups',
                   ),
 
@@ -135,13 +132,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.intermediate;
+                        _userPushUpsCapacity = "Intermediate";
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.intermediate,
-                    title: 'Intermediate',
+                    selectedCapacity: "Intermediate",
+                    title: "Intermediate",
                     description: '6 - 10  Push-ups',
                   ),
 
@@ -152,13 +149,13 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPushUpsCapacity = Capacity.advanced;
+                        _userPushUpsCapacity = "Advanced";
                       });
                       // print(_userPushUpsCapacity);
                     },
                     actualCapacity: _userPushUpsCapacity,
-                    selectedCapacity: Capacity.advanced,
-                    title: 'Advanced',
+                    selectedCapacity: "Advanced",
+                    title: "Advanced",
                     description: 'More than 10  Push-ups',
                   ),
 
@@ -166,38 +163,27 @@ class _CheckingPushUpsCapacityState extends State<CheckingPushUpsCapacity> {
                   const SizedBox(height: 20.0),
 
                   /// Button to show how to do push ups
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      label: const Text(
                         "What is push ups?",
-                        style: TextStyle(
-                          color: kAppThemeColor,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w900,
-                        ),
+                        style: kTextButtonTextStyle,
                       ),
-                      const SizedBox(width: 5.0),
-                      SizedBox(
-                        height: 28,
-                        width: 28,
-                        child: IconButton.filled(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return const ExerciseCard(
-                                  focusedBodyArea: "chest_exercises",
-                                  nameOfTheExercise: "push_ups",
-                                );
-                              },
+                      icon: const Icon(Icons.info_rounded),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const ExerciseCard(
+                              collectionName: "chest_exercises",
+                              docName: "push_ups",
                             );
                           },
-                          icon: const Icon(FontAwesomeIcons.exclamation),
-                          iconSize: 14,
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                      style: kTextButtonStyle,
+                    ),
                   ),
                 ],
               ),

@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/welcome_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/welcome_screen.dart';
 import 'firebase_options.dart';
 
 Future<void> main() async {
@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
       "images/back.jpg",
       "images/chest.jpg",
       "images/legs.jpg",
-      "images/meditation.jpg",
       "images/signin-screen-image.jpg",
       "images/signup-screen-image.jpg",
       "images/theme-image.jpg",
@@ -69,9 +68,10 @@ class MyApp extends StatelessWidget {
                       Text(
                         "Loading...",
                         style: TextStyle(
-                            color: kWhiteThemeColor,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0),
+                          color: kWhiteThemeColor,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20.0,
+                        ),
                       )
                     ],
                   ),

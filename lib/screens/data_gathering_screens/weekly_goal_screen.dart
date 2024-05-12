@@ -2,13 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import 'package:smart_personal_coach/generate_workout_plan_exercises/generate_the_workout_plan_exercises.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
-import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
 
 /// Screen to get data on how many days per week the user can dedicate to one workout plan
 class WeeklyGoalScreen extends StatefulWidget {
@@ -20,17 +18,15 @@ class WeeklyGoalScreen extends StatefulWidget {
       required this.userWeight,
       required this.userSelectedBodyAreas,
       required this.userMainGoal,
-      required this.userPushUpsCapacity,
-      required this.userPullUpsCapacity});
+      required this.userLevel});
 
   final String userGender;
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
-  final MainGoal userMainGoal;
-  final Capacity userPushUpsCapacity;
-  final Capacity userPullUpsCapacity;
+  final List<String> userSelectedBodyAreas;
+  final String userMainGoal;
+  final String userLevel;
 
   @override
   State<WeeklyGoalScreen> createState() => _WeeklyGoalScreenState();
@@ -62,26 +58,55 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       showSpinner = true;
     });
     try {
+      String year = DateTime.now().year.toString();
+      String month = DateTime.now().month.toString();
+      String yearMonth = "$year.$month";
+
       await _firestore.collection("users").doc(loggedInUser.email).set(
         {
           'gender': widget.userGender,
-          'user_name': "user",
+          'userName': "user",
           'email': loggedInUser.email,
-          'profile_picture': defaultProfilePicture,
-          'birth_day': widget.userBirthDay,
+          'profilePicture': defaultProfilePicture,
+          'birthDay': widget.userBirthDay,
           'height': widget.userHeight,
           'weight': widget.userWeight,
-          'focus_body_areas': widget.userSelectedBodyAreas
-              .map((e) => e.toString().split('.').last)
-              .toList(),
-          'main_goal': widget.userMainGoal.toString().split('.').last,
-          'push_ups_capacity':
-              widget.userPushUpsCapacity.toString().split('.').last,
-          'pull_ups_capacity':
-              widget.userPullUpsCapacity.toString().split('.').last,
-          'weekly_goal': _userSelectedDays,
+          'focusedBodyAreas': widget.userSelectedBodyAreas,
+          'mainGoal': widget.userMainGoal,
+          'level': widget.userLevel,
+          'weeklyGoal': _userSelectedDays,
+          'finishedDaysOfCurrentWorkoutPlan': 0,
+          'finishedWorkoutPlans': 0,
         },
       );
+
+      await _firestore
+          .collection("users")
+          .doc(loggedInUser.email)
+          .collection("height_chart_data")
+          .doc(yearMonth)
+          .set({
+        'date': yearMonth,
+        'height': widget.userHeight,
+      });
+
+      await _firestore
+          .collection("users")
+          .doc(loggedInUser.email)
+          .collection("weight_chart_data")
+          .doc(yearMonth)
+          .set({
+        'date': yearMonth,
+        'weight': widget.userWeight,
+      });
+
+      /// Generate the workout plan
+      await generateTheWorkoutPlan(
+        userLevel: widget.userLevel,
+        loggedInUserEmail: loggedInUser.email,
+        focusedBodyAreas: widget.userSelectedBodyAreas,
+      );
+
       if (!mounted) return;
       Navigator.push(
         context,
@@ -160,7 +185,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
                 padding: EdgeInsets.only(
                   bottom: kPadding16,
                 ),
-                child: TitleAndDescriptionHolder(
+                child: InitialScreensTitleAndDescriptionHolder(
                   title: 'Set your weekly goal',
                   description:
                       'How many days per week can you dedicate to one workout plan?',
@@ -347,11 +372,11 @@ class DayButton extends StatelessWidget {
           ),
           Text(
             description,
-            style: kDayButtonTextStyle.copyWith(
+            style: kSmallGreyColorDescriptionTextStyle.copyWith(
               color: userSelectedDays == selectedDays
                   ? kGreyThemeColor02
                   : kGreyThemeColor,
-              fontSize: 14.0,
+              fontWeight: FontWeight.w700,
             ),
           ),
         ],

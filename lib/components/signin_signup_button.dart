@@ -13,10 +13,10 @@ class SignInSignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: onPressed,
-      style: kSignInSignUpButtonStyle,
+      style: kSignInSignUpSignOutResetPasswordButtonStyle,
       child: Text(
         buttonText,
-        style: kSignInSignUpButtonTextStyle,
+        style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
       ),
     );
   }

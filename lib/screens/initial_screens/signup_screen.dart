@@ -5,8 +5,6 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
-// import 'package:smart_personal_coach/screens/terms_and_conditions_screen.dart';
 
 /// Sign-Up Screen
 class SignUpScreen extends StatefulWidget {
@@ -110,12 +108,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
         email: _emailController.text.trim(),
         password: _passwordController.text.trim(),
       );
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('Signed Up!')),
+      );
       // Back to the sign in page and show snack bar with 'Signed Up' message
+      await _signIn();
+      await _sendEmailVerification();
+      await _signOut();
       if (!mounted) return;
       Navigator.pop(context);
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed up!')),
-      );
     } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e);
@@ -134,6 +136,52 @@ class _SignUpScreenState extends State<SignUpScreen> {
     setState(() {
       showSpinner = false;
     });
+  }
+
+  /// Sign in existing user
+  Future<void> _signIn() async {
+    try {
+      // Sign in a user with an email address and password
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      if (!mounted) return;
+      // ignore: avoid_print
+      print("Signed In");
+    } on FirebaseAuthException catch (e) {
+      // ignore: avoid_print
+      print(e.message);
+    } catch (e) {
+      // ignore: avoid_print
+      print(e.toString());
+    }
+  }
+
+  /// Sign out method
+  Future<void> _signOut() async {
+    try {
+      await FirebaseAuth.instance.signOut();
+      if (!mounted) return;
+      // ignore: avoid_print
+      print("Signed Out");
+    } catch (e) {
+      // ignore: avoid_print
+      print("Error signing out: $e");
+    }
+  }
+
+  /// Send verification email to the user's email
+  Future<void> _sendEmailVerification() async {
+    final user = FirebaseAuth.instance.currentUser;
+    await user?.sendEmailVerification();
+    if (!mounted) return;
+    // Show snack bar with message
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+          content: Text("Sent an email verification."
+              " Please check your email inbox and verify the email to proceed!")),
+    );
   }
 
   @override
@@ -159,7 +207,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
             /// Top of the screen (Top image)
             MediaQuery.of(context).viewInsets.bottom == 0
                 ? const Expanded(
-                    flex: 2,
+                    flex: 4,
                     child: TopImage(imageUrl: 'images/signup-screen-image.jpg'),
                   )
                 : const SizedBox(),
@@ -188,9 +236,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Column(
                         children: [
                           /// The Title and the description holder
-                          const TitleAndDescriptionHolder(
-                            title: 'Sign Up',
-                            description: 'Create your account here',
+                          const InitialScreensTitleAndDescriptionHolder(
+                            title: "Sign Up",
+                            description: "Create your account here",
                           ),
 
                           /// Add space
@@ -204,8 +252,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 kSignInSignUpTextFormFieldDecorations.copyWith(
                               hintText: 'Email',
                               prefixIcon: const Icon(
-                                Icons.email_outlined,
-                                color: kGreyThemeColor,
+                                Icons.email_rounded,
+                                color: kAppThemeColor,
                               ),
                             ),
                             keyboardType: TextInputType.emailAddress,
@@ -222,8 +270,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 kSignInSignUpTextFormFieldDecorations.copyWith(
                               hintText: 'Password',
                               prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: kGreyThemeColor,
+                                Icons.lock_rounded,
+                                color: kAppThemeColor,
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -232,8 +280,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   });
                                 },
                                 icon: _isVisibilityButtonClicked
-                                    ? const Icon(Icons.visibility_outlined)
-                                    : const Icon(Icons.visibility_off_outlined),
+                                    ? const Icon(
+                                        Icons.visibility_rounded,
+                                        color: kAppThemeColor,
+                                      )
+                                    : const Icon(
+                                        Icons.visibility_off_rounded,
+                                        color: kAppThemeColor,
+                                      ),
                               ),
                             ),
                             obscureText:
@@ -253,8 +307,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                 kSignInSignUpTextFormFieldDecorations.copyWith(
                               hintText: 'Confirm Password',
                               prefixIcon: const Icon(
-                                Icons.lock_outline,
-                                color: kGreyThemeColor,
+                                Icons.lock_rounded,
+                                color: kAppThemeColor,
                               ),
                               suffixIcon: IconButton(
                                 onPressed: () {
@@ -263,8 +317,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                   });
                                 },
                                 icon: _isVisibilityButtonClicked
-                                    ? const Icon(Icons.visibility_outlined)
-                                    : const Icon(Icons.visibility_off_outlined),
+                                    ? const Icon(
+                                        Icons.visibility_rounded,
+                                        color: kAppThemeColor,
+                                      )
+                                    : const Icon(
+                                        Icons.visibility_off_rounded,
+                                        color: kAppThemeColor,
+                                      ),
                               ),
                             ),
                             obscureText:
@@ -274,45 +334,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           ),
 
                           /// Add space
-                          const SizedBox(height: 8.0),
-
-                          /// Check whether agree with the terms and conditions
-                          // Row(
-                          //   children: [
-                          //     Checkbox(
-                          //       value: _isTermsAndConditionsChecked,
-                          //       onChanged: (value) {
-                          //         setState(() {
-                          //           _isTermsAndConditionsChecked = value;
-                          //         });
-                          //       },
-                          //       materialTapTargetSize:
-                          //           MaterialTapTargetSize.shrinkWrap,
-                          //       activeColor: kBlueThemeColor,
-                          //       checkColor: kWhiteThemeColor,
-                          //     ),
-                          //     TextButton(
-                          //       onPressed: () {
-                          //         // When the button is clicked, navigate to the terms and conditions screen
-                          //         Navigator.push(
-                          //           context,
-                          //           MaterialPageRoute(
-                          //             builder: (context) =>
-                          //                 const TermsAndConditionsScreen(),
-                          //           ),
-                          //         );
-                          //       },
-                          //       style: kTextButtonStyle,
-                          //       child: const Text(
-                          //         'I agree Terms & Conditions',
-                          //         style: kTextButtonTextStyle,
-                          //       ),
-                          //     ),
-                          //   ],
-                          // ),
-
-                          /// Add space
-                          const SizedBox(height: 8.0),
+                          const SizedBox(height: 12.0),
 
                           /// Sign up button
                           SignInSignUpButton(
@@ -328,47 +350,32 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
 
-                    /// Bottom of the screen (Sign-in button, social media buttons)
-                    MediaQuery.of(context).viewInsets.bottom == 0
-                        ? Column(
-                            children: [
-                              /// Social media buttons container
-                              SocialMediaButtonsContainer(
-                                onPressedGoogle: () {},
-                                onPressedFacebook: () {},
-                              ),
+                    /// Adding space
+                    const SizedBox(height: 12.0),
 
-                              /// Add space
-                              const SizedBox(
-                                height: 12.0,
-                              ),
+                    /// Sign in text button container
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          "Already have an account?",
+                          style: kSmallGreyColorDescriptionTextStyle,
+                        ),
 
-                              /// Sign in text button container
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  const Text(
-                                    "Already have an account?",
-                                    style: kSmallGreyColorDescriptionTextStyle,
-                                  ),
-
-                                  /// Sign In text button
-                                  TextButton(
-                                    onPressed: () {
-                                      // Navigate to the sign-in screen
-                                      Navigator.pop(context);
-                                    },
-                                    style: kTextButtonStyle,
-                                    child: const Text(
-                                      'Sign In',
-                                      style: kTextButtonTextStyle,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          )
-                        : const SizedBox(),
+                        /// Sign In text button
+                        TextButton(
+                          onPressed: () {
+                            // Navigate to the sign-in screen
+                            Navigator.pop(context);
+                          },
+                          style: kTextButtonStyle,
+                          child: const Text(
+                            'Sign In',
+                            style: kTextButtonTextStyle,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               ),

@@ -5,7 +5,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/birthday_height_weight_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/birthday_height_weight_screen.dart';
 
 /// Screen to get the user's gender
 class GenderSelectionScreen extends StatefulWidget {
@@ -63,7 +63,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       if (!mounted) return;
       // Show snack bar with 'Signed out' message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed out!')),
+        const SnackBar(content: Text('Signed Out!')),
       );
     } catch (e) {
       print("Error signing out: $e");
@@ -156,7 +156,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                 padding: EdgeInsets.only(
                   bottom: kPadding16,
                 ),
-                child: TitleAndDescriptionHolder(
+                child: InitialScreensTitleAndDescriptionHolder(
                   title: "What's your gender?",
                   description: '',
                 ),
@@ -251,6 +251,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       child: Text(
         'Female',
         style: kLargeBlackTitleTextStyle.copyWith(
+            fontSize: 24,
             color:
                 _userGender == "Female" ? kWhiteThemeColor : kPinkThemeColor),
       ),
@@ -273,6 +274,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       child: Text(
         'Male',
         style: kLargeBlackTitleTextStyle.copyWith(
+            fontSize: 24,
             color: _userGender == "Male" ? kWhiteThemeColor : kBlueThemeColor),
       ),
     );

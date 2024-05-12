@@ -29,26 +29,21 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         builder: (context) {
           return AlertDialog(
             backgroundColor: kAppThemeColor,
-            titleTextStyle: const TextStyle(
-              color: kWhiteThemeColor,
-              fontSize: 20.0,
+            title: const Text(
+              'Email sent',
+              style: TextStyle(color: kWhiteThemeColor),
             ),
-            contentTextStyle: const TextStyle(color: kWhiteThemeColor),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(kRadius16),
-              ),
+            content: const Text(
+              'Password reset link sent! Check your email inbox.',
+              style: TextStyle(color: kWhiteThemeColor),
             ),
-            title: const Text('Email sent'),
-            content: const Text('Password reset link sent! Check your email'),
             actions: [
-              TextButton(
+              ElevatedButton(
                 onPressed: () {
                   Navigator.pop(context);
                 },
                 child: const Text(
                   'Ok',
-                  style: TextStyle(color: kWhiteThemeColor),
                 ),
               ),
             ],
@@ -61,18 +56,14 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
         builder: (context) {
           return AlertDialog(
             backgroundColor: kAppThemeColor,
-            titleTextStyle: const TextStyle(
-              color: kWhiteThemeColor,
-              fontSize: 20.0,
+            title: const Text(
+              'Error',
+              style: TextStyle(color: kWhiteThemeColor),
             ),
-            contentTextStyle: const TextStyle(color: kWhiteThemeColor),
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.all(
-                Radius.circular(kRadius16),
-              ),
+            content: Text(
+              e.message.toString(),
+              style: const TextStyle(color: kWhiteThemeColor),
             ),
-            title: const Text('Error'),
-            content: Text(e.message.toString()),
             actions: [
               TextButton(
                 onPressed: () {
@@ -80,7 +71,6 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 },
                 child: const Text(
                   'Ok',
-                  style: TextStyle(color: kWhiteThemeColor),
                 ),
               ),
             ],
@@ -140,7 +130,7 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 'Enter your email and we will send you a password reset link',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: 15.0,
+                  fontSize: 14.0,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -155,8 +145,8 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                 decoration: kSignInSignUpTextFormFieldDecorations.copyWith(
                   hintText: 'Email',
                   prefixIcon: const Icon(
-                    Icons.email_outlined,
-                    color: kGreyThemeColor,
+                    Icons.email_rounded,
+                    color: kAppThemeColor,
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
@@ -173,19 +163,10 @@ class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> {
                     _passwordReset();
                   }
                 },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: kAppThemeColor,
-                  shape: const RoundedRectangleBorder(
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(kRadius16),
-                    ),
-                  ),
-                ),
+                style: kSignInSignUpSignOutResetPasswordButtonStyle,
                 child: const Text(
                   'Reset Password',
-                  style: TextStyle(
-                    color: kWhiteThemeColor,
-                  ),
+                  style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
                 ),
               ),
             ],

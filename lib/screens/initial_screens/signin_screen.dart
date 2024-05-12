@@ -6,11 +6,10 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
-import 'package:smart_personal_coach/components/social_media_buttons_container.dart';
-import 'package:smart_personal_coach/screens/bottom_navigationbar_screen.dart';
-import 'package:smart_personal_coach/screens/forgot_password_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/gender_selection_screen.dart';
-import 'package:smart_personal_coach/screens/signup_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/forgot_password_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/gender_selection_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/signup_screen.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 /// Sign-In Screen
@@ -35,7 +34,7 @@ class _SignInScreenState extends State<SignInScreen> {
   final _formKeySignIn = GlobalKey<FormState>();
 
   /// Checking if document exists
-  Future<void> checkFieldIsEmpty() async {
+  Future<void> checkDocumentIsEmpty() async {
     DocumentSnapshot snapshot = await _firestore
         .collection('users')
         .doc(_emailController.text.trim())
@@ -171,12 +170,23 @@ class _SignInScreenState extends State<SignInScreen> {
         password: _passwordController.text.trim(),
       );
       if (!mounted) return;
-      // Go to the gender selection screen
-      checkFieldIsEmpty();
-      // Show snack bar with 'Signed in' message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed in!')),
-      );
+
+      // Checking whether the email is verified or not
+      if (FirebaseAuth.instance.currentUser!.emailVerified) {
+        // Go to the gender selection screen or home screen
+        checkDocumentIsEmpty();
+        // Show snack bar with 'Signed in' message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Signed In!')),
+        );
+      } else {
+        // Show snack bar with 'Signed in' message
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text(
+                  "You haven't verified your email yet. To proceed, please verify your email address.")),
+        );
+      }
     } on FirebaseAuthException catch (e) {
       // ignore: avoid_print
       print(e);
@@ -227,7 +237,7 @@ class _SignInScreenState extends State<SignInScreen> {
               /// Top of the screen (Top image)
               MediaQuery.of(context).viewInsets.bottom == 0
                   ? const Expanded(
-                      flex: 2,
+                      flex: 4,
                       child:
                           TopImage(imageUrl: 'images/signin-screen-image.jpg'),
                     )
@@ -257,10 +267,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Column(
                           children: [
                             /// The Title and the description holder
-                            const TitleAndDescriptionHolder(
-                              title: 'Sign In',
+                            const InitialScreensTitleAndDescriptionHolder(
+                              title: "Sign In",
                               description:
-                                  'Please enter email and password for login',
+                                  "Please enter email and password to login",
                             ),
 
                             /// Add space
@@ -274,8 +284,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   .copyWith(
                                 hintText: 'Email',
                                 prefixIcon: const Icon(
-                                  Icons.email_outlined,
-                                  color: kGreyThemeColor,
+                                  Icons.email_rounded,
+                                  color: kAppThemeColor,
                                 ),
                               ),
                               keyboardType: TextInputType.emailAddress,
@@ -292,8 +302,8 @@ class _SignInScreenState extends State<SignInScreen> {
                                   .copyWith(
                                 hintText: 'Password',
                                 prefixIcon: const Icon(
-                                  Icons.lock_outline,
-                                  color: kGreyThemeColor,
+                                  Icons.lock_rounded,
+                                  color: kAppThemeColor,
                                 ),
                                 suffixIcon: IconButton(
                                   onPressed: () {
@@ -302,9 +312,14 @@ class _SignInScreenState extends State<SignInScreen> {
                                     });
                                   },
                                   icon: _isVisibilityButtonClicked
-                                      ? const Icon(Icons.visibility_outlined)
+                                      ? const Icon(
+                                          Icons.visibility_rounded,
+                                          color: kAppThemeColor,
+                                        )
                                       : const Icon(
-                                          Icons.visibility_off_outlined),
+                                          Icons.visibility_off_rounded,
+                                          color: kAppThemeColor,
+                                        ),
                                 ),
                               ),
                               obscureText:
@@ -313,10 +328,7 @@ class _SignInScreenState extends State<SignInScreen> {
                               autofocus: false,
                             ),
 
-                            /// Add space
-                            const SizedBox(height: 12.0),
-
-                            /// Forget password button
+                            /// Forgot password button
                             Container(
                               alignment: Alignment.centerRight,
                               child: TextButton(
@@ -355,54 +367,37 @@ class _SignInScreenState extends State<SignInScreen> {
                         ),
                       ),
 
-                      /// Bottom of the screen (Sign-up button, social media buttons)
-                      MediaQuery.of(context).viewInsets.bottom == 0
-                          ? Column(
-                              children: [
-                                /// Social media buttons container
-                                SocialMediaButtonsContainer(
-                                  onPressedGoogle: () {},
-                                  onPressedFacebook: () {},
-                                ),
+                      /// Adding space
+                      const SizedBox(height: 12.0),
 
-                                /// Add space
-                                const SizedBox(
-                                  height: 12.0,
-                                ),
+                      /// Sign up text button container
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            "Don’t have an account?",
+                            style: kSmallGreyColorDescriptionTextStyle,
+                          ),
 
-                                /// Sign up text button container
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Text(
-                                      "Don’t have an account?",
-                                      style:
-                                          kSmallGreyColorDescriptionTextStyle,
-                                    ),
-
-                                    /// Sign up text button
-                                    TextButton(
-                                      onPressed: () {
-                                        // Navigate to the sign-up screen
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                            builder: (context) =>
-                                                const SignUpScreen(),
-                                          ),
-                                        );
-                                      },
-                                      style: kTextButtonStyle,
-                                      child: const Text(
-                                        'Sign Up',
-                                        style: kTextButtonTextStyle,
-                                      ),
-                                    ),
-                                  ],
+                          /// Sign up text button
+                          TextButton(
+                            onPressed: () {
+                              // Navigate to the sign-up screen
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => const SignUpScreen(),
                                 ),
-                              ],
-                            )
-                          : const SizedBox(),
+                              );
+                            },
+                            style: kTextButtonStyle,
+                            child: const Text(
+                              'Sign Up',
+                              style: kTextButtonTextStyle,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),

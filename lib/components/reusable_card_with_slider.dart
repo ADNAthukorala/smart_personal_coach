@@ -23,6 +23,7 @@ class ReusableCardWithSlider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      margin: EdgeInsets.zero,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(kRadius16))),
       color: kAppThemeColor,
@@ -37,8 +38,9 @@ class ReusableCardWithSlider extends StatelessWidget {
                 children: [
                   Text(
                     text1,
-                    style: kLargeBlackTitleTextStyle.copyWith(
-                        color: kWhiteThemeColor),
+                    style: kSelectCapacityButtonTextStyle.copyWith(
+                      color: kWhiteThemeColor,
+                    ),
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -47,8 +49,9 @@ class ReusableCardWithSlider extends StatelessWidget {
                     children: [
                       Text(
                         text2,
-                        style: kLargeBlackTitleTextStyle.copyWith(
-                            color: kWhiteThemeColor),
+                        style: kSelectCapacityButtonTextStyle.copyWith(
+                          color: kWhiteThemeColor,
+                        ),
                       ),
                       Text(
                         text3,

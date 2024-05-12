@@ -6,7 +6,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/reusable_card_with_slider.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/body_areas_selection_screen.dart';
 
 /// Screen to get the user age, height, weight
 class BirthDayHeightWeightScreen extends StatefulWidget {
@@ -101,7 +101,7 @@ class _BirthDayHeightWeightScreenState
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'Let us known you better',
                 description:
                     'Let us know you better to help boost your workout results',
@@ -128,7 +128,7 @@ class _BirthDayHeightWeightScreenState
                   ),
 
                   /// Add space between sliders
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 20.0),
 
                   /// Get the user's height
                   ReusableCardWithSlider(
@@ -146,7 +146,7 @@ class _BirthDayHeightWeightScreenState
                   ),
 
                   /// Add space between sliders
-                  const SizedBox(height: 12.0),
+                  const SizedBox(height: 20.0),
 
                   /// Get the user's weight
                   ReusableCardWithSlider(

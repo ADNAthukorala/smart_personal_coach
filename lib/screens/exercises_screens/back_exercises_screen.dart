@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:smart_personal_coach/components/exercise_card.dart';
+import 'package:smart_personal_coach/components/exercises_list_tile.dart';
 import 'package:smart_personal_coach/constants.dart';
 
 class BackExercisesScreen extends StatefulWidget {
@@ -11,7 +11,7 @@ class BackExercisesScreen extends StatefulWidget {
 }
 
 class _BackExercisesScreenState extends State<BackExercisesScreen> {
-  final String _focusedBodyArea = "back_exercises";
+  final String _collectionName = "back_exercises";
 
   @override
   Widget build(BuildContext context) {
@@ -28,18 +28,18 @@ class _BackExercisesScreenState extends State<BackExercisesScreen> {
       /// Body of the screen
       body: StreamBuilder(
         stream:
-            FirebaseFirestore.instance.collection(_focusedBodyArea).snapshots(),
+            FirebaseFirestore.instance.collection(_collectionName).snapshots(),
         builder: (context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text("Something went wrong");
+            return const Center(child: Text("Something went wrong"));
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading...");
+            return const Center(child: Text("Loading exercises..."));
           }
 
           if (!snapshot.hasData) {
-            return const Text("No data available");
+            return const Center(child: Text("No data available"));
           }
 
           return ListView.builder(
@@ -49,27 +49,11 @@ class _BackExercisesScreenState extends State<BackExercisesScreen> {
             itemBuilder: (context, index) {
               DocumentSnapshot document = snapshot.data!.docs[index];
               return Padding(
+                // Adding space between two exercises list tiles
                 padding: const EdgeInsets.only(bottom: kPadding8),
-                child: ListTile(
-                  tileColor: kAppThemeColor,
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(kRadius16)),
-                  title: Text(
-                    document["name"],
-                    style: const TextStyle(
-                        fontWeight: FontWeight.bold, color: kWhiteThemeColor),
-                  ),
-                  onTap: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) {
-                        return ExerciseCard(
-                          focusedBodyArea: _focusedBodyArea,
-                          nameOfTheExercise: document["name"],
-                        );
-                      },
-                    );
-                  },
+                child: ExercisesListTile(
+                  collectionName: _collectionName,
+                  document: document,
                 ),
               );
             },

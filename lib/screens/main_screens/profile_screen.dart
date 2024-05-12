@@ -5,12 +5,16 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/signin_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_body_areas_selection_screen.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_level_screen.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_main_goal_screen.dart';
+import 'package:smart_personal_coach/screens/updating_data_screens/update_weekly_goal_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -25,6 +29,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // Creating an user variable to store logged in user
   late User loggedInUser;
+
+  // Creating text controllers
+  final _mainGoalEmailController = TextEditingController();
+  final _levelEmailController = TextEditingController();
+  final _weeklyGoalEmailController = TextEditingController();
+  final _focusedBodyAreasEmailController = TextEditingController();
+  final _deleteTheUserAccountPermanentlyEmailController =
+      TextEditingController();
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -48,7 +60,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
       if (!mounted) return;
       // Show snack bar with 'Signed out' message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed out!')),
+        const SnackBar(content: Text('Signed Out!')),
       );
     } catch (e) {
       print("Error signing out: $e");
@@ -99,117 +111,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 
-  /// Update username
-  Future<void> updateUserName(String userName) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'user_name': userName,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update gender
-  Future<void> updateGender(String updatedGender) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'gender': updatedGender,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update height
-  Future<void> updateHeight(int height) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'height': height,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update weight
-  Future<void> updateWeight(int weight) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'weight': weight,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Update birth day
-  Future<void> updateBirthDay(DateTime userBirthDay) async {
-    try {
-      // Get a reference to the document
-      DocumentReference documentRef = FirebaseFirestore.instance
-          .collection('users')
-          .doc(loggedInUser.email);
-
-      // Update the user name field
-      await documentRef.update({
-        'birth_day': userBirthDay,
-      });
-
-      print('Document updated successfully.');
-    } catch (e) {
-      print('Error updating document: $e');
-    }
-  }
-
-  /// Getting and updating user birthday
-  Future<void> _selectUserBirthDay(
-      BuildContext context, DateTime userBirthDay) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: userBirthDay,
-      firstDate: DateTime(1900),
-      lastDate: DateTime(2101),
-    );
-    if (picked != null && picked != userBirthDay) {
-      userBirthDay = picked;
-      updateBirthDay(userBirthDay);
-    }
-  }
-
-  /// Updating profile picture
+  /// Update profile picture
   File? _imageFile;
   final picker = ImagePicker();
 
@@ -237,14 +139,250 @@ class _ProfileScreenState extends State<ProfileScreen> {
     final userId = loggedInUser.email;
 
     await FirebaseFirestore.instance.collection('users').doc(userId).update({
-      'profile_picture': imageUrl,
+      'profilePicture': imageUrl,
     });
+  }
+
+  /// Update username
+  Future<void> updateUserName(String updatedUserName) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the user name field
+      await documentRef.update({
+        'userName': updatedUserName,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update gender
+  Future<void> updateGender(String updatedGender) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the gender
+      await documentRef.update({
+        'gender': updatedGender,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update birth day
+  Future<void> updateBirthDay(DateTime updatedUserBirthDay) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the birth day
+      await documentRef.update({
+        'birthDay': updatedUserBirthDay,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Getting and updating user birthday
+  Future<void> _selectUserBirthDay(
+      BuildContext context, DateTime userBirthDay) async {
+    final DateTime? picked = await showDatePicker(
+      context: context,
+      initialDate: userBirthDay,
+      firstDate: DateTime(1900),
+      lastDate: DateTime(2101),
+    );
+    if (picked != null && picked != userBirthDay) {
+      userBirthDay = picked;
+      updateBirthDay(userBirthDay);
+    }
+  }
+
+  /// Update height
+  Future<void> updateHeight(int updatedHeight) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the height
+      await documentRef.update({
+        'height': updatedHeight,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  /// Update weight
+  Future<void> updateWeight(int updatedWeight) async {
+    try {
+      // Get a reference to the document
+      DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Update the weight
+      await documentRef.update({
+        'weight': updatedWeight,
+      });
+
+      print('Document updated successfully.');
+    } catch (e) {
+      print('Error updating document: $e');
+    }
+  }
+
+  // Default profile picture url
+  final String defaultProfilePicture =
+      "https://firebasestorage.googleapis.com/v0/b/smartpersonalcoach.appspot.com/o/profile_pictures%2Ftheme-image.jpg?alt=media&token=777d29fb-0bcc-4bbb-bddd-b65d6c1f4eea";
+
+  /// Delete the user account
+  Future<void> _deleteTheUserAccount(String profilePictureURL) async {
+    try {
+      // Get a reference to the user document
+      final DocumentReference documentRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email);
+
+      // Get a reference to the user finished workout plans
+      final CollectionReference finishedWorkoutPlansRef = FirebaseFirestore
+          .instance
+          .collection('users')
+          .doc(loggedInUser.email)
+          .collection('finished_workout_plans');
+
+      // Get a reference to the user height chart data
+      final CollectionReference heightChartDataRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email)
+          .collection('height_chart_data');
+
+      // Get a reference to the user weight chart data
+      final CollectionReference weightChartDataRef = FirebaseFirestore.instance
+          .collection('users')
+          .doc(loggedInUser.email)
+          .collection('weight_chart_data');
+
+      // Get all documents in the user finished workout plans
+      QuerySnapshot finishedWorkoutPlansQuerySnapshot =
+          await finishedWorkoutPlansRef.get();
+
+      // Get all documents in the user height chart data
+      QuerySnapshot heightChartDataQuerySnapshot =
+          await heightChartDataRef.get();
+
+      // Get all documents in the user weight chart data
+      QuerySnapshot weightChartDataQuerySnapshot =
+          await weightChartDataRef.get();
+
+      // Get the current user
+      final User? user = FirebaseAuth.instance.currentUser;
+
+      if (profilePictureURL != defaultProfilePicture) {
+        // Get reference to the directory
+        final Reference imageRef = FirebaseStorage.instance.ref().child(
+            'profile_pictures/${loggedInUser.email}/profile-picture.jpg');
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in finishedWorkoutPlansQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in heightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in weightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+        // Delete the profile picture
+        await imageRef.delete();
+        // Delete the user document
+        await documentRef.delete();
+        // Delete the current user
+        await user!.delete();
+      } else {
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in finishedWorkoutPlansQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in heightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+
+        // Delete user finished workout plans one by one
+        for (DocumentSnapshot docSnapshot
+            in weightChartDataQuerySnapshot.docs) {
+          await docSnapshot.reference.delete();
+        }
+        // Delete the user document
+        await documentRef.delete();
+        // Delete the current user
+        await user!.delete();
+      }
+      _signOut();
+    } catch (e) {
+      if (!mounted) return;
+      // Show snack bar with  message
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString())),
+      );
+    }
+  }
+
+  /// The feedback url
+  final Uri _url = Uri.parse('https://forms.gle/pE6C2CRtPZCkhiRk6');
+
+  /// Launch the feedback url
+  Future<void> _launchFeedbackURL() async {
+    if (!await launchUrl(_url)) {
+      throw Exception('Could not launch $_url');
+    }
   }
 
   @override
   void initState() {
     getLoggedIntUser();
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _mainGoalEmailController.dispose();
+    _levelEmailController.dispose();
+    _weeklyGoalEmailController.dispose();
+    _focusedBodyAreasEmailController.dispose();
+    super.dispose();
   }
 
   @override
@@ -268,15 +406,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
         builder:
             (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
           if (snapshot.hasError) {
-            return const Text('Something went wrong');
+            return const Center(child: Text("Something went wrong"));
           }
 
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Text("Loading...");
+            return const Center(child: Text("Loading profile..."));
           }
 
           if (!snapshot.hasData) {
-            return const Text('No data available');
+            return const Center(child: Text("No data available"));
           }
 
           // Access the data from the snapshot
@@ -284,17 +422,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
               snapshot.data!.data() as Map<String, dynamic>;
 
           // Declaring a variable to store the user's birth day
-          Timestamp userBirthDay = data['birth_day'];
+          Timestamp userBirthDay = data['birthDay'];
 
-          // Create text controllers for the user name text field and the height and weight text fields
+          // Creating text controllers
           final userNameController = TextEditingController();
           final userWeightController = TextEditingController();
           final userHeightController = TextEditingController();
+          // Assign initial values to text controllers (username, height, weight)
           userHeightController.text = data['height'].toString();
-          userNameController.text = data['user_name'];
+          userNameController.text = data['userName'];
           userWeightController.text = data['weight'].toString();
 
-          String imageUrl = data['profile_picture'];
+          String imageUrl = data['profilePicture'];
+
+          List<dynamic> focusedBodyAreas = data["focusedBodyAreas"];
+          String currentProfilePictureURL = data['profilePicture'];
 
           return ListView(
             padding: const EdgeInsets.all(kPadding16),
@@ -348,7 +490,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     }
                                   },
                                   label: const Text("Gallery"),
-                                  icon: const Icon(Icons.add_photo_alternate),
+                                  icon: const Icon(
+                                      Icons.add_photo_alternate_rounded),
                                 ),
                                 // Updating the profile picture with an image captured by the device camera
                                 ElevatedButton.icon(
@@ -381,7 +524,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                     }
                                   },
                                   label: const Text("Camera"),
-                                  icon: const Icon(Icons.add_a_photo),
+                                  icon: const Icon(Icons.add_a_photo_rounded),
                                 ),
                               ],
                             ),
@@ -398,8 +541,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     placeholder: (context, url) =>
                         const CircularProgressIndicator(),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
+                    errorWidget: (context, url, error) => Container(
+                      alignment: Alignment.center,
+                      decoration: const BoxDecoration(
+                        color: kGreyThemeColor02,
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Icon(
+                        Icons.person_rounded,
+                        size: 100,
+                        color: kWhiteThemeColor,
+                      ),
+                    ),
                     width: 200.0,
                     height: 200.0,
                   ),
@@ -412,10 +565,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 title: Container(
                   alignment: Alignment.center,
                   child: Text(
-                    data['user_name'],
+                    data['userName'],
                     style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 24.0,
+                      fontWeight: FontWeight.w700,
+                      fontSize: 26.0,
                     ),
                   ),
                 ),
@@ -442,7 +595,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 updateUserName(
                                     userNameController.text.trim().isNotEmpty
                                         ? userNameController.text.trim()
-                                        : data['user_name']);
+                                        : data['userName']);
                                 Navigator.pop(context);
                               },
                               child: const Text("Save")),
@@ -458,21 +611,34 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Email
               ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.email),
+                leading: const Icon(
+                  Icons.email_rounded,
+                  color: kBlackThemeColor,
+                ),
                 title: const Text("Email"),
                 subtitle: Text(data['email']),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
               ),
 
               /// Gender
               ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading:
-                    Icon(data['gender'] == "Male" ? Icons.male : Icons.female),
+                leading: Icon(
+                  data['gender'] == "Male"
+                      ? Icons.male_rounded
+                      : Icons.female_rounded,
+                  color: data['gender'] == "Male"
+                      ? kAppThemeColor
+                      : kPinkThemeColor,
+                ),
                 title: const Text("Gender"),
                 subtitle: Text(data['gender']),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
@@ -526,28 +692,39 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Birth day
               ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.calendar_month),
+                leading: const Icon(
+                  Icons.calendar_month_rounded,
+                  color: kBlackThemeColor,
+                ),
                 title: const Text("Birth Day"),
                 subtitle: Text("${userBirthDay.toDate()}".split(' ')[0]),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
+                  // Changing the birth day
                   _selectUserBirthDay(context, userBirthDay.toDate());
                 },
               ),
 
               /// Height
               ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.height),
+                leading: const Icon(
+                  Icons.height_rounded,
+                  color: kBlackThemeColor,
+                ),
                 title: const Text("Height"),
                 subtitle: Text("${data['height'].toString()} cm"),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      // Changing the username
+                      // Changing the height
                       return AlertDialog(
                         title: const Text("Enter your height"),
                         content: TextFormField(
@@ -585,16 +762,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
               /// Weight
               ListTile(
-                contentPadding: EdgeInsets.zero,
-                leading: const Icon(Icons.balance),
+                leading: const Icon(
+                  Icons.balance_rounded,
+                  color: kBlackThemeColor,
+                ),
                 title: const Text("Weight"),
                 subtitle: Text("${data['weight'].toString()} kg"),
-                subtitleTextStyle: const TextStyle(color: kGreyThemeColor),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
                 onTap: () {
                   showDialog(
                     context: context,
                     builder: (context) {
-                      // Changing the username
+                      // Changing the weight
                       return AlertDialog(
                         title: const Text("Enter your weight"),
                         content: TextFormField(
@@ -630,15 +812,587 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
               ),
 
+              /// Main goal
+              ListTile(
+                leading: const Icon(
+                  Icons.arrow_circle_right_rounded,
+                  color: kBlackThemeColor,
+                ),
+                title: const Text("Main Goal"),
+                subtitle: Text(data['mainGoal']),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      // Changing the main goal
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your main goal, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _mainGoalEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _mainGoalEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_mainGoalEmailController.text.trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UpdateMainGoalScreen(
+                                              userMainGoal: data["mainGoal"],
+                                              loggedInUser: loggedInUser,
+                                            )));
+                                _mainGoalEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+
+              /// Level
+              ListTile(
+                leading: const Icon(
+                  Icons.health_and_safety_rounded,
+                  color: kBlackThemeColor,
+                ),
+                title: const Text("Level"),
+                subtitle: Text(data['level']),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      // Changing the level
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your level, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _levelEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _levelEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_levelEmailController.text.trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => UpdateLevelScreen(
+                                              loggedInUserEmail:
+                                                  loggedInUser.email,
+                                              userLevel: data["level"],
+                                              userSelectedBodyAreas:
+                                                  focusedBodyAreas
+                                                      .map((element) =>
+                                                          element.toString())
+                                                      .toList(),
+                                            )));
+                                _levelEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+
+              /// Weekly goal
+              ListTile(
+                leading: const Icon(
+                  Icons.access_time_filled_rounded,
+                  color: kBlackThemeColor,
+                ),
+                title: const Text("Weekly Goal"),
+                subtitle: data['weeklyGoal'] > 1
+                    ? Text("${data['weeklyGoal'].toString()} Days")
+                    : Text("${data['weeklyGoal'].toString()} Day"),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      // Changing the weekly goal
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your weekly goal, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _weeklyGoalEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _weeklyGoalEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_weeklyGoalEmailController.text.trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            UpdateWeeklyGoalScreen(
+                                              userWeeklyGoal:
+                                                  data["weeklyGoal"],
+                                              loggedInUser: loggedInUser,
+                                            )));
+                                _weeklyGoalEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+
+              /// Focused body areas
+              ListTile(
+                leading: const Icon(
+                  Icons.boy_rounded,
+                  color: kBlackThemeColor,
+                ),
+                title: const Text("Focused Body Areas"),
+                subtitle: Text(focusedBodyAreas
+                    .toString()
+                    .split("[")
+                    .last
+                    .split("]")
+                    .first),
+                titleTextStyle: kProfileTitleTextStyle,
+                subtitleTextStyle: kSmallGreyColorDescriptionTextStyle.copyWith(
+                  fontWeight: FontWeight.w400,
+                ),
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      // Changing the focused body areas
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you change your focused body areas, your workout plan will re-generate and the progress of the current workout plan will be re-new! If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller: _focusedBodyAreasEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _focusedBodyAreasEmailController.clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_focusedBodyAreasEmailController.text
+                                      .trim() ==
+                                  loggedInUser.email) {
+                                Navigator.pop(context);
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          UpdateBodyAreasSelectionScreen(
+                                        loggedInUserEmail: loggedInUser.email,
+                                        userLevel: data["level"],
+                                        userSelectedBodyAreas: focusedBodyAreas
+                                            .map(
+                                                (element) => element.toString())
+                                            .toList(),
+                                      ),
+                                    ));
+                                _focusedBodyAreasEmailController.clear();
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
               /// Sign out button
               ElevatedButton.icon(
                 onPressed: () {
                   _showSignOutDialog();
                 },
-                label: const Text("Sign out"),
+                style: kSignInSignUpSignOutResetPasswordButtonStyle,
+                label: const Text(
+                  "Sign Out",
+                  style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
+                ),
                 icon: const Icon(
-                  FontAwesomeIcons.arrowRightFromBracket,
-                  size: 20.0,
+                  Icons.logout_rounded,
+                  color: kWhiteThemeColor,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Delete user account button
+              ElevatedButton.icon(
+                onPressed: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        backgroundColor: kRedThemeColor,
+                        icon: const Icon(
+                          Icons.warning_rounded,
+                          color: kWhiteThemeColor,
+                        ),
+                        title: const Text(
+                          "Are you sure?",
+                          style: TextStyle(color: kWhiteThemeColor),
+                        ),
+                        content: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text(
+                              "If you delete your account permanently, all the data will be deleted and you can't restore them!"
+                              " If you want to continue, enter your email to confirm!",
+                              style: TextStyle(color: kWhiteThemeColor),
+                            ),
+                            TextFormField(
+                              controller:
+                                  _deleteTheUserAccountPermanentlyEmailController,
+                              style: const TextStyle(color: kWhiteThemeColor),
+                              cursorColor: kWhiteThemeColor,
+                              decoration: kMlwfTextFormFieldDecorations,
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          /// Cancel button
+                          ElevatedButton(
+                            onPressed: () {
+                              _deleteTheUserAccountPermanentlyEmailController
+                                  .clear();
+                              Navigator.pop(context);
+                            },
+                            child: const Text(
+                              "Cancel",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+
+                          /// Continue button
+                          ElevatedButton(
+                            onPressed: () {
+                              if (_deleteTheUserAccountPermanentlyEmailController
+                                      .text
+                                      .trim() ==
+                                  loggedInUser.email) {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const SignInScreen(),
+                                  ),
+                                );
+                                _deleteTheUserAccount(currentProfilePictureURL);
+                                _deleteTheUserAccountPermanentlyEmailController
+                                    .clear();
+                                // Show snack bar with  message
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                      content: Text(
+                                          'The account has been successfully deleted!')),
+                                );
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (context) {
+                                    return AlertDialog(
+                                      title: const Text("Wrong email!"),
+                                      content: const Text(
+                                          "The email entered doesn't match with your email address. Check back and try again!"),
+                                      actions: [
+                                        ElevatedButton(
+                                          onPressed: () {
+                                            Navigator.pop(context);
+                                          },
+                                          child: const Text("Try again"),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                            },
+                            child: const Text(
+                              "Continue",
+                              style: TextStyle(color: kRedThemeColor),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                style: kSignInSignUpSignOutResetPasswordButtonStyle.copyWith(
+                    backgroundColor:
+                        const MaterialStatePropertyAll(kRedThemeColor)),
+                label: const Text(
+                  "Delete Account Permanently",
+                  style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
+                ),
+                icon: const Icon(
+                  Icons.delete_rounded,
+                  color: kWhiteThemeColor,
+                ),
+              ),
+
+              /// Adding space
+              const SizedBox(height: 8.0),
+
+              /// Feedback button
+              Container(
+                alignment: Alignment.centerRight,
+                child: TextButton(
+                  onPressed: () {
+                    _launchFeedbackURL();
+                  },
+                  style: kTextButtonStyle,
+                  child: const Text(
+                    'Click To Send Feedback',
+                    style: kTextButtonTextStyle,
+                  ),
                 ),
               ),
             ],

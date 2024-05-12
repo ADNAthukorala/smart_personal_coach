@@ -1,15 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:smart_personal_coach/components/app_bar_title.dart';
 import 'package:smart_personal_coach/components/exercise_card.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/select_capacity_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/body_areas_selection_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/main_goal_screen.dart';
-import 'package:smart_personal_coach/screens/getting_data_screens/weekly_goal_screen.dart';
+import 'package:smart_personal_coach/screens/data_gathering_screens/weekly_goal_screen.dart';
 
 /// Screen to get the user's pull ups capacity
 class CheckingPullUpsCapacity extends StatefulWidget {
@@ -27,9 +24,9 @@ class CheckingPullUpsCapacity extends StatefulWidget {
   final DateTime userBirthDay;
   final int userHeight;
   final int userWeight;
-  final List<BodyArea> userSelectedBodyAreas;
-  final MainGoal userMainGoal;
-  final Capacity userPushUpsCapacity;
+  final List<String> userSelectedBodyAreas;
+  final String userMainGoal;
+  final String userPushUpsCapacity;
 
   @override
   State<CheckingPullUpsCapacity> createState() =>
@@ -44,7 +41,29 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
   late User loggedInUser;
 
   // Declare a Capacity variable to store user's pull ups capacity
-  Capacity _userPullUpsCapacity = Capacity.beginner;
+  String _userPullUpsCapacity = "Beginner";
+
+  // User level
+  late String _userLevel;
+
+  /// Checking the user's level (Beginner, Intermediate or Advanced)
+  void checkingUserLevel() {
+    if (_userPullUpsCapacity == "Beginner" &&
+        widget.userPushUpsCapacity == "Beginner") {
+      setState(() {
+        _userLevel = "Beginner";
+      });
+    } else if (_userPullUpsCapacity == "Advanced" &&
+        widget.userPushUpsCapacity == "Advanced") {
+      setState(() {
+        _userLevel = "Advanced";
+      });
+    } else {
+      setState(() {
+        _userLevel = "Intermediate";
+      });
+    }
+  }
 
   /// Creating a method to get the logged in user
   void getLoggedIntUser() {
@@ -100,7 +119,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               padding: EdgeInsets.only(
                 bottom: kPadding16,
               ),
-              child: TitleAndDescriptionHolder(
+              child: InitialScreensTitleAndDescriptionHolder(
                 title: 'How many pull-ups can you do at one time?',
                 description: '',
               ),
@@ -120,13 +139,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.beginner;
+                        _userPullUpsCapacity = "Beginner";
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.beginner,
-                    title: 'Beginner',
+                    selectedCapacity: "Beginner",
+                    title: "Beginner",
                     description: '0 - 5  Pull-ups',
                   ),
 
@@ -137,13 +156,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.intermediate;
+                        _userPullUpsCapacity = "Intermediate";
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.intermediate,
-                    title: 'Intermediate',
+                    selectedCapacity: "Intermediate",
+                    title: "Intermediate",
                     description: '6 - 10  Pull-ups',
                   ),
 
@@ -154,13 +173,13 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   SelectCapacityButton(
                     onPressed: () {
                       setState(() {
-                        _userPullUpsCapacity = Capacity.advanced;
+                        _userPullUpsCapacity = "Advanced";
                       });
                       // print(_userPullUpsCapacity);
                     },
                     actualCapacity: _userPullUpsCapacity,
-                    selectedCapacity: Capacity.advanced,
-                    title: 'Advanced',
+                    selectedCapacity: "Advanced",
+                    title: "Advanced",
                     description: 'More than 10  Pull-ups',
                   ),
 
@@ -168,38 +187,27 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                   const SizedBox(height: 20.0),
 
                   /// Button to show how to do pull ups
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
+                  Container(
+                    alignment: Alignment.centerRight,
+                    child: TextButton.icon(
+                      label: const Text(
                         "What is pull ups?",
-                        style: TextStyle(
-                          color: kAppThemeColor,
-                          fontSize: 14.0,
-                          fontWeight: FontWeight.w900,
-                        ),
+                        style: kTextButtonTextStyle,
                       ),
-                      const SizedBox(width: 5.0),
-                      SizedBox(
-                        height: 28,
-                        width: 28,
-                        child: IconButton.filled(
-                          onPressed: () {
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return const ExerciseCard(
-                                  focusedBodyArea: "back_exercises",
-                                  nameOfTheExercise: "pull_ups",
-                                );
-                              },
+                      icon: const Icon(Icons.info_rounded),
+                      onPressed: () {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return const ExerciseCard(
+                              collectionName: "back_exercises",
+                              docName: "pull_ups",
                             );
                           },
-                          icon: const Icon(FontAwesomeIcons.exclamation),
-                          iconSize: 14,
-                        ),
-                      ),
-                    ],
+                        );
+                      },
+                      style: kTextButtonStyle,
+                    ),
                   ),
                 ],
               ),
@@ -214,6 +222,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
               child: NextButton(
                 onPressed: () {
                   // When the button is clicked, navigate to the weekly goal screen
+                  checkingUserLevel();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
@@ -224,8 +233,7 @@ class _CheckingPullUpsCapacityState extends State<CheckingPullUpsCapacity> {
                         userWeight: widget.userWeight,
                         userSelectedBodyAreas: widget.userSelectedBodyAreas,
                         userMainGoal: widget.userMainGoal,
-                        userPushUpsCapacity: widget.userPushUpsCapacity,
-                        userPullUpsCapacity: _userPullUpsCapacity,
+                        userLevel: _userLevel,
                       ),
                     ),
                   );

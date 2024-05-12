@@ -1,21 +1,45 @@
 import 'package:flutter/material.dart';
 
-//Theme colors and font family
+/// Theme colors and font family
 const kBlueThemeColor = Color(0xFF006685);
-// const kBlueThemeColor02 = Color(0xFF2596BE);
 const kPinkThemeColor = Color(0xFFBA1E8B);
+const kRedThemeColor = Color(0xFFDD3300);
 const kWhiteThemeColor = Color(0xFFFFFFFF);
-const kGreyThemeColor = Color(0xFF7E7474);
+const kGreyThemeColor = Color(0xFF757575);
 const kGreyThemeColor02 = Color(0xFFD9D9D9);
 const kBlackThemeColor = Color(0xFF000000);
-// Main theme color
+
+/// BMI scale colors
+const kBMIBlueThemeColor = Color(0xFF06D3B5);
+const kBMIGreenThemeColor = Color(0xFF27B707);
+const kBMIYellowThemeColor = Color(0xFFFCB004);
+const kBMIOrangeThemeColor = Color(0xFFFA6707);
+const kBMIRedThemeColor = Color(0xFFFF1700);
+
+/// Main theme color
 const kAppThemeColor = kBlueThemeColor;
+
+/// Black text colorize colors
+const kBlackTextColorizeColors = [
+  kBlackThemeColor,
+  kAppThemeColor,
+  kWhiteThemeColor,
+  kBlackThemeColor,
+];
+
+/// Grey text colorize colors
+const kGreyTextColorizeColors = [
+  kGreyThemeColor,
+  kAppThemeColor,
+  kWhiteThemeColor,
+  kGreyThemeColor,
+];
+
+///
 const kRadius8 = 8.0;
 const kRadius16 = 16.0;
 const kRadius30 = 30.0;
-const kPadding4 = 4.0;
 const kPadding8 = 8.0;
-const kPadding12 = 12.0;
 const kPadding16 = 16.0;
 const kAppBarRoundedIconSize = 15.0;
 const kAppBarActiveRoundedIconSize = 15.0;
@@ -59,7 +83,6 @@ const kExerciseCardDescriptionTextStyle = TextStyle(
 /// Text style for text button
 const kTextButtonTextStyle = TextStyle(
   fontSize: 14,
-  fontWeight: FontWeight.w500,
   color: kAppThemeColor,
 );
 
@@ -72,14 +95,14 @@ const kLargeBlackTitleTextStyle = TextStyle(
 
 /// Text style for terms and conditions titles
 const kTermsAndConditionsTitlesTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 22,
   fontWeight: FontWeight.w700,
   color: kAppThemeColor,
 );
 
 /// Text style for terms and conditions descriptions
 const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
-  fontSize: 14,
+  fontSize: 16,
   fontWeight: FontWeight.w500,
   color: kGreyThemeColor,
 );
@@ -87,15 +110,14 @@ const kTermsAndConditionsDescriptionsTextStyle = TextStyle(
 /// Text styles for welcome screen's large text
 const kWelcomeTextStyle = TextStyle(
   height: 1.15,
-  fontSize: 32,
-  fontWeight: FontWeight.w700,
+  fontSize: 36,
+  fontWeight: FontWeight.bold,
   color: kBlackThemeColor,
 );
 
-/// Text styles for login and signup buttons
-const kSignInSignUpButtonTextStyle = TextStyle(
-  fontSize: 15,
-  fontWeight: FontWeight.w500,
+/// Text styles for signin, signup, sign out and reset password  buttons
+const kSignInSignUpSignOutButtonResetPasswordTextStyle = TextStyle(
+  fontSize: 14,
   color: kWhiteThemeColor,
 );
 
@@ -122,29 +144,57 @@ const kSelectBodyAreaButtonTextStyle = TextStyle(
 
 /// Text styles for select capacity button
 const kSelectCapacityButtonTextStyle = TextStyle(
-  fontSize: 25,
+  fontSize: 24,
   fontWeight: FontWeight.w700,
   color: kAppThemeColor,
-);
-
-/// Text styles for exercises screen buttons
-const kExercisesScreenButtonTextStyle = TextStyle(
-  fontSize: 36,
-  fontWeight: FontWeight.w900,
-  color: kWhiteThemeColor,
 );
 
 /// Text styles for day button
 const kDayButtonTextStyle = TextStyle(
-  fontSize: 20,
+  fontSize: 24,
   fontWeight: FontWeight.w700,
   color: kAppThemeColor,
+);
+
+/// Text styles for explore screen buttons
+const kExploreScreenButtonTextStyle = TextStyle(
+  fontSize: 36,
+  fontWeight: FontWeight.w900,
+  color: kWhiteThemeColor,
 );
 
 /// Text style for main screens app bar
 const kAppBarTextStyle = TextStyle(
   color: kWhiteThemeColor,
   fontWeight: FontWeight.w700,
+);
+
+/// Text style for profile titles
+const kProfileTitleTextStyle = TextStyle(
+  color: kBlackThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
+/// Text style for exercises list tile
+const kExercisesListTileTextStyle = TextStyle(
+  color: kWhiteThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
+/// Text style for user report titles
+const kUserReportTitleTextStyle = TextStyle(
+  color: kBlackThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
+/// Text style for user report information
+const kUserReportInformationTitleTextStyle = TextStyle(
+  color: kBlackThemeColor,
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
 );
 
 /// STYLES FOR BUTTONS
@@ -157,8 +207,8 @@ const kGenderSelectionButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(160.0, 75.0)),
 );
 
-/// Button styles for login and signup buttons
-const kSignInSignUpButtonStyle = ButtonStyle(
+/// Button styles for signin, signup, sign out and reset password buttons
+const kSignInSignUpSignOutResetPasswordButtonStyle = ButtonStyle(
   fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
 );
@@ -222,8 +272,9 @@ const kTextButtonStyle = ButtonStyle(
   tapTargetSize: MaterialTapTargetSize.shrinkWrap,
 );
 
-/// Button styles for exercises screen buttons
-const kExercisesScreenButton = ButtonStyle(
+/// Button styles for explore screen buttons
+const kExploreScreenButton = ButtonStyle(
+  fixedSize: MaterialStatePropertyAll(Size.fromHeight(150.0)),
   padding: MaterialStatePropertyAll(EdgeInsets.zero),
   backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
   shape: MaterialStatePropertyAll(RoundedRectangleBorder(
@@ -232,7 +283,7 @@ const kExercisesScreenButton = ButtonStyle(
 );
 
 ///STYLES FOR SLIDERS
-///Slider style
+/// Slider style
 const kSliderStyle = SliderThemeData(
   activeTrackColor: kWhiteThemeColor,
   inactiveTrackColor: kBlackThemeColor,
@@ -242,24 +293,64 @@ const kSliderStyle = SliderThemeData(
   overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
 );
 
+/// BMI slider style
+const kBMISliderStyle = SliderThemeData(
+  activeTrackColor: kBMIGreenThemeColor,
+  inactiveTrackColor: kGreyThemeColor02,
+  thumbColor: Colors.transparent,
+  overlayColor: Colors.transparent,
+  thumbShape: RoundSliderThumbShape(enabledThumbRadius: 0),
+  overlayShape: RoundSliderOverlayShape(overlayRadius: 16.0),
+  trackHeight: 20.0,
+  allowedInteraction: SliderInteraction.slideThumb,
+);
+
 ///STYLES FOR TEXT FIELDS
 ///Input decorations for signin signup text form fields
 const kSignInSignUpTextFormFieldDecorations = InputDecoration(
-  hintStyle: TextStyle(
-    color: kGreyThemeColor,
-    fontSize: 15,
-    fontWeight: FontWeight.w500,
-  ),
+  hintStyle: kSmallGreyColorDescriptionTextStyle,
   focusedBorder: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius8),
+      Radius.circular(kRadius16),
     ),
     borderSide: BorderSide(color: kAppThemeColor, width: 2),
   ),
   border: OutlineInputBorder(
     borderRadius: BorderRadius.all(
-      Radius.circular(kRadius8),
+      Radius.circular(kRadius16),
     ),
   ),
   contentPadding: EdgeInsets.zero,
+);
+
+///Input decorations for change main goal, level, weekly goal and focused body areas text form fields
+const kMlwfTextFormFieldDecorations = InputDecoration(
+  hintText: "Enter your email",
+  hintStyle: TextStyle(color: kWhiteThemeColor),
+  border: UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
+  focusedBorder: UnderlineInputBorder(
+      borderSide: BorderSide(color: kWhiteThemeColor, width: 2.0)),
+  enabledBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: kWhiteThemeColor)),
+);
+
+///Input decorations for community message text form field
+const kCommunityMessageTextFormFieldDecoration = InputDecoration(
+  hintText: "Type your message here...",
+  hintStyle: TextStyle(
+    color: kGreyThemeColor,
+  ),
+  contentPadding:
+      EdgeInsets.symmetric(vertical: kPadding16, horizontal: kPadding16),
+  focusedBorder: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(kRadius30),
+    ),
+    borderSide: BorderSide(color: kAppThemeColor, width: 2),
+  ),
+  border: OutlineInputBorder(
+    borderRadius: BorderRadius.all(
+      Radius.circular(kRadius30),
+    ),
+  ),
 );
