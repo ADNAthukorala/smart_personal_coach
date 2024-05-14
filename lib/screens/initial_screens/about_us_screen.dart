@@ -6,8 +6,7 @@ class AboutUsScreen extends StatefulWidget {
   const AboutUsScreen({super.key});
 
   @override
-  State<AboutUsScreen> createState() =>
-      _AboutUsScreenState();
+  State<AboutUsScreen> createState() => _AboutUsScreenState();
 }
 
 class _AboutUsScreenState extends State<AboutUsScreen> {
@@ -21,6 +20,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
           'About Us',
           style: kAppBarTextStyle,
         ),
+        iconTheme: const IconThemeData(color: kWhiteThemeColor),
       ),
 
       /// Body of the screen
@@ -38,7 +38,14 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                 ),
                 primary: false,
                 children: const [
-                  Text('ADNA DEVELOPER'),
+                  Column(
+                    children: [
+                      Text(
+                        'ADNA DEVELOPERS',
+                        style: kLargeBlackTitleTextStyle,
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -53,7 +60,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
               },
               style: kNextButtonStyle,
               child: const Text(
-                'OK',
+                'Back',
                 style: kNextButtonTextStyle,
               ),
             ),
