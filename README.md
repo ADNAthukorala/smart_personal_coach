@@ -54,26 +54,3 @@ A fitness application
 •If you want to sign out, you should click on the “Sign Out” button.
 •By clicking on the “Click to Send Feedback” button, you can send a feedback to the application.
 •If you want to delete the account, you should click on the “Delete Account Permanently” button. Again, you will get a warning message. To go forward you should enter your email address.
-
-
-
-----SMART PERSONAL COACH (Web Page)----
-
---Introduction--
-•This is for the admin to add exercises to the application.
-
---Required Platform Specifications--
-•OS: - Windows, Mac, Linux, IOS, Android
-
---Installation--
-•Simply open the web page.
-
---Other Requirements--
-•Network Connection
-
---User Interface Overview--
-•It has only one interface.
-•The admin can add exercises by providing necessary information about the exercise and clicking on the “Add Exercise” button.
-
---ADMIN KEY--
-•Adna@1234
