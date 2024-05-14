@@ -251,8 +251,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             TextFormField(
                               validator: _validateEmail,
                               controller: _emailController,
-                              decoration:
-                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                              decoration: kSignInSignUpTextFormFieldDecorations
+                                  .copyWith(
                                 hintText: 'Email',
                                 prefixIcon: const Icon(
                                   Icons.email_rounded,
@@ -269,8 +269,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             TextFormField(
                               validator: _validatePassword,
                               controller: _passwordController,
-                              decoration:
-                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                              decoration: kSignInSignUpTextFormFieldDecorations
+                                  .copyWith(
                                 hintText: 'Password',
                                 prefixIcon: const Icon(
                                   Icons.lock_rounded,
@@ -306,8 +306,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             TextFormField(
                               validator: _validateConfirmPassword,
                               controller: _confirmPasswordController,
-                              decoration:
-                                  kSignInSignUpTextFormFieldDecorations.copyWith(
+                              decoration: kSignInSignUpTextFormFieldDecorations
+                                  .copyWith(
                                 hintText: 'Confirm Password',
                                 prefixIcon: const Icon(
                                   Icons.lock_rounded,

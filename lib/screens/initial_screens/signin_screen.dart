@@ -274,16 +274,17 @@ class _SignInScreenState extends State<SignInScreen> {
                                 description:
                                     "Please enter email and password to login",
                               ),
-                          
+
                               /// Add space
                               const SizedBox(height: 12.0),
-                          
+
                               /// Get the user's email
                               TextFormField(
                                 validator: _validateEmail,
                                 controller: _emailController,
-                                decoration: kSignInSignUpTextFormFieldDecorations
-                                    .copyWith(
+                                decoration:
+                                    kSignInSignUpTextFormFieldDecorations
+                                        .copyWith(
                                   hintText: 'Email',
                                   prefixIcon: const Icon(
                                     Icons.email_rounded,
@@ -292,16 +293,17 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
                                 keyboardType: TextInputType.emailAddress,
                               ),
-                          
+
                               /// Add space
                               const SizedBox(height: 12.0),
-                          
+
                               /// Get the user's password
                               TextFormField(
                                 validator: _validatePassword,
                                 controller: _passwordController,
-                                decoration: kSignInSignUpTextFormFieldDecorations
-                                    .copyWith(
+                                decoration:
+                                    kSignInSignUpTextFormFieldDecorations
+                                        .copyWith(
                                   hintText: 'Password',
                                   prefixIcon: const Icon(
                                     Icons.lock_rounded,
@@ -329,7 +331,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                 enableSuggestions: false,
                                 autofocus: false,
                               ),
-                          
+
                               /// Forgot password button
                               Container(
                                 alignment: Alignment.centerRight,
@@ -351,10 +353,10 @@ class _SignInScreenState extends State<SignInScreen> {
                                   ),
                                 ),
                               ),
-                          
+
                               /// Add space
                               const SizedBox(height: 12.0),
-                          
+
                               /// Sign in button
                               SignInSignUpButton(
                                 onPressed: () {
