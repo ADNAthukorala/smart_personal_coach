@@ -30,23 +30,27 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
         child: Column(
           children: [
             Expanded(
-              child: ListView(
-                // Include all components in a list view and set padding around the components to 0
-                padding: const EdgeInsets.only(
-                  top: kPadding16,
-                  bottom: kPadding16,
-                ),
-                primary: false,
-                children: const [
-                  Column(
-                    children: [
-                      Text(
-                        'ADNA DEVELOPERS',
-                        style: kLargeBlackTitleTextStyle,
-                      ),
-                    ],
+              child: Center(
+                child: ListView(
+                  // Include all components in a list view and set padding around the components to 0
+                  padding: const EdgeInsets.only(
+                    top: kPadding16,
+                    bottom: kPadding16,
                   ),
-                ],
+                  primary: false,
+                  shrinkWrap: true,
+                  children: const [
+                    Column(
+                      children: [
+                        Text(
+                          'ADNA DEVELOPERS',
+                          style: kLargeBlackTitleTextStyle,
+                        ),
+                        Image(image: AssetImage("images/adna-logo.png")),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
 
