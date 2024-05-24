@@ -17,7 +17,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
-          'About Us',
+          'About Usss',
           style: kAppBarTextStyle,
         ),
         iconTheme: const IconThemeData(color: kWhiteThemeColor),
