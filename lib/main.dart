@@ -49,11 +49,12 @@ class MyApp extends StatelessWidget {
           // While the initialization is in progress, show a loading indicator
           return MaterialApp(
             home: Scaffold(
+              backgroundColor: kBlackThemeColor,
               body: Container(
                 decoration: const BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage('images/theme-image.jpg'),
-                    fit: BoxFit.cover,
+                    image: AssetImage('images/adna-opening-animation.gif'),
+                    fit: BoxFit.fitWidth
                   ),
                 ),
                 child: const Center(
