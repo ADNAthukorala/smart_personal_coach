@@ -20,18 +20,19 @@ class MyApp extends StatelessWidget {
   Future<void> precacheAssets(BuildContext context) async {
     // List of asset images paths
     final List<String> assetPaths = [
-      "images/abs.jpg",
-      "images/arms.jpg",
-      "images/back.jpg",
-      "images/chest.jpg",
-      "images/legs.jpg",
-      "images/signin-screen-image.jpg",
-      "images/signup-screen-image.jpg",
-      "images/theme-image.jpg",
-      "images/facebook-logo.png",
-      "images/google-logo.png",
-      "images/full-body-image.png",
-      "images/gender-selection-screen-image.jpg",
+      'images/abs.jpg',
+      'images/arms.jpg',
+      'images/back.jpg',
+      'images/chest.jpg',
+      'images/legs.jpg',
+      'images/signin-screen-image.jpg',
+      'images/signup-screen-image.jpg',
+      'images/theme-image.jpg',
+      'images/adna-welcome-animation.gif',
+      'images/facebook-logo.png',
+      'images/google-logo.png',
+      'images/full-body-image.png',
+      'images/gender-selection-screen-image.jpg',
     ];
 
     // Precache all asset images
@@ -49,37 +50,8 @@ class MyApp extends StatelessWidget {
           // While the initialization is in progress, show a loading indicator
           return MaterialApp(
             home: Scaffold(
-              body: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/theme-image.jpg'),
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                child: const Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(
-                        color: kAppThemeColor,
-                        strokeAlign: 4.0,
-                        backgroundColor: kWhiteThemeColor,
-                        strokeWidth: 8.0,
-                      ),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-                      Text(
-                        "Loading...",
-                        style: TextStyle(
-                          color: kWhiteThemeColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              body: Center(
+                child: Image.asset('images/adna-welcome-animation.gif'),
               ),
             ),
           );
