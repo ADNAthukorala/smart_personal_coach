@@ -108,54 +108,59 @@ class _CommunityScreenState extends State<CommunityScreen> {
           right: kPadding16,
           bottom: kPadding16,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            /// Community messages
-            CommunityMessageStream(
-                communityMessageStream: _communityMessageStream,
-                loggedInUser: loggedInUser.email),
+        child: Container(
+          decoration: const BoxDecoration(
+              image:
+              DecorationImage(image: AssetImage("images/adna-logo.png"))),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              /// Community messages
+              CommunityMessageStream(
+                  communityMessageStream: _communityMessageStream,
+                  loggedInUser: loggedInUser.email),
 
-            /// Add space between community messages and send button
-            const SizedBox(height: 8.0),
+              /// Add space between community messages and send button
+              const SizedBox(height: 8.0),
 
-            /// Send a community message
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Expanded(
-                  child: TextFormField(
-                    controller: _communityMessageTextController,
-                    decoration: kCommunityMessageTextFormFieldDecoration,
-                    textCapitalization: TextCapitalization.sentences,
-                    onChanged: (value) {
-                      communityMessageText = value;
+              /// Send a community message
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: TextFormField(
+                      controller: _communityMessageTextController,
+                      decoration: kCommunityMessageTextFormFieldDecoration,
+                      textCapitalization: TextCapitalization.sentences,
+                      onChanged: (value) {
+                        communityMessageText = value;
+                        setState(() {
+                          _communityMessageTextController.text.isEmpty
+                              ? isButtonDisabled = true
+                              : isButtonDisabled = false;
+                        });
+                      },
+                    ),
+                  ),
+                  const SizedBox(
+                    width: 4.0,
+                  ),
+                  CommunityMessageSendButton(
+                    onPressed: isButtonDisabled
+                        ? null
+                        : () {
+                      filterCommunityMessage(communityMessageText!);
+                      _communityMessageTextController.clear();
                       setState(() {
-                        _communityMessageTextController.text.isEmpty
-                            ? isButtonDisabled = true
-                            : isButtonDisabled = false;
+                        isButtonDisabled = true;
                       });
                     },
                   ),
-                ),
-                const SizedBox(
-                  width: 4.0,
-                ),
-                CommunityMessageSendButton(
-                  onPressed: isButtonDisabled
-                      ? null
-                      : () {
-                          filterCommunityMessage(communityMessageText!);
-                          _communityMessageTextController.clear();
-                          setState(() {
-                            isButtonDisabled = true;
-                          });
-                        },
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

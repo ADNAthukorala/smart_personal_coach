@@ -237,15 +237,15 @@ class _SignInScreenState extends State<SignInScreen> {
               /// Top of the screen (Top image)
               MediaQuery.of(context).viewInsets.bottom == 0
                   ? const Expanded(
-                      flex: 4,
-                      child:
-                          TopImage(imageUrl: 'images/signin-screen-image.jpg'),
-                    )
+                flex: 4,
+                child:
+                TopImage(imageUrl: 'images/signin-screen-image.jpg'),
+              )
                   : const SizedBox(),
 
               /// Bottom components holder (Middle and bottom of the screen)
               Expanded(
-                flex: MediaQuery.of(context).size.height > 800 ? 4 : 6,
+                flex: MediaQuery.of(context).size.height > 800 ? 4 : 10,
                 // Add padding around the bottom components
                 child: Padding(
                   padding: const EdgeInsets.only(
@@ -256,114 +256,144 @@ class _SignInScreenState extends State<SignInScreen> {
                   // Adding all the components at the bottom to a column
                   child: Column(
                     mainAxisAlignment:
-                        MediaQuery.of(context).viewInsets.bottom == 0
-                            ? MainAxisAlignment.spaceBetween
-                            : MainAxisAlignment.center,
+                    MediaQuery.of(context).viewInsets.bottom == 0
+                        ? MainAxisAlignment.spaceBetween
+                        : MainAxisAlignment.center,
                     children: [
                       /// Middle of the screen (Title ans user input fields)
                       /// User inputs container and title and description container
                       Form(
                         key: _formKeySignIn,
-                        child: Column(
-                          children: [
-                            /// The Title and the description holder
-                            const InitialScreensTitleAndDescriptionHolder(
-                              title: "Sign In",
-                              description:
+                        child: Expanded(
+                          child: Center(
+                            child: ListView(
+                              primary: false,
+                              shrinkWrap: true,
+                              children: [
+                                /// The Title and the description holder
+                                const InitialScreensTitleAndDescriptionHolder(
+                                  title: "Sign In",
+                                  description:
                                   "Please enter email and password to login",
-                            ),
-
-                            /// Add space
-                            const SizedBox(height: 12.0),
-
-                            /// Get the user's email
-                            TextFormField(
-                              validator: _validateEmail,
-                              controller: _emailController,
-                              decoration: kSignInSignUpTextFormFieldDecorations
-                                  .copyWith(
-                                hintText: 'Email',
-                                prefixIcon: const Icon(
-                                  Icons.email_rounded,
-                                  color: kAppThemeColor,
                                 ),
-                              ),
-                              keyboardType: TextInputType.emailAddress,
-                            ),
 
-                            /// Add space
-                            const SizedBox(height: 12.0),
+                                /// Add space
+                                const SizedBox(height: 12.0),
 
-                            /// Get the user's password
-                            TextFormField(
-                              validator: _validatePassword,
-                              controller: _passwordController,
-                              decoration: kSignInSignUpTextFormFieldDecorations
-                                  .copyWith(
-                                hintText: 'Password',
-                                prefixIcon: const Icon(
-                                  Icons.lock_rounded,
-                                  color: kAppThemeColor,
-                                ),
-                                suffixIcon: IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      visibilityButtonClick();
-                                    });
-                                  },
-                                  icon: _isVisibilityButtonClicked
-                                      ? const Icon(
-                                          Icons.visibility_rounded,
-                                          color: kAppThemeColor,
-                                        )
-                                      : const Icon(
-                                          Icons.visibility_off_rounded,
-                                          color: kAppThemeColor,
-                                        ),
-                                ),
-                              ),
-                              obscureText:
-                                  _isVisibilityButtonClicked ? false : true,
-                              enableSuggestions: false,
-                              autofocus: false,
-                            ),
-
-                            /// Forgot password button
-                            Container(
-                              alignment: Alignment.centerRight,
-                              child: TextButton(
-                                onPressed: () {
-                                  // Go to the forgot password screen
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const ForgotPasswordScreen(),
+                                /// Get the user's email
+                                TextFormField(
+                                  validator: _validateEmail,
+                                  controller: _emailController,
+                                  decoration:
+                                  kSignInSignUpTextFormFieldDecorations
+                                      .copyWith(
+                                    hintText: 'Email',
+                                    prefixIcon: const Icon(
+                                      Icons.email_rounded,
+                                      color: kAppThemeColor,
                                     ),
-                                  );
-                                },
-                                style: kTextButtonStyle,
-                                child: const Text(
-                                  'Forgot Password?',
-                                  style: kTextButtonTextStyle,
+                                  ),
+                                  keyboardType: TextInputType.emailAddress,
                                 ),
-                              ),
-                            ),
 
-                            /// Add space
-                            const SizedBox(height: 12.0),
+                                /// Add space
+                                const SizedBox(height: 12.0),
 
-                            /// Sign in button
-                            SignInSignUpButton(
-                              onPressed: () {
-                                // Validate returns true if the form is valid, or false otherwise.
-                                if (_formKeySignIn.currentState!.validate()) {
-                                  _signIn();
-                                }
-                              },
-                              buttonText: 'Sign In',
+                                /// Get the user's password
+                                TextFormField(
+                                  validator: _validatePassword,
+                                  controller: _passwordController,
+                                  decoration:
+                                  kSignInSignUpTextFormFieldDecorations
+                                      .copyWith(
+                                    hintText: 'Password',
+                                    prefixIcon: const Icon(
+                                      Icons.lock_rounded,
+                                      color: kAppThemeColor,
+                                    ),
+                                    suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          visibilityButtonClick();
+                                        });
+                                      },
+                                      icon: _isVisibilityButtonClicked
+                                          ? const Icon(
+                                        Icons.visibility_rounded,
+                                        color: kAppThemeColor,
+                                      )
+                                          : const Icon(
+                                        Icons.visibility_off_rounded,
+                                        color: kAppThemeColor,
+                                      ),
+                                    ),
+                                  ),
+                                  obscureText:
+                                  _isVisibilityButtonClicked ? false : true,
+                                  enableSuggestions: false,
+                                  autofocus: false,
+                                ),
+
+                                /// Forgot password button
+                                Container(
+                                  alignment: Alignment.centerRight,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      // Go to the forgot password screen
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                          const ForgotPasswordScreen(),
+                                        ),
+                                      );
+                                    },
+                                    style: kTextButtonStyle,
+                                    child: const Text(
+                                      'Forgot Password?',
+                                      style: kTextButtonTextStyle,
+                                    ),
+                                  ),
+                                ),
+
+                                /// Add space
+                                const SizedBox(height: 12.0),
+
+                                /// Sign in button
+                                SignInSignUpButton(
+                                  onPressed: () {
+                                    // Validate returns true if the form is valid, or false otherwise.
+                                    if (_formKeySignIn.currentState!
+                                        .validate()) {
+                                      _signIn();
+                                    }
+                                  },
+                                  buttonText: 'Sign In',
+                                ),
+
+                                /// Logo
+                                const Padding(
+                                  padding:
+                                  EdgeInsets.symmetric(vertical: kPadding8),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        "Powered by: ",
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.w600),
+                                      ),
+                                      Image(
+                                        image: AssetImage(
+                                            "images/adna-logo-txt.png"),
+                                        width: 25,
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
                       ),
 
