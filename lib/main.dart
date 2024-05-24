@@ -51,37 +51,8 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             home: Scaffold(
               backgroundColor: kBlackThemeColor,
-              body: Container(
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/adna-opening-animation.gif'),
-                    fit: BoxFit.fitWidth
-                  ),
-                ),
-                child: const Center(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircularProgressIndicator(
-                        color: kAppThemeColor,
-                        strokeAlign: 4.0,
-                        backgroundColor: kWhiteThemeColor,
-                        strokeWidth: 8.0,
-                      ),
-                      SizedBox(
-                        height: 25.0,
-                      ),
-                      Text(
-                        "Loading...",
-                        style: TextStyle(
-                          color: kWhiteThemeColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20.0,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
+              body: Center(
+                child: Image.asset('images/adna-opening-animation.gif'),
               ),
             ),
           );
