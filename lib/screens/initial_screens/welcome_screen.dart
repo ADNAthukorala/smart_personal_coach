@@ -80,7 +80,11 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           SizedBox(
             child: Padding(
               // Add padding around the button
-              padding: const EdgeInsets.all(kPadding16),
+              padding: const EdgeInsets.only(
+                left: kPadding16,
+                right: kPadding16,
+                bottom: kPadding8,
+              ),
               child: ElevatedButton(
                 style: kWelcomeButtonStyle,
                 onPressed: () {
@@ -97,6 +101,24 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                   style: kWelcomeButtonTextStyle,
                 ),
               ),
+            ),
+          ),
+
+          /// Logo
+          const Padding(
+            padding: EdgeInsets.only(bottom: 2.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Powered by: ",
+                  style: TextStyle(fontWeight: FontWeight.w600),
+                ),
+                Image(
+                  image: AssetImage("images/adna-logo-txt.png"),
+                  width: 25,
+                ),
+              ],
             ),
           ),
         ],
