@@ -200,42 +200,42 @@ const kUserReportInformationTitleTextStyle = TextStyle(
 /// STYLES FOR BUTTONS
 /// Button styles for gender selection buttons
 const kGenderSelectionButtonStyle = ButtonStyle(
-  backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+  backgroundColor: WidgetStatePropertyAll(kAppThemeColor),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
-  fixedSize: MaterialStatePropertyAll(Size(160.0, 75.0)),
+  fixedSize: WidgetStatePropertyAll(Size(160.0, 75.0)),
 );
 
 /// Button styles for signin, signup, sign out and reset password buttons
 const kSignInSignUpSignOutResetPasswordButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 50.0)),
-  backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
+  fixedSize: WidgetStatePropertyAll(Size(double.maxFinite, 50.0)),
+  backgroundColor: WidgetStatePropertyAll(kAppThemeColor),
 );
 
 /// Button style for welcome screen button
 const kWelcomeButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
-  backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
+  fixedSize: WidgetStatePropertyAll(Size(double.maxFinite, 60.0)),
+  backgroundColor: WidgetStatePropertyAll(kAppThemeColor),
 );
 
 /// Button styles for next button
 const kNextButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 60.0)),
-  backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
+  fixedSize: WidgetStatePropertyAll(Size(double.maxFinite, 60.0)),
+  backgroundColor: WidgetStatePropertyAll(kAppThemeColor),
 );
 
 /// Button style for social media icon button
 const kSocialMediaIconButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size.fromWidth(double.maxFinite)),
-  side: MaterialStatePropertyAll(BorderSide(color: kGreyThemeColor02)),
+  fixedSize: WidgetStatePropertyAll(Size.fromWidth(double.maxFinite)),
+  side: WidgetStatePropertyAll(BorderSide(color: kGreyThemeColor02)),
 );
 
 /// Button styles for select body area button
 const kSelectBodyAreaButtonStyle = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 40.0)),
-  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+  fixedSize: WidgetStatePropertyAll(Size(double.maxFinite, 40.0)),
+  backgroundColor: WidgetStatePropertyAll(kWhiteThemeColor),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
@@ -243,9 +243,9 @@ const kSelectBodyAreaButtonStyle = ButtonStyle(
 /// Button styles for select capacity button
 const kSelectCapacityButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 120.0)),
-  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+  fixedSize: WidgetStatePropertyAll(Size(double.maxFinite, 120.0)),
+  backgroundColor: WidgetStatePropertyAll(kWhiteThemeColor),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
@@ -253,17 +253,17 @@ const kSelectCapacityButtonStyle = ButtonStyle(
 /// Button styles for day button
 const kDayButtonStyle = ButtonStyle(
   alignment: Alignment.centerLeft,
-  fixedSize: MaterialStatePropertyAll(Size(double.maxFinite, 70.0)),
-  backgroundColor: MaterialStatePropertyAll(kWhiteThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+  fixedSize: WidgetStatePropertyAll(Size(double.maxFinite, 70.0)),
+  backgroundColor: WidgetStatePropertyAll(kWhiteThemeColor),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );
 
 /// Button style for signin/signup/forget password text button
 const kTextButtonStyle = ButtonStyle(
-  minimumSize: MaterialStatePropertyAll(Size.zero),
-  padding: MaterialStatePropertyAll(
+  minimumSize: WidgetStatePropertyAll(Size.zero),
+  padding: WidgetStatePropertyAll(
     EdgeInsets.only(
       left: 4.0,
       right: 4.0,
@@ -274,10 +274,10 @@ const kTextButtonStyle = ButtonStyle(
 
 /// Button styles for explore screen buttons
 const kExploreScreenButton = ButtonStyle(
-  fixedSize: MaterialStatePropertyAll(Size.fromHeight(150.0)),
-  padding: MaterialStatePropertyAll(EdgeInsets.zero),
-  backgroundColor: MaterialStatePropertyAll(kAppThemeColor),
-  shape: MaterialStatePropertyAll(RoundedRectangleBorder(
+  fixedSize: WidgetStatePropertyAll(Size.fromHeight(150.0)),
+  padding: WidgetStatePropertyAll(EdgeInsets.zero),
+  backgroundColor: WidgetStatePropertyAll(kAppThemeColor),
+  shape: WidgetStatePropertyAll(RoundedRectangleBorder(
     borderRadius: BorderRadius.all(Radius.circular(kRadius16)),
   )),
 );

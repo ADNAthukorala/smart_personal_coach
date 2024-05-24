@@ -222,7 +222,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
                           );
                         },
                   style: kNextButtonStyle.copyWith(
-                      backgroundColor: MaterialStatePropertyAll(
+                      backgroundColor: WidgetStatePropertyAll(
                           _userGender == "Not Selected"
                               ? kGreyThemeColor02
                               : kAppThemeColor)),
@@ -245,7 +245,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         });
       },
       style: kGenderSelectionButtonStyle.copyWith(
-        backgroundColor: MaterialStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
             _userGender == "Female" ? kPinkThemeColor : kWhiteThemeColor),
       ),
       child: Text(
@@ -268,7 +268,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
         });
       },
       style: kGenderSelectionButtonStyle.copyWith(
-        backgroundColor: MaterialStatePropertyAll(
+        backgroundColor: WidgetStatePropertyAll(
             _userGender == "Male" ? kBlueThemeColor : kWhiteThemeColor),
       ),
       child: Text(

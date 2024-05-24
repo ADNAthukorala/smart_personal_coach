@@ -1367,7 +1367,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 },
                 style: kSignInSignUpSignOutResetPasswordButtonStyle.copyWith(
                     backgroundColor:
-                        const MaterialStatePropertyAll(kRedThemeColor)),
+                        const WidgetStatePropertyAll(kRedThemeColor)),
                 label: const Text(
                   "Delete Account Permanently",
                   style: kSignInSignUpSignOutButtonResetPasswordTextStyle,
