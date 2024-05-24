@@ -246,8 +246,8 @@ class DayButton extends StatelessWidget {
       onPressed: onPressed,
       style: kDayButtonStyle.copyWith(
         backgroundColor: userSelectedDays == selectedDays
-            ? const MaterialStatePropertyAll(kAppThemeColor)
-            : const MaterialStatePropertyAll(kWhiteThemeColor),
+            ? const WidgetStatePropertyAll(kAppThemeColor)
+            : const WidgetStatePropertyAll(kWhiteThemeColor),
       ),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,

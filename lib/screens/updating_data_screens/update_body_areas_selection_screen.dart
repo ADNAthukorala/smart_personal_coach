@@ -290,7 +290,7 @@ class _UpdateBodyAreasSelectionScreenState
                       },
                 style: kNextButtonStyle.copyWith(
                     // If the bodyAreas array is empty, the background color of this button should be grey
-                    backgroundColor: MaterialStatePropertyAll(
+                    backgroundColor: WidgetStatePropertyAll(
                         _updatedUserSelectedBodyAreas.isEmpty
                             ? kGreyThemeColor02
                             : kAppThemeColor)),
@@ -328,8 +328,8 @@ class SelectBodyAreaButton extends StatelessWidget {
       onPressed: onPressed,
       style: kSelectBodyAreaButtonStyle.copyWith(
         backgroundColor: array.contains(selectedBodyArea) || array.length == 5
-            ? const MaterialStatePropertyAll(kAppThemeColor)
-            : const MaterialStatePropertyAll(kWhiteThemeColor),
+            ? const WidgetStatePropertyAll(kAppThemeColor)
+            : const WidgetStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
         buttonLabel,

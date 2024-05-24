@@ -196,8 +196,8 @@ class SelectLevelButton extends StatelessWidget {
       onPressed: onPressed,
       style: kSelectCapacityButtonStyle.copyWith(
         backgroundColor: selectedLevel == level
-            ? const MaterialStatePropertyAll(kAppThemeColor)
-            : const MaterialStatePropertyAll(kWhiteThemeColor),
+            ? const WidgetStatePropertyAll(kAppThemeColor)
+            : const WidgetStatePropertyAll(kWhiteThemeColor),
       ),
       child: Text(
         buttonLabel,
