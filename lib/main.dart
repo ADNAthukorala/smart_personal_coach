@@ -39,6 +39,8 @@ class MyApp extends StatelessWidget {
     for (String path in assetPaths) {
       await precacheImage(AssetImage(path), context);
     }
+
+    await Future.delayed(const Duration(seconds: 1));
   }
 
   @override
@@ -50,6 +52,7 @@ class MyApp extends StatelessWidget {
           // While the initialization is in progress, show a loading indicator
           return MaterialApp(
             home: Scaffold(
+              backgroundColor: kBlackThemeColor,
               body: Center(
                 child: Image.asset('images/adna-welcome-animation.gif'),
               ),
