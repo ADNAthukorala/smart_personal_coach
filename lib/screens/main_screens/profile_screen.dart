@@ -1332,7 +1332,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(
                                       content: Text(
-                                          'The account has been successfully deleted!')),
+                                          'Your account has been deleted successfully!')),
                                 );
                               } else {
                                 showDialog(
