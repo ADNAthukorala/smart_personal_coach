@@ -5,6 +5,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
+import 'package:smart_personal_coach/screens/initial_screens/about_us_screen.dart';
 
 /// Sign-Up Screen
 class SignUpScreen extends StatefulWidget {
@@ -233,120 +234,150 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     /// User inputs container and title and description container
                     Form(
                       key: _formKeySignUp,
-                      child: Column(
-                        children: [
-                          /// The Title and the description holder
-                          const InitialScreensTitleAndDescriptionHolder(
-                            title: "Sign Up",
-                            description: "Create your account here",
-                          ),
-
-                          /// Add space
-                          const SizedBox(height: 12.0),
-
-                          /// Get the user's email
-                          TextFormField(
-                            validator: _validateEmail,
-                            controller: _emailController,
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Email',
-                              prefixIcon: const Icon(
-                                Icons.email_rounded,
-                                color: kAppThemeColor,
+                      child: Expanded(
+                        child: Center(
+                          child: ListView(
+                            primary: false,
+                            shrinkWrap: true,
+                            children: [
+                              /// The Title and the description holder
+                              const InitialScreensTitleAndDescriptionHolder(
+                                title: "Sign Up",
+                                description: "Create your account here",
                               ),
-                            ),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
 
-                          /// Add space
-                          const SizedBox(height: 12.0),
+                              /// Add space
+                              const SizedBox(height: 12.0),
 
-                          /// Get the user's password
-                          TextFormField(
-                            validator: _validatePassword,
-                            controller: _passwordController,
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Password',
-                              prefixIcon: const Icon(
-                                Icons.lock_rounded,
-                                color: kAppThemeColor,
+                              /// Get the user's email
+                              TextFormField(
+                                validator: _validateEmail,
+                                controller: _emailController,
+                                decoration:
+                                    kSignInSignUpTextFormFieldDecorations
+                                        .copyWith(
+                                  hintText: 'Email',
+                                  prefixIcon: const Icon(
+                                    Icons.email_rounded,
+                                    color: kAppThemeColor,
+                                  ),
+                                ),
+                                keyboardType: TextInputType.emailAddress,
                               ),
-                              suffixIcon: IconButton(
+
+                              /// Add space
+                              const SizedBox(height: 12.0),
+
+                              /// Get the user's password
+                              TextFormField(
+                                validator: _validatePassword,
+                                controller: _passwordController,
+                                decoration:
+                                    kSignInSignUpTextFormFieldDecorations
+                                        .copyWith(
+                                  hintText: 'Password',
+                                  prefixIcon: const Icon(
+                                    Icons.lock_rounded,
+                                    color: kAppThemeColor,
+                                  ),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        visibilityButtonClick();
+                                      });
+                                    },
+                                    icon: _isVisibilityButtonClicked
+                                        ? const Icon(
+                                            Icons.visibility_rounded,
+                                            color: kAppThemeColor,
+                                          )
+                                        : const Icon(
+                                            Icons.visibility_off_rounded,
+                                            color: kAppThemeColor,
+                                          ),
+                                  ),
+                                ),
+                                obscureText:
+                                    _isVisibilityButtonClicked ? false : true,
+                                enableSuggestions: false,
+                                autofocus: false,
+                              ),
+
+                              /// Add space
+                              const SizedBox(height: 12.0),
+
+                              /// Confirm the password
+                              TextFormField(
+                                validator: _validateConfirmPassword,
+                                controller: _confirmPasswordController,
+                                decoration:
+                                    kSignInSignUpTextFormFieldDecorations
+                                        .copyWith(
+                                  hintText: 'Confirm Password',
+                                  prefixIcon: const Icon(
+                                    Icons.lock_rounded,
+                                    color: kAppThemeColor,
+                                  ),
+                                  suffixIcon: IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        visibilityButtonClick();
+                                      });
+                                    },
+                                    icon: _isVisibilityButtonClicked
+                                        ? const Icon(
+                                            Icons.visibility_rounded,
+                                            color: kAppThemeColor,
+                                          )
+                                        : const Icon(
+                                            Icons.visibility_off_rounded,
+                                            color: kAppThemeColor,
+                                          ),
+                                  ),
+                                ),
+                                obscureText:
+                                    _isVisibilityButtonClicked ? false : true,
+                                enableSuggestions: false,
+                                autofocus: false,
+                              ),
+
+                              /// Add space
+                              const SizedBox(height: 12.0),
+
+                              /// Sign up button
+                              SignInSignUpButton(
                                 onPressed: () {
-                                  setState(() {
-                                    visibilityButtonClick();
-                                  });
+                                  // Validate returns true if the form is valid, or false otherwise.
+                                  if (_formKeySignUp.currentState!.validate()) {
+                                    _signUp();
+                                  }
                                 },
-                                icon: _isVisibilityButtonClicked
-                                    ? const Icon(
-                                        Icons.visibility_rounded,
-                                        color: kAppThemeColor,
-                                      )
-                                    : const Icon(
-                                        Icons.visibility_off_rounded,
-                                        color: kAppThemeColor,
-                                      ),
+                                buttonText: 'Sign Up',
                               ),
-                            ),
-                            obscureText:
-                                _isVisibilityButtonClicked ? false : true,
-                            enableSuggestions: false,
-                            autofocus: false,
-                          ),
 
-                          /// Add space
-                          const SizedBox(height: 12.0),
+                              /// Add space
+                              const SizedBox(height: 12.0),
 
-                          /// Confirm the password
-                          TextFormField(
-                            validator: _validateConfirmPassword,
-                            controller: _confirmPasswordController,
-                            decoration:
-                                kSignInSignUpTextFormFieldDecorations.copyWith(
-                              hintText: 'Confirm Password',
-                              prefixIcon: const Icon(
-                                Icons.lock_rounded,
-                                color: kAppThemeColor,
-                              ),
-                              suffixIcon: IconButton(
+                              /// About us button
+                              TextButton(
                                 onPressed: () {
-                                  setState(() {
-                                    visibilityButtonClick();
-                                  });
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const AboutUsScreen(),
+                                    ),
+                                  );
                                 },
-                                icon: _isVisibilityButtonClicked
-                                    ? const Icon(
-                                        Icons.visibility_rounded,
-                                        color: kAppThemeColor,
-                                      )
-                                    : const Icon(
-                                        Icons.visibility_off_rounded,
-                                        color: kAppThemeColor,
-                                      ),
+                                style: kTextButtonStyle,
+                                child: const Text(
+                                  'About Us',
+                                  style: kTextButtonTextStyle,
+                                ),
                               ),
-                            ),
-                            obscureText:
-                                _isVisibilityButtonClicked ? false : true,
-                            enableSuggestions: false,
-                            autofocus: false,
+                            ],
                           ),
-
-                          /// Add space
-                          const SizedBox(height: 12.0),
-
-                          /// Sign up button
-                          SignInSignUpButton(
-                            onPressed: () {
-                              // Validate returns true if the form is valid, or false otherwise.
-                              if (_formKeySignUp.currentState!.validate()) {
-                                _signUp();
-                              }
-                            },
-                            buttonText: 'Sign Up',
-                          ),
-                        ],
+                        ),
                       ),
                     ),
 
