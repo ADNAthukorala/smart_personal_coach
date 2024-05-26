@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       'images/signin-screen-image.jpg',
       'images/signup-screen-image.jpg',
       'images/theme-image.jpg',
-      'images/adna-welcome-animation.gif',
+      'images/adna-logo-animation.gif',
       'images/facebook-logo.png',
       'images/google-logo.png',
       'images/full-body-image.png',
@@ -39,8 +39,6 @@ class MyApp extends StatelessWidget {
     for (String path in assetPaths) {
       await precacheImage(AssetImage(path), context);
     }
-
-    await Future.delayed(const Duration(seconds: 1));
   }
 
   @override
@@ -54,7 +52,7 @@ class MyApp extends StatelessWidget {
             home: Scaffold(
               backgroundColor: kBlackThemeColor,
               body: Center(
-                child: Image.asset('images/adna-logo-animation.gif'),
+                child: Image.asset('images/adna-logo-animation.gif',width: 200),
               ),
             ),
           );
