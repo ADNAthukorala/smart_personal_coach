@@ -39,6 +39,8 @@ class MyApp extends StatelessWidget {
     for (String path in assetPaths) {
       await precacheImage(AssetImage(path), context);
     }
+
+    await Future.delayed(const Duration(milliseconds: 500));
   }
 
   @override
@@ -52,7 +54,8 @@ class MyApp extends StatelessWidget {
             home: Scaffold(
               backgroundColor: kBlackThemeColor,
               body: Center(
-                child: Image.asset('images/adna-logo-animation.gif',width: 200),
+                child:
+                    Image.asset('images/adna-logo-animation.gif', width: 200),
               ),
             ),
           );
