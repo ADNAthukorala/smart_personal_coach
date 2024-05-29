@@ -9,16 +9,15 @@ import 'package:smart_personal_coach/screens/main_screens/profile_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/report_screen.dart';
 
 /// Main screen with bottom navigation bar
-class BottomNavigationBarScreenScreen extends StatefulWidget {
-  const BottomNavigationBarScreenScreen({super.key});
+class BottomNavigationBarScreen extends StatefulWidget {
+  const BottomNavigationBarScreen({super.key});
 
   @override
-  State<BottomNavigationBarScreenScreen> createState() =>
-      _BottomNavigationBarScreenScreenState();
+  State<BottomNavigationBarScreen> createState() =>
+      _BottomNavigationBarScreenState();
 }
 
-class _BottomNavigationBarScreenScreenState
-    extends State<BottomNavigationBarScreenScreen> {
+class _BottomNavigationBarScreenState extends State<BottomNavigationBarScreen> {
   // Creating an instances of FirebaseAuth and FirebaseFirestore
   final _auth = FirebaseAuth.instance;
 

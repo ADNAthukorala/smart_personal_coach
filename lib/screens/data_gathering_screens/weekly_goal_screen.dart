@@ -111,7 +111,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const BottomNavigationBarScreenScreen(),
+          builder: (context) => const BottomNavigationBarScreen(),
         ),
       );
     } catch (e) {

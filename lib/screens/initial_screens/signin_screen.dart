@@ -46,7 +46,7 @@ class _SignInScreenState extends State<SignInScreen> {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const BottomNavigationBarScreenScreen(),
+          builder: (context) => const BottomNavigationBarScreen(),
         ),
       );
     } else {
@@ -60,18 +60,19 @@ class _SignInScreenState extends State<SignInScreen> {
     }
   }
 
-  void _showBackDialog() {
+  /// Close the app
+  void _closeApp() {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: kAppThemeColor,
           title: const Text(
-            'Are you sure?',
+            'Close app',
             style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
-            'Are you sure you want to leave the application?',
+            'Are you sure you want to close the app?',
             style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
@@ -88,7 +89,6 @@ class _SignInScreenState extends State<SignInScreen> {
                 'Yes',
               ),
               onPressed: () {
-                Navigator.pop(context);
                 SystemNavigator.pop();
               },
             ),
@@ -192,13 +192,17 @@ class _SignInScreenState extends State<SignInScreen> {
       print(e);
       // Show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Incorrect email or password! Check again and re-enter.')),
+        const SnackBar(
+            content:
+                Text('Incorrect email or password! Check again and re-enter.')),
       );
     } catch (e) {
       // print(e);
       // show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Incorrect email or password! Check again and re-enter.')),
+        const SnackBar(
+            content:
+                Text('Incorrect email or password! Check again and re-enter.')),
       );
     }
     //After all, showSpinner is equal to false and disappears modal progress indicator.
@@ -223,7 +227,7 @@ class _SignInScreenState extends State<SignInScreen> {
         if (didPop) {
           return;
         }
-        _showBackDialog();
+        _closeApp();
       },
       child: Scaffold(
         /// Body of the screen
