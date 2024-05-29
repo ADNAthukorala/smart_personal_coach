@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:smart_personal_coach/constants.dart';
-import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/explore_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/community_screen.dart';
 import 'package:smart_personal_coach/screens/main_screens/home_screen.dart';
@@ -52,32 +52,19 @@ class _BottomNavigationBarScreenScreenState
     const ProfileScreen(),
   ];
 
-  /// Sign out method
-  Future<void> _signOut() async {
-    try {
-      await FirebaseAuth.instance.signOut();
-      if (!mounted) return;
-      // Show snack bar with 'Signed out' message
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Signed Out!')),
-      );
-    } catch (e) {
-      print("Error signing out: $e");
-    }
-  }
-
-  void _showBackDialog() {
+  /// Close the app
+  void _closeApp() {
     showDialog<void>(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
           backgroundColor: kAppThemeColor,
           title: const Text(
-            'Are you sure?',
+            'Close app',
             style: TextStyle(color: kWhiteThemeColor),
           ),
           content: const Text(
-            'Are you sure you want to sign out?',
+            'Are you sure you want to close the app?',
             style: TextStyle(color: kWhiteThemeColor),
           ),
           actions: <Widget>[
@@ -94,14 +81,7 @@ class _BottomNavigationBarScreenScreenState
                 'Yes',
               ),
               onPressed: () {
-                _signOut();
-                Navigator.pop(context);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SignInScreen(),
-                  ),
-                );
+                SystemNavigator.pop();
               },
             ),
           ],
@@ -124,7 +104,7 @@ class _BottomNavigationBarScreenScreenState
         if (didPop) {
           return;
         }
-        _showBackDialog();
+        _closeApp();
       },
       child: Scaffold(
         /// body of the main screen, selected from the list of screens
