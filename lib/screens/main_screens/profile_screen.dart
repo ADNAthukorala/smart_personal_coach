@@ -577,7 +577,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     const SizedBox(width: 10.0),
                     // Icon
                     const Icon(
-                      Icons.edit,
+                      Icons.edit_rounded,
                       color: kBlackThemeColor,
                     ),
                   ],
@@ -1414,12 +1414,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   children: [
                     Text(
                       "Powered by: ",
-                      style: TextStyle(
-                          fontWeight: FontWeight.w600),
+                      style: TextStyle(fontWeight: FontWeight.w600),
                     ),
                     Image(
-                      image: AssetImage(
-                          "images/adna-logo-txt.png"),
+                      image: AssetImage("images/adna-logo-txt.png"),
                       width: 20,
                     ),
                   ],
