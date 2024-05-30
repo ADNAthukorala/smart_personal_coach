@@ -17,12 +17,15 @@ class AuthCheckTry extends StatelessWidget {
           .doc(FirebaseAuth.instance.currentUser!.email)
           .get();
       if (docSnapshot.exists) {
+        print('BottomNavigationBarScreen'); // ignore: avoid_print
         return 'BottomNavigationBarScreen';
       } else {
+        print('GenderSelectionScreen'); // ignore: avoid_print
         return 'GenderSelectionScreen';
       }
     } else {
       // User isn't signed in
+      print('WelcomeScreen'); // ignore: avoid_print
       return 'WelcomeScreen';
     }
   }
@@ -37,6 +40,8 @@ class AuthCheckTry extends StatelessWidget {
               child: CircularProgressIndicator(
             color: kAppThemeColor,
           ));
+        } else if (snapshot.hasError) {
+          return const WelcomeScreen();
         } else if (snapshot.data == 'BottomNavigationBarScreen') {
           return const BottomNavigationBarScreen();
         } else if (snapshot.data == 'GenderSelectionScreen') {
