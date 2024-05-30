@@ -17,13 +17,13 @@ class AuthCheckTry extends StatelessWidget {
           .doc(FirebaseAuth.instance.currentUser!.email)
           .get();
       if (docSnapshot.exists) {
-        return 'Bottom navigation bar';
+        return 'BottomNavigationBarScreen';
       } else {
-        return 'Gender selection screen';
+        return 'GenderSelectionScreen';
       }
     } else {
       // User isn't signed in
-      return 'Welcome screen';
+      return 'WelcomeScreen';
     }
   }
 
@@ -37,9 +37,9 @@ class AuthCheckTry extends StatelessWidget {
               child: CircularProgressIndicator(
             color: kAppThemeColor,
           ));
-        } else if (snapshot.data == 'Bottom navigation bar') {
+        } else if (snapshot.data == 'BottomNavigationBarScreen') {
           return const BottomNavigationBarScreen();
-        } else if (snapshot.data == 'Gender selection screen') {
+        } else if (snapshot.data == 'GenderSelectionScreen') {
           return const GenderSelectionScreen();
         } else {
           return const WelcomeScreen();
