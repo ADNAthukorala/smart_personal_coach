@@ -9,7 +9,7 @@ import 'package:smart_personal_coach/screens/initial_screens/welcome_screen.dart
 class AuthCheckTry extends StatelessWidget {
   const AuthCheckTry({super.key});
 
-  Future<String> isSigned(BuildContext context) async {
+  Future<String> isSigned() async {
     if (FirebaseAuth.instance.currentUser != null) {
       // User is signed in
       DocumentSnapshot docSnapshot = await FirebaseFirestore.instance
@@ -30,7 +30,7 @@ class AuthCheckTry extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FutureBuilder(
-      future: isSigned(context),
+      future: isSigned(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(
