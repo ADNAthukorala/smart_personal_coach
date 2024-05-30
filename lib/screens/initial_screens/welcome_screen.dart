@@ -116,7 +116,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                 ),
                 Image(
                   image: AssetImage("images/adna-logo-txt.png"),
-                  width: 25,
+                  width: 20,
                 ),
               ],
             ),

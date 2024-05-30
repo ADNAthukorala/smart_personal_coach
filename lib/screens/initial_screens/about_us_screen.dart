@@ -58,17 +58,22 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                         const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Icon(Icons.email_rounded, color: kGreyThemeColor),
+                            Icon(Icons.email_rounded, color: kWhiteThemeColor),
                             SizedBox(width: 8.0),
                             Text(
                               'adna8info@gmail.com',
-                              style: kSmallGreyColorDescriptionTextStyle,
+                              style: TextStyle(
+                                color: kWhiteThemeColor,
+                                fontWeight: FontWeight.w500,
+                              ),
                             ),
                           ],
                         ),
 
                         /// Youtube video
-                        TextButton.icon(
+                        ElevatedButton.icon(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: kRedThemeColor),
                           onPressed: () async {
                             final Uri url = Uri.parse(
                                 'https://youtu.be/vVRBm0yh_Us?si=PKV5Sj3K5SIQb2ir');
@@ -78,12 +83,15 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                             }
                           },
                           label: const Text(
-                            'Watch on youtube',
-                            style: kSmallGreyColorDescriptionTextStyle,
+                            'Watch on YouTube',
+                            style: TextStyle(
+                              color: kWhiteThemeColor,
+                              fontWeight: FontWeight.w500,
+                            ),
                           ),
                           icon: const Icon(
-                            Icons.play_circle_filled_rounded,
-                            color: kGreyThemeColor,
+                            Icons.play_arrow_rounded,
+                            color: kWhiteThemeColor,
                           ),
                         ),
                       ],
