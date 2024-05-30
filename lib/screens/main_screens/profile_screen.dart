@@ -95,7 +95,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 'Yes',
               ),
               onPressed: () {
-                _signOut();
                 Navigator.pop(context);
                 Navigator.push(
                   context,
@@ -103,6 +102,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     builder: (context) => const SignInScreen(),
                   ),
                 );
+                _signOut();
               },
             ),
           ],
