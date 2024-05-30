@@ -562,15 +562,25 @@ class _ProfileScreenState extends State<ProfileScreen> {
               /// User name
               ListTile(
                 contentPadding: EdgeInsets.zero,
-                title: Container(
-                  alignment: Alignment.center,
-                  child: Text(
-                    data['userName'],
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 26.0,
+                title: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    // User name
+                    Text(
+                      data['userName'],
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 26.0,
+                      ),
                     ),
-                  ),
+                    // Add space
+                    const SizedBox(width: 10.0),
+                    // Icon
+                    const Icon(
+                      Icons.edit,
+                      color: kBlackThemeColor,
+                    ),
+                  ],
                 ),
                 onTap: () {
                   showDialog(
