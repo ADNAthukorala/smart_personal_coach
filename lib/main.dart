@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:smart_personal_coach/auth_check.dart';
+import 'package:smart_personal_coach/auth_try.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'firebase_options.dart';
 
@@ -82,7 +82,7 @@ class MyApp extends StatelessWidget {
                 elevation: 2,
               ),
             ),
-            home: const AuthCheck(),
+            home: const AuthCheckTry(),
           );
         }
       },

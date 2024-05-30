@@ -13,7 +13,10 @@ class AuthCheck extends StatelessWidget {
       future: FirebaseAuth.instance.authStateChanges().first,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const Center(child: CircularProgressIndicator(color: kAppThemeColor,));
+          return const Center(
+              child: CircularProgressIndicator(
+            color: kAppThemeColor,
+          ));
         } else if (snapshot.hasData) {
           return const BottomNavigationBarScreen(); // User is signed in
         } else {

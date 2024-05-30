@@ -6,6 +6,7 @@ import 'package:smart_personal_coach/components/next_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
 import 'package:smart_personal_coach/screens/data_gathering_screens/birthday_height_weight_screen.dart';
+import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 
 /// Screen to get the user's gender
 class GenderSelectionScreen extends StatefulWidget {
@@ -99,7 +100,11 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
               ),
               onPressed: () {
                 Navigator.pop(context);
-                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SignInScreen(),
+                    ));
                 _signOut();
               },
             ),
