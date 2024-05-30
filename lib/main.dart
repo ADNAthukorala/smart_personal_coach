@@ -39,8 +39,6 @@ class MyApp extends StatelessWidget {
     for (String path in assetPaths) {
       await precacheImage(AssetImage(path), context);
     }
-
-    await Future.delayed(const Duration(milliseconds: 500));
   }
 
   @override
