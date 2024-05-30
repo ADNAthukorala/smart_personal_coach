@@ -76,7 +76,7 @@ class _AboutUsScreenState extends State<AboutUsScreen> {
                               backgroundColor: kRedThemeColor),
                           onPressed: () async {
                             final Uri url = Uri.parse(
-                                'https://youtu.be/vVRBm0yh_Us?si=PKV5Sj3K5SIQb2ir');
+                                'https://www.youtube.com/channel/UCMc_eDDgirfAQYpWj681WvA');
 
                             if (!await launchUrl(url)) {
                               throw Exception('Could not launch $url');
