@@ -130,7 +130,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       // print(e);
       // show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('Error: $e')),
+        const SnackBar(content: Text('An error has occurred!')),
       );
     }
     //After all, showSpinner is equal to false and disappears modal progress indicator.

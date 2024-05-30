@@ -192,17 +192,13 @@ class _SignInScreenState extends State<SignInScreen> {
       print(e);
       // Show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content:
-                Text('Incorrect email or password! Check again and re-enter.')),
+        SnackBar(content: Text('Error: ${e.message}')),
       );
     } catch (e) {
       // print(e);
       // show snack bar with error message
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-            content:
-                Text('Incorrect email or password! Check again and re-enter.')),
+        const SnackBar(content: Text('An error has occurred!')),
       );
     }
     //After all, showSpinner is equal to false and disappears modal progress indicator.
