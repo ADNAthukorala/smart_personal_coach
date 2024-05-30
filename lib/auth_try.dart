@@ -36,21 +36,12 @@ class AuthCheckTry extends StatelessWidget {
       future: isSigned(),
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return const MaterialApp(
+          return MaterialApp(
             home: Scaffold(
               backgroundColor: kBlackThemeColor,
               body: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircularProgressIndicator(color: kAppThemeColor),
-                    SizedBox(height: 8.0),
-                    Text(
-                      'Loading...',
-                      style: TextStyle(color: kWhiteThemeColor),
-                    ),
-                  ],
-                ),
+                child:
+                    Image.asset('images/adna-logo-animation.gif', width: 120),
               ),
             ),
           );

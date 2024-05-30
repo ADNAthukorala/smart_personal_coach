@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: kBlackThemeColor,
               body: Center(
                 child:
-                    Image.asset('images/adna-logo-animation.gif', width: 200),
+                    Image.asset('images/adna-logo-animation.gif', width: 120),
               ),
             ),
           );
