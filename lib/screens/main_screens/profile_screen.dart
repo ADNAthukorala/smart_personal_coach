@@ -1405,6 +1405,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                 ),
               ),
+
+              /// Logo
+              const Padding(
+                padding: EdgeInsets.only(top: 8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      "Powered by: ",
+                      style: TextStyle(
+                          fontWeight: FontWeight.w600),
+                    ),
+                    Image(
+                      image: AssetImage(
+                          "images/adna-logo-txt.png"),
+                      width: 20,
+                    ),
+                  ],
+                ),
+              ),
             ],
           );
         },

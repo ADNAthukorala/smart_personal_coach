@@ -386,7 +386,7 @@ class _SignInScreenState extends State<SignInScreen> {
                                       Image(
                                         image: AssetImage(
                                             "images/adna-logo-txt.png"),
-                                        width: 25,
+                                        width: 20,
                                       ),
                                     ],
                                   ),
