@@ -65,7 +65,7 @@ class _WeeklyGoalScreenState extends State<WeeklyGoalScreen> {
       await _firestore.collection("users").doc(loggedInUser.email).set(
         {
           'gender': widget.userGender,
-          'userName': "user",
+          'userName': "User",
           'email': loggedInUser.email,
           'profilePicture': defaultProfilePicture,
           'birthDay': widget.userBirthDay,
