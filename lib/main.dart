@@ -21,18 +21,20 @@ class MyApp extends StatelessWidget {
     // List of asset images paths
     final List<String> assetPaths = [
       'images/abs.jpg',
+      'images/adna-logo.png',
+      'images/adna-logo-animation.gif',
+      'images/adna-logo-txt.png',
       'images/arms.jpg',
       'images/back.jpg',
       'images/chest.jpg',
+      'images/facebook-logo.png',
+      'images/full-body-image.png',
+      'images/gender-selection-screen-image.jpg',
+      'images/google-logo.png',
       'images/legs.jpg',
       'images/signin-screen-image.jpg',
       'images/signup-screen-image.jpg',
       'images/theme-image.jpg',
-      'images/adna-logo-animation.gif',
-      'images/facebook-logo.png',
-      'images/google-logo.png',
-      'images/full-body-image.png',
-      'images/gender-selection-screen-image.jpg',
     ];
 
     // Precache all asset images
