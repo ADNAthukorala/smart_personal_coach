@@ -215,7 +215,7 @@ class SelectMainGoalButton extends StatelessWidget {
         // If the selected main goal is equal to the user's main goal, the button color should be blue, otherwise white
         backgroundColor: selectedMainGoal == userMainGoal
             ? const WidgetStatePropertyAll(kAppThemeColor)
-            : const WidgetStatePropertyAll(kWhiteThemeColor),
+            : const WidgetStatePropertyAll(null),
       ),
       child: Text(
         buttonLabel,
