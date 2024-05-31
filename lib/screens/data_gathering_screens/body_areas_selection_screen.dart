@@ -329,7 +329,7 @@ class SelectBodyAreaButton extends StatelessWidget {
       style: kSelectBodyAreaButtonStyle.copyWith(
         backgroundColor: array.contains(selectedBodyArea) || array.length == 5
             ? const WidgetStatePropertyAll(kAppThemeColor)
-            : const WidgetStatePropertyAll(kWhiteThemeColor),
+            : const WidgetStatePropertyAll(null),
       ),
       child: Text(
         buttonLabel,
