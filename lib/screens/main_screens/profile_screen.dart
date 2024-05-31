@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:smart_personal_coach/constants.dart';
+import 'package:smart_personal_coach/screens/initial_screens/about_us_screen.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:cached_network_image/cached_network_image.dart';
@@ -1407,20 +1408,30 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
 
               /// Logo
-              const Padding(
-                padding: EdgeInsets.only(top: 8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Powered by: ",
-                      style: TextStyle(fontWeight: FontWeight.w600),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const AboutUsScreen(),
                     ),
-                    Image(
-                      image: AssetImage("images/adna-logo-txt.png"),
-                      width: 20,
-                    ),
-                  ],
+                  );
+                },
+                child: const Padding(
+                  padding: EdgeInsets.only(top: 8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Powered by: ",
+                        style: TextStyle(fontWeight: FontWeight.w600),
+                      ),
+                      Image(
+                        image: AssetImage("images/adna-logo-txt.png"),
+                        width: 20,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],

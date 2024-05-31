@@ -1190,6 +1190,8 @@ class _ReportScreenState extends State<ReportScreen> {
 
                                       /// Back button
                                       ElevatedButton(
+                                        style: ElevatedButton.styleFrom(
+                                            backgroundColor: kWhiteThemeColor),
                                         onPressed: () {
                                           Navigator.pop(context);
                                         },

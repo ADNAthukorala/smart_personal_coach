@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
+import 'package:smart_personal_coach/screens/initial_screens/about_us_screen.dart';
 import 'package:smart_personal_coach/screens/initial_screens/signin_screen.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
@@ -105,20 +106,30 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           ),
 
           /// Logo
-          const Padding(
-            padding: EdgeInsets.only(bottom: 2.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  "Powered by: ",
-                  style: TextStyle(fontWeight: FontWeight.w600),
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const AboutUsScreen(),
                 ),
-                Image(
-                  image: AssetImage("images/adna-logo-txt.png"),
-                  width: 20,
-                ),
-              ],
+              );
+            },
+            child: const Padding(
+              padding: EdgeInsets.only(bottom: 2.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    "Powered by: ",
+                    style: TextStyle(fontWeight: FontWeight.w600),
+                  ),
+                  Image(
+                    image: AssetImage("images/adna-logo-txt.png"),
+                    width: 20,
+                  ),
+                ],
+              ),
             ),
           ),
         ],

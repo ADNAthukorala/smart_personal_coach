@@ -6,6 +6,7 @@ import 'package:smart_personal_coach/constants.dart';
 import 'package:smart_personal_coach/components/signin_signup_button.dart';
 import 'package:smart_personal_coach/components/title_and_description_holder.dart';
 import 'package:smart_personal_coach/components/top_image.dart';
+import 'package:smart_personal_coach/screens/initial_screens/about_us_screen.dart';
 import 'package:smart_personal_coach/screens/initial_screens/bottom_navigationbar_screen.dart';
 import 'package:smart_personal_coach/screens/initial_screens/forgot_password_screen.dart';
 import 'package:smart_personal_coach/screens/data_gathering_screens/gender_selection_screen.dart';
@@ -372,23 +373,35 @@ class _SignInScreenState extends State<SignInScreen> {
                                 ),
 
                                 /// Logo
-                                const Padding(
-                                  padding:
-                                      EdgeInsets.symmetric(vertical: kPadding8),
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Text(
-                                        "Powered by: ",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const AboutUsScreen(),
                                       ),
-                                      Image(
-                                        image: AssetImage(
-                                            "images/adna-logo-txt.png"),
-                                        width: 20,
-                                      ),
-                                    ],
+                                    );
+                                  },
+                                  child: const Padding(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: kPadding8),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Text(
+                                          "Powered by: ",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600),
+                                        ),
+                                        Image(
+                                          image: AssetImage(
+                                              "images/adna-logo-txt.png"),
+                                          width: 20,
+                                        ),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],
