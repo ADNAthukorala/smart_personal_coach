@@ -251,7 +251,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       },
       style: kGenderSelectionButtonStyle.copyWith(
         backgroundColor: WidgetStatePropertyAll(
-            _userGender == "Female" ? kPinkThemeColor : kWhiteThemeColor),
+            _userGender == "Female" ? kPinkThemeColor : null),
       ),
       child: Text(
         'Female',
@@ -274,7 +274,7 @@ class _GenderSelectionScreenState extends State<GenderSelectionScreen> {
       },
       style: kGenderSelectionButtonStyle.copyWith(
         backgroundColor: WidgetStatePropertyAll(
-            _userGender == "Male" ? kBlueThemeColor : kWhiteThemeColor),
+            _userGender == "Male" ? kBlueThemeColor : null),
       ),
       child: Text(
         'Male',
